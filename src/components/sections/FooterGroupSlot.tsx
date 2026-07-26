@@ -22,7 +22,7 @@ export default function FooterGroupSlot() {
                       "var(--extracted-r6o4lv, var(--color-gray, rgb(154, 154, 158)))",
                   }}
                 >
-                  {"Headquarter | 01"}
+                  {"Studio"}
                 </p>
               </div>
               <div
@@ -39,7 +39,7 @@ export default function FooterGroupSlot() {
                 >
                   <a
                     className={"body-text hq-address-link"}
-                    href={"https://maps.google.com"}
+                    href={"https://kynth.studio"}
                     target={"_blank"}
                     rel={"noopener"}
                   >
@@ -61,7 +61,7 @@ export default function FooterGroupSlot() {
                       "var(--extracted-r6o4lv, var(--color-gray, rgb(154, 154, 158)))",
                   }}
                 >
-                  {"Headquarter | 02"}
+                  {"Licence"}
                 </p>
               </div>
               <div
@@ -78,7 +78,7 @@ export default function FooterGroupSlot() {
                 >
                   <a
                     className={"body-text hq-address-link"}
-                    href={"https://maps.google.com"}
+                    href={"https://kynth.studio"}
                     target={"_blank"}
                     rel={"noopener"}
                   >
@@ -119,11 +119,11 @@ export default function FooterGroupSlot() {
                 >
                   <a
                     className={"body-text hq-address-link"}
-                    href={"mailto:SUPPORT@TEARLINECAM.COM"}
+                    href={"mailto:hello@kynth.studio"}
                     target={"_blank"}
                     rel={"noopener"}
                   >
-                    {"SUPPORT@TEARLINECAM.COM"}
+                    {"HELLO@KYNTH.STUDIO"}
                   </a>
                 </p>
               </div>
@@ -156,7 +156,7 @@ export default function FooterGroupSlot() {
                       "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
                   }}
                 >
-                  <a className={"body-text link"} href={"./#hero-section"}>
+                  <a className={"body-text link"} href={"/#hero-section"}>
                     {"Home"}
                   </a>
                 </p>
@@ -173,8 +173,8 @@ export default function FooterGroupSlot() {
                       "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
                   }}
                 >
-                  <a className={"body-text link"} href={"./about-us"}>
-                    {"About Us"}
+                  <a className={"body-text link"} href={"/#features-section"}>
+                    {"Features"}
                   </a>
                 </p>
               </div>
@@ -190,8 +190,8 @@ export default function FooterGroupSlot() {
                       "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
                   }}
                 >
-                  <a className={"body-text link"} href={"./help-center#header"}>
-                    {"Help Center"}
+                  <a className={"body-text link"} href={"https://github.com/kyisaiah47/tearline"}>
+                    {"GitHub"}
                   </a>
                 </p>
               </div>
@@ -209,9 +209,9 @@ export default function FooterGroupSlot() {
                 >
                   <a
                     className={"body-text link"}
-                    href={"./warranty-returns#header"}
+                    href={"/#faq-section"}
                   >
-                    {"Warranty & Returns"}
+                    {"FAQ"}
                   </a>
                 </p>
               </div>
@@ -227,8 +227,8 @@ export default function FooterGroupSlot() {
                       "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
                   }}
                 >
-                  <a className={"body-text link"} href={"./404"}>
-                    {"404 Page"}
+                  <a className={"body-text link"} href={"https://www.npmjs.com/package/tearline"}>
+                    {"NPM"}
                   </a>
                 </p>
               </div>
@@ -247,7 +247,7 @@ export default function FooterGroupSlot() {
                     "var(--extracted-r6o4lv, var(--color-gray, rgb(154, 154, 158)))",
                 }}
               >
-                {"Phone"}
+                {"Install"}
               </p>
             </div>
             <div
@@ -262,14 +262,14 @@ export default function FooterGroupSlot() {
                     "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
                 }}
               >
-                {"US: "}
+                {"npm: "}
                 <a
                   className={"body-text hq-address-link"}
-                  href={"Tel:+1 (415) 555-1941"}
+                  href={"https://www.npmjs.com/package/tearline"}
                   target={"_blank"}
                   rel={"noopener"}
                 >
-                  {"+1 (415) 555-1941"}
+                  {"npm i tearline"}
                 </a>
               </p>
             </div>
@@ -285,14 +285,14 @@ export default function FooterGroupSlot() {
                     "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
                 }}
               >
-                {"EU: "}
+                {"cdn: "}
                 <a
                   className={"body-text hq-address-link"}
-                  href={"Tel:+49 30 1234567"}
+                  href={"https://tearline.kynth.studio/tearline.js"}
                   target={"_blank"}
                   rel={"noopener"}
                 >
-                  {"+49 30 1234567"}
+                  {"tearline.kynth.studio"}
                 </a>
               </p>
             </div>
@@ -310,7 +310,7 @@ export default function FooterGroupSlot() {
                     "var(--extracted-r6o4lv, var(--color-gray, rgb(154, 154, 158)))",
                 }}
               >
-                {"Social Media"}
+                {"[ studio ]"}
               </p>
             </div>
             <div
@@ -327,58 +327,16 @@ export default function FooterGroupSlot() {
               >
                 <a
                   className={"body-text hq-address-link"}
-                  href={"https://instagram.com"}
+                  href={"https://kynth.studio"}
                   target={"_blank"}
                   rel={"noopener"}
                 >
-                  {"Instagram: @optixelcam"}
+                  {"Kynth Studios"}
                 </a>
               </p>
             </div>
-            <div
-              className={"social-twitter"}
-              data-component={"RichTextContainer"}
-            >
-              <p
-                className={"body-text nav-label-caps"}
-                style={{
-                  "--rt-text-alignment": "left",
-                  "--rt-text-color":
-                    "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
-                }}
-              >
-                <a
-                  className={"body-text hq-address-link"}
-                  href={"https://x.com"}
-                  target={"_blank"}
-                  rel={"noopener"}
-                >
-                  {"Twitter: @optixelcam"}
-                </a>
-              </p>
-            </div>
-            <div
-              className={"social-youtube"}
-              data-component={"RichTextContainer"}
-            >
-              <p
-                className={"body-text nav-label-caps"}
-                style={{
-                  "--rt-text-alignment": "left",
-                  "--rt-text-color":
-                    "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
-                }}
-              >
-                <a
-                  className={"body-text hq-address-link"}
-                  href={"https://youtube.com"}
-                  target={"_blank"}
-                  rel={"noopener"}
-                >
-                  {"YouTube: TEARLINE Official"}
-                </a>
-              </p>
-            </div>
+            
+            
           </div>
         </div>
         <div className={"bottom"} data-name={"Bottom"}>
@@ -530,7 +488,7 @@ export default function FooterGroupSlot() {
                       "var(--extracted-r6o4lv, var(--color-gray, rgb(154, 154, 158)))",
                   }}
                 >
-                  {"Headquarter | 01"}
+                  {"Studio"}
                 </p>
               </div>
               <div
@@ -547,7 +505,7 @@ export default function FooterGroupSlot() {
                 >
                   <a
                     className={"body-text hq-address-link"}
-                    href={"https://maps.google.com"}
+                    href={"https://kynth.studio"}
                     target={"_blank"}
                     rel={"noopener"}
                   >
@@ -569,7 +527,7 @@ export default function FooterGroupSlot() {
                       "var(--extracted-r6o4lv, var(--color-gray, rgb(154, 154, 158)))",
                   }}
                 >
-                  {"Headquarter | 02"}
+                  {"Licence"}
                 </p>
               </div>
               <div
@@ -586,7 +544,7 @@ export default function FooterGroupSlot() {
                 >
                   <a
                     className={"body-text hq-address-link"}
-                    href={"https://maps.google.com"}
+                    href={"https://kynth.studio"}
                     target={"_blank"}
                     rel={"noopener"}
                   >
@@ -627,11 +585,11 @@ export default function FooterGroupSlot() {
                 >
                   <a
                     className={"body-text hq-address-link"}
-                    href={"mailto:SUPPORT@TEARLINECAM.COM"}
+                    href={"mailto:hello@kynth.studio"}
                     target={"_blank"}
                     rel={"noopener"}
                   >
-                    {"SUPPORT@TEARLINECAM.COM"}
+                    {"HELLO@KYNTH.STUDIO"}
                   </a>
                 </p>
               </div>
@@ -664,7 +622,7 @@ export default function FooterGroupSlot() {
                       "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
                   }}
                 >
-                  <a className={"body-text link"} href={"./#hero-section"}>
+                  <a className={"body-text link"} href={"/#hero-section"}>
                     {"Home"}
                   </a>
                 </p>
@@ -681,8 +639,8 @@ export default function FooterGroupSlot() {
                       "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
                   }}
                 >
-                  <a className={"body-text link"} href={"./about-us"}>
-                    {"About Us"}
+                  <a className={"body-text link"} href={"/#features-section"}>
+                    {"Features"}
                   </a>
                 </p>
               </div>
@@ -698,8 +656,8 @@ export default function FooterGroupSlot() {
                       "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
                   }}
                 >
-                  <a className={"body-text link"} href={"./help-center#header"}>
-                    {"Help Center"}
+                  <a className={"body-text link"} href={"https://github.com/kyisaiah47/tearline"}>
+                    {"GitHub"}
                   </a>
                 </p>
               </div>
@@ -717,9 +675,9 @@ export default function FooterGroupSlot() {
                 >
                   <a
                     className={"body-text link"}
-                    href={"./warranty-returns#header"}
+                    href={"/#faq-section"}
                   >
-                    {"Warranty & Returns"}
+                    {"FAQ"}
                   </a>
                 </p>
               </div>
@@ -735,8 +693,8 @@ export default function FooterGroupSlot() {
                       "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
                   }}
                 >
-                  <a className={"body-text link"} href={"./404"}>
-                    {"404 Page"}
+                  <a className={"body-text link"} href={"https://www.npmjs.com/package/tearline"}>
+                    {"NPM"}
                   </a>
                 </p>
               </div>
@@ -755,7 +713,7 @@ export default function FooterGroupSlot() {
                     "var(--extracted-r6o4lv, var(--color-gray, rgb(154, 154, 158)))",
                 }}
               >
-                {"Phone"}
+                {"Install"}
               </p>
             </div>
             <div
@@ -770,14 +728,14 @@ export default function FooterGroupSlot() {
                     "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
                 }}
               >
-                {"US: "}
+                {"npm: "}
                 <a
                   className={"body-text hq-address-link"}
-                  href={"Tel:+1 (415) 555-1941"}
+                  href={"https://www.npmjs.com/package/tearline"}
                   target={"_blank"}
                   rel={"noopener"}
                 >
-                  {"+1 (415) 555-1941"}
+                  {"npm i tearline"}
                 </a>
               </p>
             </div>
@@ -793,14 +751,14 @@ export default function FooterGroupSlot() {
                     "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
                 }}
               >
-                {"EU: "}
+                {"cdn: "}
                 <a
                   className={"body-text hq-address-link"}
-                  href={"Tel:+49 30 1234567"}
+                  href={"https://tearline.kynth.studio/tearline.js"}
                   target={"_blank"}
                   rel={"noopener"}
                 >
-                  {"+49 30 1234567"}
+                  {"tearline.kynth.studio"}
                 </a>
               </p>
             </div>
@@ -818,7 +776,7 @@ export default function FooterGroupSlot() {
                     "var(--extracted-r6o4lv, var(--color-gray, rgb(154, 154, 158)))",
                 }}
               >
-                {"Social Media"}
+                {"[ studio ]"}
               </p>
             </div>
             <div
@@ -835,11 +793,11 @@ export default function FooterGroupSlot() {
               >
                 <a
                   className={"body-text hq-address-link"}
-                  href={"https://instagram.com"}
+                  href={"https://kynth.studio"}
                   target={"_blank"}
                   rel={"noopener"}
                 >
-                  {"Instagram: @optixelcam"}
+                  {"Kynth Studios"}
                 </a>
               </p>
             </div>
@@ -1039,7 +997,7 @@ export default function FooterGroupSlot() {
                       "var(--extracted-r6o4lv, var(--color-gray, rgb(154, 154, 158)))",
                   }}
                 >
-                  {"Headquarter | 01"}
+                  {"Studio"}
                 </p>
               </div>
               <div
@@ -1056,7 +1014,7 @@ export default function FooterGroupSlot() {
                 >
                   <a
                     className={"body-text hq-address-link"}
-                    href={"https://maps.google.com"}
+                    href={"https://kynth.studio"}
                     target={"_blank"}
                     rel={"noopener"}
                   >
@@ -1078,7 +1036,7 @@ export default function FooterGroupSlot() {
                       "var(--extracted-r6o4lv, var(--color-gray, rgb(154, 154, 158)))",
                   }}
                 >
-                  {"Headquarter | 02"}
+                  {"Licence"}
                 </p>
               </div>
               <div
@@ -1095,7 +1053,7 @@ export default function FooterGroupSlot() {
                 >
                   <a
                     className={"body-text hq-address-link"}
-                    href={"https://maps.google.com"}
+                    href={"https://kynth.studio"}
                     target={"_blank"}
                     rel={"noopener"}
                   >
@@ -1136,11 +1094,11 @@ export default function FooterGroupSlot() {
                 >
                   <a
                     className={"body-text hq-address-link"}
-                    href={"mailto:SUPPORT@TEARLINECAM.COM"}
+                    href={"mailto:hello@kynth.studio"}
                     target={"_blank"}
                     rel={"noopener"}
                   >
-                    {"SUPPORT@TEARLINECAM.COM"}
+                    {"HELLO@KYNTH.STUDIO"}
                   </a>
                 </p>
               </div>
@@ -1173,7 +1131,7 @@ export default function FooterGroupSlot() {
                       "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
                   }}
                 >
-                  <a className={"body-text link"} href={"./#hero-section"}>
+                  <a className={"body-text link"} href={"/#hero-section"}>
                     {"Home"}
                   </a>
                 </p>
@@ -1190,8 +1148,8 @@ export default function FooterGroupSlot() {
                       "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
                   }}
                 >
-                  <a className={"body-text link"} href={"./about-us"}>
-                    {"About Us"}
+                  <a className={"body-text link"} href={"/#features-section"}>
+                    {"Features"}
                   </a>
                 </p>
               </div>
@@ -1207,8 +1165,8 @@ export default function FooterGroupSlot() {
                       "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
                   }}
                 >
-                  <a className={"body-text link"} href={"./help-center#header"}>
-                    {"Help Center"}
+                  <a className={"body-text link"} href={"https://github.com/kyisaiah47/tearline"}>
+                    {"GitHub"}
                   </a>
                 </p>
               </div>
@@ -1226,9 +1184,9 @@ export default function FooterGroupSlot() {
                 >
                   <a
                     className={"body-text link"}
-                    href={"./warranty-returns#header"}
+                    href={"/#faq-section"}
                   >
-                    {"Warranty & Returns"}
+                    {"FAQ"}
                   </a>
                 </p>
               </div>
@@ -1244,8 +1202,8 @@ export default function FooterGroupSlot() {
                       "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
                   }}
                 >
-                  <a className={"body-text link"} href={"./404"}>
-                    {"404 Page"}
+                  <a className={"body-text link"} href={"https://www.npmjs.com/package/tearline"}>
+                    {"NPM"}
                   </a>
                 </p>
               </div>
@@ -1264,7 +1222,7 @@ export default function FooterGroupSlot() {
                     "var(--extracted-r6o4lv, var(--color-gray, rgb(154, 154, 158)))",
                 }}
               >
-                {"Phone"}
+                {"Install"}
               </p>
             </div>
             <div
@@ -1279,14 +1237,14 @@ export default function FooterGroupSlot() {
                     "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
                 }}
               >
-                {"US: "}
+                {"npm: "}
                 <a
                   className={"body-text hq-address-link"}
-                  href={"Tel:+1 (415) 555-1941"}
+                  href={"https://www.npmjs.com/package/tearline"}
                   target={"_blank"}
                   rel={"noopener"}
                 >
-                  {"+1 (415) 555-1941"}
+                  {"npm i tearline"}
                 </a>
               </p>
             </div>
@@ -1302,14 +1260,14 @@ export default function FooterGroupSlot() {
                     "var(--extracted-r6o4lv, var(--color-black-2, rgb(27, 28, 30)))",
                 }}
               >
-                {"EU: "}
+                {"cdn: "}
                 <a
                   className={"body-text hq-address-link"}
-                  href={"Tel:+49 30 1234567"}
+                  href={"https://tearline.kynth.studio/tearline.js"}
                   target={"_blank"}
                   rel={"noopener"}
                 >
-                  {"+49 30 1234567"}
+                  {"tearline.kynth.studio"}
                 </a>
               </p>
             </div>
@@ -1327,7 +1285,7 @@ export default function FooterGroupSlot() {
                     "var(--extracted-r6o4lv, var(--color-gray, rgb(154, 154, 158)))",
                 }}
               >
-                {"Social Media"}
+                {"[ studio ]"}
               </p>
             </div>
             <div
@@ -1344,11 +1302,11 @@ export default function FooterGroupSlot() {
               >
                 <a
                   className={"body-text hq-address-link"}
-                  href={"https://instagram.com"}
+                  href={"https://kynth.studio"}
                   target={"_blank"}
                   rel={"noopener"}
                 >
-                  {"Instagram: @optixelcam"}
+                  {"Kynth Studios"}
                 </a>
               </p>
             </div>

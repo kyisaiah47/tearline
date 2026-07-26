@@ -5,7 +5,7 @@ export default function FooterColumns() {
         className={
           "desktop-light site-nav desktop-light-2 desktop-light-state hide-tablet hide-desktop"
         }
-        data-name={"Phone - Light"}
+        data-name={"Install - Light"}
         style={{ width: "100%" }}
       >
         <div
@@ -18,7 +18,7 @@ export default function FooterColumns() {
           <a
             className={"logo logo-3"}
             data-name={"Logo"}
-            href={"./#hero-section"}
+            href={"/#hero-section"}
             style={{ transform: "none", transformOrigin: "50% 50% 0px" }}
           >
             <div
@@ -91,7 +91,7 @@ export default function FooterColumns() {
           <a
             className={"logo logo-3"}
             data-name={"Logo"}
-            href={"./#hero-section"}
+            href={"/#hero-section"}
             style={{ opacity: "1" }}
           >
             <div
@@ -121,7 +121,7 @@ export default function FooterColumns() {
                 }
                 data-border={"true"}
                 data-highlight={"true"}
-                href={"./"}
+                href={"/"}
                 tabIndex={0}
                 style={{
                   "--1yk5wzj": "4px 2px 4px 2px",
@@ -169,7 +169,7 @@ export default function FooterColumns() {
                 }
                 data-border={"true"}
                 data-highlight={"true"}
-                href={"./about-us"}
+                href={"/#features-section"}
                 tabIndex={0}
                 style={{
                   "--1yk5wzj": "4px 2px 4px 2px",
@@ -205,7 +205,7 @@ export default function FooterColumns() {
                         "var(--extracted-r6o4lv, var(--variable-reference-unstr4Kxq-sTmWiG2Zm))",
                     }}
                   >
-                    {"ABOUT US"}
+                    {"FEATURES"}
                   </p>
                 </div>
               </a>
@@ -217,7 +217,7 @@ export default function FooterColumns() {
                 }
                 data-border={"true"}
                 data-highlight={"true"}
-                href={"./warranty-returns#header"}
+                href={"/#faq-section"}
                 tabIndex={0}
                 style={{
                   "--1yk5wzj": "4px 2px 4px 2px",
@@ -253,7 +253,7 @@ export default function FooterColumns() {
                         "var(--extracted-r6o4lv, var(--variable-reference-unstr4Kxq-sTmWiG2Zm))",
                     }}
                   >
-                    {"WARRANTY & RETURNS"}
+                    {"FAQ"}
                   </p>
                 </div>
               </a>
@@ -265,7 +265,7 @@ export default function FooterColumns() {
                 }
                 data-border={"true"}
                 data-highlight={"true"}
-                href={"./help-center#header"}
+                href={"https://github.com/kyisaiah47/tearline"}
                 tabIndex={0}
                 style={{
                   "--1yk5wzj": "4px 2px 4px 2px",
@@ -301,7 +301,7 @@ export default function FooterColumns() {
                         "var(--extracted-r6o4lv, var(--variable-reference-unstr4Kxq-sTmWiG2Zm))",
                     }}
                   >
-                    {"HELP CENTER"}
+                    {"GITHUB"}
                   </p>
                 </div>
               </a>
@@ -313,7 +313,7 @@ export default function FooterColumns() {
                 }
                 data-border={"true"}
                 data-highlight={"true"}
-                href={"./404"}
+                href={"https://www.npmjs.com/package/tearline"}
                 tabIndex={0}
                 style={{
                   "--1yk5wzj": "4px 2px 4px 2px",
@@ -349,7 +349,7 @@ export default function FooterColumns() {
                         "var(--extracted-r6o4lv, var(--variable-reference-unstr4Kxq-sTmWiG2Zm))",
                     }}
                   >
-                    {"404 Page"}
+                    {"NPM"}
                   </p>
                 </div>
               </a>
@@ -363,7 +363,7 @@ export default function FooterColumns() {
               data-border={"true"}
               data-name={"Nav-CTA"}
               data-highlight={"true"}
-              href={"https://buy.stripe.com/test_8x24gA7Tf0W42vp3vD3F601"}
+              href={"https://github.com/kyisaiah47/tearline"}
               target={"_blank"}
               rel={"noopener"}
               tabIndex={0}
@@ -394,7 +394,7 @@ export default function FooterColumns() {
                       "var(--extracted-r6o4lv, var(--variable-reference-unstr4Kxq-sTmWiG2Zm))",
                   }}
                 >
-                  {"BUY NOW"}
+                  {"GET IT FREE"}
                 </p>
               </div>
             </a>
@@ -412,7 +412,7 @@ export default function FooterColumns() {
           <a
             className={"logo logo-3"}
             data-name={"Logo"}
-            href={"./#hero-section"}
+            href={"/#hero-section"}
             style={{ opacity: "1" }}
           >
             <div
@@ -442,7 +442,7 @@ export default function FooterColumns() {
                 }
                 data-border={"true"}
                 data-highlight={"true"}
-                href={"./"}
+                href={"/"}
                 tabIndex={0}
                 style={{
                   "--1yk5wzj": "4px 2px 4px 2px",
@@ -490,7 +490,7 @@ export default function FooterColumns() {
                 }
                 data-border={"true"}
                 data-highlight={"true"}
-                href={"./about-us"}
+                href={"/#features-section"}
                 tabIndex={0}
                 style={{
                   "--1yk5wzj": "4px 2px 4px 2px",
@@ -526,7 +526,7 @@ export default function FooterColumns() {
                         "var(--extracted-r6o4lv, var(--variable-reference-unstr4Kxq-sTmWiG2Zm))",
                     }}
                   >
-                    {"ABOUT US"}
+                    {"FEATURES"}
                   </p>
                 </div>
               </a>
@@ -538,7 +538,7 @@ export default function FooterColumns() {
                 }
                 data-border={"true"}
                 data-highlight={"true"}
-                href={"./warranty-returns#header"}
+                href={"/#faq-section"}
                 tabIndex={0}
                 style={{
                   "--1yk5wzj": "4px 2px 4px 2px",
@@ -574,7 +574,7 @@ export default function FooterColumns() {
                         "var(--extracted-r6o4lv, var(--variable-reference-unstr4Kxq-sTmWiG2Zm))",
                     }}
                   >
-                    {"WARRANTY & RETURNS"}
+                    {"FAQ"}
                   </p>
                 </div>
               </a>
@@ -586,7 +586,7 @@ export default function FooterColumns() {
                 }
                 data-border={"true"}
                 data-highlight={"true"}
-                href={"./help-center#header"}
+                href={"https://github.com/kyisaiah47/tearline"}
                 tabIndex={0}
                 style={{
                   "--1yk5wzj": "4px 2px 4px 2px",
@@ -622,7 +622,7 @@ export default function FooterColumns() {
                         "var(--extracted-r6o4lv, var(--variable-reference-unstr4Kxq-sTmWiG2Zm))",
                     }}
                   >
-                    {"HELP CENTER"}
+                    {"GITHUB"}
                   </p>
                 </div>
               </a>
@@ -634,7 +634,7 @@ export default function FooterColumns() {
                 }
                 data-border={"true"}
                 data-highlight={"true"}
-                href={"./404"}
+                href={"https://www.npmjs.com/package/tearline"}
                 tabIndex={0}
                 style={{
                   "--1yk5wzj": "4px 2px 4px 2px",
@@ -670,7 +670,7 @@ export default function FooterColumns() {
                         "var(--extracted-r6o4lv, var(--variable-reference-unstr4Kxq-sTmWiG2Zm))",
                     }}
                   >
-                    {"404 Page"}
+                    {"NPM"}
                   </p>
                 </div>
               </a>
@@ -684,7 +684,7 @@ export default function FooterColumns() {
               data-border={"true"}
               data-name={"Nav-CTA"}
               data-highlight={"true"}
-              href={"https://buy.stripe.com/test_8x24gA7Tf0W42vp3vD3F601"}
+              href={"https://github.com/kyisaiah47/tearline"}
               target={"_blank"}
               rel={"noopener"}
               tabIndex={0}
@@ -715,7 +715,7 @@ export default function FooterColumns() {
                       "var(--extracted-r6o4lv, var(--variable-reference-unstr4Kxq-sTmWiG2Zm))",
                   }}
                 >
-                  {"BUY NOW"}
+                  {"GET IT FREE"}
                 </p>
               </div>
             </a>

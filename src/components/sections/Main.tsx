@@ -92,7 +92,7 @@ export default function Main() {
               className={"body-text section-heading"}
               style={{ "--rt-text-alignment": "center" }}
             >
-              {"Minimal Gear"}
+              {"One Tag"}
               <span
                 className={"body-text"}
                 style={{
@@ -101,7 +101,7 @@ export default function Main() {
               >
                 {"."}
               </span>
-              {" Maximum Impact"}
+              {" Any Receipt"}
               <span
                 className={"body-text"}
                 style={{
@@ -133,7 +133,7 @@ export default function Main() {
               }}
             >
               {
-                "Designed for visionaries, explorers, and creators — the TEARLINE LX-41 is built to empower your perspective. No fluff. Just sharp tech, sleek form, and unstoppable performance."
+                "Built for the people who ship the thing users screenshot. Wrap any markup you already have, get paper back, and hand your users an image worth posting. No dependencies. No build step. No account."
               }
             </p>
             <p
@@ -155,7 +155,7 @@ export default function Main() {
               }}
             >
               {
-                "Designed for visionaries, explorers, and creators — the TEARLINE LX-41 is built to empower your perspective. No fluff. Just sharp tech, sleek form, and unstoppable performance."
+                "Built for the people who ship the thing users screenshot. Wrap any markup you already have, get paper back, and hand your users an image worth posting. No dependencies. No build step. No account."
               }
             </p>
           </div>
@@ -226,6 +226,7 @@ export default function Main() {
       <section
         className={"main-features-section"}
         data-name={"Features-Section"}
+        id={"features-section"}
       >
         <div className={"content-container"}>
           <div className={"main-left-3"} data-name={"Left"}>
@@ -235,7 +236,7 @@ export default function Main() {
                 data-component={"RichTextContainer"}
               >
                 <h2 className={"body-text section-heading"}>
-                  {"Engineered for Excellence"}
+                  {"Built to Drop In"}
                   <span
                     className={"body-text"}
                     style={{
@@ -267,7 +268,7 @@ export default function Main() {
                       lineHeight: "1.2em",
                     }}
                   >
-                    {"4K Ultra HD Capture"}
+                    {"Wrap Any HTML"}
                   </h3>
                   <h3
                     className={"hide-phone"}
@@ -286,7 +287,7 @@ export default function Main() {
                       lineHeight: "1.2em",
                     }}
                   >
-                    {"4K Ultra HD Capture"}
+                    {"Wrap Any HTML"}
                   </h3>
                 </div>
                 <div
@@ -295,7 +296,7 @@ export default function Main() {
                 >
                   <p className={"body-text nav-label-caps"}>
                     {
-                      "Crystal-clear footage at up to 60fps—smooth, sharp, unstoppable."
+                      "A div, a table, a whole order summary — wrap it and it comes out as paper."
                     }
                   </p>
                 </div>
@@ -319,7 +320,7 @@ export default function Main() {
                       lineHeight: "1.2em",
                     }}
                   >
-                    {"Long-Lasting Power"}
+                    {"Export to PNG"}
                   </h3>
                   <h3
                     className={"hide-phone"}
@@ -338,7 +339,7 @@ export default function Main() {
                       lineHeight: "1.2em",
                     }}
                   >
-                    {"Long-Lasting Power"}
+                    {"Export to PNG"}
                   </h3>
                 </div>
                 <div
@@ -346,16 +347,16 @@ export default function Main() {
                   data-component={"RichTextContainer"}
                 >
                   <p className={"body-text nav-label-caps"}>
-                    {"Smart battery tech delivers up to "}
+                    {"One call turns any receipt into a "}
                     <span
                       className={"body-text"}
                       style={{
                         "--rt-text-color": "var(--color-red, rgb(255, 79, 94))",
                       }}
                     >
-                      {"10 hours"}
+                      {"PNG"}
                     </span>
-                    {" of recording."}
+                    {" your users can post."}
                   </p>
                 </div>
               </div>
@@ -378,7 +379,7 @@ export default function Main() {
                       lineHeight: "1.2em",
                     }}
                   >
-                    {"Instant Live Streaming"}
+                    {"Deterministic by Seed"}
                   </h3>
                   <h3
                     className={"hide-phone"}
@@ -397,7 +398,7 @@ export default function Main() {
                       lineHeight: "1.2em",
                     }}
                   >
-                    {"Instant Live Streaming"}
+                    {"Deterministic by Seed"}
                   </h3>
                 </div>
                 <div
@@ -406,7 +407,7 @@ export default function Main() {
                 >
                   <p className={"body-text nav-label-caps"}>
                     {
-                      "Broadcast your journey live with one-tap Wi-Fi streaming."
+                      "The same seed always prints the same torn edge and the same barcode."
                     }
                   </p>
                 </div>
@@ -430,7 +431,7 @@ export default function Main() {
                       lineHeight: "1.2em",
                     }}
                   >
-                    {"Intuitive Touchscreen"}
+                    {"Real Text, Not Pixels"}
                   </h3>
                   <h3
                     className={"hide-phone"}
@@ -449,7 +450,7 @@ export default function Main() {
                       lineHeight: "1.2em",
                     }}
                   >
-                    {"Intuitive Touchscreen"}
+                    {"Real Text, Not Pixels"}
                   </h3>
                 </div>
                 <div
@@ -458,7 +459,7 @@ export default function Main() {
                 >
                   <p className={"body-text nav-label-caps"}>
                     {
-                      "2.4″ full-display touchscreen for quick settings and playback."
+                      "Selectable, searchable and screen-reader friendly — it is your markup, styled."
                     }
                   </p>
                 </div>
@@ -954,7 +955,7 @@ export default function Main() {
                     "--rt-text-color": "var(--color-black-2, rgb(27, 28, 30))",
                   }}
                 >
-                  {"Ready to Elevate Your Vision"}
+                  {"Ready to Print Something"}
                   <span
                     className={"body-text"}
                     style={{
@@ -975,7 +976,7 @@ export default function Main() {
                     data-border={"true"}
                     data-name={"CTA - Phone"}
                     data-highlight={"true"}
-                    href={"https://buy.stripe.com/test_8x24gA7Tf0W42vp3vD3F601"}
+                    href={"https://github.com/kyisaiah47/tearline"}
                     target={"_blank"}
                     rel={"noopener"}
                     tabIndex={0}
@@ -1007,7 +1008,7 @@ export default function Main() {
                             "var(--extracted-r6o4lv, var(--color-background, rgb(244, 244, 245)))",
                         }}
                       >
-                        {"BUY NOW"}
+                        {"GET IT FREE"}
                       </p>
                     </div>
                     <div className={"gallery-scene-slot"}>
@@ -1042,7 +1043,7 @@ export default function Main() {
                     data-border={"true"}
                     data-name={"CTA"}
                     data-highlight={"true"}
-                    href={"https://buy.stripe.com/test_8x24gA7Tf0W42vp3vD3F601"}
+                    href={"https://github.com/kyisaiah47/tearline"}
                     target={"_blank"}
                     rel={"noopener"}
                     tabIndex={0}
@@ -1073,7 +1074,7 @@ export default function Main() {
                             "var(--extracted-r6o4lv, var(--color-background, rgb(244, 244, 245)))",
                         }}
                       >
-                        {"BUY NOW"}
+                        {"GET IT FREE"}
                       </p>
                     </div>
                     <div className={"gallery-scene-slot"}>
@@ -1108,7 +1109,7 @@ export default function Main() {
                     data-border={"true"}
                     data-name={"CTA"}
                     data-highlight={"true"}
-                    href={"https://buy.stripe.com/test_8x24gA7Tf0W42vp3vD3F601"}
+                    href={"https://github.com/kyisaiah47/tearline"}
                     target={"_blank"}
                     rel={"noopener"}
                     tabIndex={0}
@@ -1139,7 +1140,7 @@ export default function Main() {
                             "var(--extracted-r6o4lv, var(--color-background, rgb(244, 244, 245)))",
                         }}
                       >
-                        {"BUY NOW"}
+                        {"GET IT FREE"}
                       </p>
                     </div>
                     <div className={"gallery-scene-slot"}>
@@ -1178,7 +1179,7 @@ export default function Main() {
                         "var(--color-black-2, rgb(27, 28, 30))",
                     }}
                   >
-                    {"30-Day Money-Back Guarantee"}
+                    {"MIT Licensed — Free Forever"}
                   </p>
                 </div>
               </div>
@@ -1204,7 +1205,7 @@ export default function Main() {
                     }}
                   >
                     <span className={"hide-tablet"} style={{ opacity: "0" }}>
-                      {"$249"}
+                      {"FREE"}
                     </span>
                   </h2>
                 </div>
@@ -1221,7 +1222,7 @@ export default function Main() {
                     }}
                   >
                     <strong className={"body-text"}>
-                      {"Includes camera + accessories + app access"}
+                      {"npm i tearline — or one script tag"}
                     </strong>
                   </p>
                 </div>
@@ -1313,7 +1314,7 @@ export default function Main() {
                       }}
                     >
                       <span className={"hide-tablet"} style={{ opacity: "0" }}>
-                        {"4K @ 60fps ultra-wide video"}
+                        {"Wrap any HTML in one tag"}
                       </span>
                     </h2>
                   </div>
@@ -1402,7 +1403,7 @@ export default function Main() {
                       }}
                     >
                       <span className={"hide-tablet"} style={{ opacity: "0" }}>
-                        {"10-hour rechargeable battery"}
+                        {"PNG export built in"}
                       </span>
                     </h2>
                   </div>
@@ -1491,7 +1492,7 @@ export default function Main() {
                       }}
                     >
                       <span className={"hide-tablet"} style={{ opacity: "0" }}>
-                        {"Live streaming via Wi-Fi"}
+                        {"Zero dependencies, no build step"}
                       </span>
                     </h2>
                   </div>
@@ -1583,7 +1584,7 @@ export default function Main() {
                         className={"hide-tablet hide-phone"}
                         style={{ opacity: "0" }}
                       >
-                        {"Touchscreen display"}
+                        {"Seeded, deterministic output"}
                       </span>
                     </h2>
                   </div>
@@ -1677,7 +1678,7 @@ export default function Main() {
                         className={"hide-tablet hide-phone"}
                         style={{ opacity: "0" }}
                       >
-                        {"Waterproof up to 30m"}
+                        {"Real text, not a canvas"}
                       </span>
                     </h2>
                   </div>
@@ -1769,7 +1770,7 @@ export default function Main() {
                         className={"hide-tablet hide-phone"}
                         style={{ opacity: "0" }}
                       >
-                        {"Dual mic + speaker"}
+                        {"Paper and ink are CSS variables"}
                       </span>
                     </h2>
                   </div>
@@ -1860,7 +1861,7 @@ export default function Main() {
                       }}
                     >
                       <span className={"hide-phone"} style={{ opacity: "0" }}>
-                        {"USB-C, Bluetooth & Wi-Fi"}
+                        {"React, Vue, or plain HTML"}
                       </span>
                     </h2>
                   </div>
@@ -1951,7 +1952,7 @@ export default function Main() {
                       }}
                     >
                       <span className={"hide-phone"} style={{ opacity: "0" }}>
-                        {"Free mobile app + firmware updates"}
+                        {"MIT licensed, free forever"}
                       </span>
                     </h2>
                   </div>
@@ -2099,11 +2100,11 @@ export default function Main() {
               >
                 <a
                   className={"body-text support-email-link"}
-                  href={"mailto:help@TEARLINE.com"}
+                  href={"mailto:hello@kynth.studio"}
                   target={"_blank"}
                   rel={"noopener"}
                 >
-                  {"SUPPORT@TEARLINECAM.COM"}
+                  {"HELLO@KYNTH.STUDIO"}
                 </a>
               </p>
             </div>
@@ -2129,7 +2130,7 @@ export default function Main() {
                   }
                   data-border={"true"}
                   data-highlight={"true"}
-                  href={"./help-center"}
+                  href={"https://github.com/kyisaiah47/tearline"}
                   tabIndex={0}
                   style={{
                     "--1yk5wzj": "6px 20px 6px 20px",
@@ -2166,7 +2167,7 @@ export default function Main() {
                           "var(--extracted-r6o4lv, var(--variable-reference-unstr4Kxq-sTmWiG2Zm))",
                       }}
                     >
-                      {"Visit Help Center >"}
+                      {"Read the docs >"}
                     </p>
                   </div>
                 </a>
@@ -2178,7 +2179,7 @@ export default function Main() {
                   }
                   data-border={"true"}
                   data-highlight={"true"}
-                  href={"./help-center"}
+                  href={"https://github.com/kyisaiah47/tearline"}
                   tabIndex={0}
                   style={{
                     "--1yk5wzj": "6px 20px 6px 20px",
@@ -2215,7 +2216,7 @@ export default function Main() {
                           "var(--extracted-r6o4lv, var(--variable-reference-unstr4Kxq-sTmWiG2Zm))",
                       }}
                     >
-                      {"Visit Help Center >"}
+                      {"Read the docs >"}
                     </p>
                   </div>
                 </a>
@@ -2263,7 +2264,7 @@ export default function Main() {
                               "var(--extracted-r6o4lv, var(--color-background, rgb(244, 244, 245)))",
                           }}
                         >
-                          {"Does the LX-41 support external microphones?"}
+                          {"Do I need a build step or a framework?"}
                         </p>
                       </div>
                       <div className={"faq-item-slot"}>
@@ -2312,7 +2313,7 @@ export default function Main() {
                           }}
                         >
                           {
-                            "Yes! It includes a 3.5mm jack and supports popular external mic models."
+                            "No. It is a custom element — one script tag and the tag works. React, Vue, Svelte and plain HTML all treat it the same."
                           }
                         </p>
                       </div>
@@ -2346,7 +2347,7 @@ export default function Main() {
                               "var(--extracted-r6o4lv, var(--color-background, rgb(244, 244, 245)))",
                           }}
                         >
-                          {"Can I live stream directly from the camera?"}
+                          {"Can I change how the paper and ink look?"}
                         </p>
                       </div>
                       <div className={"faq-item-slot"}>
@@ -2395,7 +2396,7 @@ export default function Main() {
                           }}
                         >
                           {
-                            "Absolutely. Use the companion app to stream directly to platforms like YouTube or Instagram."
+                            "Yes. Paper, ink and font are CSS custom properties, and every built-in style loses to your own CSS."
                           }
                         </p>
                       </div>
@@ -2429,7 +2430,7 @@ export default function Main() {
                               "var(--extracted-r6o4lv, var(--color-background, rgb(244, 244, 245)))",
                           }}
                         >
-                          {"How durable is the camera?"}
+                          {"Does the exported PNG match what I see?"}
                         </p>
                       </div>
                       <div className={"faq-item-slot"}>
@@ -2478,7 +2479,7 @@ export default function Main() {
                           }}
                         >
                           {
-                            "It’s waterproof up to 30 meters, dust-sealed, and shock-resistant for extreme environments."
+                            "Exactly. The torn edge and barcode come from a seed, so a receipt renders identically every time and the export matches the screen."
                           }
                         </p>
                       </div>
@@ -2512,7 +2513,7 @@ export default function Main() {
                               "var(--extracted-r6o4lv, var(--color-background, rgb(244, 244, 245)))",
                           }}
                         >
-                          {"Is the app free to use?"}
+                          {"Is it really free?"}
                         </p>
                       </div>
                       <div className={"faq-item-slot"}>
@@ -2561,7 +2562,7 @@ export default function Main() {
                           }}
                         >
                           {
-                            "Yes, the iOS and Android apps are completely free, with no in-app purchases."
+                            "MIT licensed, free forever. No account, no paid tier, nothing to upgrade to."
                           }
                         </p>
                       </div>
@@ -2595,7 +2596,7 @@ export default function Main() {
                               "var(--extracted-r6o4lv, var(--color-background, rgb(244, 244, 245)))",
                           }}
                         >
-                          {"What kind of storage is supported?"}
+                          {"Can I put an image inside a receipt?"}
                         </p>
                       </div>
                       <div className={"faq-item-slot"}>
@@ -2643,7 +2644,7 @@ export default function Main() {
                               "var(--extracted-r6o4lv, var(--color-gray, rgb(154, 154, 158)))",
                           }}
                         >
-                          {"It supports MicroSD cards up to 256 GB."}
+                          {"Yes, but it must be a data: URI to survive the PNG export — the export sandbox cannot fetch over the network."}
                         </p>
                       </div>
                     </div>
@@ -2691,7 +2692,7 @@ export default function Main() {
                               "var(--extracted-r6o4lv, var(--color-background, rgb(244, 244, 245)))",
                           }}
                         >
-                          {"Does the LX-41 support external microphones?"}
+                          {"Do I need a build step or a framework?"}
                         </p>
                       </div>
                       <div className={"faq-item-slot"}>
@@ -2740,7 +2741,7 @@ export default function Main() {
                           }}
                         >
                           {
-                            "Yes! It includes a 3.5mm jack and supports popular external mic models."
+                            "No. It is a custom element — one script tag and the tag works. React, Vue, Svelte and plain HTML all treat it the same."
                           }
                         </p>
                       </div>
@@ -2774,7 +2775,7 @@ export default function Main() {
                               "var(--extracted-r6o4lv, var(--color-background, rgb(244, 244, 245)))",
                           }}
                         >
-                          {"Can I live stream directly from the camera?"}
+                          {"Can I change how the paper and ink look?"}
                         </p>
                       </div>
                       <div className={"faq-item-slot"}>
@@ -2823,7 +2824,7 @@ export default function Main() {
                           }}
                         >
                           {
-                            "Absolutely. Use the companion app to stream directly to platforms like YouTube or Instagram."
+                            "Yes. Paper, ink and font are CSS custom properties, and every built-in style loses to your own CSS."
                           }
                         </p>
                       </div>
@@ -2857,7 +2858,7 @@ export default function Main() {
                               "var(--extracted-r6o4lv, var(--color-background, rgb(244, 244, 245)))",
                           }}
                         >
-                          {"How durable is the camera?"}
+                          {"Does the exported PNG match what I see?"}
                         </p>
                       </div>
                       <div className={"faq-item-slot"}>
@@ -2906,7 +2907,7 @@ export default function Main() {
                           }}
                         >
                           {
-                            "It’s waterproof up to 30 meters, dust-sealed, and shock-resistant for extreme environments."
+                            "Exactly. The torn edge and barcode come from a seed, so a receipt renders identically every time and the export matches the screen."
                           }
                         </p>
                       </div>
@@ -2940,7 +2941,7 @@ export default function Main() {
                               "var(--extracted-r6o4lv, var(--color-background, rgb(244, 244, 245)))",
                           }}
                         >
-                          {"Is the app free to use?"}
+                          {"Is it really free?"}
                         </p>
                       </div>
                       <div className={"faq-item-slot"}>
@@ -2989,7 +2990,7 @@ export default function Main() {
                           }}
                         >
                           {
-                            "Yes, the iOS and Android apps are completely free, with no in-app purchases."
+                            "MIT licensed, free forever. No account, no paid tier, nothing to upgrade to."
                           }
                         </p>
                       </div>
@@ -3023,7 +3024,7 @@ export default function Main() {
                               "var(--extracted-r6o4lv, var(--color-background, rgb(244, 244, 245)))",
                           }}
                         >
-                          {"What kind of storage is supported?"}
+                          {"Can I put an image inside a receipt?"}
                         </p>
                       </div>
                       <div className={"faq-item-slot"}>
@@ -3071,7 +3072,7 @@ export default function Main() {
                               "var(--extracted-r6o4lv, var(--color-gray, rgb(154, 154, 158)))",
                           }}
                         >
-                          {"It supports MicroSD cards up to 256 GB."}
+                          {"Yes, but it must be a data: URI to survive the PNG export — the export sandbox cannot fetch over the network."}
                         </p>
                       </div>
                     </div>
@@ -3123,7 +3124,7 @@ export default function Main() {
                               "var(--extracted-r6o4lv, var(--color-background, rgb(244, 244, 245)))",
                           }}
                         >
-                          {"Does the LX-41 support external microphones?"}
+                          {"Do I need a build step or a framework?"}
                         </p>
                       </div>
                       <div className={"faq-item-slot"}>
@@ -3172,7 +3173,7 @@ export default function Main() {
                           }}
                         >
                           {
-                            "Yes! It includes a 3.5mm jack and supports popular external mic models."
+                            "No. It is a custom element — one script tag and the tag works. React, Vue, Svelte and plain HTML all treat it the same."
                           }
                         </p>
                       </div>
@@ -3210,7 +3211,7 @@ export default function Main() {
                               "var(--extracted-r6o4lv, var(--color-background, rgb(244, 244, 245)))",
                           }}
                         >
-                          {"Can I live stream directly from the camera?"}
+                          {"Can I change how the paper and ink look?"}
                         </p>
                       </div>
                       <div className={"faq-item-slot"}>
@@ -3259,7 +3260,7 @@ export default function Main() {
                           }}
                         >
                           {
-                            "Absolutely. Use the companion app to stream directly to platforms like YouTube or Instagram."
+                            "Yes. Paper, ink and font are CSS custom properties, and every built-in style loses to your own CSS."
                           }
                         </p>
                       </div>
@@ -3297,7 +3298,7 @@ export default function Main() {
                               "var(--extracted-r6o4lv, var(--color-background, rgb(244, 244, 245)))",
                           }}
                         >
-                          {"How durable is the camera?"}
+                          {"Does the exported PNG match what I see?"}
                         </p>
                       </div>
                       <div className={"faq-item-slot"}>
@@ -3346,7 +3347,7 @@ export default function Main() {
                           }}
                         >
                           {
-                            "It’s waterproof up to 30 meters, dust-sealed, and shock-resistant for extreme environments."
+                            "Exactly. The torn edge and barcode come from a seed, so a receipt renders identically every time and the export matches the screen."
                           }
                         </p>
                       </div>
@@ -3384,7 +3385,7 @@ export default function Main() {
                               "var(--extracted-r6o4lv, var(--color-background, rgb(244, 244, 245)))",
                           }}
                         >
-                          {"Is the app free to use?"}
+                          {"Is it really free?"}
                         </p>
                       </div>
                       <div className={"faq-item-slot"}>
@@ -3433,7 +3434,7 @@ export default function Main() {
                           }}
                         >
                           {
-                            "Yes, the iOS and Android apps are completely free, with no in-app purchases."
+                            "MIT licensed, free forever. No account, no paid tier, nothing to upgrade to."
                           }
                         </p>
                       </div>
@@ -3468,7 +3469,7 @@ export default function Main() {
                               "var(--extracted-r6o4lv, var(--color-background, rgb(244, 244, 245)))",
                           }}
                         >
-                          {"What kind of storage is supported?"}
+                          {"Can I put an image inside a receipt?"}
                         </p>
                       </div>
                       <div className={"faq-item-slot"}>
@@ -3516,7 +3517,7 @@ export default function Main() {
                               "var(--extracted-r6o4lv, var(--color-gray, rgb(154, 154, 158)))",
                           }}
                         >
-                          {"It supports MicroSD cards up to 256 GB."}
+                          {"Yes, but it must be a data: URI to survive the PNG export — the export sandbox cannot fetch over the network."}
                         </p>
                       </div>
                     </div>
@@ -3565,11 +3566,11 @@ export default function Main() {
             >
               <a
                 className={"body-text support-email-link"}
-                href={"mailto:help@TEARLINE.com"}
+                href={"mailto:hello@kynth.studio"}
                 target={"_blank"}
                 rel={"noopener"}
               >
-                {"SUPPORT@TEARLINECAM.COM"}
+                {"HELLO@KYNTH.STUDIO"}
               </a>
             </p>
           </div>
@@ -3596,7 +3597,7 @@ export default function Main() {
                 data-border={"true"}
                 data-name={"Default - Phone"}
                 data-highlight={"true"}
-                href={"./help-center"}
+                href={"https://github.com/kyisaiah47/tearline"}
                 tabIndex={0}
               >
                 <div
@@ -3625,7 +3626,7 @@ export default function Main() {
                         "var(--extracted-r6o4lv, var(--variable-reference-unstr4Kxq-sTmWiG2Zm))",
                     }}
                   >
-                    {"Visit Help Center >"}
+                    {"Read the docs >"}
                   </p>
                 </div>
               </a>
