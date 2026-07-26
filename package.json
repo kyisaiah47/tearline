@@ -39,7 +39,7 @@
     "sync": "cp src/tearline.js public/tearline.js"
   },
   "dependencies": {
-    "next": "15.5.4",
+    "next": "15.5.22",
     "react": "19.1.1",
     "react-dom": "19.1.1",
     "lenis": "^1.1.14"
@@ -51,7 +51,7 @@
     "@types/react-dom": "^19",
     "typescript": "^5",
     "eslint": "^9",
-    "eslint-config-next": "15.5.4"
+    "eslint-config-next": "15.5.22"
   },
   "private": true
 }
