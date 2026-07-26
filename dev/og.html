@@ -1,0 +1,44 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>og</title>
+<style>
+  html,body { margin:0; padding:0; }
+  body {
+    width:1200px; height:630px; overflow:hidden;
+    display:flex; align-items:center; gap:74px;
+    padding:0 84px;
+    background: radial-gradient(120% 90% at 78% 0%, #3a3f45 0%, #24272b 48%, #15171a 100%);
+    color:#e8e6e1;
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Inter, system-ui, sans-serif;
+    box-sizing:border-box;
+  }
+  .copy { flex:1; }
+  .mark {
+    font-family: ui-monospace, Menlo, monospace;
+    font-size:17px; letter-spacing:.36em; text-transform:uppercase;
+    color:#9aa0a6; margin:0 0 30px;
+  }
+  h1 { font-size:56px; line-height:1.1; letter-spacing:-.02em; margin:0 0 26px; font-weight:620; }
+  h1 em { font-style:normal; color:#d9805a; }
+  p { font-size:22px; color:#9aa0a6; margin:0; }
+</style></head>
+<body>
+  <div class="copy">
+    <p class="mark">Tearline</p>
+    <h1>Any HTML you wrap in this one tag <em>prints out as a thermal receipt.</em></h1>
+    <p>Zero dependencies · MIT</p>
+  </div>
+  <tear-line barcode="047320260726" seed="20260726" width="300" tilt="-2.4">
+    <h1>Meridian</h1>
+    <p><small>COFFEE &amp; PROVISIONS</small></p>
+    <hr>
+    <table>
+      <tr><td>2</td><td>Filter</td><td align="right">9.00</td></tr>
+      <tr><td>1</td><td>Cortado</td><td align="right">4.25</td></tr>
+      <tr><td>1</td><td>Cardamom bun</td><td align="right">4.75</td></tr>
+    </table>
+    <hr>
+    <table><tr><td><strong>TOTAL</strong></td><td align="right"><strong>18.00</strong></td></tr></table>
+    <hr>
+  </tear-line>
+<script type="module" src="../src/tearline.js"></script>
+</body></html>
