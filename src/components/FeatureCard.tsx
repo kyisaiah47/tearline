@@ -82,6 +82,10 @@ export default function FeatureCard({
         </div>
         <div className={"feature-card-body"}>
           <div className={"agent-status-embed"}>{children}</div>
+          {/* The donor's Shader slot. Same backdrop art as the hero, behind
+           * every panel — it is what stops the bento reading as six dark cards
+           * on a dark page. The port emitted this as an empty <canvas>. */}
+          <div className={"feature-card-slot tl-backdrop"} />
         </div>
       </div>
     </div>

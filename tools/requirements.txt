@@ -1,0 +1,5 @@
+# The PyPI package named `hitherdither` is a reserved placeholder with no code
+# in it — installing it succeeds and imports nothing. This is the real library.
+hitherdither @ git+https://github.com/hbldh/hitherdither.git
+Pillow
+numpy

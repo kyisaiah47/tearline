@@ -20,10 +20,12 @@ body {
   --token-2677a7ab-1420-48e4-957c-83a3935eeb1d: var(--color-black, #1a1917);
 }
 
-/* --- the hero backdrop -----------------------------------------------------
- * The donor filled the hero's right half with a Framer Shader: a live WebGL
- * canvas. Shaders do not survive a static port — the element came across as an
- * empty <canvas> and the right half of the hero rendered as flat black.
+/* --- the backdrop ----------------------------------------------------------
+ * The donor puts the same piece of art behind the hero AND behind every feature
+ * panel, which is what stops a page of dark cards on a dark ground from going
+ * flat. It drew it with a Framer Shader — a live WebGL canvas — and shaders do
+ * not survive a static port: every one of them came across as an empty <canvas>
+ * and those surfaces rendered flat black.
  *
  * A still image is the better slot anyway. It is one file per product, it can
  * be generated to the product's palette, and it costs nothing to paint.
@@ -31,13 +33,13 @@ body {
  * The donor's shader ran edge to edge under a floating window, so the image is
  * cover-cropped and centred to match, and carries the same faint darkening the
  * shader had so the window's shadow still reads against it. */
-.page-body .hero-visual-container.tl-backdrop {
+.page-body .tl-backdrop {
   background-color: var(--color-black-13, #141312);
   background-image: linear-gradient(
       to bottom,
-      rgb(0 0 0 / 25%),
-      rgb(0 0 0 / 10%) 40%,
-      rgb(0 0 0 / 45%)
+      rgb(0 0 0 / 38%),
+      rgb(0 0 0 / 22%) 40%,
+      rgb(0 0 0 / 52%)
     ),
     var(--brand-backdrop);
   background-repeat: no-repeat;
@@ -47,7 +49,7 @@ body {
 
 /* Nothing was generated yet, or the file 404s: fall back to a flat plate rather
  * than a broken-image edge, so a missing asset degrades quietly. */
-.page-body .hero-visual-container.tl-backdrop::after {
+.page-body .tl-backdrop::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -75,6 +77,8 @@ body {
   justify-content: center;
 }
 
+/* Hero only. The feature cards' backdrop is a flex child that sizes itself; if
+ * this were unscoped it would rip every one of them out of flow. */
 .page-body .hero-visual-container.tl-backdrop {
   position: absolute;
   inset: 0;
@@ -211,12 +215,15 @@ body {
  * either, so these are the only hand-built rules on the page — and they take
  * every measurement from the code window (1px hairline, 16px radius, the mono
  * stack, 22px line box) so they read as the same family. */
+/* 24px matches featuressection-heading-wrapper, which is what these sit under.
+ * Without it the copy runs flush into the section's left rule while the heading
+ * above it is inset — the give-away that a block was added outside the shell. */
 .tl-docs {
   display: grid;
   grid-template-columns: 1fr 1.15fr;
   gap: 40px;
   width: 100%;
-  padding: 8px 0 0;
+  padding: 8px 24px 0;
 }
 
 .tl-docs-col {
@@ -309,7 +316,7 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   width: 100%;
-  padding: 56px 0 0;
+  padding: 56px 24px 0;
 }
 
 .tl-api-col {
@@ -347,5 +354,16 @@ body {
   .tl-api {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+}
+
+/* The donor drops its section inset to 16px below 810px. */
+@media (max-width: 809.98px) {
+  .tl-docs {
+    padding: 8px 16px 0;
+  }
+
+  .tl-api {
+    padding: 40px 16px 0;
   }
 }

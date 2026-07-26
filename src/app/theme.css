@@ -73,11 +73,11 @@ body {
   --color-black-3-80: #1a1917cc;
   --color-black-2-90: #1a1917e6;
 
-  /* --- the per-product hero backdrop ------------------------------------
-   * Generated to the product's palette and dropped in public/images. The hero
-   * reads it through this variable, so swapping products is a one-line edit
-   * and the markup never mentions a filename. */
-  --brand-backdrop: url("/images/hero-backdrop.png");
+  /* --- the per-product backdrop -----------------------------------------
+   * Generated to the product's palette, dithered by tools/dither.py, dropped
+   * in public/images. Every surface that shows it reads this variable, so
+   * swapping products is a one-line edit and no markup names a file. */
+  --brand-backdrop: url("/images/backdrop.png");
 
   /* --- ink -------------------------------------------------------------- */
   --brand-paper: #f2ece1;
