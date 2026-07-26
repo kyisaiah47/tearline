@@ -127,9 +127,24 @@ const PAPER_CSS = `
     text-indent: .34em;
   }
 
-  /* ---- print-out reveal ---- */
+  /* ---- print-out reveal ----
+     The reveal runs on .wrap, NOT on .paper, and that is the whole point.
+
+     .paper carries the torn edge as an inline clip-path computed from the seed.
+     An animation with a "both" fill keeps its final keyframe applied for the
+     life of the element, and animation values beat inline styles in the
+     cascade — so animating clip-path on .paper left inset(0 0 0 0) sitting on
+     top of the tear permanently. Every receipt with the animate attribute
+     rendered as a plain rectangle, and it looked like the tear had never been
+     drawn at all.
+
+     (This block is inside a JS template literal. A backtick here ends the
+     string and the whole file stops parsing — which is how it failed once.)
+
+     Two clip-paths cannot share one element. The wrapper does the feeding, the
+     paper keeps its edge. */
   @media (prefers-reduced-motion: no-preference) {
-    :host([animate]) .paper { animation: feed var(--dur, 1.1s) steps(24, end) both; }
+    :host([animate]) .wrap { animation: feed var(--dur, 1.1s) steps(24, end) both; }
   }
   @keyframes feed {
     from { clip-path: inset(0 0 100% 0); }

@@ -1,3 +1,5 @@
+import CommandButton from "@/components/CommandButton";
+
 /**
  * Site header.
  *
@@ -167,34 +169,7 @@ function Ctas() {
         </a>
       </div>
       <div className={"footer-get-started-cta"}>
-        <a
-          className={
-            "login-link-mobile login-button login-link-tablet link-12-state-3 login-link"
-          }
-          data-name={"Primary"}
-          data-highlight={"true"}
-          href={"#install"}
-          tabIndex={0}
-        >
-          <div
-            className={"login-label"}
-            data-component={"RichTextContainer"}
-            style={{
-              "--extracted-r6o4lv": "var(--color-black, rgb(26, 26, 26))",
-            }}
-          >
-            <p
-              className={"heading-4 login-link-text"}
-              dir={"auto"}
-              style={{
-                "--rt-text-color":
-                  "var(--extracted-r6o4lv, var(--color-black, rgb(26, 26, 26)))",
-              }}
-            >
-              {"npm i tearline"}
-            </p>
-          </div>
-        </a>
+        <CommandButton text={"npm i tearline"} variant={"primary"} />
       </div>
     </div>
   );

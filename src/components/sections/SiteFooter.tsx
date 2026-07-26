@@ -16,6 +16,13 @@
  * What is left is what is true: the product, where the code is, and who made
  * it. Per the house rule, the social column becomes a single Kynth Studio link
  * rather than borrowing the parent's handles.
+ *
+ * The shell keeps all three of the donor's breakpoint variants, and it has to.
+ * `site-footer-mobile` is not a phone class despite the name — it is where the
+ * footer's `display: flex` and column direction live, exactly like
+ * `feature-card-mobile` on the bento. Drop it and the footer has no layout at
+ * all: the brand block floats off to the left of the section rules and the link
+ * columns start halfway down the page. The content is still written once.
  */
 
 type Group = { label: string; links: [string, string, boolean?][] };
@@ -55,11 +62,18 @@ const GROUPS: Group[] = [
 const LINK_COLOR =
   "var(--extracted-r6o4lv, var(--color-text, rgb(209, 209, 209)))";
 
-export default function SiteFooter() {
+const SHELL =
+  "site-footer-phone link-16 nav-link nav-dropdown-trigger site-footer-mobile";
+
+const VARIANTS: [string, string][] = [
+  ["footer-2-state", "hide-phone hide-tablet"],
+  ["footer-2-state-3", "hide-phone hide-desktop"],
+  ["footer-2-state-2", "hide-desktop hide-tablet"],
+];
+
+function FooterBody() {
   return (
-    <div className={"page-content-container"}>
-      <footer className={"site-footer-phone"} data-border={"true"} style={{ width: "100%" }}>
-        <div className={"content-4"} data-name={"Content"}>
+    <div className={"content-4"} data-name={"Content"}>
           <div className={"left"} data-name={"Left"}>
             <div className={"top"} data-name={"Top"}>
               <div
@@ -67,7 +81,15 @@ export default function SiteFooter() {
                 data-name={"Logo + description"}
               >
                 <div className={"footer-logo-container"}>
-                  <a href={"/"} rel={"noopener"}>
+                  {/* The donor's link classes carry the mark's sizing — a bare
+                   * <a> leaves .logo at 0x0 and the mark simply is not there. */}
+                  <a
+                    className={
+                      "brand-logo-link-mobile footer-logo-link link-7-state brand-logo-link"
+                    }
+                    href={"/"}
+                    rel={"noopener"}
+                  >
                     <div
                       className={"logo"}
                       data-name={"Logo"}
@@ -85,15 +107,18 @@ export default function SiteFooter() {
                         </svg>
                       </div>
                     </div>
+                    {/* Inside the anchor, as the donor has it — the container
+                     * lays the mark and the wordmark out as one row only when
+                     * they are siblings within the link. */}
+                    <div
+                      className={"brand-wordmark"}
+                      data-component={"RichTextContainer"}
+                    >
+                      <h4 className={"heading-4"} dir={"auto"}>
+                        {"Tearline"}
+                      </h4>
+                    </div>
                   </a>
-                  <div
-                    className={"brand-wordmark"}
-                    data-component={"RichTextContainer"}
-                  >
-                    <h4 className={"heading-4"} dir={"auto"}>
-                      {"Tearline"}
-                    </h4>
-                  </div>
                 </div>
                 <div
                   className={"footer-tagline"}
@@ -205,8 +230,23 @@ export default function SiteFooter() {
               </div>
             </div>
           </div>
-        </div>
-      </footer>
+    </div>
+  );
+}
+
+export default function SiteFooter() {
+  return (
+    <div className={"page-content-container"}>
+      {VARIANTS.map(([state, hide]) => (
+        <footer
+          key={state}
+          className={`${SHELL} ${state} ${hide}`}
+          data-border={"true"}
+          style={{ width: "100%" }}
+        >
+          <FooterBody />
+        </footer>
+      ))}
     </div>
   );
 }

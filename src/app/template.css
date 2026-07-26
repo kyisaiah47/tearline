@@ -367,3 +367,80 @@ body {
     padding: 40px 16px 0;
   }
 }
+
+/* --- command buttons -------------------------------------------------------
+ * A CTA whose label is a shell command. The button chrome is the donor's own
+ * primary/secondary link pair — these only add the mono label, the prompt glyph
+ * and the copy mark, so the buttons keep the row's height, radius and weight.
+ *
+ * The prompt is a separate span so it is not selectable: someone dragging
+ * across the line to copy it by hand should get the command, not `$ ` and then
+ * the command. */
+.tl-cmd {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-family: "Geist Mono", "Fira Code", monospace;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.tl-cmd-prompt {
+  flex: none;
+  user-select: none;
+  opacity: 0.45;
+}
+
+.tl-cmd-text {
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.tl-cmd-action {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.tl-cmd:hover .tl-cmd-action {
+  opacity: 1;
+}
+
+.tl-cmd-word {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+/* The outlined variant sits on the page ground, so the command reads in the
+ * accent — it is the one piece of copy on the page a visitor is meant to take
+ * away with them. The filled variant already inverts to near-black ink. */
+.tl-cmd:not(.tl-cmd-primary) .tl-cmd-text {
+  color: var(--color-background, #ffa552);
+}
+
+.tl-cmd:not(.tl-cmd-primary) {
+  color: var(--color-text, #d1d1d1);
+}
+
+.tl-cmd-primary,
+.tl-cmd-primary .tl-cmd-text {
+  color: var(--color-black, #1a1917);
+}
+
+/* --- the playground stage's backdrop ---------------------------------------
+ * Sits under the receipt, inside the donor's right column. */
+.page-body .tl-stage-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.tl-stage {
+  position: relative;
+  z-index: 1;
+}

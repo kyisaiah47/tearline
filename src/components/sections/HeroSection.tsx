@@ -1,4 +1,5 @@
 import CodePanel from "@/components/CodePanel";
+import CommandButton from "@/components/CommandButton";
 import type { Line } from "@/components/CodePanel";
 
 /**
@@ -194,26 +195,7 @@ export default function HeroSection() {
                 </a>
               </div>
               <div className={"hero-secondary-cta"}>
-                <a
-                  className={
-                    "login-link-mobile login-button login-link-tablet link-12-state login-link"
-                  }
-                  data-name={"Secondary"}
-                  data-highlight={"true"}
-                  data-border={"true"}
-                  href={"#install"}
-                  tabIndex={0}
-                  style={{ borderRadius: "8px" }}
-                >
-                  <div
-                    className={"login-label"}
-                    data-component={"RichTextContainer"}
-                  >
-                    <p className={"heading-4 login-link-text"} dir={"auto"}>
-                      {"npm i tearline"}
-                    </p>
-                  </div>
-                </a>
+                <CommandButton text={"npm i tearline"} />
               </div>
             </div>
           </div>
@@ -233,7 +215,6 @@ export default function HeroSection() {
               footer={
                 <div className={"panel-result"}>
                   <tear-line
-                    animate={""}
                     seed={"20260726"}
                     barcode={"04732026"}
                     width={"236"}

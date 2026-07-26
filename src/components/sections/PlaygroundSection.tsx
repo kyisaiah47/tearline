@@ -175,6 +175,9 @@ export default function PlaygroundSection() {
               </div>
 
               <div className={"howitworkssection-right"}>
+                {/* Same art as the hero and the feature panels. Without it the
+                 * receipt sits on flat black and reads as a cut-out. */}
+                <div className={"tl-stage-backdrop tl-backdrop"} />
                 <div className={"tl-stage"}>
                   <tear-line
                     ref={receipt}
