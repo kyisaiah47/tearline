@@ -14,7 +14,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en-US" className="lenis">
-      <body>{children}</body>
+      <body>
+        {children}
+        {/* The component the whole page is about. Loaded as a plain module from
+            /public rather than bundled, because that is exactly how a visitor
+            would adopt it — if this tag ever breaks, the docs are wrong. */}
+        <script type="module" src="/tearline.js" />
+      </body>
     </html>
   );
 }

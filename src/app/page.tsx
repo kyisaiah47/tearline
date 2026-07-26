@@ -1,7 +1,8 @@
 import FooterColumns from "@/components/sections/FooterColumns";
 import HeroSection from "@/components/sections/HeroSection";
-import Main from "@/components/sections/Main";
-import FooterGroupSlot from "@/components/sections/FooterGroupSlot";
+import Playground from "@/components/sections/Playground";
+import InstallDocs from "@/components/sections/InstallDocs";
+import SiteFooter from "@/components/sections/SiteFooter";
 import EntranceAnimations from "@/components/EntranceAnimations";
 import FaqAccordion from "@/components/FaqAccordion";
 import Marquee from "@/components/Marquee";
@@ -48,11 +49,12 @@ export default function Home() {
             style={{ minHeight: "100vh", width: "auto", display: "contents" }}
           >
             <HeroSection />
-            <Main />
+            <Playground />
+            <InstallDocs />
           </div>
           <div id={"overlay"} />
           <div className={"divider"} />
-          <FooterGroupSlot />
+          <SiteFooter />
         </div>
         <div id={"template-overlay"} />
       </div>

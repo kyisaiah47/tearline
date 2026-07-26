@@ -1,3 +1,4 @@
+import Copyable from "@/components/Copyable";
 export default function FooterColumns() {
   return (
     <div className={"footer-columns"}>
@@ -356,48 +357,7 @@ export default function FooterColumns() {
             </div>
           </div>
           <div className={"buy-now-button-slot"}>
-            <a
-              className={
-                "nav-link-default main-light-5 site-nav main-light-8 nav-link main-link-3-state-5 nav-link-item"
-              }
-              data-border={"true"}
-              data-name={"Nav-CTA"}
-              data-highlight={"true"}
-              href={"https://github.com/kyisaiah47/tearline"}
-              target={"_blank"}
-              rel={"noopener"}
-              tabIndex={0}
-            >
-              <div
-                className={"main-bg"}
-                data-name={"BG"}
-                style={{
-                  backgroundColor: "var(--color-blue, rgb(58, 90, 255))",
-                }}
-              />
-              <div
-                className={"nav-label-home"}
-                data-component={"RichTextContainer"}
-                style={{
-                  "--extracted-r6o4lv":
-                    "var(--variable-reference-unstr4Kxq-sTmWiG2Zm)",
-                  "--variable-reference-Frm0CN6hZ-sTmWiG2Zm":
-                    "var(--color-background, rgb(244, 244, 245))",
-                  "--variable-reference-unstr4Kxq-sTmWiG2Zm":
-                    "var(--color-blue, rgb(58, 90, 255))",
-                }}
-              >
-                <p
-                  className={"body-text nav-label-caps"}
-                  style={{
-                    "--rt-text-color":
-                      "var(--extracted-r6o4lv, var(--variable-reference-unstr4Kxq-sTmWiG2Zm))",
-                  }}
-                >
-                  {"GET IT FREE"}
-                </p>
-              </div>
-            </a>
+            <Copyable text={"npm i tearline"} compact />
           </div>
         </div>
       </nav>
@@ -677,48 +637,7 @@ export default function FooterColumns() {
             </div>
           </div>
           <div className={"buy-now-button-slot"}>
-            <a
-              className={
-                "nav-link-default main-light-5 site-nav main-light-8 nav-link main-link-3-state-5 nav-link-item"
-              }
-              data-border={"true"}
-              data-name={"Nav-CTA"}
-              data-highlight={"true"}
-              href={"https://github.com/kyisaiah47/tearline"}
-              target={"_blank"}
-              rel={"noopener"}
-              tabIndex={0}
-            >
-              <div
-                className={"main-bg"}
-                data-name={"BG"}
-                style={{
-                  backgroundColor: "var(--color-blue, rgb(58, 90, 255))",
-                }}
-              />
-              <div
-                className={"nav-label-home"}
-                data-component={"RichTextContainer"}
-                style={{
-                  "--extracted-r6o4lv":
-                    "var(--variable-reference-unstr4Kxq-sTmWiG2Zm)",
-                  "--variable-reference-Frm0CN6hZ-sTmWiG2Zm":
-                    "var(--color-background, rgb(244, 244, 245))",
-                  "--variable-reference-unstr4Kxq-sTmWiG2Zm":
-                    "var(--color-blue, rgb(58, 90, 255))",
-                }}
-              >
-                <p
-                  className={"body-text nav-label-caps"}
-                  style={{
-                    "--rt-text-color":
-                      "var(--extracted-r6o4lv, var(--variable-reference-unstr4Kxq-sTmWiG2Zm))",
-                  }}
-                >
-                  {"GET IT FREE"}
-                </p>
-              </div>
-            </a>
+            <Copyable text={"npm i tearline"} compact />
           </div>
         </div>
       </nav>

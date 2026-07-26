@@ -1204,7 +1204,7 @@ export default function Main() {
                       width: "100%",
                     }}
                   >
-                    <span className={"hide-tablet"} style={{ opacity: "0" }}>
+                    <span className={"hide-tablet"}>
                       {"FREE"}
                     </span>
                   </h2>
@@ -1313,7 +1313,7 @@ export default function Main() {
                         lineHeight: "1.4em",
                       }}
                     >
-                      <span className={"hide-tablet"} style={{ opacity: "0" }}>
+                      <span className={"hide-tablet"}>
                         {"Wrap any HTML in one tag"}
                       </span>
                     </h2>
@@ -1402,7 +1402,7 @@ export default function Main() {
                         lineHeight: "1.4em",
                       }}
                     >
-                      <span className={"hide-tablet"} style={{ opacity: "0" }}>
+                      <span className={"hide-tablet"}>
                         {"PNG export built in"}
                       </span>
                     </h2>
@@ -1491,7 +1491,7 @@ export default function Main() {
                         lineHeight: "1.4em",
                       }}
                     >
-                      <span className={"hide-tablet"} style={{ opacity: "0" }}>
+                      <span className={"hide-tablet"}>
                         {"Zero dependencies, no build step"}
                       </span>
                     </h2>
@@ -1582,7 +1582,6 @@ export default function Main() {
                     >
                       <span
                         className={"hide-tablet hide-phone"}
-                        style={{ opacity: "0" }}
                       >
                         {"Seeded, deterministic output"}
                       </span>
@@ -1676,7 +1675,6 @@ export default function Main() {
                     >
                       <span
                         className={"hide-tablet hide-phone"}
-                        style={{ opacity: "0" }}
                       >
                         {"Real text, not a canvas"}
                       </span>
@@ -1768,7 +1766,6 @@ export default function Main() {
                     >
                       <span
                         className={"hide-tablet hide-phone"}
-                        style={{ opacity: "0" }}
                       >
                         {"Paper and ink are CSS variables"}
                       </span>
@@ -1860,7 +1857,7 @@ export default function Main() {
                         lineHeight: "1.4em",
                       }}
                     >
-                      <span className={"hide-phone"} style={{ opacity: "0" }}>
+                      <span className={"hide-phone"}>
                         {"React, Vue, or plain HTML"}
                       </span>
                     </h2>
@@ -1951,7 +1948,7 @@ export default function Main() {
                         lineHeight: "1.4em",
                       }}
                     >
-                      <span className={"hide-phone"} style={{ opacity: "0" }}>
+                      <span className={"hide-phone"}>
                         {"MIT licensed, free forever"}
                       </span>
                     </h2>

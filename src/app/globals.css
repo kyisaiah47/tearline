@@ -6512,3 +6512,313 @@ html body {
   .page .herosection-fit-text { padding: 88px 16px 32px; }
   .page .hero-container { position: relative; bottom: auto; }
 }
+
+/* ── Tearline own sections ─────────────────────────────────────────────────
+   Playground + install/API docs, merged in from the standalone static site so
+   the product has ONE page. Everything below reuses the template's own tokens
+   (Chakra Petch headings, IBM Plex Mono body, sand borders, red accent) so the
+   new sections read as part of the template rather than a second design. */
+
+.tl-section {
+  width: 100%;
+  padding: 96px 20px;
+  background: var(--color-background, #f4f4f5);
+  position: relative;
+}
+.tl-section-alt { background: #ededee; }
+.tl-shell { max-width: 1400px; margin: 0 auto; }
+
+.tl-section-head { margin-bottom: 44px; }
+.tl-eyebrow { color: var(--color-gray, #9a9a9e); margin: 0 0 14px; }
+.tl-heading {
+  font-family: "Chakra Petch", "Chakra Petch Placeholder", sans-serif;
+  font-weight: 500;
+  font-size: clamp(30px, 4.6vw, 64px);
+  line-height: 1.12;
+  letter-spacing: 0;
+  color: var(--color-black-2, #1b1c1e);
+  margin: 0;
+}
+.tl-accent { color: var(--color-red, #d21423); }
+
+.tl-label {
+  color: var(--color-gray, #9a9a9e);
+  margin: 0 0 12px;
+  font-family: "IBM Plex Mono", monospace;
+}
+.tl-label-gap { margin-top: 30px; }
+
+/* ---- playground ---- */
+.tl-play {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 56px;
+  align-items: start;
+}
+.tl-editor { min-width: 0; }
+.tl-textarea {
+  width: 100%;
+  min-height: 480px;
+  resize: vertical;
+  background: #fff;
+  color: var(--color-text, #2e2f33);
+  border: 1px solid var(--color-sand, #d3d3d4);
+  padding: 20px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  line-height: 1.75;
+  tab-size: 2;
+}
+.tl-textarea:focus {
+  outline: 2px solid var(--color-red, #d21423);
+  outline-offset: -1px;
+}
+.tl-stage { display: grid; justify-items: center; gap: 18px; }
+.tl-stage-inner { display: grid; place-items: center; min-height: 480px; }
+.tl-controls { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+.tl-btn {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--color-blue, #3a5aff);
+  color: var(--color-background, #f4f4f5);
+  border: 0;
+  padding: 13px 22px;
+  cursor: pointer;
+}
+.tl-btn:hover { filter: brightness(1.08); }
+.tl-btn-ghost {
+  background: transparent;
+  color: var(--color-black-2, #1b1c1e);
+  border: 1px solid var(--color-sand, #d3d3d4);
+}
+
+/* ---- install + api ---- */
+.tl-install-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 56px;
+  margin-bottom: 72px;
+}
+.tl-copy-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+  background: #fff;
+  border: 1px solid var(--color-sand, #d3d3d4);
+  padding: 15px 18px;
+  cursor: pointer;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13.5px;
+}
+.tl-copy-row:hover { border-color: var(--color-black-2, #1b1c1e); }
+.tl-copy-prompt { color: var(--color-gray, #9a9a9e); flex: 0 0 auto; }
+.tl-copy-text {
+  color: var(--color-black-2, #1b1c1e);
+  flex: 1 1 auto;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.tl-copy-action { color: var(--color-gray, #9a9a9e); flex: 0 0 auto; }
+
+.tl-pre {
+  background: #fff;
+  border: 1px solid var(--color-sand, #d3d3d4);
+  padding: 18px;
+  overflow-x: auto;
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--color-text, #2e2f33);
+}
+
+.tl-api { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px; }
+.tl-api-col { min-width: 0; }
+.tl-table { width: 100%; border-collapse: collapse; font-family: "IBM Plex Mono", monospace; }
+.tl-table td {
+  padding: 13px 14px 13px 0;
+  border-bottom: 1px solid var(--color-sand, #d3d3d4);
+  vertical-align: top;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-text, #2e2f33);
+}
+.tl-td-name { white-space: nowrap; color: var(--color-black-2, #1b1c1e); }
+.tl-td-name code { color: var(--color-red, #d21423); }
+.tl-td-def { color: var(--color-gray, #9a9a9e); white-space: nowrap; }
+.tl-td-desc { width: 100%; }
+.tl-note {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--color-text, #2e2f33);
+  margin: 0;
+}
+
+@media (max-width: 1099px) {
+  .tl-play, .tl-install-grid, .tl-api { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .tl-stage-inner { min-height: 0; }
+  .tl-textarea { min-height: 320px; }
+}
+@media (max-width: 809px) {
+  .tl-section { padding: 64px 16px; }
+}
+
+/* Header variant of the copy chip — the template's nav CTA was a BUY NOW link
+   and there is nothing to buy, so the nav carries the install command instead.
+   Sized to sit on the nav baseline without changing the header's height. */
+.tl-copy-compact {
+  padding: 7px 12px;
+  gap: 10px;
+  font-size: 12.5px;
+  background: transparent;
+  border-color: var(--color-sand, #d3d3d4);
+}
+.tl-copy-compact .tl-copy-text { color: var(--color-blue, #3a5aff); }
+.tl-copy-compact:hover { background: #fff; }
+@media (max-width: 809px) {
+  .tl-copy-compact { font-size: 11.5px; padding: 6px 10px; }
+}
+
+/* ── Hero, rebuilt ─────────────────────────────────────────────────────────
+   Two columns in normal flow. The template's version was absolute-positioned
+   around a square camera render, so a tall receipt punched through the
+   wordmark and the copy columns collided with the letterforms. */
+.tl-hero {
+  width: 100%;
+  padding: 92px 20px 84px;
+  background: var(--color-background, #f4f4f5);
+}
+.tl-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 64px;
+  align-items: center;
+}
+.tl-hero-copy { min-width: 0; }
+
+/* the staggered two-line wordmark, now type rather than a fit-text SVG */
+.tl-wordmark {
+  margin: 18px 0 26px;
+  font-family: "Chakra Petch", "Chakra Petch Placeholder", sans-serif;
+  font-weight: 500;
+  font-size: clamp(64px, 12vw, 168px);
+  line-height: 0.86;
+  letter-spacing: -0.01em;
+  color: var(--color-black-2, #1b1c1e);
+  display: grid;
+}
+.tl-wordmark-a { justify-self: start; }
+.tl-wordmark-b { justify-self: end; }
+
+.tl-hero-title {
+  font-family: "Chakra Petch", "Chakra Petch Placeholder", sans-serif;
+  font-weight: 500;
+  font-size: clamp(24px, 2.6vw, 36px);
+  line-height: 1.2;
+  color: var(--color-black-2, #1b1c1e);
+  margin: 0 0 16px;
+}
+.tl-hero-lede {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--color-text, #2e2f33);
+  max-width: 52ch;
+  margin: 0 0 30px;
+}
+.tl-hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.tl-hero-actions .tl-copy-row { width: auto; }
+.tl-hero-link {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13.5px;
+  color: var(--color-blue, #3a5aff);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+}
+.tl-hero-art { display: grid; place-items: center; min-width: 0; }
+
+/* ── Accessibility block ──────────────────────────────────────────────────── */
+.tl-a11y {
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid var(--color-sand, #d3d3d4);
+  max-width: 78ch;
+}
+.tl-a11y .tl-note + .tl-note { margin-top: 16px; }
+.tl-a11y strong { color: var(--color-black-2, #1b1c1e); }
+.tl-note code {
+  font-family: "IBM Plex Mono", monospace;
+  background: #fff;
+  border: 1px solid var(--color-sand, #d3d3d4);
+  padding: 1px 6px;
+  color: var(--color-red, #d21423);
+}
+
+/* ── Compact footer ───────────────────────────────────────────────────────── */
+.tl-footer {
+  width: 100%;
+  padding: 44px 20px 56px;
+  border-top: 1px solid var(--color-sand, #d3d3d4);
+  background: var(--color-background, #f4f4f5);
+}
+.tl-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.tl-footer-mark {
+  font-family: "Chakra Petch", "Chakra Petch Placeholder", sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.16em;
+  color: var(--color-black-2, #1b1c1e);
+  margin: 0 0 8px;
+}
+.tl-footer-note,
+.tl-footer-links a {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  color: var(--color-gray, #9a9a9e);
+}
+.tl-footer-note { margin: 0; }
+.tl-footer-note a { color: var(--color-black-2, #1b1c1e); }
+.tl-footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.tl-footer-links a { text-decoration: none; }
+.tl-footer-links a:hover { color: var(--color-black-2, #1b1c1e); }
+
+/* ── Label spacing ────────────────────────────────────────────────────────
+   The template's nav-label-caps is no longer used on these sections: it
+   applies text-transform:capitalize (which rendered "npm i tearline" as
+   "Npm I Tearline") and its own colour, so labels disagreed section to
+   section. Own styling, and enough air above the field it labels. */
+.tl-label {
+  display: block;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gray, #9a9a9e);
+  margin: 0 0 14px;
+}
+.tl-label-gap { margin-top: 36px; }
+.tl-eyebrow {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gray, #9a9a9e);
+  margin: 0 0 14px;
+}
+
+@media (max-width: 1099px) {
+  .tl-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+  .tl-hero { padding: 64px 16px 56px; }
+}
