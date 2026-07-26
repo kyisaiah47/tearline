@@ -32,7 +32,26 @@
   },
   "homepage": "https://tearline.kynth.studio",
   "scripts": {
-    "sync": "cp src/tearline.js site/tearline.js",
-    "dev": "npm run sync && python3 -m http.server 8791 --directory site"
-  }
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "sync": "cp src/tearline.js public/tearline.js"
+  },
+  "dependencies": {
+    "next": "15.5.4",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "lenis": "^1.1.14"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.4"
+  },
+  "private": true
 }

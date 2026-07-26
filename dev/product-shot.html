@@ -1,0 +1,42 @@
+<!doctype html>
+<!-- Renders the hero product shot: a receipt on transparent background, sized
+     to drop into a square hero slot. Screenshot at 1000x1000 with
+     --default-background-color=00000000. -->
+<html><head><meta charset="utf-8"><title>product shot</title>
+<style>
+  html,body { margin:0; padding:0; background:transparent; }
+  body {
+    width:1000px; height:1000px;
+    display:flex; align-items:center; justify-content:center;
+    box-sizing:border-box;
+  }
+  /* `flat` drops the component's built-in tilt AND its drop shadow — the shadow
+     is tuned for a dark page and reads as a grey smear on the template's light
+     canvas. The tilt is then reapplied here so the shot keeps its angle with no
+     shadow at all. */
+  tear-line {
+    transform: rotate(-4.5deg) scale(1.86);
+    transform-origin: center;
+  }
+</style></head>
+<body>
+  <tear-line flat barcode="047320260726" seed="20260726" width="340">
+    <h1>Tearline</h1>
+    <p><small>WRAP ANYTHING</small></p>
+    <hr>
+    <table>
+      <tr><td>1</td><td>Custom element</td><td align="right">0.00</td></tr>
+      <tr><td>1</td><td>Zero dependencies</td><td align="right">0.00</td></tr>
+      <tr><td>1</td><td>No build step</td><td align="right">0.00</td></tr>
+      <tr><td>1</td><td>PNG export</td><td align="right">0.00</td></tr>
+    </table>
+    <hr>
+    <table>
+      <tr><td>Subtotal</td><td align="right">0.00</td></tr>
+      <tr><td>Licence</td><td align="right">MIT</td></tr>
+      <tr><td><strong>TOTAL</strong></td><td align="right"><strong>0.00</strong></td></tr>
+    </table>
+    <hr>
+  </tear-line>
+<script type="module" src="../src/tearline.js"></script>
+</body></html>
