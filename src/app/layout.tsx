@@ -16,8 +16,19 @@ export const metadata: Metadata = {
     url: "https://tearline.kynth.studio",
     siteName: "Tearline",
     type: "website",
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Tearline — any HTML, printed as a receipt",
+      },
+    ],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og.jpg"],
+  },
 };
 
 export default function RootLayout({

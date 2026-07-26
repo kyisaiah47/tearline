@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+  html,body{margin:0;padding:0}
+  body{width:1200px;height:630px;overflow:hidden}
+  .stage{position:relative;width:1200px;height:630px;background:#1a1917}
+  .bg{position:absolute;inset:0;
+      background-image:linear-gradient(to right, rgb(0 0 0 / 88%), rgb(0 0 0 / 72%) 42%, rgb(0 0 0 / 25%)),
+                       url("/images/backdrop.png");
+      background-size:cover;background-position:center}
+  .paper{position:absolute;right:104px;top:50%;transform:translateY(-50%) rotate(3deg);
+         filter:drop-shadow(0 40px 80px rgb(0 0 0 / 55%))}
+</style>
+<script type="module" src="/tearline.js"></script></head>
+<body><div class="stage"><div class="bg"></div>
+  <div class="paper">
+    <tear-line seed="20260726" barcode="04732026" width="300" flat="">
+      <h1>Meridian</h1>
+      <p><small>WRAP ANYTHING</small></p>
+      <hr>
+      <table>
+        <tr><td>1</td><td>Cortado</td><td align="right">4.25</td></tr>
+        <tr><td>1</td><td>Sourdough</td><td align="right">3.50</td></tr>
+      </table>
+      <hr>
+      <table><tr><td><strong>TOTAL</strong></td><td align="right"><strong>7.75</strong></td></tr></table>
+      <hr>
+    </tear-line>
+  </div>
+</div></body></html>

@@ -18,22 +18,51 @@ export default function Copyable({
   text: string;
   prompt?: string;
 }) {
-  const [copied, setCopied] = useState(false);
+  const [state, setState] = useState<"idle" | "copied" | "failed">("idle");
+
+  // navigator.clipboard is undefined on a non-secure origin and REJECTS when
+  // the permission is denied — which is what a browser does to a background
+  // tab, and what an automated check does by default. Unhandled, that throws
+  // past the handler, the label never changes, and the button reads as dead.
+  // The textarea fallback needs no permission and works everywhere.
+  async function copy() {
+    try {
+      if (!navigator.clipboard) throw new Error("no clipboard api");
+      await navigator.clipboard.writeText(text);
+    } catch {
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+      } catch {
+        setState("failed");
+        setTimeout(() => setState("idle"), 1800);
+        return;
+      }
+    }
+    setState("copied");
+    setTimeout(() => setState("idle"), 1400);
+  }
+
   return (
     <button
       className={"tl-copy"}
-      onClick={async () => {
-        await navigator.clipboard.writeText(text);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 1400);
-      }}
+      onClick={copy}
       aria-label={`Copy: ${text}`}
     >
       <span className={"tl-copy-prompt"} aria-hidden={"true"}>
         {prompt}
       </span>
       <code className={"tl-copy-text"}>{text}</code>
-      <span className={"tl-copy-action"}>{copied ? "copied" : "copy"}</span>
+      <span className={"tl-copy-action"}>
+        {state === "copied" ? "copied" : state === "failed" ? "select it" : "copy"}
+      </span>
     </button>
   );
 }
