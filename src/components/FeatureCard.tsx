@@ -8,7 +8,7 @@ import type { ReactNode } from "react";
  * reflows the whole section. So the slot is a required prop with a fixed set of
  * values, and SLOT_ORDER below is the layout, written down.
  *
- * `feature-card-mobile` is not a breakpoint class despite the name — it is
+ * `feature-card-row` is not a breakpoint class despite the name — it is
  * where the donor put the card's `display: flex` and its column direction.
  * Drop it and the body's `flex: 1 0 0px` has no flex container to grow in, so
  * its `height: 1px` stands and every panel renders one pixel tall. The fixed
@@ -56,7 +56,7 @@ export default function FeatureCard({
     <div className={slot} id={id} data-reveal={reveal}>
       <div
         className={
-          "feature-card-tablet feature-card-responsive link-16 feature-card-mobile featuressection-text-6-state-6"
+          "feature-card-tablet feature-card-responsive link-16 feature-card-row featuressection-text-6-state-6"
         }
         data-border={"true"}
         style={{ height: "100%", width: "100%" }}

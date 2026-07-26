@@ -18,9 +18,9 @@
  * rather than borrowing the parent's handles.
  *
  * The shell keeps all three of the donor's breakpoint variants, and it has to.
- * `site-footer-mobile` is not a phone class despite the name — it is where the
+ * `site-footer-row` is not a phone class despite the name — it is where the
  * footer's `display: flex` and column direction live, exactly like
- * `feature-card-mobile` on the bento. Drop it and the footer has no layout at
+ * `feature-card-row` on the bento. Drop it and the footer has no layout at
  * all: the brand block floats off to the left of the section rules and the link
  * columns start halfway down the page. The content is still written once.
  */
@@ -63,7 +63,7 @@ const LINK_COLOR =
   "var(--extracted-r6o4lv, var(--color-text, rgb(209, 209, 209)))";
 
 const SHELL =
-  "site-footer-phone link-16 nav-link nav-dropdown-trigger site-footer-mobile";
+  "site-footer-phone link-16 nav-link nav-dropdown-trigger site-footer-row";
 
 const VARIANTS: [string, string][] = [
   ["footer-2-state", "hide-phone hide-tablet"],

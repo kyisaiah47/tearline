@@ -47,7 +47,11 @@ const FAQS: [string, string][] = [
   ],
 ];
 
-const ICON_STROKE = "var(--token-06c91b52-e1ea-4d2b-8cca-eda2631e998e)";
+// The fallback is not optional: nothing defines this token, and an undefined
+// custom property is invalid at computed-value time — so `stroke` was being
+// thrown away entirely and the icon never painted.
+const ICON_STROKE =
+  "var(--token-06c91b52-e1ea-4d2b-8cca-eda2631e998e, rgb(209, 209, 209))";
 
 export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(0);

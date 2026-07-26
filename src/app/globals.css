@@ -134,6 +134,7 @@
   descent-override: 27.73%;
   line-gap-override: 0%;
   size-adjust: 106.39%;
+  font-display: swap;
 }
 
 @font-face {
@@ -143,6 +144,7 @@
   descent-override: 27.98%;
   line-gap-override: 0%;
   size-adjust: 114.37%;
+  font-display: swap;
 }
 
 @font-face {
@@ -152,6 +154,7 @@
   descent-override: 22.36%;
   line-gap-override: 0%;
   size-adjust: 107.89%;
+  font-display: swap;
 }
 
 @keyframes blink {
@@ -539,57 +542,60 @@ body {
   position: relative;
   overflow: visible;
 }
-.tablet-phone-closed.tablet-phone-closed-state-2.tablet-phone-closed-2 {
+/* Renamed from the donor's `tablet-phone-closed-state-2`. NOT a breakpoint —
+ * this is the COLLAPSED hamburger state. Dropping it clips the nav links
+ * below the fold. */
+.tablet-phone-closed.nav-collapsed.tablet-phone-closed-2 {
   align-content: flex-start;
   align-items: flex-start;
   width: 810px;
   height: 74px;
 }
-.tablet-phone-closed.tablet-phone-closed-state-2 .content-2 {
+.tablet-phone-closed.nav-collapsed .content-2 {
   flex-direction: column;
   justify-content: center;
   gap: 48px 10px;
   max-width: 94%;
   padding: 24px;
 }
-.tablet-phone-closed.tablet-phone-closed-state-2 .logo-hamburger {
+.tablet-phone-closed.nav-collapsed .logo-hamburger {
   gap: unset;
   justify-content: space-between;
   width: 100%;
 }
-.tablet-phone-closed.tablet-phone-closed-state-2 .hamburger {
+.tablet-phone-closed.nav-collapsed .hamburger {
   cursor: pointer;
 }
-.tablet-phone-closed.tablet-phone-closed-state-2 .links-3 {
+.tablet-phone-closed.nav-collapsed .links-3 {
   flex-direction: column;
   flex: 0 0 auto;
   gap: 20px;
   width: 100%;
 }
-.tablet-phone-closed.tablet-phone-closed-state-2 .footer-pricing-slot {
+.tablet-phone-closed.nav-collapsed .footer-pricing-slot {
   order: 4;
   width: 100%;
 }
-.tablet-phone-closed.tablet-phone-closed-state-2 .footer-contact-link {
+.tablet-phone-closed.nav-collapsed .footer-contact-link {
   order: 5;
   width: 100%;
 }
-.tablet-phone-closed.tablet-phone-closed-state-2 .nav-menu-slot {
+.tablet-phone-closed.nav-collapsed .nav-menu-slot {
   flex: 0 0 auto;
   order: 2;
   width: 100%;
 }
-.tablet-phone-closed.tablet-phone-closed-state-2 .menu-column-slot {
+.tablet-phone-closed.nav-collapsed .menu-column-slot {
   flex: 0 0 auto;
   order: 3;
   width: 100%;
 }
-.tablet-phone-closed.tablet-phone-closed-state-2 .ctas-2 {
+.tablet-phone-closed.nav-collapsed .ctas-2 {
   flex-direction: column;
   width: 100%;
 }
-.tablet-phone-closed.tablet-phone-closed-state-2 .login-link-container,
-.tablet-phone-closed.tablet-phone-closed-state-2 .footer-get-started-cta {
+.tablet-phone-closed.nav-collapsed .login-link-container,
+.tablet-phone-closed.nav-collapsed .footer-get-started-cta {
   width: 100%;
 }
 .tablet-phone-closed[data-border="true"]::after,
@@ -2383,7 +2389,10 @@ code.heading-4 span.heading-4:not([data-text-fill]) {
   top: 0px;
   left: 0px;
 }
-.feature-card-tablet.feature-card-mobile {
+/* Renamed from the donor's `feature-card-mobile`. NOT a breakpoint — this class
+ * IS the bento card's flex container. Dropping it as "the mobile variant"
+ * renders the panels one pixel tall. */
+.feature-card-tablet.feature-card-row {
   cursor: default;
   height: 400px;
   overflow: var(--overflow-clip-fallback, clip);
@@ -2481,10 +2490,10 @@ code.heading-4 span.heading-4:not([data-text-fill]) {
   height: 100%;
   position: relative;
 }
-.feature-card-tablet.featuressection-text-6-state-7.feature-card-mobile,
-.feature-card-tablet.featuressection-text-6-state-5.feature-card-mobile,
-.feature-card-tablet.featuressection-text-6-state-12.feature-card-mobile,
-.feature-card-tablet.featuressection-text-6-state-11.feature-card-mobile {
+.feature-card-tablet.featuressection-text-6-state-7.feature-card-row,
+.feature-card-tablet.featuressection-text-6-state-5.feature-card-row,
+.feature-card-tablet.featuressection-text-6-state-12.feature-card-row,
+.feature-card-tablet.featuressection-text-6-state-11.feature-card-row {
   gap: 0px;
   width: 374px;
 }
@@ -2507,19 +2516,19 @@ code.heading-4 span.heading-4:not([data-text-fill]) {
   bottom: -48px;
   right: 24px;
 }
-.feature-card-tablet.featuressection-text-6-state-2.feature-card-mobile {
+.feature-card-tablet.featuressection-text-6-state-2.feature-card-row {
   width: 747px;
 }
-.feature-card-tablet.featuressection-text-6-state-9.feature-card-mobile {
+.feature-card-tablet.featuressection-text-6-state-9.feature-card-row {
   gap: 0px;
   width: 374px;
   height: 800px;
 }
-.feature-card-tablet.featuressection-text-6-state-8.feature-card-mobile,
-.feature-card-tablet.featuressection-text-6-state-3.feature-card-mobile,
-.feature-card-tablet.featuressection-text-6-state-10.feature-card-mobile,
-.feature-card-tablet.featuressection-text-6-state.feature-card-mobile,
-.feature-card-tablet.featuressection-text-6-state-4.feature-card-mobile {
+.feature-card-tablet.featuressection-text-6-state-8.feature-card-row,
+.feature-card-tablet.featuressection-text-6-state-3.feature-card-row,
+.feature-card-tablet.featuressection-text-6-state-10.feature-card-row,
+.feature-card-tablet.featuressection-text-6-state.feature-card-row,
+.feature-card-tablet.featuressection-text-6-state-4.feature-card-row {
   gap: 0px;
   width: 367px;
 }
@@ -3137,7 +3146,10 @@ code.heading-4 span.heading-4:not([data-text-fill]) {
   top: 0px;
   left: 0px;
 }
-.site-footer-phone.site-footer-mobile {
+/* Renamed from the donor's `site-footer-mobile`. NOT a breakpoint — this class
+ * IS the footer's flex container. Dropping it floats the brand block outside
+ * the page rules. */
+.site-footer-phone.site-footer-row {
   flex-flow: column;
   place-content: center;
   align-items: center;
@@ -3384,7 +3396,7 @@ code.heading-4 span.heading-4:not([data-text-fill]) {
   position: relative;
   overflow: visible;
 }
-.site-footer-phone.footer-2-state-3.site-footer-mobile {
+.site-footer-phone.footer-2-state-3.site-footer-row {
   width: 810px;
 }
 .site-footer-phone.footer-2-state-3 .content-4 {
@@ -3393,7 +3405,7 @@ code.heading-4 span.heading-4:not([data-text-fill]) {
 .site-footer-phone.footer-2-state-3 .right {
   flex: 1 0 0px;
 }
-.site-footer-phone.footer-2-state-2.site-footer-mobile {
+.site-footer-phone.footer-2-state-2.site-footer-row {
   width: 390px;
 }
 .site-footer-phone.footer-2-state-2 .content-4 {
@@ -4264,7 +4276,7 @@ html body {
   }
 }
 
-.tablet-phone-closed-state-2 {
+.nav-collapsed {
   --border-bottom-width: 1px;
   --border-color: var(--color-gray-dark, rgb(42, 42, 42));
   --border-left-width: 0px;
@@ -5555,3 +5567,54 @@ html body {
 .newsletter-submit-mobile.login-button.newsletter-submit-button:hover {
   background-color: rgb(153, 153, 153);
 }
+
+/* === reveal hidden state (generated from motion-data.json) === */
+/* The hidden state of every scroll reveal, declared in CSS so it is the FIRST
+ * painted state.
+ *
+ * ScrollReveals used to set this from a useEffect, which runs after hydration,
+ * which is after the browser has already painted the server HTML fully visible.
+ * Every load ran: paint the whole page, blank the parts that reveal, fade them
+ * back in. No observer tuning fixes that — the wrong frame is on screen before
+ * any of that JS exists. With the state here, the runtime only ever moves
+ * things toward visible, a direction it cannot be late for.
+ *
+ * Values come from motion-data.json, which is what the live design measured.
+ * They are NOT all `opacity: 0` — several reveals are clip-path wipes or blurs
+ * that start fully opaque, and hiding those would break them.
+ *
+ * Scoped to .js, stamped on <html> by the inline <head> script in layout.tsx
+ * before this sheet can match anything — so a visitor whose JS never arrives
+ * gets the content rather than a page left blank forever by a stylesheet whose
+ * runtime never came to reveal it. */
+.js [data-reveal="0"], .js [data-reveal="1"], .js [data-reveal="2"],
+.js [data-reveal="3"], .js [data-reveal="4"], .js [data-reveal="5"],
+.js [data-reveal="6"], .js [data-reveal="7"], .js [data-reveal="8"],
+.js [data-reveal="9"], .js [data-reveal="10"], .js [data-reveal="11"],
+.js [data-reveal="12"], .js [data-reveal="16"], .js [data-reveal="17"],
+.js [data-reveal="18"], .js [data-reveal="19"], .js [data-reveal="20"],
+.js [data-reveal="21"], .js [data-reveal="22"], .js [data-reveal="23"],
+.js [data-reveal="24"], .js [data-reveal="25"], .js [data-reveal="26"],
+.js [data-reveal="27"], .js [data-reveal="28"], .js [data-reveal="29"],
+.js [data-reveal="30"], .js [data-reveal="31"], .js [data-reveal="32"],
+.js [data-reveal="33"] {
+  opacity: 0;
+}
+.js [data-reveal="14"], .js [data-reveal="15"] {
+  opacity: 0.727409;
+}
+.js [data-reveal="13"] {
+  opacity: 0.0934094;
+}
+
+/* Anyone who asked not to be animated should never see a hidden state at all;
+ * the runtime already skips the transition for them. */
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal],
+  .js [data-animate] {
+    opacity: 1;
+    clip-path: none;
+    filter: none;
+  }
+}
+/* === end reveal hidden state === */

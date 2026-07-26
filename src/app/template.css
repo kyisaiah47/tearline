@@ -462,7 +462,10 @@ body {
   cursor: pointer;
   font-family: "Geist Mono", "Fira Code", monospace;
   font-size: 14px;
-  line-height: 1;
+  /* 20px, not 1. The donor's buttons run `line-height: normal` on a 12px font,
+   * which resolves to ~20px content inside 24px of padding — a 44px control.
+   * `line-height: 1` on a 14px font makes 38px, and the pair sat 6px apart. */
+  line-height: 20px;
 }
 
 .tl-cmd-prompt {
@@ -549,31 +552,19 @@ body {
 }
 
 /* --- reveals must be hidden BEFORE the first paint -------------------------
- * The port's ScrollReveals sets each element's opacity to its hidden value from
- * a useEffect — which runs after hydration, which is after the browser has
- * already painted the server HTML fully visible. So every load ran: paint the
- * whole page, then blank the parts that reveal, then fade them back in. That is
- * the flash, and no amount of tuning the observer fixes it, because the wrong
- * frame has already been shown by the time any of that JS exists.
+ * The hidden state now lives in globals.css, generated per element from
+ * motion-data.json — see the "reveal hidden state" block at the end of it.
  *
- * Declaring the hidden state in CSS makes it the FIRST painted state. The
- * runtime then only ever moves things toward visible, which is a direction it
- * cannot be late for.
+ * A blanket `.js [data-reveal] { opacity: 0 }` used to live here, and it was
+ * wrong for the reveals whose measured hidden state is NOT transparent: this
+ * page has reveals starting at 0.0934 and 0.727 opacity, and other ports have
+ * clip-path wipes that start fully opaque. Blanking those hides an element that
+ * was meant to be visible, and if the observer never reaches it, it stays
+ * hidden forever.
  *
- * Scoped to .js — set by an inline script in <head>, before this sheet can
- * match anything — so a visitor without JS gets the content rather than a
- * permanently blank page. */
-.js [data-reveal] {
-  opacity: 0;
-}
-
-/* Anyone who has asked not to be animated should never see the hidden state at
- * all; the runtime already skips the transition for them. */
-@media (prefers-reduced-motion: reduce) {
-  .js [data-reveal] {
-    opacity: 1;
-  }
-}
+ * Nothing may re-add a blanket rule here: this sheet loads AFTER globals.css,
+ * so at equal specificity anything here silently overrides the generated
+ * per-element states. */
 
 /* --- nothing renders until it is ready -------------------------------------
  * A custom element's children are ordinary HTML until the element upgrades: a
