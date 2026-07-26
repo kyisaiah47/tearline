@@ -273,6 +273,7 @@ export default function FeaturesSection() {
         >
           <FeatureCard
             slot={"feature-graphic-slot"}
+            reveal={"0"}
             id={"feature-wrap"}
             title={"Wrap anything"}
             description={
@@ -284,6 +285,7 @@ export default function FeaturesSection() {
 
           <FeatureCard
             slot={"feature-image-slot"}
+            reveal={"1"}
             id={"feature-export"}
             title={"Hand them a PNG"}
             description={
@@ -295,6 +297,7 @@ export default function FeaturesSection() {
 
           <FeatureCard
             slot={"feature-media-slot"}
+            reveal={"2"}
             id={"feature-text"}
             title={"Real text, not a canvas"}
             description={
@@ -318,6 +321,7 @@ export default function FeaturesSection() {
 
           <FeatureCard
             slot={"feature-demo-slot"}
+            reveal={"32"}
             id={"feature-seed"}
             title={"Same seed, same paper"}
             description={
@@ -336,6 +340,7 @@ export default function FeaturesSection() {
 
           <FeatureCard
             slot={"feature-preview-slot"}
+            reveal={"33"}
             id={"feature-anywhere"}
             title={"Drops in anywhere"}
             description={
@@ -347,6 +352,7 @@ export default function FeaturesSection() {
 
           <FeatureCard
             slot={"feature-visual-slot"}
+            reveal={"0"}
             id={"feature-deps"}
             title={"Zero dependencies"}
             description={

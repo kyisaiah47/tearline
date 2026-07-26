@@ -87,7 +87,7 @@ export default function HeroSection() {
             data-name={"Heading wrapper"}
           >
             <div className={"herosection-heading"} data-name={"Heading"}>
-              <div className={"hiring-badge-container"}>
+              <div className={"hiring-badge-container"} data-reveal={"0"}>
                 <a
                   className={
                     "herosection-dot-4 nav-dropdown-trigger herosection-dot herosection-dot-4-state herosection-dot-2"
@@ -122,7 +122,7 @@ export default function HeroSection() {
               </div>
 
               <div
-                className={"hero-headline"}
+                className={"hero-headline"} data-reveal={"1"}
                 data-component={"RichTextContainer"}
               >
                 <h1 className={"heading-4 hero-heading"} dir={"auto"}>
@@ -144,7 +144,7 @@ export default function HeroSection() {
               </div>
 
               <div
-                className={"hero-subhead"}
+                className={"hero-subhead"} data-reveal={"2"}
                 data-component={"RichTextContainer"}
               >
                 <p
@@ -162,7 +162,7 @@ export default function HeroSection() {
               </div>
             </div>
 
-            <div className={"hero-content"}>
+            <div className={"hero-content"} data-reveal={"32"}>
               <div className={"hero-primary-cta"}>
                 <a
                   className={
@@ -207,7 +207,7 @@ export default function HeroSection() {
           data-name={"Right"}
         >
           <div className={"hero-visual-container tl-backdrop"} />
-          <div className={"hero-code-preview"}>
+          <div className={"hero-code-preview"} data-reveal={"33"}>
             <CodePanel
               title={"menu.html"}
               meta={<span>{"renders to ↓"}</span>}

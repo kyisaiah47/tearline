@@ -38,6 +38,7 @@ export type Slot =
 export default function FeatureCard({
   slot,
   id,
+  reveal,
   title,
   description,
   children,
@@ -45,12 +46,14 @@ export default function FeatureCard({
   slot: Slot;
   /** Anchor target, so a nav or a footer link can point at one feature. */
   id?: string;
+  /** Reveal id. The cards stagger in rather than all arriving together. */
+  reveal?: string;
   title: string;
   description: string;
   children: ReactNode;
 }) {
   return (
-    <div className={slot} id={id}>
+    <div className={slot} id={id} data-reveal={reveal}>
       <div
         className={
           "feature-card-tablet feature-card-responsive link-16 feature-card-mobile featuressection-text-6-state-6"
