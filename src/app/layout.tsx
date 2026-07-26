@@ -37,7 +37,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    /* The inline script below stamps `js` on <html> before React hydrates, so
+     * the class is legitimately present on the client and absent on the server.
+     * That is the whole point of it running early, and it is the one case
+     * suppressHydrationWarning exists for. */
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Set BEFORE first paint. Everything a reveal hides is hidden by CSS
+         * from the very first frame, and the class is what turns that on — so
+         * with JS disabled or broken the rule never applies and the content is
+         * simply visible, rather than hidden forever by a stylesheet whose
+         * runtime never arrives to reveal it. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
+      </head>
       <body>
         {children}
         {/* The product itself, loaded exactly the way the docs tell a visitor

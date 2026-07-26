@@ -28,11 +28,6 @@ export default function Home() {
           style={{ minHeight: "100vh", width: "auto" }}
         >
           <SiteHeader />
-          <style
-            dangerouslySetInnerHTML={{
-              __html: "html body { background: rgb(255, 255, 255); }",
-            }}
-          />
           <div
             className={
               "page-body section-wrapper faqsection-closed-3 footer-inner page-wrapper"
@@ -414,38 +409,86 @@ export default function Home() {
         }}
       >
         <svg
-          viewBox={"0 0 20 20"}
+          viewBox={"0 0 48 48"}
           overflow={"visible"}
           id={"brand-mark"}
         >
+          {/* Supplied as an app-icon tile. Two changes: the plate reads
+            * --color-background so it retints with the theme like everything
+            * else (a fixed purple tile on an amber page is the one thing on the
+            * site that could not follow a product), and the three inner-shadow
+            * filters are dropped — they are sub-pixel at the 20px the nav
+            * renders this at, and they cost a filter region per paint. The
+            * gradients and the geometry are untouched. */}
           <g>
-            {/* A strip of paper with a torn bottom edge and two lines of ink.
-              * Drawn on the donor's 20x20 grid with its opacity ladder intact
-              * so the mark sits in the nav at exactly the weight the captured
-              * layout expects. */}
-            <path
-              d={
-                "M 4.5 1.6 L 15.5 1.6 L 15.5 14.5 L 14.4 17 L 13.3 14.5 L 12.2 17 L 11.1 14.5 L 10 17 L 8.9 14.5 L 7.8 17 L 6.7 14.5 L 5.6 17 L 4.5 14.5 Z"
-              }
+            <clipPath id={"brand-mark-clip"}>
+              <rect width={"48"} height={"48"} rx={"12"} />
+            </clipPath>
+            <g clipPath={"url(#brand-mark-clip)"}>
+              <rect
+                width={"48"}
+                height={"48"}
+                rx={"12"}
+                fill={"var(--color-background, rgb(255, 165, 82))"}
+              />
+              <rect
+                width={"48"}
+                height={"48"}
+                fill={"url(#brand-mark-sheen)"}
+              />
+              <path
+                opacity={"0.6"}
+                fillRule={"evenodd"}
+                clipRule={"evenodd"}
+                d={
+                  "M16.0833 9.75C12.5855 9.75 9.75 12.5855 9.75 16.0833V31.9167C9.75 35.4145 12.5855 38.25 16.0833 38.25H31.9167C35.4145 38.25 38.25 35.4145 38.25 31.9167V16.0833C38.25 12.5855 35.4145 9.75 31.9167 9.75H16.0833ZM16.0833 13.7083C14.7717 13.7083 13.7083 14.7717 13.7083 16.0833V31.9167C13.7083 33.2283 14.7717 34.2917 16.0833 34.2917H21.625C22.9367 34.2917 24 33.2283 24 31.9167V16.0833C24 14.7717 22.9367 13.7083 21.625 13.7083H16.0833Z"
+                }
+                fill={"url(#brand-mark-ink)"}
+              />
+            </g>
+            <rect
+              x={"1"}
+              y={"1"}
+              width={"46"}
+              height={"46"}
+              rx={"11"}
+              stroke={"url(#brand-mark-edge)"}
+              strokeWidth={"2"}
               fill={"none"}
-              stroke={"var(--color-background, rgb(255, 165, 82))"}
-              strokeWidth={"1.4"}
-              strokeLinejoin={"round"}
             />
-            <path
-              d={"M 7 6.4 L 13 6.4"}
-              stroke={"var(--color-background, rgb(255, 165, 82))"}
-              strokeWidth={"1.4"}
-              strokeLinecap={"round"}
-              opacity={"0.7"}
-            />
-            <path
-              d={"M 7 9.8 L 11 9.8"}
-              stroke={"var(--color-background, rgb(255, 165, 82))"}
-              strokeWidth={"1.4"}
-              strokeLinecap={"round"}
-              opacity={"0.5"}
-            />
+            <linearGradient
+              id={"brand-mark-sheen"}
+              x1={"24"}
+              y1={"0"}
+              x2={"26"}
+              y2={"48"}
+              gradientUnits={"userSpaceOnUse"}
+            >
+              <stop stopColor={"white"} stopOpacity={"0"} />
+              <stop offset={"1"} stopColor={"white"} stopOpacity={"0.12"} />
+            </linearGradient>
+            <linearGradient
+              id={"brand-mark-ink"}
+              x1={"24"}
+              y1={"9.75"}
+              x2={"24"}
+              y2={"38.25"}
+              gradientUnits={"userSpaceOnUse"}
+            >
+              <stop stopColor={"white"} stopOpacity={"0.9"} />
+              <stop offset={"1"} stopColor={"white"} stopOpacity={"0.6"} />
+            </linearGradient>
+            <linearGradient
+              id={"brand-mark-edge"}
+              x1={"24"}
+              y1={"0"}
+              x2={"24"}
+              y2={"48"}
+              gradientUnits={"userSpaceOnUse"}
+            >
+              <stop stopColor={"white"} stopOpacity={"0.2"} />
+              <stop offset={"1"} stopColor={"white"} stopOpacity={"0"} />
+            </linearGradient>
           </g>
         </svg>
       </div>

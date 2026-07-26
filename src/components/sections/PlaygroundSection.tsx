@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import MarkupEditor from "@/components/MarkupEditor";
+
 /**
  * The playground.
  *
@@ -16,20 +18,36 @@ import { useEffect, useRef, useState } from "react";
  * reading a test report.
  */
 
+/* Formatted to sit inside the editor column without wrapping. A sample that
+ * wraps every table row across three visual lines is the first thing a visitor
+ * reads, and it makes the format look harder than it is. */
 const SAMPLE = `<h1>Meridian</h1>
 <p><small>WRAP ANYTHING</small></p>
 <hr>
+
 <table>
-  <tr><td>1</td><td>Cortado</td><td align="right">4.25</td></tr>
-  <tr><td>1</td><td>Sourdough slice</td><td align="right">3.50</td></tr>
-  <tr><td>1</td><td>Orange juice</td><td align="right">4.00</td></tr>
+  <tr>
+    <td>1</td>
+    <td>Cortado</td>
+    <td align="right">4.25</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Sourdough</td>
+    <td align="right">3.50</td>
+  </tr>
 </table>
 <hr>
+
 <table>
-  <tr><td><strong>TOTAL</strong></td><td align="right"><strong>11.75</strong></td></tr>
+  <tr>
+    <td><strong>TOTAL</strong></td>
+    <td align="right"><strong>7.75</strong></td>
+  </tr>
 </table>
 <hr>
-<p><small>THANK YOU — COME AGAIN</small></p>`;
+
+<p><small>THANK YOU</small></p>`;
 
 type TearLineEl = HTMLElement & {
   download: (name?: string, opts?: { scale?: number }) => Promise<void>;
@@ -147,14 +165,7 @@ export default function PlaygroundSection() {
                   <label className={"tl-editor-label"} htmlFor={"tl-src"}>
                     {"your markup"}
                   </label>
-                  <textarea
-                    id={"tl-src"}
-                    className={"tl-textarea"}
-                    spellCheck={false}
-                    value={src}
-                    onChange={(e) => setSrc(e.target.value)}
-                    style={{ fontFamily: MONO }}
-                  />
+                  <MarkupEditor id={"tl-src"} value={src} onChange={setSrc} />
                   <div className={"tl-editor-controls"}>
                     <button className={"tl-btn"} onClick={download}>
                       {status === "working"

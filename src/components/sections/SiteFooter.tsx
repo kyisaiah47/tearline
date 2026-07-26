@@ -114,7 +114,14 @@ function FooterBody() {
                       className={"brand-wordmark"}
                       data-component={"RichTextContainer"}
                     >
-                      <h4 className={"heading-4"} dir={"auto"}>
+                      <h4
+                        className={"heading-4"}
+                        dir={"auto"}
+                        style={{
+                          "--rt-text-color":
+                            "var(--extracted-1eung3n, var(--color-text, rgb(209, 209, 209)))",
+                        }}
+                      >
                         {"Tearline"}
                       </h4>
                     </div>

@@ -137,23 +137,95 @@ body {
   color: var(--color-gray-dark-2, #404040);
 }
 
-.tl-textarea {
+/* --- the markup editor -----------------------------------------------------
+ * Two layers that must agree to the pixel: a <pre> painting the tokens and a
+ * transparent <textarea> on top taking the input. Every metric that affects
+ * glyph position is declared once, for both, or the caret drifts away from the
+ * characters as you type. */
+.tl-code-editor {
+  position: relative;
   width: 100%;
-  min-height: 300px;
-  resize: vertical;
-  padding: 16px;
+  height: 340px;
   border: 1px solid var(--color-gray-dark, #2a2a2a);
   border-radius: 16px;
   background: var(--color-black-12, #211f1c);
-  color: var(--color-text, #d1d1d1);
+  overflow: hidden;
+}
+
+.tl-code-editor:focus-within {
+  border-color: var(--color-yellow-3-40, rgb(255 165 82 / 40%));
+}
+
+.tl-code-hl,
+.tl-code-input {
+  margin: 0;
+  padding: 16px;
+  border: 0;
+  font-family: "Geist Mono", "Fira Code", monospace;
   font-size: 13px;
   line-height: 22px;
   tab-size: 2;
+  white-space: pre;
+  overflow-wrap: normal;
+  letter-spacing: 0;
 }
 
-.tl-textarea:focus {
+.tl-code-hl {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  color: var(--color-text, #d1d1d1);
+}
+
+/* The input is the scroller — the highlight layer follows it from onScroll.
+ * Giving both `overflow: auto` would produce two scrollbars and two positions. */
+.tl-code-input {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  resize: none;
+  overflow: auto;
+  background: none;
+  color: transparent;
+  caret-color: var(--color-background, #ffa552);
   outline: none;
-  border-color: var(--color-yellow-3-40, rgb(255 165 82 / 40%));
+}
+
+.tl-code-input::selection {
+  background: var(--color-yellow-4-20, rgb(255 165 82 / 20%));
+}
+
+.tl-code-input::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.tl-code-input::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 8px;
+  background: var(--color-gray-dark, #2a2a2a) padding-box;
+}
+
+/* Tokens — CodePanel's palette, so the editor and the windows agree. */
+.t-tag {
+  color: rgb(130 170 255);
+}
+
+.t-attr {
+  color: rgb(199 146 234);
+}
+
+.t-str {
+  color: var(--color-background, #ffa552);
+}
+
+.t-punct {
+  color: var(--value-gray-2, gray);
+}
+
+.t-com {
+  color: var(--color-gray-dark-2, #404040);
 }
 
 .tl-editor-controls {
@@ -377,6 +449,13 @@ body {
  * across the line to copy it by hand should get the command, not `$ ` and then
  * the command. */
 .tl-cmd {
+  /* These are <button>s where the donor used <a>, so the UA sheet applies —
+   * and its default `border: 2px outset` is a literal 3D bevel. The donor's
+   * link CSS never sets border-style because it never needed to. The visible
+   * frame is the 1px [data-border] ::after, same as every other control. */
+  appearance: none;
+  border: 0;
+  background: transparent;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -427,6 +506,16 @@ body {
   color: var(--color-text, #d1d1d1);
 }
 
+/* The fill comes from the donor's class on an <a>; killing the UA button
+ * background takes it with it, so the primary states it explicitly. */
+.tl-cmd-primary {
+  background: var(--color-background, #ffa552);
+}
+
+.tl-cmd-primary:hover {
+  filter: brightness(1.06);
+}
+
 .tl-cmd-primary,
 .tl-cmd-primary .tl-cmd-text {
   color: var(--color-black, #1a1917);
@@ -443,4 +532,45 @@ body {
 .tl-stage {
   position: relative;
   z-index: 1;
+}
+
+/* --- footer alignment ------------------------------------------------------
+ * The donor centres the brand block against a four-column link grid that was
+ * twice as tall. With four short columns it floats halfway down the footer,
+ * level with nothing. */
+.page-body .site-footer-phone .left {
+  place-content: flex-start;
+}
+
+/* The donor's rule above the copyright sits tight under the last link because
+ * its columns were long enough that nothing landed there. */
+.page-body .footer-bottom-bar {
+  margin-top: 32px;
+}
+
+/* --- reveals must be hidden BEFORE the first paint -------------------------
+ * The port's ScrollReveals sets each element's opacity to its hidden value from
+ * a useEffect — which runs after hydration, which is after the browser has
+ * already painted the server HTML fully visible. So every load ran: paint the
+ * whole page, then blank the parts that reveal, then fade them back in. That is
+ * the flash, and no amount of tuning the observer fixes it, because the wrong
+ * frame has already been shown by the time any of that JS exists.
+ *
+ * Declaring the hidden state in CSS makes it the FIRST painted state. The
+ * runtime then only ever moves things toward visible, which is a direction it
+ * cannot be late for.
+ *
+ * Scoped to .js — set by an inline script in <head>, before this sheet can
+ * match anything — so a visitor without JS gets the content rather than a
+ * permanently blank page. */
+.js [data-reveal] {
+  opacity: 0;
+}
+
+/* Anyone who has asked not to be animated should never see the hidden state at
+ * all; the runtime already skips the transition for them. */
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    opacity: 1;
+  }
 }
