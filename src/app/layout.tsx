@@ -1,10 +1,23 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
+import "./template.css";
+import "./theme.css";
 
 export const metadata: Metadata = {
-  title: "Tearline — any HTML, printed as a thermal receipt",
+  metadataBase: new URL("https://tearline.kynth.studio"),
+  title: "Tearline — any HTML, printed as a receipt",
   description:
-    "Wrap any HTML in one tag and it prints out as a thermal receipt. Save it as a PNG. Zero dependencies, no build step, MIT.",
+    "One custom element that renders anything you wrap in it as a thermal receipt, then exports it as a PNG. Zero dependencies, no build step, MIT.",
+  openGraph: {
+    title: "Tearline — any HTML, printed as a receipt",
+    description:
+      "One custom element that renders anything you wrap in it as a thermal receipt, then exports it as a PNG. Zero dependencies, no build step, MIT.",
+    url: "https://tearline.kynth.studio",
+    siteName: "Tearline",
+    type: "website",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({
@@ -13,13 +26,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en-US" className="lenis">
+    <html lang="en">
       <body>
         {children}
-        {/* The component the whole page is about. Loaded as a plain module from
-            /public rather than bundled, because that is exactly how a visitor
-            would adopt it — if this tag ever breaks, the docs are wrong. */}
-        <script type="module" src="/tearline.js" />
+        {/* The product itself, loaded exactly the way the docs tell a visitor
+         * to load it. Everything on this page that looks like a receipt is
+         * rendered by this file — nothing is a screenshot, so a regression
+         * ships as a visibly broken landing page rather than a silent one. */}
+        <Script type={"module"} src={"/tearline.js"} strategy={"afterInteractive"} />
       </body>
     </html>
   );

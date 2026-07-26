@@ -1,0 +1,85 @@
+/* ============================================================================
+ * THEME — the only stylesheet that changes per product.
+ *
+ * globals.css is the Axon port, byte-for-byte. Nothing edits it, so when the
+ * template is re-ported or fixed the diff stays reviewable and every product
+ * can take the update. Everything a product varies lives here instead:
+ *
+ *   1. the accent ramp        (the template's lime, re-tinted)
+ *   2. the page background    (how dark, how warm)
+ *   3. the hero backdrop      (a generated image, one per product)
+ *
+ * The template names its accent tokens after the ORIGINAL colour — lime,
+ * yellow, cream, sand, brown. Those names are meaningless once retinted, so
+ * treat them positionally: --color-background is the accent at full strength,
+ * the --color-yellow-* set is that accent at 5/10/20/40/60/80% alpha, and the
+ * cream→brown run is the light-to-dark ramp around it. Retint the whole run or
+ * the section that uses the far end of it goes off-brand on its own.
+ *
+ * ---------------------------------------------------------------------------
+ * TEARLINE — thermal amber.
+ *
+ * Receipts are black ink on cream paper under a warm till lamp. Amber carries
+ * that without becoming a costume, and it stays clear of --color-red, which
+ * the template already spends on error states.
+ * ==========================================================================*/
+
+/* The port declares its whole palette on `body`, not `:root` — a `:root` block
+ * here would lose to it on proximity no matter how late it loads. Matching the
+ * selector and relying on source order is what actually overrides it. */
+:root,
+body {
+  /* --- accent, full strength ------------------------------------------- */
+  --color-background: #ffa552;
+  --color-lime: #f2953f;
+  --color-lime-2: #d8792a;
+  --color-lime-3: #ad5f1e;
+
+  /* --- accent, light end (badges, hover fills, quiet type) -------------- */
+  --color-cream-3: #fff6ee;
+  --color-cream-4: #ffe9d5;
+  --color-sand-3: #ffd0a8;
+
+  /* --- accent, dark end (borders and fills on near-black) --------------- */
+  --color-brown-2: #7d4718;
+  --color-gray-dark-4: #5e3512;
+  --color-gray-dark-5: #48290e;
+  --color-gray-dark-6: #241407;
+
+  /* --- accent alphas ---------------------------------------------------- */
+  --color-yellow-6-5: #ffa5520d;
+  --color-yellow-5-10: #ffa5521a;
+  --color-yellow-4-20: #ffa55233;
+  --color-yellow-3-40: #ffa55266;
+  --color-yellow-2-60: #ffa55299;
+  --color-yellow-80: #ffa552cc;
+
+  /* --- page ground ------------------------------------------------------
+   * Warmed a couple of points off the template's neutral #1a1a1a so the paper
+   * in the hero doesn't read as a blue-grey cut-out sitting on top of it. */
+  --color-black: #1a1917;
+  --color-black-12: #211f1c;
+  --color-black-13: #141312;
+  --color-black-14: #100f0e;
+
+  --color-black-11-0: #1a191700;
+  --color-black-10-10: #1a19171a;
+  --color-black-9-20: #1a191733;
+  --color-black-8-30: #1a19174d;
+  --color-black-7-40: #1a191766;
+  --color-black-6-50: #1a191780;
+  --color-black-5-60: #1a191799;
+  --color-black-4-70: #1a1917b3;
+  --color-black-3-80: #1a1917cc;
+  --color-black-2-90: #1a1917e6;
+
+  /* --- the per-product hero backdrop ------------------------------------
+   * Generated to the product's palette and dropped in public/images. The hero
+   * reads it through this variable, so swapping products is a one-line edit
+   * and the markup never mentions a filename. */
+  --brand-backdrop: url("/images/hero-backdrop.png");
+
+  /* --- ink -------------------------------------------------------------- */
+  --brand-paper: #f2ece1;
+  --brand-ink: #17150f;
+}

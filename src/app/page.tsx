@@ -1,14 +1,12 @@
-import FooterColumns from "@/components/sections/FooterColumns";
+import SiteHeader from "@/components/sections/SiteHeader";
 import HeroSection from "@/components/sections/HeroSection";
-import Playground from "@/components/sections/Playground";
-import InstallDocs from "@/components/sections/InstallDocs";
+import FeaturesSection from "@/components/sections/FeaturesSection";
+import PlaygroundSection from "@/components/sections/PlaygroundSection";
+import InstallSection from "@/components/sections/InstallSection";
+import FAQSection from "@/components/sections/FAQSection";
 import SiteFooter from "@/components/sections/SiteFooter";
 import EntranceAnimations from "@/components/EntranceAnimations";
-import FaqAccordion from "@/components/FaqAccordion";
-import Marquee from "@/components/Marquee";
-import Parallax from "@/components/Parallax";
 import ScrollReveals from "@/components/ScrollReveals";
-import InteractiveSections from "@/components/InteractiveSections";
 import SmoothScroll from "@/components/SmoothScroll";
 
 export default function Home() {
@@ -16,44 +14,392 @@ export default function Home() {
     <>
       <SmoothScroll />
       <EntranceAnimations />
-      <FaqAccordion />
-      <Marquee />
-      <Parallax />
       <ScrollReveals />
-      <InteractiveSections />
       <div id={"main"}>
         <style
           dangerouslySetInnerHTML={{
             __html:
-              ":root body { background: var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245)); }",
+              ":root body { background: var(--token-2677a7ab-1420-48e4-957c-83a3935eeb1d, rgb(26, 26, 26)); } :root { font-size: 93.75%; }",
           }}
         />
         <div
-          className={"page-root-alt page-root"}
-          routeid={"augiA20Il"}
+          className={"page-root-mobile page-root"}
           data-layout-template={"true"}
           style={{ minHeight: "100vh", width: "auto" }}
         >
-          <div className={"nav-slot"}>
-            <div />
-          </div>
-          <FooterColumns />
+          <SiteHeader />
           <style
             dangerouslySetInnerHTML={{
-              __html:
-                "html body { background: var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245)); }",
+              __html: "html body { background: rgb(255, 255, 255); }",
             }}
           />
           <div
-            className={"page main-light-5 main-light-6"}
-            style={{ minHeight: "100vh", width: "auto", display: "contents" }}
+            className={
+              "page-body section-wrapper faqsection-closed-3 footer-inner page-wrapper"
+            }
+            style={{ width: "auto", display: "contents" }}
           >
-            <HeroSection />
-            <Playground />
-            <InstallDocs />
+            <main className={"page"} data-name={"Main"}>
+              <HeroSection />
+              <FeaturesSection />
+              <PlaygroundSection />
+              <InstallSection />
+              <FAQSection />
+              <div className={"cta-button-slot hide-tablet hide-desktop"}>
+                <section
+                  className={
+                    "section-mobile footer-inner faqsection-closed-3 mobile-section section-state"
+                  }
+                  data-border={"true"}
+                  style={{ width: "100%" }}
+                >
+                  <div className={"content"} data-name={"Content"}>
+                    <div className={"cta-secondary-slot"}>
+                      <div
+                        data-component={"Shader"}
+                        style={{
+                          display: "block",
+                          flex: "0 0 auto",
+                          width: "100%",
+                          height: "100%",
+                          borderRadius: "inherit",
+                          cornerShape: "inherit",
+                          overflow: "hidden",
+                          transform: "none",
+                        }}
+                      />
+                    </div>
+                    <div className={"overlay"} data-name={"Overlay"} />
+                    <div className={"heading-5"} data-name={"Heading"}>
+                      <div
+                        className={"final-cta-heading"}
+                        data-component={"RichTextContainer"}
+                      >
+                        <h2
+                          className={"heading-4 section-heading"}
+                          dir={"auto"}
+                          style={{ "--rt-text-alignment": "center" }}
+                        >
+                          {"Wrap something in it"}
+                        </h2>
+                      </div>
+                      <div
+                        className={"final-cta-subhead"}
+                        data-component={"RichTextContainer"}
+                      >
+                        <p
+                          className={"heading-4 hero-subtext"}
+                          dir={"auto"}
+                          style={{ "--rt-text-alignment": "center" }}
+                        >
+                          {"One tag, zero dependencies, no build step. MIT — free forever."}
+                        </p>
+                      </div>
+                    </div>
+                    <div className={"ctas"} data-name={"CTAs"}>
+                      <div className={"get-started-cta-container"}>
+                        <a
+                          className={
+                            "login-link-mobile login-button login-link-tablet link-12-state-3 login-link"
+                          }
+                          data-name={"Primary"}
+                          data-highlight={"true"}
+                          href={"#install"}
+                          tabIndex={0}
+                          style={{ width: "100%" }}
+                        >
+                          <div
+                            className={"login-label"}
+                            data-component={"RichTextContainer"}
+                            style={{
+                              "--extracted-r6o4lv":
+                                "var(--color-black, rgb(26, 26, 26))",
+                            }}
+                          >
+                            <p
+                              className={"heading-4 login-link-text"}
+                              dir={"auto"}
+                              style={{
+                                "--rt-text-color":
+                                  "var(--extracted-r6o4lv, var(--color-black, rgb(26, 26, 26)))",
+                              }}
+                            >
+                              {"npm i tearline"}
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                      <div className={"see-pricing-cta"}>
+                        <a
+                          className={
+                            "login-link-mobile login-button login-link-tablet link-12-state login-link"
+                          }
+                          data-name={"Secondary"}
+                          data-highlight={"true"}
+                          data-border={"true"}
+                          href={"#install"}
+                          tabIndex={0}
+                          style={{ borderRadius: "8px", width: "100%" }}
+                        >
+                          <div
+                            className={"login-label"}
+                            data-component={"RichTextContainer"}
+                            style={{
+                              "--extracted-r6o4lv":
+                                "var(--color-black, rgb(26, 26, 26))",
+                            }}
+                          >
+                            <p
+                              className={"heading-4 login-link-text"}
+                              dir={"auto"}
+                            >
+                              {"Read the docs"}
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div className={"cta-button-slot hide-phone hide-desktop"}>
+                <section
+                  className={
+                    "section-mobile footer-inner faqsection-closed-3 mobile-section section-state-3"
+                  }
+                  data-border={"true"}
+                  style={{ width: "100%" }}
+                >
+                  <div className={"content"} data-name={"Content"}>
+                    <div className={"cta-secondary-slot"}>
+                      <div
+                        data-component={"Shader"}
+                        style={{
+                          display: "block",
+                          flex: "0 0 auto",
+                          width: "100%",
+                          height: "100%",
+                          borderRadius: "inherit",
+                          cornerShape: "inherit",
+                          overflow: "hidden",
+                          transform: "none",
+                        }}
+                      />
+                    </div>
+                    <div className={"overlay"} data-name={"Overlay"} />
+                    <div className={"heading-5"} data-name={"Heading"}>
+                      <div
+                        className={"final-cta-heading"}
+                        data-component={"RichTextContainer"}
+                      >
+                        <h2
+                          className={"heading-4 section-heading"}
+                          dir={"auto"}
+                          style={{ "--rt-text-alignment": "center" }}
+                        >
+                          {"Wrap something in it"}
+                        </h2>
+                      </div>
+                      <div
+                        className={"final-cta-subhead"}
+                        data-component={"RichTextContainer"}
+                      >
+                        <p
+                          className={"heading-4 hero-subtext"}
+                          dir={"auto"}
+                          style={{ "--rt-text-alignment": "center" }}
+                        >
+                          {"One tag, zero dependencies, no build step. MIT — free forever."}
+                        </p>
+                      </div>
+                    </div>
+                    <div className={"ctas"} data-name={"CTAs"}>
+                      <div className={"get-started-cta-container"}>
+                        <a
+                          className={
+                            "login-link-mobile login-button login-link-tablet link-12-state-3 login-link"
+                          }
+                          data-name={"Primary"}
+                          data-highlight={"true"}
+                          href={"#install"}
+                          tabIndex={0}
+                        >
+                          <div
+                            className={"login-label"}
+                            data-component={"RichTextContainer"}
+                            style={{
+                              "--extracted-r6o4lv":
+                                "var(--color-black, rgb(26, 26, 26))",
+                            }}
+                          >
+                            <p
+                              className={"heading-4 login-link-text"}
+                              dir={"auto"}
+                              style={{
+                                "--rt-text-color":
+                                  "var(--extracted-r6o4lv, var(--color-black, rgb(26, 26, 26)))",
+                              }}
+                            >
+                              {"npm i tearline"}
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                      <div className={"see-pricing-cta"}>
+                        <a
+                          className={
+                            "login-link-mobile login-button login-link-tablet link-12-state login-link"
+                          }
+                          data-name={"Secondary"}
+                          data-highlight={"true"}
+                          data-border={"true"}
+                          href={"#install"}
+                          tabIndex={0}
+                          style={{ borderRadius: "8px" }}
+                        >
+                          <div
+                            className={"login-label"}
+                            data-component={"RichTextContainer"}
+                            style={{
+                              "--extracted-r6o4lv":
+                                "var(--color-black, rgb(26, 26, 26))",
+                            }}
+                          >
+                            <p
+                              className={"heading-4 login-link-text"}
+                              dir={"auto"}
+                            >
+                              {"Read the docs"}
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div className={"cta-button-slot hide-phone hide-tablet"}>
+                <section
+                  className={
+                    "section-mobile footer-inner faqsection-closed-3 mobile-section section-state-2"
+                  }
+                  data-border={"true"}
+                  style={{ width: "100%" }}
+                >
+                  <div className={"content"} data-name={"Content"}>
+                    <div className={"cta-secondary-slot"}>
+                      <div
+                        data-component={"Shader"}
+                        style={{
+                          display: "block",
+                          flex: "0 0 auto",
+                          width: "100%",
+                          height: "100%",
+                          borderRadius: "inherit",
+                          cornerShape: "inherit",
+                          overflowX: "hidden",
+                          overflowY: "hidden",
+                          transform: "none",
+                        }}
+                      />
+                    </div>
+                    <div className={"overlay"} data-name={"Overlay"} />
+                    <div className={"heading-5"} data-name={"Heading"}>
+                      <div
+                        className={"final-cta-heading"}
+                        data-component={"RichTextContainer"}
+                      >
+                        <h2
+                          className={"heading-4 section-heading"}
+                          dir={"auto"}
+                          style={{ "--rt-text-alignment": "center" }}
+                        >
+                          {"Wrap something in it"}
+                        </h2>
+                      </div>
+                      <div
+                        className={"final-cta-subhead"}
+                        data-component={"RichTextContainer"}
+                      >
+                        <p
+                          className={"heading-4 hero-subtext"}
+                          dir={"auto"}
+                          style={{ "--rt-text-alignment": "center" }}
+                        >
+                          {"One tag, zero dependencies, no build step. MIT — free forever."}
+                        </p>
+                      </div>
+                    </div>
+                    <div className={"ctas"} data-name={"CTAs"}>
+                      <div className={"get-started-cta-container"}>
+                        <a
+                          className={
+                            "login-link-mobile login-button login-link-tablet link-12-state-3 login-link"
+                          }
+                          data-name={"Primary"}
+                          data-highlight={"true"}
+                          href={"#install"}
+                          tabIndex={0}
+                        >
+                          <div
+                            className={"login-label"}
+                            data-component={"RichTextContainer"}
+                            style={{
+                              "--extracted-r6o4lv":
+                                "var(--color-black, rgb(26, 26, 26))",
+                            }}
+                          >
+                            <p
+                              className={"heading-4 login-link-text"}
+                              dir={"auto"}
+                              style={{
+                                "--rt-text-color":
+                                  "var(--extracted-r6o4lv, var(--color-black, rgb(26, 26, 26)))",
+                              }}
+                            >
+                              {"npm i tearline"}
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                      <div className={"see-pricing-cta"}>
+                        <a
+                          className={
+                            "login-link-mobile login-button login-link-tablet link-12-state login-link"
+                          }
+                          data-name={"Secondary"}
+                          data-highlight={"true"}
+                          data-border={"true"}
+                          href={"#install"}
+                          tabIndex={0}
+                          style={{ borderRadius: "8px" }}
+                        >
+                          <div
+                            className={"login-label"}
+                            data-component={"RichTextContainer"}
+                            style={{
+                              "--extracted-r6o4lv":
+                                "var(--color-black, rgb(26, 26, 26))",
+                            }}
+                          >
+                            <p
+                              className={"heading-4 login-link-text"}
+                              dir={"auto"}
+                            >
+                              {"Read the docs"}
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </main>
           </div>
           <div id={"overlay"} />
-          <div className={"divider"} />
+          <div className={"spacer-block"} />
+          <div className={"border"} data-border={"true"} data-name={"Border"} />
           <SiteFooter />
         </div>
         <div id={"template-overlay"} />
@@ -67,525 +413,40 @@ export default function Home() {
           overflow: "hidden",
         }}
       >
-        <svg viewBox={"0 0 512 512"} id={"svg1176185498_122"}>
-          <path fill={"currentColor"} d={"m96 448 320-192L96 64z"} />
-        </svg>
-        <svg viewBox={"0 0 32 31"} id={"svg8693554867"}>
-          <path
-            d={
-              "M 19.2 6.643 C 19.2 5.42 20.155 4.429 21.333 4.429 C 22.512 4.429 23.467 5.42 23.467 6.643 C 23.467 7.866 22.512 8.857 21.333 8.857 C 20.155 8.857 19.2 7.866 19.2 6.643 Z"
-            }
-            fill={
-              "var(--token-53e7e2d0-5a65-4de6-b2e6-a5be2ea3ac4b, rgb(15, 15, 17))"
-            }
-          />
-          <path
-            d={
-              "M 14.933 2.214 C 14.933 0.991 15.888 0 17.067 0 C 18.245 0 19.2 0.991 19.2 2.214 C 19.2 3.437 18.245 4.429 17.067 4.429 C 15.888 4.429 14.933 3.437 14.933 2.214 Z"
-            }
-            fill={
-              "var(--token-53e7e2d0-5a65-4de6-b2e6-a5be2ea3ac4b, rgb(15, 15, 17))"
-            }
-          />
-          <path
-            d={
-              "M 27.733 15.5 C 27.733 14.277 28.688 13.286 29.867 13.286 C 31.045 13.286 32 14.277 32 15.5 C 32 16.723 31.045 17.714 29.867 17.714 C 28.688 17.714 27.733 16.723 27.733 15.5 Z"
-            }
-            fill={
-              "var(--token-53e7e2d0-5a65-4de6-b2e6-a5be2ea3ac4b, rgb(15, 15, 17))"
-            }
-          />
-          <path
-            d={
-              "M 0 15.5 C 0 14.277 0.955 13.286 2.133 13.286 C 3.312 13.286 4.267 14.277 4.267 15.5 C 4.267 16.723 3.312 17.714 2.133 17.714 C 0.955 17.714 0 16.723 0 15.5 Z"
-            }
-            fill={
-              "var(--token-53e7e2d0-5a65-4de6-b2e6-a5be2ea3ac4b, rgb(15, 15, 17))"
-            }
-          />
-          <path
-            d={
-              "M 6.4 15.5 C 6.4 14.277 7.355 13.286 8.533 13.286 C 9.712 13.286 10.667 14.277 10.667 15.5 C 10.667 16.723 9.712 17.714 8.533 17.714 C 7.355 17.714 6.4 16.723 6.4 15.5 Z"
-            }
-            fill={
-              "var(--token-53e7e2d0-5a65-4de6-b2e6-a5be2ea3ac4b, rgb(15, 15, 17))"
-            }
-          />
-          <path
-            d={
-              "M 12.8 15.5 C 12.8 14.277 13.755 13.286 14.933 13.286 C 16.112 13.286 17.067 14.277 17.067 15.5 C 17.067 16.723 16.112 17.714 14.933 17.714 C 13.755 17.714 12.8 16.723 12.8 15.5 Z"
-            }
-            fill={
-              "var(--token-53e7e2d0-5a65-4de6-b2e6-a5be2ea3ac4b, rgb(15, 15, 17))"
-            }
-          />
-          <path
-            d={
-              "M 19.2 15.5 C 19.2 14.277 20.155 13.286 21.333 13.286 C 22.512 13.286 23.467 14.277 23.467 15.5 C 23.467 16.723 22.512 17.714 21.333 17.714 C 20.155 17.714 19.2 16.723 19.2 15.5 Z"
-            }
-            fill={
-              "var(--token-53e7e2d0-5a65-4de6-b2e6-a5be2ea3ac4b, rgb(15, 15, 17))"
-            }
-          />
-          <path
-            d={
-              "M 23.467 19.929 C 23.467 18.706 24.422 17.714 25.6 17.714 C 26.778 17.714 27.733 18.706 27.733 19.929 C 27.733 21.151 26.778 22.143 25.6 22.143 C 24.422 22.143 23.467 21.151 23.467 19.929 Z"
-            }
-            fill={
-              "var(--token-53e7e2d0-5a65-4de6-b2e6-a5be2ea3ac4b, rgb(15, 15, 17))"
-            }
-          />
-          <path
-            d={
-              "M 19.2 24.357 C 19.2 23.134 20.155 22.143 21.333 22.143 C 22.512 22.143 23.467 23.134 23.467 24.357 C 23.467 25.58 22.512 26.571 21.333 26.571 C 20.155 26.571 19.2 25.58 19.2 24.357 Z"
-            }
-            fill={
-              "var(--token-53e7e2d0-5a65-4de6-b2e6-a5be2ea3ac4b, rgb(15, 15, 17))"
-            }
-          />
-          <path
-            d={
-              "M 14.933 28.786 C 14.933 27.563 15.888 26.571 17.067 26.571 C 18.245 26.571 19.2 27.563 19.2 28.786 C 19.2 30.009 18.245 31 17.067 31 C 15.888 31 14.933 30.009 14.933 28.786 Z"
-            }
-            fill={
-              "var(--token-53e7e2d0-5a65-4de6-b2e6-a5be2ea3ac4b, rgb(15, 15, 17))"
-            }
-          />
-          <path
-            d={
-              "M 23.467 11.071 C 23.467 9.849 24.422 8.857 25.6 8.857 C 26.778 8.857 27.733 9.849 27.733 11.071 C 27.733 12.294 26.778 13.286 25.6 13.286 C 24.422 13.286 23.467 12.294 23.467 11.071 Z"
-            }
-            fill={
-              "var(--token-53e7e2d0-5a65-4de6-b2e6-a5be2ea3ac4b, rgb(15, 15, 17))"
-            }
-          />
-        </svg>
-        <svg viewBox={"0 0 45 42"} id={"svg12182523659"}>
-          <path
-            d={
-              "M 27 9 C 27 7.343 28.343 6 30 6 C 31.657 6 33 7.343 33 9 C 33 10.657 31.657 12 30 12 C 28.343 12 27 10.657 27 9 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-            opacity={"0.5"}
-          />
-          <path
-            d={
-              "M 21 3 C 21 1.343 22.343 0 24 0 C 25.657 0 27 1.343 27 3 C 27 4.657 25.657 6 24 6 C 22.343 6 21 4.657 21 3 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 39 21 C 39 19.343 40.343 18 42 18 C 43.657 18 45 19.343 45 21 C 45 22.657 43.657 24 42 24 C 40.343 24 39 22.657 39 21 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-            opacity={"0.5"}
-          />
-          <path
-            d={
-              "M 0 21 C 0 19.343 1.343 18 3 18 C 4.657 18 6 19.343 6 21 C 6 22.657 4.657 24 3 24 C 1.343 24 0 22.657 0 21 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 9 21 C 9 19.343 10.343 18 12 18 C 13.657 18 15 19.343 15 21 C 15 22.657 13.657 24 12 24 C 10.343 24 9 22.657 9 21 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 18 21 C 18 19.343 19.343 18 21 18 C 22.657 18 24 19.343 24 21 C 24 22.657 22.657 24 21 24 C 19.343 24 18 22.657 18 21 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 27 21 C 27 19.343 28.343 18 30 18 C 31.657 18 33 19.343 33 21 C 33 22.657 31.657 24 30 24 C 28.343 24 27 22.657 27 21 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-            opacity={"0.5"}
-          />
-          <path
-            d={
-              "M 33 27 C 33 25.343 34.343 24 36 24 C 37.657 24 39 25.343 39 27 C 39 28.657 37.657 30 36 30 C 34.343 30 33 28.657 33 27 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-            opacity={"0.5"}
-          />
-          <path
-            d={
-              "M 27 33 C 27 31.343 28.343 30 30 30 C 31.657 30 33 31.343 33 33 C 33 34.657 31.657 36 30 36 C 28.343 36 27 34.657 27 33 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-            opacity={"0.5"}
-          />
-          <path
-            d={
-              "M 21 39 C 21 37.343 22.343 36 24 36 C 25.657 36 27 37.343 27 39 C 27 40.657 25.657 42 24 42 C 22.343 42 21 40.657 21 39 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 33 15 C 33 13.343 34.343 12 36 12 C 37.657 12 39 13.343 39 15 C 39 16.657 37.657 18 36 18 C 34.343 18 33 16.657 33 15 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-            opacity={"0.5"}
-          />
-        </svg>
-        <svg viewBox={"0 0 79.946 87"} id={"svg8729145881"}>
-          <path
-            d={
-              "M 55.431 87 L 47.356 79.674 L 68.525 60.467 L 68.525 57.431 L 45.683 57.431 L 45.683 21.162 L 79.946 21.162 L 79.946 64.757 Z M 0 57.431 L 22.842 57.431 L 22.842 60.467 L 1.673 79.674 L 9.748 87 L 34.262 64.757 L 34.262 21.162 L 0 21.162 Z"
-            }
-            fill={
-              "var(--token-745d645d-9141-483e-afc9-8da6cfd8a938, rgb(211, 211, 212))"
-            }
-          />
-        </svg>
-        <svg width={"1000"} height={"500"} id={"svg989598464_659"}>
-          <defs>
-            <filter
-              id={"svg989598464_659_a"}
-              filterUnits={"userSpaceOnUse"}
-              x={"0"}
-              y={"0"}
-              width={"1000"}
-              height={"500"}
-            >
-              <feGaussianBlur stdDeviation={"121"} />
-            </filter>
-            <filter
-              id={"svg989598464_659_b"}
-              x={"0"}
-              y={"0"}
-              width={"100%"}
-              height={"100%"}
-            >
-              <feTurbulence
-                type={"fractalNoise"}
-                baseFrequency={"1"}
-                result={"turbulence"}
-                stitchTiles={"stitch"}
-              />
-              <feBlend
-                in={"SourceGraphic"}
-                in2={"turbulence"}
-                mode={"overlay"}
-              />
-            </filter>
-          </defs>
-          <rect width={"100%"} height={"100%"} fill={"#F4F4F4"} />
-          <g filter={"url(#svg989598464_659_a)"}>
+        <svg
+          viewBox={"0 0 20 20"}
+          overflow={"visible"}
+          id={"brand-mark"}
+        >
+          <g>
+            {/* A strip of paper with a torn bottom edge and two lines of ink.
+              * Drawn on the donor's 20x20 grid with its opacity ladder intact
+              * so the mark sits in the nav at exactly the weight the captured
+              * layout expects. */}
             <path
-              fill={"#FF4F5E"}
-              d={"M359.306 124.983h819.201v686.05H359.306z"}
+              d={
+                "M 4.5 1.6 L 15.5 1.6 L 15.5 14.5 L 14.4 17 L 13.3 14.5 L 12.2 17 L 11.1 14.5 L 10 17 L 8.9 14.5 L 7.8 17 L 6.7 14.5 L 5.6 17 L 4.5 14.5 Z"
+              }
+              fill={"none"}
+              stroke={"var(--color-background, rgb(255, 165, 82))"}
+              strokeWidth={"1.4"}
+              strokeLinejoin={"round"}
+            />
+            <path
+              d={"M 7 6.4 L 13 6.4"}
+              stroke={"var(--color-background, rgb(255, 165, 82))"}
+              strokeWidth={"1.4"}
+              strokeLinecap={"round"}
+              opacity={"0.7"}
+            />
+            <path
+              d={"M 7 9.8 L 11 9.8"}
+              stroke={"var(--color-background, rgb(255, 165, 82))"}
+              strokeWidth={"1.4"}
+              strokeLinecap={"round"}
+              opacity={"0.5"}
             />
           </g>
-          <path
-            d={"M0 0h1000v500H0z"}
-            style={{
-              mixBlendMode: "luminosity",
-              filter: "url(#svg989598464_659_b)",
-              opacity: "34%",
-            }}
-          />
-        </svg>
-        <svg viewBox={"0 0 32 31"} id={"svg9856800816"}>
-          <path
-            d={
-              "M 19.2 6.643 C 19.2 5.42 20.155 4.429 21.333 4.429 C 22.512 4.429 23.467 5.42 23.467 6.643 C 23.467 7.866 22.512 8.857 21.333 8.857 C 20.155 8.857 19.2 7.866 19.2 6.643 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 14.933 2.214 C 14.933 0.991 15.888 0 17.067 0 C 18.245 0 19.2 0.991 19.2 2.214 C 19.2 3.437 18.245 4.429 17.067 4.429 C 15.888 4.429 14.933 3.437 14.933 2.214 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 27.733 15.5 C 27.733 14.277 28.688 13.286 29.867 13.286 C 31.045 13.286 32 14.277 32 15.5 C 32 16.723 31.045 17.714 29.867 17.714 C 28.688 17.714 27.733 16.723 27.733 15.5 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 0 15.5 C 0 14.277 0.955 13.286 2.133 13.286 C 3.312 13.286 4.267 14.277 4.267 15.5 C 4.267 16.723 3.312 17.714 2.133 17.714 C 0.955 17.714 0 16.723 0 15.5 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 6.4 15.5 C 6.4 14.277 7.355 13.286 8.533 13.286 C 9.712 13.286 10.667 14.277 10.667 15.5 C 10.667 16.723 9.712 17.714 8.533 17.714 C 7.355 17.714 6.4 16.723 6.4 15.5 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 12.8 15.5 C 12.8 14.277 13.755 13.286 14.933 13.286 C 16.112 13.286 17.067 14.277 17.067 15.5 C 17.067 16.723 16.112 17.714 14.933 17.714 C 13.755 17.714 12.8 16.723 12.8 15.5 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 19.2 15.5 C 19.2 14.277 20.155 13.286 21.333 13.286 C 22.512 13.286 23.467 14.277 23.467 15.5 C 23.467 16.723 22.512 17.714 21.333 17.714 C 20.155 17.714 19.2 16.723 19.2 15.5 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 23.467 19.929 C 23.467 18.706 24.422 17.714 25.6 17.714 C 26.778 17.714 27.733 18.706 27.733 19.929 C 27.733 21.151 26.778 22.143 25.6 22.143 C 24.422 22.143 23.467 21.151 23.467 19.929 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 19.2 24.357 C 19.2 23.134 20.155 22.143 21.333 22.143 C 22.512 22.143 23.467 23.134 23.467 24.357 C 23.467 25.58 22.512 26.571 21.333 26.571 C 20.155 26.571 19.2 25.58 19.2 24.357 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 14.933 28.786 C 14.933 27.563 15.888 26.571 17.067 26.571 C 18.245 26.571 19.2 27.563 19.2 28.786 C 19.2 30.009 18.245 31 17.067 31 C 15.888 31 14.933 30.009 14.933 28.786 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 23.467 11.071 C 23.467 9.849 24.422 8.857 25.6 8.857 C 26.778 8.857 27.733 9.849 27.733 11.071 C 27.733 12.294 26.778 13.286 25.6 13.286 C 24.422 13.286 23.467 12.294 23.467 11.071 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-        </svg>
-        <svg viewBox={"0 0 16 15"} id={"svg12158370878"}>
-          <path
-            d={
-              "M 9.6 3.214 C 9.6 2.623 10.078 2.143 10.667 2.143 C 11.256 2.143 11.733 2.623 11.733 3.214 C 11.733 3.806 11.256 4.286 10.667 4.286 C 10.078 4.286 9.6 3.806 9.6 3.214 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 7.467 1.071 C 7.467 0.48 7.944 0 8.533 0 C 9.122 0 9.6 0.48 9.6 1.071 C 9.6 1.663 9.122 2.143 8.533 2.143 C 7.944 2.143 7.467 1.663 7.467 1.071 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 13.867 7.5 C 13.867 6.908 14.344 6.429 14.933 6.429 C 15.522 6.429 16 6.908 16 7.5 C 16 8.092 15.522 8.571 14.933 8.571 C 14.344 8.571 13.867 8.092 13.867 7.5 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 0 7.5 C 0 6.908 0.478 6.429 1.067 6.429 C 1.656 6.429 2.133 6.908 2.133 7.5 C 2.133 8.092 1.656 8.571 1.067 8.571 C 0.478 8.571 0 8.092 0 7.5 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 3.2 7.5 C 3.2 6.908 3.678 6.429 4.267 6.429 C 4.856 6.429 5.333 6.908 5.333 7.5 C 5.333 8.092 4.856 8.571 4.267 8.571 C 3.678 8.571 3.2 8.092 3.2 7.5 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 6.4 7.5 C 6.4 6.908 6.878 6.429 7.467 6.429 C 8.056 6.429 8.533 6.908 8.533 7.5 C 8.533 8.092 8.056 8.571 7.467 8.571 C 6.878 8.571 6.4 8.092 6.4 7.5 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 9.6 7.5 C 9.6 6.908 10.078 6.429 10.667 6.429 C 11.256 6.429 11.733 6.908 11.733 7.5 C 11.733 8.092 11.256 8.571 10.667 8.571 C 10.078 8.571 9.6 8.092 9.6 7.5 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 11.733 9.643 C 11.733 9.051 12.211 8.571 12.8 8.571 C 13.389 8.571 13.867 9.051 13.867 9.643 C 13.867 10.235 13.389 10.714 12.8 10.714 C 12.211 10.714 11.733 10.235 11.733 9.643 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 9.6 11.786 C 9.6 11.194 10.078 10.714 10.667 10.714 C 11.256 10.714 11.733 11.194 11.733 11.786 C 11.733 12.377 11.256 12.857 10.667 12.857 C 10.078 12.857 9.6 12.377 9.6 11.786 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 7.467 13.929 C 7.467 13.337 7.944 12.857 8.533 12.857 C 9.122 12.857 9.6 13.337 9.6 13.929 C 9.6 14.52 9.122 15 8.533 15 C 7.944 15 7.467 14.52 7.467 13.929 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 11.733 5.357 C 11.733 4.765 12.211 4.286 12.8 4.286 C 13.389 4.286 13.867 4.765 13.867 5.357 C 13.867 5.949 13.389 6.429 12.8 6.429 C 12.211 6.429 11.733 5.949 11.733 5.357 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-        </svg>
-        <svg viewBox={"0 0 16 15"} id={"svg11642536742"}>
-          <path
-            d={
-              "M 9.6 3.214 C 9.6 2.623 10.078 2.143 10.667 2.143 C 11.256 2.143 11.733 2.623 11.733 3.214 C 11.733 3.806 11.256 4.286 10.667 4.286 C 10.078 4.286 9.6 3.806 9.6 3.214 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 7.467 1.071 C 7.467 0.48 7.944 0 8.533 0 C 9.122 0 9.6 0.48 9.6 1.071 C 9.6 1.663 9.122 2.143 8.533 2.143 C 7.944 2.143 7.467 1.663 7.467 1.071 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 13.867 7.5 C 13.867 6.908 14.344 6.429 14.933 6.429 C 15.522 6.429 16 6.908 16 7.5 C 16 8.092 15.522 8.571 14.933 8.571 C 14.344 8.571 13.867 8.092 13.867 7.5 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-            opacity={"0.5"}
-          />
-          <path
-            d={
-              "M 0 7.5 C 0 6.908 0.478 6.429 1.067 6.429 C 1.656 6.429 2.133 6.908 2.133 7.5 C 2.133 8.092 1.656 8.571 1.067 8.571 C 0.478 8.571 0 8.092 0 7.5 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 3.2 7.5 C 3.2 6.908 3.678 6.429 4.267 6.429 C 4.856 6.429 5.333 6.908 5.333 7.5 C 5.333 8.092 4.856 8.571 4.267 8.571 C 3.678 8.571 3.2 8.092 3.2 7.5 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 6.4 7.5 C 6.4 6.908 6.878 6.429 7.467 6.429 C 8.056 6.429 8.533 6.908 8.533 7.5 C 8.533 8.092 8.056 8.571 7.467 8.571 C 6.878 8.571 6.4 8.092 6.4 7.5 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 9.6 7.5 C 9.6 6.908 10.078 6.429 10.667 6.429 C 11.256 6.429 11.733 6.908 11.733 7.5 C 11.733 8.092 11.256 8.571 10.667 8.571 C 10.078 8.571 9.6 8.092 9.6 7.5 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 11.733 9.643 C 11.733 9.051 12.211 8.571 12.8 8.571 C 13.389 8.571 13.867 9.051 13.867 9.643 C 13.867 10.235 13.389 10.714 12.8 10.714 C 12.211 10.714 11.733 10.235 11.733 9.643 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-            opacity={"0.5"}
-          />
-          <path
-            d={
-              "M 9.6 11.786 C 9.6 11.194 10.078 10.714 10.667 10.714 C 11.256 10.714 11.733 11.194 11.733 11.786 C 11.733 12.377 11.256 12.857 10.667 12.857 C 10.078 12.857 9.6 12.377 9.6 11.786 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 7.467 13.929 C 7.467 13.337 7.944 12.857 8.533 12.857 C 9.122 12.857 9.6 13.337 9.6 13.929 C 9.6 14.52 9.122 15 8.533 15 C 7.944 15 7.467 14.52 7.467 13.929 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-          />
-          <path
-            d={
-              "M 11.733 5.357 C 11.733 4.765 12.211 4.286 12.8 4.286 C 13.389 4.286 13.867 4.765 13.867 5.357 C 13.867 5.949 13.389 6.429 12.8 6.429 C 12.211 6.429 11.733 5.949 11.733 5.357 Z"
-            }
-            fill={
-              "var(--token-ba5469a1-3890-44cc-aaeb-d6b7e143f20d, rgb(244, 244, 245))"
-            }
-            opacity={"0.5"}
-          />
         </svg>
       </div>
     </>

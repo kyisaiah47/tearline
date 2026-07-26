@@ -1,0 +1,351 @@
+/* ============================================================================
+ * TEMPLATE — additions shared by every product built on this donor.
+ *
+ * Loaded between globals.css (the untouched port) and theme.css (the product's
+ * values). Nothing here names a product; everything here reads a variable that
+ * theme.css sets. If a rule only makes sense for one product it does not belong
+ * in this file.
+ * ==========================================================================*/
+
+/* --- tokens the port left dangling -----------------------------------------
+ * The class renamer rewrote Framer's token variables to readable --color-*
+ * names, but 16 references survive inside inline styles it does not rewrite,
+ * and two of them carry no fallback. An undefined custom property in a `stroke`
+ * or `background` makes the declaration invalid at computed-value time, so the
+ * FAQ's plus glyphs and the nav chevrons simply did not paint. Aliasing them
+ * here fixes every call site at once, and keeps globals.css untouched. */
+:root,
+body {
+  --token-06c91b52-e1ea-4d2b-8cca-eda2631e998e: var(--color-text, #d1d1d1);
+  --token-2677a7ab-1420-48e4-957c-83a3935eeb1d: var(--color-black, #1a1917);
+}
+
+/* --- the hero backdrop -----------------------------------------------------
+ * The donor filled the hero's right half with a Framer Shader: a live WebGL
+ * canvas. Shaders do not survive a static port — the element came across as an
+ * empty <canvas> and the right half of the hero rendered as flat black.
+ *
+ * A still image is the better slot anyway. It is one file per product, it can
+ * be generated to the product's palette, and it costs nothing to paint.
+ *
+ * The donor's shader ran edge to edge under a floating window, so the image is
+ * cover-cropped and centred to match, and carries the same faint darkening the
+ * shader had so the window's shadow still reads against it. */
+.page-body .hero-visual-container.tl-backdrop {
+  background-color: var(--color-black-13, #141312);
+  background-image: linear-gradient(
+      to bottom,
+      rgb(0 0 0 / 25%),
+      rgb(0 0 0 / 10%) 40%,
+      rgb(0 0 0 / 45%)
+    ),
+    var(--brand-backdrop);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Nothing was generated yet, or the file 404s: fall back to a flat plate rather
+ * than a broken-image edge, so a missing asset degrades quietly. */
+.page-body .hero-visual-container.tl-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 120px rgb(0 0 0 / 55%);
+  pointer-events: none;
+}
+
+/* --- the hero window -------------------------------------------------------
+ * The donor pinned this to a fixed box (460x284 on desktop, `inset: 48px` on
+ * tablet, `inset: 24px 16px` on phone) because the thing behind it was a shader
+ * canvas that dictated the height. Every one of those numbers assumes the panel
+ * contains exactly five lines of code and nothing else.
+ *
+ * A panel that renders a RESULT cannot be a fixed box — the result is whatever
+ * the visitor's markup produces, and its height is not knowable in advance. At
+ * 810px the donor's `inset: 48px` left 304px for a window that wanted 550, so
+ * the code area collapsed to a sliver and only the receipt survived.
+ *
+ * So the window goes back into flow and the column sizes to it, at every
+ * breakpoint. The backdrop becomes its own layer underneath rather than the
+ * element doing the sizing. */
+.page-body .herosection-right {
+  height: auto;
+  padding: 64px 40px;
+  justify-content: center;
+}
+
+.page-body .hero-visual-container.tl-backdrop {
+  position: absolute;
+  inset: 0;
+  flex: none;
+  width: 100%;
+  height: 100%;
+}
+
+.page-body .hero-code-preview {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+}
+
+@media (max-width: 809.98px) {
+  .page-body .herosection-right {
+    padding: 40px 24px;
+  }
+}
+
+/* --- a rendered result sitting inside a code window ------------------------
+ * The aside slot of CodePanel. Keeps whatever the product renders from
+ * stretching, and gives it the same dark ground as the gutter. */
+.panel-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0 8px;
+}
+
+.panel-result > * {
+  flex: 0 0 auto;
+}
+
+/* --- editor + stage --------------------------------------------------------
+ * A textarea is the one thing no marketing template ships, so this is the only
+ * genuinely hand-built surface on the page. It borrows the code window's
+ * measurements exactly — same border, same radius, same mono stack, same
+ * hairline colour — so it reads as another panel rather than a form control
+ * someone dropped in. */
+.tl-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 24px;
+}
+
+.tl-editor-label,
+.tl-seed {
+  font-family: "Geist Mono", "Fira Code", monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--color-gray-dark-2, #404040);
+}
+
+.tl-textarea {
+  width: 100%;
+  min-height: 300px;
+  resize: vertical;
+  padding: 16px;
+  border: 1px solid var(--color-gray-dark, #2a2a2a);
+  border-radius: 16px;
+  background: var(--color-black-12, #211f1c);
+  color: var(--color-text, #d1d1d1);
+  font-size: 13px;
+  line-height: 22px;
+  tab-size: 2;
+}
+
+.tl-textarea:focus {
+  outline: none;
+  border-color: var(--color-yellow-3-40, rgb(255 165 82 / 40%));
+}
+
+.tl-editor-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Lifted from the donor's primary/secondary link pair rather than invented:
+ * same radius, same weight, same 40px box. */
+.tl-btn {
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  padding: 12px 18px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: var(--color-background, #ffa552);
+  color: var(--color-black, #1a1917);
+  cursor: pointer;
+}
+
+.tl-btn-ghost {
+  background: transparent;
+  border-color: var(--color-gray-dark, #2a2a2a);
+  color: var(--color-text, #d1d1d1);
+}
+
+.tl-btn:hover {
+  filter: brightness(1.08);
+}
+
+/* The stage is deliberately not a card. The receipt already has paper, a torn
+ * edge and a shadow; putting it inside a second frame is the box-in-box the
+ * donor never does. */
+.tl-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 40px 24px;
+}
+
+/* The step blocks stack their own children; the stat cells they borrow are
+ * centred, which is wrong for a paragraph. */
+.tl-steps {
+  --border-top-width: 0px;
+}
+
+.tl-step {
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
+}
+
+/* --- docs surfaces ---------------------------------------------------------
+ * Install commands and a reference table. The template has no precedent for
+ * either, so these are the only hand-built rules on the page — and they take
+ * every measurement from the code window (1px hairline, 16px radius, the mono
+ * stack, 22px line box) so they read as the same family. */
+.tl-docs {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 40px;
+  width: 100%;
+  padding: 8px 0 0;
+}
+
+.tl-docs-col {
+  min-width: 0;
+}
+
+.tl-docs-label {
+  margin: 0 0 12px;
+  font-family: "Geist Mono", "Fira Code", monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--color-gray-dark-2, #404040);
+}
+
+.tl-docs-label + .tl-copy + .tl-docs-label,
+.tl-docs-label-gap {
+  margin-top: 32px;
+}
+
+.tl-docs-note {
+  margin: 24px 0 0;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--value-gray-2, gray);
+}
+
+.tl-docs-note code,
+.tl-td-name code {
+  font-family: "Geist Mono", "Fira Code", monospace;
+  font-size: 0.92em;
+  color: var(--color-background, #ffa552);
+}
+
+.tl-docs-note strong {
+  color: var(--color-text, #d1d1d1);
+  font-weight: 500;
+}
+
+.tl-copy {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--color-gray-dark, #2a2a2a);
+  border-radius: 16px;
+  background: var(--color-black-12, #211f1c);
+  font-family: "Geist Mono", "Fira Code", monospace;
+  font-size: 13px;
+  line-height: 22px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tl-copy:hover {
+  border-color: var(--color-yellow-3-40, rgb(255 165 82 / 40%));
+}
+
+.tl-copy-prompt {
+  flex: none;
+  user-select: none;
+  color: var(--color-gray-dark-2, #404040);
+}
+
+.tl-copy-text {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color-text, #d1d1d1);
+}
+
+.tl-copy-action {
+  flex: none;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--color-gray-dark-2, #404040);
+}
+
+.tl-copy:hover .tl-copy-action {
+  color: var(--color-background, #ffa552);
+}
+
+/* --- reference table -------------------------------------------------------
+ * Rows are separated by the same hairline the panels use, so the table reads as
+ * a continuation of them rather than as documentation pasted in. */
+.tl-api {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  width: 100%;
+  padding: 56px 0 0;
+}
+
+.tl-api-col {
+  min-width: 0;
+}
+
+.tl-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tl-table td {
+  padding: 14px 12px 14px 0;
+  border-top: 1px solid var(--color-gray-dark, #2a2a2a);
+  font-size: 13px;
+  line-height: 22px;
+  color: var(--value-gray-2, gray);
+  vertical-align: top;
+}
+
+.tl-td-name {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.tl-td-def {
+  width: 1%;
+  white-space: nowrap;
+  font-family: "Geist Mono", "Fira Code", monospace;
+  color: var(--color-gray-dark-2, #404040);
+}
+
+@media (max-width: 1199.98px) {
+  .tl-docs,
+  .tl-api {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

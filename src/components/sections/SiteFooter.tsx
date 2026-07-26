@@ -1,32 +1,212 @@
 /**
- * Compact footer.
+ * Site footer.
  *
- * Replaces the template's four-column footer, which carried two invented HQ
- * addresses, invented US/EU phone numbers, dead social handles and a newsletter
- * form with no backend. A free MIT component needs a licence line, a way to
- * reach us, and the two places it actually lives.
+ * Replaces the port's `PageContentContainer` (again, named after the slot it
+ * landed in rather than what it is).
+ *
+ * What the donor's footer contained, and why almost none of it survived: five
+ * social icons for accounts that do not exist; a newsletter form with a Submit
+ * button and no backend, plus eleven hidden honeypot inputs behind it; four
+ * link columns totalling twenty entries, pointing at About, Careers, Changelog,
+ * Customers, Download, Docs, Blog and three legal pages, none of which are
+ * pages here; and an "All systems operational" badge linking to instatus.com
+ * for a component that runs entirely in the visitor's browser and has no
+ * systems to be operational.
+ *
+ * What is left is what is true: the product, where the code is, and who made
+ * it. Per the house rule, the social column becomes a single Kynth Studio link
+ * rather than borrowing the parent's handles.
  */
+
+type Group = { label: string; links: [string, string, boolean?][] };
+
+const GROUPS: Group[] = [
+  {
+    label: "Product",
+    links: [
+      ["Overview", "#hero-section"],
+      ["Features", "#features"],
+      ["Playground", "#playground"],
+      ["FAQ", "#faq"],
+    ],
+  },
+  {
+    label: "Docs",
+    links: [
+      ["Install", "#install"],
+      ["API reference", "#api"],
+      ["Accessibility", "#api"],
+    ],
+  },
+  {
+    label: "Code",
+    links: [
+      ["GitHub", "https://github.com/kyisaiah47/tearline", true],
+      ["npm", "https://www.npmjs.com/package/tearline", true],
+      ["MIT licence", "https://github.com/kyisaiah47/tearline/blob/main/LICENSE", true],
+    ],
+  },
+  {
+    label: "Studio",
+    links: [["Kynth Studio", "https://kynth.studio", true]],
+  },
+];
+
+const LINK_COLOR =
+  "var(--extracted-r6o4lv, var(--color-text, rgb(209, 209, 209)))";
+
 export default function SiteFooter() {
   return (
-    <footer className={"tl-footer"}>
-      <div className={"tl-shell tl-footer-inner"}>
-        <div className={"tl-footer-brand"}>
-          <p className={"tl-footer-mark"}>{"TEARLINE"}</p>
-          <p className={"tl-footer-note"}>
-            {"MIT licensed. Free forever. A "}
-            <a href={"https://kynth.studio"}>{"Kynth Studio"}</a>
-            {" project."}
-          </p>
-        </div>
+    <div className={"page-content-container"}>
+      <footer className={"site-footer-phone"} data-border={"true"} style={{ width: "100%" }}>
+        <div className={"content-4"} data-name={"Content"}>
+          <div className={"left"} data-name={"Left"}>
+            <div className={"top"} data-name={"Top"}>
+              <div
+                className={"logo-description"}
+                data-name={"Logo + description"}
+              >
+                <div className={"footer-logo-container"}>
+                  <a href={"/"} rel={"noopener"}>
+                    <div
+                      className={"logo"}
+                      data-name={"Logo"}
+                      aria-hidden={"true"}
+                      data-component={"SVG"}
+                    >
+                      <div className={"svgContainer"}>
+                        <svg
+                          preserveAspectRatio={"none"}
+                          width={"100%"}
+                          height={"100%"}
+                          style={{ width: "100%", height: "100%" }}
+                        >
+                          <use href={"#brand-mark"} />
+                        </svg>
+                      </div>
+                    </div>
+                  </a>
+                  <div
+                    className={"brand-wordmark"}
+                    data-component={"RichTextContainer"}
+                  >
+                    <h4 className={"heading-4"} dir={"auto"}>
+                      {"Tearline"}
+                    </h4>
+                  </div>
+                </div>
+                <div
+                  className={"footer-tagline"}
+                  data-component={"RichTextContainer"}
+                >
+                  <p className={"heading-4 nav-link-text"} dir={"auto"}>
+                    {"Wrap any HTML in one tag and it prints as a receipt."}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <nav className={"tl-footer-links"} aria-label={"Footer"}>
-          <a href={"https://github.com/kyisaiah47/tearline"}>{"GitHub"}</a>
-          <a href={"https://www.npmjs.com/package/tearline"}>{"npm"}</a>
-          <a href={"/#playground"}>{"Playground"}</a>
-          <a href={"/#install"}>{"Docs"}</a>
-          <a href={"mailto:hello@kynth.studio"}>{"hello@kynth.studio"}</a>
-        </nav>
-      </div>
-    </footer>
+          <div
+            className={"right"}
+            data-border={"true"}
+            data-name={"Right"}
+            style={{ "--border-left-width": "0px", "--border-top-width": "1px" }}
+          >
+            <div className={"content-stack"}>
+              {GROUPS.map((group) => (
+                <div className={"footer-product-group"} key={group.label}>
+                  <div className={"label-4"} data-name={"Label"}>
+                    <div
+                      className={"footer-product-heading"}
+                      data-component={"RichTextContainer"}
+                    >
+                      <p className={"heading-4 menu-label"} dir={"auto"}>
+                        {group.label}
+                      </p>
+                    </div>
+                  </div>
+                  <div className={"links-6"} data-name={"Links"}>
+                    {group.links.map(([label, href, external]) => (
+                      <div className={"menu-overview-link"} key={label + href}>
+                        <a
+                          className={
+                            "small-3 link-16 nav-link small-2 small-3-state small"
+                          }
+                          data-name={"Small"}
+                          data-highlight={"true"}
+                          href={href}
+                          tabIndex={0}
+                          {...(external
+                            ? { target: "_blank", rel: "noopener" }
+                            : {})}
+                        >
+                          <div
+                            className={"nav-link-label"}
+                            data-component={"RichTextContainer"}
+                          >
+                            <p
+                              className={"heading-4 body-text"}
+                              dir={"auto"}
+                              style={{ "--rt-text-color": LINK_COLOR }}
+                            >
+                              {label}
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className={"footer-bottom-bar"} data-border={"true"}>
+              <div
+                className={"footer-copyright-text"}
+                data-component={"RichTextContainer"}
+              >
+                <p className={"heading-4 body-text"} dir={"auto"}>
+                  {"© 2026 Tearline. MIT licensed — free forever."}
+                </p>
+              </div>
+              <div className={"status-badge-container"}>
+                <a
+                  className={
+                    "herosection-dot-4 nav-dropdown-trigger herosection-dot herosection-dot-4-state herosection-dot-2"
+                  }
+                  data-name={"Dot"}
+                  href={"https://kynth.studio"}
+                  target={"_blank"}
+                  rel={"noopener"}
+                >
+                  <div
+                    className={"herosection-dot-3"}
+                    data-border={"true"}
+                    data-name={"Dot"}
+                    style={{ borderRadius: "2px" }}
+                  />
+                  <div
+                    className={"hiring-badge"}
+                    data-component={"RichTextContainer"}
+                  >
+                    <p
+                      className={"heading-4 menu-label"}
+                      dir={"auto"}
+                      style={{
+                        "--rt-text-color":
+                          "var(--extracted-r6o4lv, var(--color-background, rgb(255, 165, 82)))",
+                      }}
+                    >
+                      {"A Kynth Studio project"}
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 }
