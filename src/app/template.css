@@ -574,3 +574,54 @@ body {
     opacity: 1;
   }
 }
+
+/* --- nothing renders until it is ready -------------------------------------
+ * A custom element's children are ordinary HTML until the element upgrades: a
+ * bare <h1> and some <p>s in the host's body font, sitting in the layout at a
+ * completely different height to the thing that replaces them. On a cold load
+ * that is visible long enough to read, and then it jumps.
+ *
+ * This rule has to live HERE, in the page's stylesheet, and not in the
+ * component. Shipping it from tearline.js was the obvious move and it is
+ * useless: the rule only exists once that script has run, which is the exact
+ * moment :not(:defined) stops matching. It hid nothing during the only window
+ * that mattered.
+ *
+ * Scoped to .js — stamped on <html> by the inline head script before any of
+ * this can match — so if the script never loads, the rule never applies and
+ * the raw content is shown rather than hidden forever. */
+.js tear-line:not(:defined) {
+  visibility: hidden;
+}
+
+/* Reserve the space the receipt will occupy so its arrival does not push the
+ * page around. Any value is a guess; being roughly right and stable beats
+ * being exactly right one frame late. */
+.panel-result,
+.tl-stage {
+  min-height: 260px;
+}
+
+/* Then bring it in rather than snapping it on. The element sets data-ready on
+ * its first paint, so this fires once per receipt and never on a re-render. */
+tear-line[data-ready] {
+  animation: tl-arrive 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes tl-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  tear-line[data-ready] {
+    animation: none;
+  }
+}

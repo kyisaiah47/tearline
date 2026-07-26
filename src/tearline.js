@@ -226,6 +226,12 @@ class TearLine extends HTMLElement {
       this.#paper.parentElement.style.setProperty('--tilt', `${this.getAttribute('tilt')}deg`);
     }
     this.#paper.style.clipPath = tearPath(rand);
+    // The host page fades in on [data-ready]. Set on the next frame, after the
+    // paper, the tear and the barcode are all in place — setting it here would
+    // announce "ready" one layout too early and animate a half-drawn receipt.
+    if (!this.hasAttribute('data-ready')) {
+      requestAnimationFrame(() => this.setAttribute('data-ready', ''));
+    }
 
     // barcode is rebuilt from the same stream, so it moves with the seed too
     this.#paper.querySelector('.barcode')?.remove();
@@ -329,24 +335,6 @@ class TearLine extends HTMLElement {
   }
 }
 
-if (!customElements.get('tear-line')) /* Until the element upgrades, its children are ordinary HTML sitting in the
- * page — a bare <h1> and some <p>s, unstyled, in whatever the host's body font
- * is. On a slow connection that is visible for long enough to read, and it
- * looks like the page is broken rather than loading.
- *
- * :defined only matches once customElements.define has run, so hiding on
- * :not(:defined) is exactly the window we want. Injecting it from here rather
- * than asking every consumer to add it means a page cannot forget — and if this
- * script never loads at all, the rule never lands either, so the content stays
- * visible instead of being hidden forever by a stylesheet with nothing to
- * reveal it. */
-if (typeof document !== 'undefined' && !document.getElementById('tear-line-fouc')) {
-  const s = document.createElement('style');
-  s.id = 'tear-line-fouc';
-  s.textContent = 'tear-line:not(:defined){visibility:hidden}';
-  document.head.append(s);
-}
-
-customElements.define('tear-line', TearLine);
+if (!customElements.get('tear-line')) customElements.define('tear-line', TearLine);
 
 export default TearLine;
