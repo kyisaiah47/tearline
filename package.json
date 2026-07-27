@@ -40,10 +40,11 @@
     "verify": "NEXT_DIST_DIR=.next-verify next build"
   },
   "dependencies": {
+    "lenis": "^1.1.14",
     "next": "15.5.22",
+    "posthog-js": "^1.407.0",
     "react": "19.1.1",
-    "react-dom": "19.1.1",
-    "lenis": "^1.1.14"
+    "react-dom": "19.1.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

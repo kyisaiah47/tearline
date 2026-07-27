@@ -3,6 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 import "./template.css";
 import "./theme.css";
+import Analytics from '@/components/Analytics';
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://tearline.kynth.studio"),
@@ -55,6 +56,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <Analytics />
         {children}
         {/* The product itself, loaded exactly the way the docs tell a visitor
          * to load it. Everything on this page that looks like a receipt is
