@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
 import "./template.css";
 import "./theme.css";
+import "./mobile.css";
 import Analytics from '@/components/Analytics';
 import BrandMark from '@/components/BrandMark';
 import JsonLd, { siteGraph } from '@/components/JsonLd';
@@ -35,6 +36,16 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: ["/og.jpg"],
   },
+};
+
+// The clone pipeline never emitted one, so phones fell back to the 980px desktop
+// viewport and scaled the whole page down. No maximumScale/userScalable — pinch
+// zoom has to stay available.
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#1a1917',
 };
 
 export default function RootLayout({

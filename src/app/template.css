@@ -438,6 +438,29 @@ body {
   .tl-api {
     padding: 40px 16px 0;
   }
+
+  /* The reference tables keep their desktop column split on a phone, which
+   * leaves the description ~135px wide — four words a line, running twelve
+   * lines deep, with the term and unit columns half empty beside it. Stack
+   * every cell instead and move the row rule up to the <tr>, since the rule
+   * was on each cell's border-top and would otherwise draw three times. */
+  .tl-table tr {
+    display: block;
+    border-top: 1px solid var(--color-gray-dark, #2a2a2a);
+    padding: 14px 0;
+  }
+
+  .tl-table td {
+    display: block;
+    width: auto;
+    padding: 0;
+    border-top: 0;
+    white-space: normal;
+  }
+
+  .tl-td-def {
+    margin-bottom: 2px;
+  }
 }
 
 /* --- command buttons -------------------------------------------------------

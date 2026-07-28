@@ -1,0 +1,70 @@
+/* Phone-only repair sheet. Imported from layout.tsx AFTER globals.css.
+ *
+ * IDENTICAL TO tearline/src/app/mobile.css — the two products are the same
+ * template instance (same globals.css, same template.css, only theme.css
+ * differs). Fix a finding once and copy the file across; do not diverge them.
+ *
+ * 809.98px is the template's own phone breakpoint, not a new one.
+ *
+ * Audited by ~/Projects/demos/mobile/run.mjs pushcount tearline. */
+
+@media (max-width: 809.98px) {
+  /* ── Touch targets ───────────────────────────────────────────────────────
+   * min-height alone does nothing on an inline box. Growing the hit area with
+   * inline-flex/flex + align-items:center leaves the glyphs on the same
+   * baseline, so nothing moves visually.
+   *
+   * Measured at 390px before the fix: footer nav links 21px, the two wordmark
+   * links 26/20px, the hero and footer status pills 23px, the file-picker
+   * button 40px, the FAQ rows 24px, and the primary/secondary CTAs 43.6px —
+   * which rounds to 44 in the report and still misses the floor. */
+  .brand-logo-link,
+  .herosection-dot,
+  .login-link,
+  .nav-link.small {
+    display: flex !important;
+    align-items: center !important;
+    min-height: 44px !important;
+  }
+
+  .tl-btn {
+    min-height: 44px !important;
+  }
+
+  /* The FAQ header is the accordion's control — a div carrying role=button,
+   * so it is not covered by any of the element selectors above. */
+  .faqsection-top {
+    min-height: 44px !important;
+  }
+
+  /* ── Header row ──────────────────────────────────────────────────────────
+   * The phone header is `flex-flow: row nowrap` with fixed-size children, so a
+   * repo carrying one link more than the donor overruns it and the last
+   * control is clipped by the bar. On tearline at 390px the logo (94px) plus
+   * the CTA group (281px) plus 48px of padding wants 423px and the copy mark
+   * on `$ npm i tearline` was cut off.
+   *
+   * Wrapping only engages when the row actually overflows, so pushcount — logo
+   * plus a single CTA — is untouched. */
+  .tablet-phone-closed .content-2 {
+    flex-wrap: wrap !important;
+    row-gap: 12px !important;
+  }
+
+  /* ── Prose floor ─────────────────────────────────────────────────────────
+   * The dropzone's format hint is a full line of copy at 11px. The neighbouring
+   * 11px strings are short labels and stay as designed. */
+  .tl-code-editor .tl-editor-label {
+    font-size: 13px !important;
+  }
+
+  /* ── Form controls ───────────────────────────────────────────────────────
+   * Anything under 16px makes iOS zoom the whole page on focus and it never
+   * zooms back. The lockfile picker's <input type=file> inherits the template's
+   * 12px reset. */
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
