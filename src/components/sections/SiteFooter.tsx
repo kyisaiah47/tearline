@@ -27,22 +27,25 @@
 
 type Group = { label: string; links: [string, string, boolean?][] };
 
+/* Root-relative, not bare fragments: the footer renders on /docs as well, where
+ * `#features` scrolls to nothing. */
 const GROUPS: Group[] = [
   {
     label: "Product",
     links: [
-      ["Overview", "#hero-section"],
-      ["Features", "#features"],
-      ["Playground", "#playground"],
-      ["FAQ", "#faq"],
+      ["Overview", "/#hero-section"],
+      ["Features", "/#features"],
+      ["Playground", "/#playground"],
+      ["FAQ", "/#faq"],
     ],
   },
   {
     label: "Docs",
     links: [
-      ["Install", "#install"],
-      ["API reference", "#api"],
-      ["Accessibility", "#api"],
+      ["Install", "/docs#install"],
+      ["API reference", "/docs#api"],
+      ["Exporting a PNG", "/docs#export"],
+      ["Accessibility", "/docs#accessibility"],
     ],
   },
   {
@@ -50,7 +53,11 @@ const GROUPS: Group[] = [
     links: [
       ["GitHub", "https://github.com/kyisaiah47/tearline", true],
       ["npm", "https://www.npmjs.com/package/tearline", true],
-      ["MIT licence", "https://github.com/kyisaiah47/tearline/blob/main/LICENSE", true],
+      /* Pointed at the licence text itself rather than at blob/main/LICENSE in
+       * the repo. The repo is private (FACTS.json, checked 2026-07-28), so that
+       * link 404s for every visitor — and "MIT" is the one claim on this page a
+       * reader should always be able to go and check. */
+      ["MIT licence", "https://opensource.org/license/mit", true],
     ],
   },
   {

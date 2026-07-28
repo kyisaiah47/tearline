@@ -10,21 +10,25 @@ import CommandButton from "@/components/CommandButton";
  * items between them, each with a title, a description and a "New" badge —
  * duplicated across three breakpoints. That is a navigation for a product with
  * twelve pages. This template is for products with one, so the dropdowns are
- * gone and the hamburger with them: every link here is an anchor on the page
- * the visitor is already on, and a menu that scrolls you 800px down the page
- * you are looking at is worse than no menu.
+ * gone and the hamburger with them: a menu that scrolls you 800px down the
+ * page you are looking at is worse than no menu.
  *
  * Markup is lifted from the donor's desktop bar verbatim — same nav/content-2/
  * links-3/ctas-2 classes, same link chrome — so it inherits the captured
  * layout rather than approximating it. Only the link SET is ours, and it lives
  * in one array so a new product edits four lines.
+ *
+ * Every href is ROOT-RELATIVE, not a bare fragment. The header renders on
+ * /docs too, and `#playground` there scrolls to nothing and quietly rewrites
+ * the URL to /docs#playground — a bare fragment is only correct on a site with
+ * exactly one page, which this stopped being.
  */
 
 const LINKS: [string, string][] = [
-  ["Playground", "#playground"],
-  ["Install", "#install"],
-  ["API", "#api"],
-  ["FAQ", "#faq"],
+  ["Playground", "/#playground"],
+  ["Docs", "/docs"],
+  ["API", "/docs#api"],
+  ["FAQ", "/#faq"],
 ];
 
 const NAV_TEXT_COLOR =

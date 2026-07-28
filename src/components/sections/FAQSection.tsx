@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import JsonLd, { APP_ID, SITE_ID } from "@/components/JsonLd";
 
 /**
  * FAQ.
@@ -53,6 +54,22 @@ const FAQS: [string, string][] = [
 const ICON_STROKE =
   "var(--token-06c91b52-e1ea-4d2b-8cca-eda2631e998e, rgb(209, 209, 209))";
 
+/* Built from the same FAQS array the accordion renders, so the schema cannot
+ * describe an answer the page does not show — which is the one thing a
+ * structured-data penalty is actually for. */
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://tearline.kynth.studio/#faq",
+  isPartOf: { "@id": SITE_ID },
+  about: { "@id": APP_ID },
+  mainEntity: FAQS.map(([q, a]) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
 export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(0);
 
@@ -63,6 +80,7 @@ export default function FAQSection() {
       data-name={"FAQ Section"}
       id={"faq"}
     >
+      <JsonLd data={FAQ_SCHEMA} />
       <div className={"faqsection-content"}>
         <div
           className={"faqsection-heading-wrapper"}

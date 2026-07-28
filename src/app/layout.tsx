@@ -4,12 +4,17 @@ import "./globals.css";
 import "./template.css";
 import "./theme.css";
 import Analytics from '@/components/Analytics';
+import BrandMark from '@/components/BrandMark';
+import JsonLd, { siteGraph } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://tearline.kynth.studio"),
   title: "Tearline — any HTML, printed as a receipt",
   description:
     "One custom element that renders anything you wrap in it as a thermal receipt, then exports it as a PNG. Zero dependencies, no build step, MIT.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Tearline — any HTML, printed as a receipt",
     description:
@@ -54,9 +59,18 @@ export default function RootLayout({
             __html: "document.documentElement.classList.add('js')",
           }}
         />
+        {/* Sitewide structured data. In <head> so it is the same block on every
+         * route; per-page schema (the FAQ, the docs article) is emitted by the
+         * section that renders the copy it describes. */}
+        <JsonLd data={siteGraph} />
       </head>
       <body>
         <Analytics />
+        {/* The <use href="#brand-mark"> sprite the header and footer logos
+         * point at. It used to live at the bottom of the home page, which meant
+         * the mark simply was not there on any other route — the logo slot
+         * rendered an empty <svg>. It belongs to the shell, not to one page. */}
+        <BrandMark />
         {children}
         {/* The product itself, loaded exactly the way the docs tell a visitor
          * to load it. Everything on this page that looks like a receipt is

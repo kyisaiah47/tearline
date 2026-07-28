@@ -1,0 +1,65 @@
+{
+  "product": "tearline",
+  "host": "tearline.kynth.studio",
+  "note": "Dated-claim register. Tearline is a developer library, not a regulated product, so it makes almost no claims about the world that decay on a calendar. What it does claim is that three external artefacts exist and are reachable: an npm package, a public source repository, and a hosted script URL. Those are the entries below. Every one was fetched on the lastVerified date; none is remembered.",
+  "claims": [
+    {
+      "id": "npm-package-published",
+      "claim": "Tearline is installable from npm with `npm i tearline`",
+      "value": "published on npm as `tearline`",
+      "kind": "availability",
+      "sourceUrl": "https://registry.npmjs.org/tearline",
+      "sourceTitle": "npm registry — tearline",
+      "asOf": "2026-07-28",
+      "appearsOn": [
+        "src/components/sections/SiteHeader.tsx",
+        "src/components/sections/HeroSection.tsx",
+        "src/components/sections/InstallSection.tsx",
+        "src/components/sections/SiteFooter.tsx",
+        "src/app/page.tsx",
+        "README.md"
+      ],
+      "lastVerified": "2026-07-28",
+      "status": "drifted",
+      "currentValue": "not published — registry.npmjs.org/tearline returns HTTP 404 {\"error\":\"Not found\"}. package.json is also marked \"private\": true, which blocks `npm publish` until it is removed. The npm install command is the primary CTA in the header, the hero and both mobile CTA blocks, and the footer links to npmjs.com/package/tearline, which 404s.",
+      "resolvedBy": "Drop \"private\": true from package.json and run `npm publish`. That is an outward-facing publish and belongs to Isaiah, not to this loop. Until it runs, the on-page install command fails for every visitor who copies it."
+    },
+    {
+      "id": "github-repo-public",
+      "claim": "The Tearline source is readable on GitHub at kyisaiah47/tearline, and the MIT licence is verifiable there",
+      "value": "public repository",
+      "kind": "availability",
+      "sourceUrl": "https://github.com/kyisaiah47/tearline",
+      "sourceTitle": "GitHub — kyisaiah47/tearline",
+      "asOf": "2026-07-28",
+      "appearsOn": [
+        "src/components/sections/SiteHeader.tsx",
+        "src/components/sections/HeroSection.tsx",
+        "src/components/sections/SiteFooter.tsx",
+        "README.md",
+        "package.json"
+      ],
+      "lastVerified": "2026-07-28",
+      "status": "drifted",
+      "currentValue": "repository exists but visibility is PRIVATE (`gh repo view kyisaiah47/tearline` → visibility: PRIVATE), so the header, hero and footer GitHub links all render 404 for an anonymous visitor, as does the footer's \"MIT licence\" link to blob/main/LICENSE. An MIT claim whose licence file cannot be opened is a claim the buyer cannot check.",
+      "resolvedBy": "Flip the repository to public. One toggle; outward-facing, so Isaiah's call."
+    },
+    {
+      "id": "hosted-script-url",
+      "claim": "The component loads from https://tearline.kynth.studio/tearline.js via a plain script tag",
+      "value": "reachable, HTTP 200",
+      "kind": "availability",
+      "sourceUrl": "https://tearline.kynth.studio/tearline.js",
+      "sourceTitle": "Tearline — hosted ES module",
+      "asOf": "2026-07-28",
+      "appearsOn": [
+        "src/components/sections/InstallSection.tsx",
+        "src/app/docs/page.tsx",
+        "public/llms.txt",
+        "README.md"
+      ],
+      "lastVerified": "2026-07-28",
+      "status": "verified"
+    }
+  ]
+}

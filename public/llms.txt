@@ -1,0 +1,79 @@
+# Tearline
+
+> One custom element. Wrap any HTML in `<tear-line>` and it renders as a thermal
+> receipt — torn edge, barcode, receipt type — then exports itself as a PNG.
+> Zero dependencies, no build step, MIT.
+
+Tearline is a single-file web component (a custom element). It is not a
+template language, not a canvas library, and not an image service. The receipt
+is CSS wrapped around your own markup, so the text stays real text in the light
+DOM: selectable, searchable, translatable, and read by screen readers in
+document order.
+
+## Load it
+
+```html
+<script type="module" src="https://tearline.kynth.studio/tearline.js"></script>
+
+<tear-line barcode="047320260726">
+  <h1>Meridian</h1>
+  <hr>
+  <p>Cortado · 4.25</p>
+</tear-line>
+```
+
+Verified reachable (HTTP 200) on 2026-07-28. There is no npm package to install
+today — the script tag above is the supported install path.
+
+## Export it to a PNG
+
+```js
+const el = document.querySelector('tear-line');
+await el.download('receipt.png');   // saves it
+const blob = await el.toBlob();     // or handle it yourself
+const url  = await el.toDataURL();
+```
+
+The export serialises the rendered receipt into an SVG `<foreignObject>` and
+paints it onto a canvas. No dependency — but that sandbox cannot reach the
+network, so an `<img>` inside the receipt must be a `data:` URI or the export
+rejects with an explicit error rather than handing back a receipt with a hole
+in it. Text and CSS are inlined automatically.
+
+## Attributes
+
+- `width` (default `330`) — paper width in pixels.
+- `seed` (default `1`) — any integer. The same seed always produces the same
+  torn edge and the same barcode, so the export matches what the user saw.
+- `barcode` — the digits printed under the bars. Omit for no barcode. It is
+  decorative and is not a scannable Code 128.
+- `tilt` (default `-1.15`) — rotation in degrees.
+- `flat` — no rotation, no drop shadow. For embedding inside another layout.
+- `animate` — prints out on first paint. Skipped under `prefers-reduced-motion`.
+
+## Methods
+
+- `toBlob({ scale })` — resolves to a PNG `Blob`. `scale` defaults to `2`.
+- `toDataURL({ scale })` — resolves to a PNG data URL.
+- `download(name, { scale })` — saves the PNG. `name` defaults to `receipt.png`.
+
+## Styling
+
+`h1`, `h2`, `hr`, `p`, `small`, `strong`, `table`, `ul` and `ol` are styled for
+you inside the receipt. Every one of those rules is `::slotted()`, which loses
+to your own CSS, so anything can be restyled from the outside without a
+specificity fight. Paper and ink are custom properties: `--paper`, `--ink`,
+`--ink-strong`, `--ink-faded`, `--font`.
+
+## Frameworks
+
+It is a custom element, so it works anywhere HTML does — React, Vue, Svelte,
+Astro, or a plain script tag in a static file. React 19 passes unknown
+attributes through, so the tag needs no wrapper.
+
+## Pages
+
+- [Home and live playground](https://tearline.kynth.studio/)
+- [Documentation and full API reference](https://tearline.kynth.studio/docs)
+
+MIT © Kynth Studio.
