@@ -158,15 +158,29 @@ export default function InstallSection() {
 
         <div className={"tl-docs"} data-reveal={"2"}>
             <div className={"tl-docs-col"}>
-              <p className={"tl-docs-label"}>{"from npm"}</p>
-              <Copyable text={"npm i tearline"} />
-              <p className={"tl-docs-label"}>{"or straight from a script tag"}</p>
+              {/* The npm row is gone, not reworded. `npm i tearline` was the
+                * first thing on this section and it fails: the package is
+                * unpublished (FACTS.json → npm-package-published; the registry
+                * returned 404 again on 2026-07-29, and package.json still
+                * carries "private": true). An install command that errors in
+                * the reader's terminal costs more trust than the convenience
+                * ever bought. The script tag below is verified reachable and
+                * is the whole install — it comes back the moment the package
+                * ships. */}
+              <p className={"tl-docs-label"}>{"drop in a script tag"}</p>
               <Copyable
                 prompt={"<>"}
                 text={
                   'https://tearline.kynth.studio/tearline.js'
                 }
               />
+              <p className={"tl-docs-note"}>
+                {
+                  "That is the install. It is an ES module served from this origin, so there is no package to add, no bundler to configure and no build step — the custom element registers itself on load and every "
+                }
+                <code>{"<tear-line>"}</code>
+                {" on the page upgrades in place."}
+              </p>
               <p className={"tl-docs-note"}>
                 {
                   "Rendering to an image uses an SVG foreignObject, which is sandboxed and cannot fetch over the network. Text and styles are inlined for you, but an image inside the receipt must be a "

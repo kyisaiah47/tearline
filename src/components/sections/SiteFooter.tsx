@@ -51,12 +51,18 @@ const GROUPS: Group[] = [
   {
     label: "Code",
     links: [
-      ["GitHub", "https://github.com/kyisaiah47/tearline", true],
-      ["npm", "https://www.npmjs.com/package/tearline", true],
+      /* The GitHub and npm rows are gone. Both 404 for an anonymous visitor:
+       * the repository is PRIVATE and the package is unpublished (FACTS.json →
+       * github-repo-public, npm-package-published; both re-checked 2026-07-29).
+       * A footer column headed "Code" whose every link dead-ends is worse than
+       * a shorter column. They come back when the repo goes public and the
+       * package ships — the entries are still tracked in FACTS.json so the
+       * check runs daily. */
+      ["Read the source", "/tearline.js", true],
+      ["llms.txt", "/llms.txt", true],
       /* Pointed at the licence text itself rather than at blob/main/LICENSE in
-       * the repo. The repo is private (FACTS.json, checked 2026-07-28), so that
-       * link 404s for every visitor — and "MIT" is the one claim on this page a
-       * reader should always be able to go and check. */
+       * the repo, which is unreachable while the repo is private — and "MIT" is
+       * the one claim on this page a reader should always be able to check. */
       ["MIT licence", "https://opensource.org/license/mit", true],
     ],
   },

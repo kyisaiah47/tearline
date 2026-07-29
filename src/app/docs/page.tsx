@@ -28,11 +28,12 @@ import SmoothScroll from "@/components/SmoothScroll";
  * anyone with JavaScript on.
  *
  * None of this page's own copy tells a visitor to `npm i tearline`. The package
- * is not published — registry.npmjs.org/tearline was 404 on 2026-07-28, see
- * FACTS.json — so the script tag is the only install path documented here.
- * The shared header still carries the npm chip on every route; that claim is
- * recorded as drifted and is Isaiah's to resolve by publishing, not something
- * to paper over from a docs page.
+ * is not published — registry.npmjs.org/tearline returned 404 again on
+ * 2026-07-29, see FACTS.json — so the script tag is the only install path
+ * documented here. As of 2026-07-29 the shared header and hero no longer carry
+ * the npm chip either: every install surface on the site now shows the script
+ * tag, so this page is consistent with the rest rather than the exception. The
+ * claim stays recorded as drifted, and publishing it is Isaiah's to do.
  */
 
 const SITE = "https://tearline.kynth.studio";

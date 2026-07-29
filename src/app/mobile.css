@@ -42,13 +42,26 @@
    * repo carrying one link more than the donor overruns it and the last
    * control is clipped by the bar. On tearline at 390px the logo (94px) plus
    * the CTA group (281px) plus 48px of padding wants 423px and the copy mark
-   * on `$ npm i tearline` was cut off.
+   * on the install command was cut off.
    *
    * Wrapping only engages when the row actually overflows, so pushcount — logo
    * plus a single CTA — is untouched. */
   .tablet-phone-closed .content-2 {
     flex-wrap: wrap !important;
     row-gap: 12px !important;
+  }
+
+  /* The install label is a URL now, not `npm i tearline` — the package is
+   * unpublished, so the script tag is the install path (FACTS.json →
+   * npm-package-published). That took the line from 14 characters to 33, and
+   * `.tl-cmd-text` is `white-space: nowrap`: at 14px mono the button wants
+   * ~366px of the 342px a 390px phone has between its gutters, so the copy
+   * mark clipped again. 12px brings it to ~327px and fits.
+   *
+   * Not covered by the prose floor above — that governs sentences. This is a
+   * single monospaced token the reader copies rather than reads. */
+  .tl-cmd-text {
+    font-size: 12px !important;
   }
 
   /* ── Prose floor ─────────────────────────────────────────────────────────

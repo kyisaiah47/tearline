@@ -93,7 +93,13 @@ export default function HeroSection() {
                     "herosection-dot-4 nav-dropdown-trigger herosection-dot herosection-dot-4-state herosection-dot-2"
                   }
                   data-name={"Dot"}
-                  href={"https://github.com/kyisaiah47/tearline"}
+                  /* The badge says MIT, so it links to the licence a reader can
+                   * actually open. It used to point at the repository, which is
+                   * PRIVATE (FACTS.json → github-repo-public, anonymous GET 404
+                   * on 2026-07-29) — a licence claim whose only evidence link
+                   * 404s is a claim the buyer cannot check. Same destination the
+                   * footer's "MIT licence" already uses. */
+                  href={"https://opensource.org/license/mit"}
                   rel={"noopener"}
                   target={"_blank"}
                 >
@@ -195,7 +201,12 @@ export default function HeroSection() {
                 </a>
               </div>
               <div className={"hero-secondary-cta"}>
-                <CommandButton text={"npm i tearline"} />
+                {/* See SiteHeader: the npm package is unpublished, so the
+                  * secondary CTA carries the script tag, which is live. */}
+                <CommandButton
+                  text={"tearline.kynth.studio/tearline.js"}
+                  prompt={"<>"}
+                />
               </div>
             </div>
           </div>

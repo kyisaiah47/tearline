@@ -119,7 +119,7 @@ export default function Home() {
                                   "var(--extracted-r6o4lv, var(--color-black, rgb(26, 26, 26)))",
                               }}
                             >
-                              {"npm i tearline"}
+                              {"Install it"}
                             </p>
                           </div>
                         </a>
@@ -235,7 +235,7 @@ export default function Home() {
                                   "var(--extracted-r6o4lv, var(--color-black, rgb(26, 26, 26)))",
                               }}
                             >
-                              {"npm i tearline"}
+                              {"Install it"}
                             </p>
                           </div>
                         </a>
@@ -352,7 +352,7 @@ export default function Home() {
                                   "var(--extracted-r6o4lv, var(--color-black, rgb(26, 26, 26)))",
                               }}
                             >
-                              {"npm i tearline"}
+                              {"Install it"}
                             </p>
                           </div>
                         </a>

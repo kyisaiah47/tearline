@@ -16,15 +16,9 @@ Zero dependencies. No build step. Works from a `<script>` tag. MIT.
 </tear-line>
 ```
 
-Or from npm:
+That script tag is the whole install — it is an ES module, so there is no package to add, no bundler to configure and no build step. Verified reachable (HTTP 200) on 2026-07-29.
 
-```bash
-npm i tearline
-```
-
-```js
-import 'tearline';
-```
+There is no npm package yet. `npm i tearline` does not resolve: the name is unpublished on the registry, which returns a 404. This README will carry the install line the day it ships.
 
 **[Live playground →](https://tearline.kynth.studio)**
 

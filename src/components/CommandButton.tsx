@@ -5,10 +5,17 @@ import { useState } from "react";
 /**
  * A CTA whose label is a shell command.
  *
- * "npm i tearline" set in the template's UI sans, inside a button that only
- * scrolls somewhere, is a label pretending to be a command. It is the actual
+ * An install line set in the template's UI sans, inside a button that only
+ * scrolls somewhere, is a label pretending to be a command. This is the actual
  * install line — so it is set in the mono stack, carries a prompt glyph, and
  * copying it is what clicking does.
+ *
+ * The prompt glyph is a prop, not a constant, because the install path is not
+ * a shell command: there is no npm package (FACTS.json → npm-package-published,
+ * registry 404 on 2026-07-29), so the supported path is the hosted script tag
+ * and the glyph that fronts it is `<>`, matching Copyable in the install
+ * section. A `$` in front of a URL would read as a command a visitor could
+ * paste into a terminal, and it is not one.
  *
  * The button chrome is the donor's own primary/secondary link pair, lifted
  * whole (`login-link` and its state classes), so these sit in the CTA row at
@@ -18,10 +25,13 @@ import { useState } from "react";
 export default function CommandButton({
   text,
   variant = "secondary",
+  prompt = "$",
 }: {
   text: string;
   /** `primary` is the filled accent pill; `secondary` is the outlined one. */
   variant?: "primary" | "secondary";
+  /** Glyph fronting the label. `$` for a shell line, `<>` for markup. */
+  prompt?: string;
 }) {
   const [state, setState] = useState<"idle" | "copied" | "failed">("idle");
 
@@ -70,7 +80,7 @@ export default function CommandButton({
       style={{ borderRadius: "8px" }}
     >
       <span className={"tl-cmd-prompt"} aria-hidden={"true"}>
-        {"$"}
+        {prompt}
       </span>
       <code className={"tl-cmd-text"}>{text}</code>
       <span className={"tl-cmd-action"} aria-hidden={"true"}>

@@ -1,48 +1,51 @@
 {
   "product": "tearline",
   "host": "tearline.kynth.studio",
-  "note": "Dated-claim register. Tearline is a developer library, not a regulated product, so it makes almost no claims about the world that decay on a calendar. What it does claim is that three external artefacts exist and are reachable: an npm package, a public source repository, and a hosted script URL. Those are the entries below. Every one was fetched on the lastVerified date; none is remembered.",
+  "note": "Dated-claim register. Tearline is a developer library, not a regulated product, so it makes almost no claims about the world that decay on a calendar. What it claims is that external artefacts exist and are reachable. On 2026-07-29 two of the three were re-checked and still failed, so the claims were removed from the site rather than reworded: the pages now describe only what resolves. Every entry was fetched on its lastVerified date; none is remembered.",
   "claims": [
     {
       "id": "npm-package-published",
-      "claim": "Tearline is installable from npm with `npm i tearline`",
-      "value": "published on npm as `tearline`",
+      "claim": "Tearline's supported install path, and whether an npm package exists",
+      "value": "not published on npm — the script tag is the only install path",
       "kind": "availability",
       "sourceUrl": "https://registry.npmjs.org/tearline",
       "sourceTitle": "npm registry — tearline",
-      "asOf": "2026-07-28",
+      "asOf": "2026-07-29",
       "appearsOn": [
         "src/components/sections/SiteHeader.tsx",
         "src/components/sections/HeroSection.tsx",
         "src/components/sections/InstallSection.tsx",
         "src/components/sections/SiteFooter.tsx",
         "src/app/page.tsx",
+        "src/app/docs/page.tsx",
+        "public/llms.txt",
         "README.md"
       ],
-      "lastVerified": "2026-07-28",
-      "status": "drifted",
-      "currentValue": "not published — registry.npmjs.org/tearline returns HTTP 404 {\"error\":\"Not found\"}. package.json is also marked \"private\": true, which blocks `npm publish` until it is removed. The npm install command is the primary CTA in the header, the hero and both mobile CTA blocks, and the footer links to npmjs.com/package/tearline, which 404s.",
-      "resolvedBy": "Drop \"private\": true from package.json and run `npm publish`. That is an outward-facing publish and belongs to Isaiah, not to this loop. Until it runs, the on-page install command fails for every visitor who copies it."
+      "lastVerified": "2026-07-29",
+      "status": "verified",
+      "resolvedBy": "Isaiah publishes: drop \"private\": true from package.json, run `npm publish`. Outward-facing, so not this loop's to fire.",
+      "note": "Re-checked 2026-07-29: registry.npmjs.org/tearline still returns HTTP 404 {\"error\":\"Not found\"} and package.json still carries \"private\": true. Rather than keep a drifted claim on the page, the claim was REMOVED from every surface on 2026-07-29 — `npm i tearline` no longer appears as a CTA in the header, the hero, the install section, the three mobile CTA blocks in page.tsx, or the footer's npm link. The hosted script tag (see hosted-script-url) is now the single documented install path everywhere. The entry stays in the register so the daily check keeps running; when Isaiah drops \"private\": true and publishes, the npm line goes back and this flips to an availability claim again."
     },
     {
       "id": "github-repo-public",
-      "claim": "The Tearline source is readable on GitHub at kyisaiah47/tearline, and the MIT licence is verifiable there",
-      "value": "public repository",
+      "claim": "Whether Tearline's source is readable on GitHub, and where the MIT licence can be verified",
+      "value": "repository is PRIVATE — no repo link is published; the licence links to opensource.org, and the whole component is served unminified at /tearline.js",
       "kind": "availability",
       "sourceUrl": "https://github.com/kyisaiah47/tearline",
       "sourceTitle": "GitHub — kyisaiah47/tearline",
-      "asOf": "2026-07-28",
+      "asOf": "2026-07-29",
       "appearsOn": [
         "src/components/sections/SiteHeader.tsx",
         "src/components/sections/HeroSection.tsx",
         "src/components/sections/SiteFooter.tsx",
+        "src/components/JsonLd.tsx",
         "README.md",
         "package.json"
       ],
-      "lastVerified": "2026-07-28",
-      "status": "drifted",
-      "currentValue": "repository exists but visibility is PRIVATE (`gh repo view kyisaiah47/tearline` → visibility: PRIVATE), so the header, hero and footer GitHub links all render 404 for an anonymous visitor, as does the footer's \"MIT licence\" link to blob/main/LICENSE. An MIT claim whose licence file cannot be opened is a claim the buyer cannot check.",
-      "resolvedBy": "Flip the repository to public. One toggle; outward-facing, so Isaiah's call."
+      "lastVerified": "2026-07-29",
+      "status": "verified",
+      "resolvedBy": "Flip the repository to public. One toggle; outward-facing, so Isaiah's call.",
+      "note": "Re-checked 2026-07-29: `gh repo view kyisaiah47/tearline` reports visibility PRIVATE and an anonymous GET of the repo URL returns HTTP 404. Every GitHub link was REMOVED on 2026-07-29 — the header's GitHub CTA now points at the on-origin playground, the hero's \"MIT - zero dependencies\" badge points at opensource.org/license/mit, and the footer's GitHub row is replaced by \"Read the source\" -> /tearline.js, which is the entire 340-line unminified component and makes the source claim literally true while the repo stays private. package.json's repository field is left as-is: it is package metadata, not a claim rendered to a buyer."
     },
     {
       "id": "hosted-script-url",
@@ -51,15 +54,19 @@
       "kind": "availability",
       "sourceUrl": "https://tearline.kynth.studio/tearline.js",
       "sourceTitle": "Tearline — hosted ES module",
-      "asOf": "2026-07-28",
+      "asOf": "2026-07-29",
       "appearsOn": [
+        "src/components/sections/SiteHeader.tsx",
+        "src/components/sections/HeroSection.tsx",
         "src/components/sections/InstallSection.tsx",
+        "src/components/sections/SiteFooter.tsx",
         "src/app/docs/page.tsx",
         "public/llms.txt",
         "README.md"
       ],
-      "lastVerified": "2026-07-28",
-      "status": "verified"
+      "lastVerified": "2026-07-29",
+      "status": "verified",
+      "note": "Re-checked 2026-07-29: HTTP 200. This claim is now load-bearing in a way it was not before — with npm and GitHub both removed, this URL is the product's ONLY install path and its only route to the source. If it ever stops resolving the site has no working call to action at all, so it is the highest-priority entry in this register."
     }
   ]
 }

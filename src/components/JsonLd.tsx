@@ -8,8 +8,9 @@
  * drift away from the copy without the copy changing too.
  *
  * Two claims are deliberately absent. There is no `codeRepository` and no npm
- * `installUrl`, because as of 2026-07-28 the GitHub repository is private and
- * the npm package is unpublished (see FACTS.json). Asserting either in schema
+ * `installUrl`, because as of 2026-07-29 the GitHub repository is private and
+ * the npm package is unpublished (see FACTS.json, both re-checked that day).
+ * Asserting either in schema
  * would be handing a machine a fact a human can immediately disprove.
  */
 

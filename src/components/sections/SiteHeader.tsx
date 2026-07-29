@@ -119,15 +119,20 @@ function Ctas() {
   return (
     <div className={"ctas-2"} data-name={"CTAs"} style={{ opacity: "1" }}>
       <div className={"login-link-container"}>
+        {/* Was a GitHub link. The repository is PRIVATE (FACTS.json →
+         * github-repo-public; `gh repo view` reports PRIVATE and an anonymous
+         * GET returns 404 on 2026-07-29), so that link sent every visitor who
+         * was not signed in as the owner to a 404 — the worst possible landing
+         * for the one click that says "show me the source". The tertiary slot
+         * now mirrors the hero's own pair: try it, then take the install line.
+         * The playground is on this origin and cannot 404. */}
         <a
           className={
             "login-link-mobile login-button login-link-tablet link-12-state-2 login-link"
           }
           data-name={"Tertiary"}
           data-highlight={"true"}
-          href={"https://github.com/kyisaiah47/tearline"}
-          rel={"noopener"}
-          target={"_blank"}
+          href={"/#playground"}
           tabIndex={0}
         >
           <div
@@ -142,11 +147,10 @@ function Ctas() {
               dir={"auto"}
               style={{ "--rt-text-color": NAV_TEXT_COLOR }}
             >
-              {"GitHub"}
+              {"Try it"}
             </p>
           </div>
-          {/* The donor's arrow glyph, kept: it reads as "leaves the page",
-           * which is now literally true. */}
+          {/* The donor's arrow glyph, kept. */}
           <div className={"header-nav-slot"}>
             <svg
               viewBox={"0 0 256 256"}
@@ -173,7 +177,14 @@ function Ctas() {
         </a>
       </div>
       <div className={"footer-get-started-cta"}>
-        <CommandButton text={"npm i tearline"} variant={"primary"} />
+        {/* Not `npm i tearline`: there is no published package (FACTS.json →
+          * npm-package-published, registry 404 on 2026-07-29). This is the
+          * install path that resolves today. */}
+        <CommandButton
+          text={"tearline.kynth.studio/tearline.js"}
+          prompt={"<>"}
+          variant={"primary"}
+        />
       </div>
     </div>
   );
