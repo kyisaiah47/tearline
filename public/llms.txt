@@ -22,7 +22,7 @@ document order.
 </tear-line>
 ```
 
-Verified reachable (HTTP 200) on 2026-07-29. There is no npm package to install
+Verified reachable (HTTP 200) on 2026-07-30. There is no npm package to install
 today — `npm i tearline` does not resolve, and the script tag above is the
 supported install path.
 

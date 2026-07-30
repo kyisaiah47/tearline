@@ -1,7 +1,7 @@
 {
   "product": "tearline",
   "host": "tearline.kynth.studio",
-  "note": "Dated-claim register. Tearline is a developer library, not a regulated product, so it makes almost no claims about the world that decay on a calendar. What it claims is that external artefacts exist and are reachable. On 2026-07-29 two of the three were re-checked and still failed, so the claims were removed from the site rather than reworded: the pages now describe only what resolves. Every entry was fetched on its lastVerified date; none is remembered.",
+  "note": "Dated-claim register. Tearline is a developer library, not a regulated product, so it makes almost no claims about the world that decay on a calendar. What it claims is that external artefacts exist and are reachable. On 2026-07-29 two of the three were re-checked and still failed, so the claims were removed from the site rather than reworded: the pages now describe only what resolves. All three were re-fetched again on 2026-07-30 and every value held — nothing drifted, and no page copy needed changing. Every entry was fetched on its lastVerified date; none is remembered.",
   "claims": [
     {
       "id": "npm-package-published",
@@ -21,10 +21,10 @@
         "public/llms.txt",
         "README.md"
       ],
-      "lastVerified": "2026-07-29",
+      "lastVerified": "2026-07-30",
       "status": "verified",
       "resolvedBy": "Isaiah publishes: drop \"private\": true from package.json, run `npm publish`. Outward-facing, so not this loop's to fire.",
-      "note": "Re-checked 2026-07-29: registry.npmjs.org/tearline still returns HTTP 404 {\"error\":\"Not found\"} and package.json still carries \"private\": true. Rather than keep a drifted claim on the page, the claim was REMOVED from every surface on 2026-07-29 — `npm i tearline` no longer appears as a CTA in the header, the hero, the install section, the three mobile CTA blocks in page.tsx, or the footer's npm link. The hosted script tag (see hosted-script-url) is now the single documented install path everywhere. The entry stays in the register so the daily check keeps running; when Isaiah drops \"private\": true and publishes, the npm line goes back and this flips to an availability claim again."
+      "note": "Re-checked 2026-07-29: registry.npmjs.org/tearline still returns HTTP 404 {\"error\":\"Not found\"} and package.json still carries \"private\": true. Rather than keep a drifted claim on the page, the claim was REMOVED from every surface on 2026-07-29 — `npm i tearline` no longer appears as a CTA in the header, the hero, the install section, the three mobile CTA blocks in page.tsx, or the footer's npm link. The hosted script tag (see hosted-script-url) is now the single documented install path everywhere. The entry stays in the register so the daily check keeps running; when Isaiah drops \"private\": true and publishes, the npm line goes back and this flips to an availability claim again. Re-checked 2026-07-30: registry.npmjs.org/tearline still HTTP 404 and package.json line 58 still carries \"private\": true. No site copy claims npm, so nothing to correct."
     },
     {
       "id": "github-repo-public",
@@ -42,10 +42,10 @@
         "README.md",
         "package.json"
       ],
-      "lastVerified": "2026-07-29",
+      "lastVerified": "2026-07-30",
       "status": "verified",
       "resolvedBy": "Flip the repository to public. One toggle; outward-facing, so Isaiah's call.",
-      "note": "Re-checked 2026-07-29: `gh repo view kyisaiah47/tearline` reports visibility PRIVATE and an anonymous GET of the repo URL returns HTTP 404. Every GitHub link was REMOVED on 2026-07-29 — the header's GitHub CTA now points at the on-origin playground, the hero's \"MIT - zero dependencies\" badge points at opensource.org/license/mit, and the footer's GitHub row is replaced by \"Read the source\" -> /tearline.js, which is the entire 340-line unminified component and makes the source claim literally true while the repo stays private. package.json's repository field is left as-is: it is package metadata, not a claim rendered to a buyer."
+      "note": "Re-checked 2026-07-29: `gh repo view kyisaiah47/tearline` reports visibility PRIVATE and an anonymous GET of the repo URL returns HTTP 404. Every GitHub link was REMOVED on 2026-07-29 — the header's GitHub CTA now points at the on-origin playground, the hero's \"MIT - zero dependencies\" badge points at opensource.org/license/mit, and the footer's GitHub row is replaced by \"Read the source\" -> /tearline.js, which is the entire 340-line unminified component and makes the source claim literally true while the repo stays private. package.json's repository field is left as-is: it is package metadata, not a claim rendered to a buyer. Re-checked 2026-07-30: an anonymous GET of the repo URL still returns HTTP 404, so the repository is still private and every removal from 2026-07-29 still stands. This is also the measured reason github.com out-cites us on Tearline's own queries — engines answering \"html to receipt image javascript\" cite readable repositories, and ours cannot be read. Flipping it public is the single highest-leverage act available on this product, and it is not a page we can write."
     },
     {
       "id": "hosted-script-url",
@@ -64,9 +64,9 @@
         "public/llms.txt",
         "README.md"
       ],
-      "lastVerified": "2026-07-29",
+      "lastVerified": "2026-07-30",
       "status": "verified",
-      "note": "Re-checked 2026-07-29: HTTP 200. This claim is now load-bearing in a way it was not before — with npm and GitHub both removed, this URL is the product's ONLY install path and its only route to the source. If it ever stops resolving the site has no working call to action at all, so it is the highest-priority entry in this register."
+      "note": "Re-checked 2026-07-30: HTTP 200, still resolving. This claim is now load-bearing in a way it was not before — with npm and GitHub both removed, this URL is the product's ONLY install path and its only route to the source. If it ever stops resolving the site has no working call to action at all, so it is the highest-priority entry in this register."
     }
   ]
 }
