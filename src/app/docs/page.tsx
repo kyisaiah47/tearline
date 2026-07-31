@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
 import CodePanel from "@/components/CodePanel";
 import type { Line } from "@/components/CodePanel";
 import Copyable from "@/components/Copyable";
+import { DocsSection, RefTable } from "@/components/DocsShell";
 import JsonLd, { APP_ID, ORG_ID } from "@/components/JsonLd";
 import SiteHeader from "@/components/sections/SiteHeader";
 import SiteFooter from "@/components/sections/SiteFooter";
@@ -325,123 +325,6 @@ const PROPS: [string, string, string][] = [
   ],
 ];
 
-/* ---- shell -------------------------------------------------------------- */
-
-/**
- * InstallSection's section shell, lifted whole. `lead` swaps the h2 for the
- * page's single h1; nothing else about the markup varies.
- */
-function DocsSection({
-  id,
-  eyebrow,
-  headingTop,
-  headingBottom,
-  lead = false,
-  children,
-}: {
-  id: string;
-  eyebrow: string;
-  headingTop: string;
-  headingBottom: string;
-  lead?: boolean;
-  children: ReactNode;
-}) {
-  const heading = (
-    <>
-      {headingTop}
-      <br className={"heading-4"} />
-      <span
-        className={"heading-4"}
-        style={{ "--rt-text-color": "var(--value-gray-2, rgb(128, 128, 128))" }}
-      >
-        {headingBottom}
-      </span>
-    </>
-  );
-
-  return (
-    <section
-      className={"featuressection-features-section"}
-      data-border={"true"}
-      data-name={`${eyebrow} Section`}
-      id={id}
-    >
-      <div className={"featuressection-content"}>
-        <div
-          className={"featuressection-heading-wrapper"}
-          data-name={"Heading wrapper"}
-        >
-          <div className={"featuressection-heading"}>
-            <div className={"features-eyebrow-slot"}>
-              <div className={"dot"} data-border={"true"} data-name={"Dot"} />
-              <div
-                className={"features-eyebrow-text"}
-                data-component={"RichTextContainer"}
-              >
-                <p
-                  className={"heading-4 menu-label"}
-                  dir={"auto"}
-                  style={{
-                    "--rt-text-color":
-                      "var(--extracted-r6o4lv, var(--color-background, rgb(255, 165, 82)))",
-                  }}
-                >
-                  {eyebrow}
-                </p>
-              </div>
-            </div>
-            <div
-              className={"features-heading"}
-              data-component={"RichTextContainer"}
-            >
-              {lead ? (
-                <h1 className={"heading-4 section-heading"} dir={"auto"}>
-                  {heading}
-                </h1>
-              ) : (
-                <h2 className={"heading-4 section-heading"} dir={"auto"}>
-                  {heading}
-                </h2>
-              )}
-            </div>
-          </div>
-        </div>
-        {children}
-      </div>
-    </section>
-  );
-}
-
-/** InstallSection's reference table, lifted whole. */
-function RefTable({
-  label,
-  rows,
-}: {
-  label: string;
-  rows: (readonly [string, string, string] | readonly [string, string])[];
-}) {
-  return (
-    <>
-      <p className={"tl-docs-label"}>{label}</p>
-      <table className={"tl-table"}>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row[0]}>
-              <td className={"tl-td-name"}>
-                <code>{row[0]}</code>
-              </td>
-              {row.length === 3 ? (
-                <td className={"tl-td-def"}>{row[1]}</td>
-              ) : null}
-              <td className={"tl-td-desc"}>{row[row.length - 1]}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </>
-  );
-}
-
 /* ---- page --------------------------------------------------------------- */
 
 export default function Docs() {
@@ -617,6 +500,17 @@ export default function Docs() {
                       <strong>{"rejects with an explicit error"}</strong>
                       {
                         " naming the cause, rather than quietly handing you a receipt with a hole in it. Fonts are subject to the same rule — a webfont that has not loaded falls back inside the export."
+                      }
+                    </p>
+                    <p className={"tl-docs-note"}>
+                      {
+                        "None of that is specific to Tearline — it falls out of how browser-side rasterisation works at all. "
+                      }
+                      <a href={"/dom-to-png"}>
+                        {"Export a DOM element as a PNG"}
+                      </a>
+                      {
+                        " walks through the technique on its own, including the tainted-canvas rule that throws instead of returning a blank image, and how the zero-dependency packages on npm compare."
                       }
                     </p>
                     <p className={"tl-docs-label tl-docs-label-gap"}>

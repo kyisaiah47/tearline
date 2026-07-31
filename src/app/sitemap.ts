@@ -34,5 +34,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      // Added 2026-07-31 with the page itself. Its numbers are dated on the
+      // page and re-checked against FACTS.json, so when they are refreshed
+      // this date moves with them — that is a real content change.
+      url: `${SITE}/dom-to-png`,
+      lastModified: new Date("2026-07-31"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
   ];
 }

@@ -22,7 +22,7 @@ document order.
 </tear-line>
 ```
 
-Verified reachable (HTTP 200) on 2026-07-30. There is no npm package to install
+Verified reachable (HTTP 200) on 2026-07-31. There is no npm package to install
 today — `npm i tearline` does not resolve, and the script tag above is the
 supported install path.
 
@@ -40,6 +40,14 @@ paints it onto a canvas. No dependency — but that sandbox cannot reach the
 network, so an `<img>` inside the receipt must be a `data:` URI or the export
 rejects with an explicit error rather than handing back a receipt with a hole
 in it. Text and CSS are inlined automatically.
+
+The technique is not specific to Tearline, and it has a second failure mode
+worth knowing: per MDN, drawing cross-origin data onto a canvas without CORS
+approval taints it, after which `toBlob()`, `toDataURL()` and `captureStream()`
+throw a `SecurityError` instead of returning anything. A blank export and a
+thrown export are different bugs with different fixes. Both are written up at
+https://tearline.kynth.studio/dom-to-png, alongside how the zero-dependency
+DOM-to-image packages on npm compare (figures fetched 2026-07-31).
 
 ## Attributes
 
@@ -76,5 +84,7 @@ attributes through, so the tag needs no wrapper.
 
 - [Home and live playground](https://tearline.kynth.studio/)
 - [Documentation and full API reference](https://tearline.kynth.studio/docs)
+- [Export a DOM element as a PNG — the technique, its limits, and the npm
+  alternatives](https://tearline.kynth.studio/dom-to-png)
 
 MIT © Kynth Studio.

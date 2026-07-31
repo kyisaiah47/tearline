@@ -334,6 +334,23 @@ body {
   font-weight: 500;
 }
 
+/* Prose links. Element selector to match the `code` and `strong` rules above
+ * rather than a class, since there is exactly one way a link in a note should
+ * look. Takes the same accent `code` takes, underlined so it reads as a link
+ * without colour alone carrying the signal. Colour-only on hover: the house
+ * rule is no translate or scale on interactive elements. */
+.tl-docs-note a {
+  color: var(--color-background, #ffa552);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: opacity 0.15s ease;
+}
+
+.tl-docs-note a:hover {
+  opacity: 0.72;
+}
+
 .tl-copy {
   display: flex;
   align-items: center;

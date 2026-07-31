@@ -46,6 +46,10 @@ const GROUPS: Group[] = [
       ["API reference", "/docs#api"],
       ["Exporting a PNG", "/docs#export"],
       ["Accessibility", "/docs#accessibility"],
+      /* Added 2026-07-31. Not a Tearline reference page — it explains the
+       * browser-side DOM-to-PNG technique generally, so it sits last in the
+       * group rather than among the API rows. */
+      ["DOM to PNG, explained", "/dom-to-png"],
     ],
   },
   {

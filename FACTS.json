@@ -1,7 +1,7 @@
 {
   "product": "tearline",
   "host": "tearline.kynth.studio",
-  "note": "Dated-claim register. Tearline is a developer library, not a regulated product, so it makes almost no claims about the world that decay on a calendar. What it claims is that external artefacts exist and are reachable. On 2026-07-29 two of the three were re-checked and still failed, so the claims were removed from the site rather than reworded: the pages now describe only what resolves. All three were re-fetched again on 2026-07-30 and every value held — nothing drifted, and no page copy needed changing. Every entry was fetched on its lastVerified date; none is remembered.",
+  "note": "Dated-claim register. Tearline is a developer library, not a regulated product, so it makes almost no claims about the world that decay on a calendar. What it claims is that external artefacts exist and are reachable. All three availability claims were re-fetched on 2026-07-31 and every value held — nothing drifted, and no page copy needed changing. On 2026-07-31 a third page (/dom-to-png) shipped, and it is the first surface on this host that quotes numbers about OTHER software: four npm packages' versions, licences, dependency counts, publish dates and sizes. Those are exactly the kind of value that goes stale invisibly, so each package is now its own register entry and the page prints the fetch date beside every figure. Every entry was fetched on its lastVerified date; none is remembered.",
   "claims": [
     {
       "id": "npm-package-published",
@@ -21,10 +21,10 @@
         "public/llms.txt",
         "README.md"
       ],
-      "lastVerified": "2026-07-30",
+      "lastVerified": "2026-07-31",
       "status": "verified",
       "resolvedBy": "Isaiah publishes: drop \"private\": true from package.json, run `npm publish`. Outward-facing, so not this loop's to fire.",
-      "note": "Re-checked 2026-07-29: registry.npmjs.org/tearline still returns HTTP 404 {\"error\":\"Not found\"} and package.json still carries \"private\": true. Rather than keep a drifted claim on the page, the claim was REMOVED from every surface on 2026-07-29 — `npm i tearline` no longer appears as a CTA in the header, the hero, the install section, the three mobile CTA blocks in page.tsx, or the footer's npm link. The hosted script tag (see hosted-script-url) is now the single documented install path everywhere. The entry stays in the register so the daily check keeps running; when Isaiah drops \"private\": true and publishes, the npm line goes back and this flips to an availability claim again. Re-checked 2026-07-30: registry.npmjs.org/tearline still HTTP 404 and package.json line 58 still carries \"private\": true. No site copy claims npm, so nothing to correct."
+      "note": "Re-checked 2026-07-29: registry.npmjs.org/tearline still returns HTTP 404 {\"error\":\"Not found\"} and package.json still carries \"private\": true. Rather than keep a drifted claim on the page, the claim was REMOVED from every surface on 2026-07-29 — `npm i tearline` no longer appears as a CTA in the header, the hero, the install section, the three mobile CTA blocks in page.tsx, or the footer's npm link. The hosted script tag (see hosted-script-url) is now the single documented install path everywhere. The entry stays in the register so the daily check keeps running; when Isaiah drops \"private\": true and publishes, the npm line goes back and this flips to an availability claim again. Re-checked 2026-07-30: registry.npmjs.org/tearline still HTTP 404 and package.json line 58 still carries \"private\": true. No site copy claims npm, so nothing to correct. Re-checked 2026-07-31: registry.npmjs.org/tearline still returns HTTP 404 {\"error\":\"Not found\"} and package.json line 58 still carries \"private\": true. No site copy claims npm, so nothing to correct."
     },
     {
       "id": "github-repo-public",
@@ -42,10 +42,10 @@
         "README.md",
         "package.json"
       ],
-      "lastVerified": "2026-07-30",
+      "lastVerified": "2026-07-31",
       "status": "verified",
       "resolvedBy": "Flip the repository to public. One toggle; outward-facing, so Isaiah's call.",
-      "note": "Re-checked 2026-07-29: `gh repo view kyisaiah47/tearline` reports visibility PRIVATE and an anonymous GET of the repo URL returns HTTP 404. Every GitHub link was REMOVED on 2026-07-29 — the header's GitHub CTA now points at the on-origin playground, the hero's \"MIT - zero dependencies\" badge points at opensource.org/license/mit, and the footer's GitHub row is replaced by \"Read the source\" -> /tearline.js, which is the entire 340-line unminified component and makes the source claim literally true while the repo stays private. package.json's repository field is left as-is: it is package metadata, not a claim rendered to a buyer. Re-checked 2026-07-30: an anonymous GET of the repo URL still returns HTTP 404, so the repository is still private and every removal from 2026-07-29 still stands. This is also the measured reason github.com out-cites us on Tearline's own queries — engines answering \"html to receipt image javascript\" cite readable repositories, and ours cannot be read. Flipping it public is the single highest-leverage act available on this product, and it is not a page we can write."
+      "note": "Re-checked 2026-07-29: `gh repo view kyisaiah47/tearline` reports visibility PRIVATE and an anonymous GET of the repo URL returns HTTP 404. Every GitHub link was REMOVED on 2026-07-29 — the header's GitHub CTA now points at the on-origin playground, the hero's \"MIT - zero dependencies\" badge points at opensource.org/license/mit, and the footer's GitHub row is replaced by \"Read the source\" -> /tearline.js, which is the entire 340-line unminified component and makes the source claim literally true while the repo stays private. package.json's repository field is left as-is: it is package metadata, not a claim rendered to a buyer. Re-checked 2026-07-30: an anonymous GET of the repo URL still returns HTTP 404, so the repository is still private and every removal from 2026-07-29 still stands. This is also the measured reason github.com out-cites us on Tearline's own queries — engines answering \"html to receipt image javascript\" cite readable repositories, and ours cannot be read. Flipping it public is the single highest-leverage act available on this product, and it is not a page we can write. Re-checked 2026-07-31: `gh repo view kyisaiah47/tearline --json visibility` returns {\"visibility\":\"PRIVATE\"} and an anonymous GET still returns HTTP 404. Every removal from 2026-07-29 still stands. github.com remains the top competitor-gap domain on this product's queries for exactly this reason, and it is still not a gap a page can close — /dom-to-png, shipped 2026-07-31, answers the same questions on-origin instead, but a readable repo would outrank it."
     },
     {
       "id": "hosted-script-url",
@@ -64,9 +64,85 @@
         "public/llms.txt",
         "README.md"
       ],
-      "lastVerified": "2026-07-30",
+      "lastVerified": "2026-07-31",
       "status": "verified",
-      "note": "Re-checked 2026-07-30: HTTP 200, still resolving. This claim is now load-bearing in a way it was not before — with npm and GitHub both removed, this URL is the product's ONLY install path and its only route to the source. If it ever stops resolving the site has no working call to action at all, so it is the highest-priority entry in this register."
+      "note": "Re-checked 2026-07-30: HTTP 200, still resolving. This claim is now load-bearing in a way it was not before — with npm and GitHub both removed, this URL is the product's ONLY install path and its only route to the source. If it ever stops resolving the site has no working call to action at all, so it is the highest-priority entry in this register. Re-checked 2026-07-31: HTTP 200, 12,756 bytes, content-type application/javascript. Still the product's only install path and only route to the source."
+    },
+    {
+      "id": "npm-modern-screenshot",
+      "claim": "modern-screenshot latest version, licence, runtime dependency count, publish date and unpacked size",
+      "value": "4.7.0 · MIT · 0 runtime deps · published 2026-04-16 · 186 KB unpacked",
+      "kind": "package-metadata",
+      "sourceUrl": "https://registry.npmjs.org/modern-screenshot",
+      "sourceTitle": "npm registry — modern-screenshot",
+      "asOf": "2026-07-31",
+      "appearsOn": [
+        "src/app/dom-to-png/page.tsx"
+      ],
+      "lastVerified": "2026-07-31",
+      "status": "verified",
+      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it."
+    },
+    {
+      "id": "npm-html-to-image",
+      "claim": "html-to-image latest version, licence, runtime dependency count, publish date and unpacked size",
+      "value": "1.11.13 · MIT · 0 runtime deps · published 2025-02-14 · 315 KB unpacked",
+      "kind": "package-metadata",
+      "sourceUrl": "https://registry.npmjs.org/html-to-image",
+      "sourceTitle": "npm registry — html-to-image",
+      "asOf": "2026-07-31",
+      "appearsOn": [
+        "src/app/dom-to-png/page.tsx"
+      ],
+      "lastVerified": "2026-07-31",
+      "status": "verified",
+      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it."
+    },
+    {
+      "id": "npm-html2canvas",
+      "claim": "html2canvas latest version, licence, runtime dependency count, publish date and unpacked size",
+      "value": "1.4.1 · MIT · 2 runtime deps · published 2022-01-22 · 3.38 MB unpacked",
+      "kind": "package-metadata",
+      "sourceUrl": "https://registry.npmjs.org/html2canvas",
+      "sourceTitle": "npm registry — html2canvas",
+      "asOf": "2026-07-31",
+      "appearsOn": [
+        "src/app/dom-to-png/page.tsx"
+      ],
+      "lastVerified": "2026-07-31",
+      "status": "verified",
+      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it."
+    },
+    {
+      "id": "npm-dom-to-image",
+      "claim": "dom-to-image latest version, licence, runtime dependency count, publish date and unpacked size",
+      "value": "2.6.0 · MIT · 0 runtime deps · published 2017-10-04 · not reported unpacked",
+      "kind": "package-metadata",
+      "sourceUrl": "https://registry.npmjs.org/dom-to-image",
+      "sourceTitle": "npm registry — dom-to-image",
+      "asOf": "2026-07-31",
+      "appearsOn": [
+        "src/app/dom-to-png/page.tsx"
+      ],
+      "lastVerified": "2026-07-31",
+      "status": "verified",
+      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it."
+    },
+    {
+      "id": "canvas-tainting-rule",
+      "claim": "Reading pixels back from a canvas tainted by cross-origin data throws",
+      "value": "drawing cross-origin data without CORS approval taints the canvas; toBlob(), toDataURL() and captureStream() then throw a SecurityError",
+      "kind": "spec-behaviour",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/CORS_enabled_image",
+      "sourceTitle": "MDN — Allowing cross-origin use of images and canvas",
+      "asOf": "2026-07-31",
+      "appearsOn": [
+        "src/app/dom-to-png/page.tsx",
+        "public/llms.txt"
+      ],
+      "lastVerified": "2026-07-31",
+      "status": "verified",
+      "note": "Fetched from MDN on 2026-07-31; the wording on the page is a paraphrase of the 'Security and tainted canvases' section, not a quote. This is browser security behaviour rather than a dated announcement, so it decays far more slowly than the package rows above — but it is the load-bearing technical claim on /dom-to-png, so it is recorded rather than assumed."
     }
   ]
 }
