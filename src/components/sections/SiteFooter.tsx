@@ -14,7 +14,7 @@
  * systems to be operational.
  *
  * What is left is what is true: the product, where the code is, and who made
- * it. Per the house rule, the social column becomes a single Kynth Studio link
+ * it. Per the house rule, the social column becomes a single Kynth Studios link
  * rather than borrowing the parent's handles.
  *
  * The shell keeps all three of the donor's breakpoint variants, and it has to.
@@ -74,7 +74,7 @@ const GROUPS: Group[] = [
   },
   {
     label: "Studio",
-    links: [["Kynth Studio", "https://kynth.studio", true]],
+    links: [["Kynth Studios", "https://kynth.studio", true]],
   },
 ];
 
@@ -249,7 +249,7 @@ function FooterBody() {
                           "var(--extracted-r6o4lv, var(--color-background, rgb(255, 165, 82)))",
                       }}
                     >
-                      {"A Kynth Studio project"}
+                      {"A Kynth Studios project"}
                     </p>
                   </div>
                 </a>

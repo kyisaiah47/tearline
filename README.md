@@ -93,4 +93,4 @@ npm run dev      # syncs the component into site/ and serves it on :8791
 
 ## License
 
-MIT © [Kynth Studio](https://kynth.studio)
+MIT © [Kynth Studios](https://kynth.studio)

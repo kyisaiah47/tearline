@@ -12,6 +12,10 @@
  * the npm package is unpublished (see FACTS.json, both re-checked that day).
  * Asserting either in schema
  * would be handing a machine a fact a human can immediately disprove.
+ *
+ * The Organization's `sameAs` GitHub link is NOT a reintroduction of either.
+ * It is the publisher's own profile page, which is public and returns 200; it
+ * says nothing about whether this product's repository can be read.
  */
 
 const SITE = "https://tearline.kynth.studio";
@@ -39,10 +43,26 @@ export const siteGraph = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      // Copied field-for-field from the canonical studio node on kynth.studio,
+      // so the publisher here resolves to the same entity rather than to a
+      // fourth spelling of it. This page had been calling the studio "Kynth
+      // Studio", which matches neither the canonical `name` ("Kynth") nor its
+      // `legalName` ("Kynth Studios") — a publisher an engine cannot reconcile
+      // is a publisher with no accumulated trust to lend.
+      //
+      // `sameAs` carries only the profile that was fetched and returned 200 on
+      // 2026-08-01. The canonical node also lists a YouTube handle (404 on that
+      // date) and a LinkedIn profile (LinkedIn answers 999 to anything that is
+      // not a browser, so it could not be confirmed either way). Neither is
+      // asserted here: an unverifiable sameAs is worse than a short one,
+      // because it points an engine at a dead end under our name.
       "@type": "Organization",
       "@id": ORG_ID,
-      name: "Kynth Studio",
+      name: "Kynth",
+      legalName: "Kynth Studios",
+      alternateName: "Kynth Studios",
       url: "https://kynth.studio",
+      sameAs: ["https://github.com/kyisaiah47"],
     },
     {
       "@type": "WebSite",

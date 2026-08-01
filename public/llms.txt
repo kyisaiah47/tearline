@@ -108,4 +108,4 @@ attributes through, so the tag needs no wrapper.
 - [Receipt-style UI on the web — the CSS behind the paper look, and why it is a
   custom element](https://tearline.kynth.studio/receipt-ui)
 
-MIT © Kynth Studio.
+MIT © Kynth Studios.
