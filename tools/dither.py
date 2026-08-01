@@ -55,6 +55,7 @@ backdrop crawls while the page resizes.
 """
 
 import argparse
+import signal
 import sys
 
 from PIL import Image, ImageEnhance
@@ -80,6 +81,45 @@ DIFFUSION = {
     "sierra-2-4a",
     "stevenson-arce",
 }
+
+
+def median_cut_palette(small: Image.Image, colors: int, budget_seconds: int = 20):
+    """The image's own palette, by median cut, with a way out.
+
+    hitherdither's median cut splits whichever colour box has the widest range,
+    recursively. That assumes every split leaves colours on both sides of the
+    cut — and on an image whose pixels sit almost entirely on ONE value it does
+    not. A near-black frame with a single small bright element (the filament
+    shot, 1,923 distinct colours) puts the whole mass in one corner of the cube;
+    a split comes back empty, the range never narrows, and it recurses until
+    something gives up. It is not a size problem: the hero frame has 5,332
+    distinct colours and finishes instantly.
+
+    Pillow's own median cut handles the degenerate case and returns a palette of
+    the same kind, so it is the fallback rather than a different treatment. It
+    runs ONLY when the library has actually stalled, so every image that worked
+    before this existed still takes the same path and dithers identically.
+    """
+    def out_of_time(_signum, _frame):
+        raise TimeoutError
+
+    previous = signal.signal(signal.SIGALRM, out_of_time)
+    signal.alarm(budget_seconds)
+    try:
+        return hitherdither.palette.Palette.create_by_median_cut(small, n=colors)
+    except TimeoutError:
+        print(
+            f"  median cut stalled past {budget_seconds}s — palette from Pillow instead",
+            file=sys.stderr,
+        )
+        quantised = small.quantize(colors=colors, method=Image.MEDIANCUT)
+        raw = quantised.getpalette()[: colors * 3]
+        return hitherdither.palette.Palette(
+            [tuple(raw[i : i + 3]) for i in range(0, len(raw), 3)]
+        )
+    finally:
+        signal.alarm(0)
+        signal.signal(signal.SIGALRM, previous)
 
 
 def dither(
@@ -110,7 +150,7 @@ def dither(
     # Median cut over the image's own colours. This is the part worth having a
     # library for — the palette is what stops a warm photograph from picking up
     # cold speckle.
-    palette = hitherdither.palette.Palette.create_by_median_cut(small, n=colors)
+    palette = median_cut_palette(small, colors)
 
     if method in DIFFUSION:
         out = hitherdither.diffusion.error_diffusion_dithering(

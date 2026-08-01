@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 /**
  * sitemap.xml.
  *
- * Two routes, both real pages that render server-side. `lastModified` is a
+ * Four routes, all real pages that render server-side. `lastModified` is a
  * fixed date rather than `new Date()` on purpose: a sitemap that reports today
  * as the modification date on every crawl teaches Google that the field carries
  * no information, and it stops being a recrawl signal. Bump these by hand when
@@ -40,6 +40,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // this date moves with them — that is a real content change.
       url: `${SITE}/dom-to-png`,
       lastModified: new Date("2026-07-31"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      // Added 2026-08-01 with the page itself. Its claims are spec behaviour
+      // rather than version numbers, so it will move less often than
+      // /dom-to-png — but the CSS it quotes is read out of the shipped
+      // component, so a change to tearline.js is a change here too.
+      url: `${SITE}/receipt-ui`,
+      lastModified: new Date("2026-08-01"),
       changeFrequency: "monthly",
       priority: 0.8,
     },

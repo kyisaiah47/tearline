@@ -74,6 +74,25 @@ to your own CSS, so anything can be restyled from the outside without a
 specificity fight. Paper and ink are custom properties: `--paper`, `--ink`,
 `--ink-strong`, `--ink-faded`, `--font`.
 
+That override behaviour is not a Tearline convention — it is the cascade. Per
+CSS Cascade and Inheritance Level 5 (fetched 2026-08-01), when two declarations
+come from different encapsulation contexts, the declaration from the OUTER
+context wins for normal rules, and the inner context wins for important ones.
+A `::slotted()` rule inside a component is therefore a default that any
+ordinary rule on the host page beats.
+
+## The receipt look, without the component
+
+The look is plain CSS and can be rebuilt from scratch: a narrow measure, a
+monospace stack, 11.5px type on 1.62 line-height with `.04em` tracking,
+`font-variant-numeric: tabular-nums` so price columns align, dashed `<hr>`
+rules, an SVG `feTurbulence` data URI laid over the paper at
+`mix-blend-mode: multiply`, and a seeded `clip-path` polygon for the torn edge
+(mostly straight, roughly one point in six a deeper nick). The full write-up,
+with the shipped values and why a share-image widget belongs in a custom
+element rather than a framework component, is at
+https://tearline.kynth.studio/receipt-ui.
+
 ## Frameworks
 
 It is a custom element, so it works anywhere HTML does — React, Vue, Svelte,
@@ -86,5 +105,7 @@ attributes through, so the tag needs no wrapper.
 - [Documentation and full API reference](https://tearline.kynth.studio/docs)
 - [Export a DOM element as a PNG — the technique, its limits, and the npm
   alternatives](https://tearline.kynth.studio/dom-to-png)
+- [Receipt-style UI on the web — the CSS behind the paper look, and why it is a
+  custom element](https://tearline.kynth.studio/receipt-ui)
 
 MIT © Kynth Studio.

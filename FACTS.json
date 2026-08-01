@@ -1,7 +1,7 @@
 {
   "product": "tearline",
   "host": "tearline.kynth.studio",
-  "note": "Dated-claim register. Tearline is a developer library, not a regulated product, so it makes almost no claims about the world that decay on a calendar. What it claims is that external artefacts exist and are reachable. All three availability claims were re-fetched on 2026-07-31 and every value held — nothing drifted, and no page copy needed changing. On 2026-07-31 a third page (/dom-to-png) shipped, and it is the first surface on this host that quotes numbers about OTHER software: four npm packages' versions, licences, dependency counts, publish dates and sizes. Those are exactly the kind of value that goes stale invisibly, so each package is now its own register entry and the page prints the fetch date beside every figure. Every entry was fetched on its lastVerified date; none is remembered.",
+  "note": "Dated-claim register. Tearline is a developer library, not a regulated product, so it makes almost no claims about the world that decay on a calendar. What it claims is that external artefacts exist and are reachable, that four npm packages have certain metadata, and that three browser behaviours work a certain way. On 2026-08-01 all seven previously-fetchable entries were re-fetched and every value held: tearline.js still 200s at 12,756 bytes, the npm package is still unpublished, the GitHub repository is still private, and all four npm metadata rows came back byte-identical to yesterday's reading. Nothing drifted and no page copy needed correcting. The canvas-tainting entry was NOT re-fetched today and keeps its 2026-07-31 date rather than being silently bumped. Three entries were added with /receipt-ui, the fourth page on the host: the custom-element naming and lifecycle rules, the CSS Cascade tree-context rule, and the definition of tabular figures. The cascade entry retroactively sources a claim the codebase and llms.txt had been making in their own words since launch. Every entry was fetched on its lastVerified date; none is remembered.",
   "claims": [
     {
       "id": "npm-package-published",
@@ -21,10 +21,10 @@
         "public/llms.txt",
         "README.md"
       ],
-      "lastVerified": "2026-07-31",
+      "lastVerified": "2026-08-01",
       "status": "verified",
       "resolvedBy": "Isaiah publishes: drop \"private\": true from package.json, run `npm publish`. Outward-facing, so not this loop's to fire.",
-      "note": "Re-checked 2026-07-29: registry.npmjs.org/tearline still returns HTTP 404 {\"error\":\"Not found\"} and package.json still carries \"private\": true. Rather than keep a drifted claim on the page, the claim was REMOVED from every surface on 2026-07-29 — `npm i tearline` no longer appears as a CTA in the header, the hero, the install section, the three mobile CTA blocks in page.tsx, or the footer's npm link. The hosted script tag (see hosted-script-url) is now the single documented install path everywhere. The entry stays in the register so the daily check keeps running; when Isaiah drops \"private\": true and publishes, the npm line goes back and this flips to an availability claim again. Re-checked 2026-07-30: registry.npmjs.org/tearline still HTTP 404 and package.json line 58 still carries \"private\": true. No site copy claims npm, so nothing to correct. Re-checked 2026-07-31: registry.npmjs.org/tearline still returns HTTP 404 {\"error\":\"Not found\"} and package.json line 58 still carries \"private\": true. No site copy claims npm, so nothing to correct."
+      "note": "Re-checked 2026-07-29: registry.npmjs.org/tearline still returns HTTP 404 {\"error\":\"Not found\"} and package.json still carries \"private\": true. Rather than keep a drifted claim on the page, the claim was REMOVED from every surface on 2026-07-29 — `npm i tearline` no longer appears as a CTA in the header, the hero, the install section, the three mobile CTA blocks in page.tsx, or the footer's npm link. The hosted script tag (see hosted-script-url) is now the single documented install path everywhere. The entry stays in the register so the daily check keeps running; when Isaiah drops \"private\": true and publishes, the npm line goes back and this flips to an availability claim again. Re-checked 2026-07-30: registry.npmjs.org/tearline still HTTP 404 and package.json line 58 still carries \"private\": true. No site copy claims npm, so nothing to correct. Re-checked 2026-07-31: registry.npmjs.org/tearline still returns HTTP 404 {\"error\":\"Not found\"} and package.json line 58 still carries \"private\": true. No site copy claims npm, so nothing to correct. Re-checked 2026-08-01: registry.npmjs.org/tearline still returns HTTP 404 and package.json line 58 still carries \"private\": true. No site copy claims npm, so nothing to correct."
     },
     {
       "id": "github-repo-public",
@@ -42,10 +42,10 @@
         "README.md",
         "package.json"
       ],
-      "lastVerified": "2026-07-31",
+      "lastVerified": "2026-08-01",
       "status": "verified",
       "resolvedBy": "Flip the repository to public. One toggle; outward-facing, so Isaiah's call.",
-      "note": "Re-checked 2026-07-29: `gh repo view kyisaiah47/tearline` reports visibility PRIVATE and an anonymous GET of the repo URL returns HTTP 404. Every GitHub link was REMOVED on 2026-07-29 — the header's GitHub CTA now points at the on-origin playground, the hero's \"MIT - zero dependencies\" badge points at opensource.org/license/mit, and the footer's GitHub row is replaced by \"Read the source\" -> /tearline.js, which is the entire 340-line unminified component and makes the source claim literally true while the repo stays private. package.json's repository field is left as-is: it is package metadata, not a claim rendered to a buyer. Re-checked 2026-07-30: an anonymous GET of the repo URL still returns HTTP 404, so the repository is still private and every removal from 2026-07-29 still stands. This is also the measured reason github.com out-cites us on Tearline's own queries — engines answering \"html to receipt image javascript\" cite readable repositories, and ours cannot be read. Flipping it public is the single highest-leverage act available on this product, and it is not a page we can write. Re-checked 2026-07-31: `gh repo view kyisaiah47/tearline --json visibility` returns {\"visibility\":\"PRIVATE\"} and an anonymous GET still returns HTTP 404. Every removal from 2026-07-29 still stands. github.com remains the top competitor-gap domain on this product's queries for exactly this reason, and it is still not a gap a page can close — /dom-to-png, shipped 2026-07-31, answers the same questions on-origin instead, but a readable repo would outrank it."
+      "note": "Re-checked 2026-07-29: `gh repo view kyisaiah47/tearline` reports visibility PRIVATE and an anonymous GET of the repo URL returns HTTP 404. Every GitHub link was REMOVED on 2026-07-29 — the header's GitHub CTA now points at the on-origin playground, the hero's \"MIT - zero dependencies\" badge points at opensource.org/license/mit, and the footer's GitHub row is replaced by \"Read the source\" -> /tearline.js, which is the entire 340-line unminified component and makes the source claim literally true while the repo stays private. package.json's repository field is left as-is: it is package metadata, not a claim rendered to a buyer. Re-checked 2026-07-30: an anonymous GET of the repo URL still returns HTTP 404, so the repository is still private and every removal from 2026-07-29 still stands. This is also the measured reason github.com out-cites us on Tearline's own queries — engines answering \"html to receipt image javascript\" cite readable repositories, and ours cannot be read. Flipping it public is the single highest-leverage act available on this product, and it is not a page we can write. Re-checked 2026-07-31: `gh repo view kyisaiah47/tearline --json visibility` returns {\"visibility\":\"PRIVATE\"} and an anonymous GET still returns HTTP 404. Every removal from 2026-07-29 still stands. github.com remains the top competitor-gap domain on this product's queries for exactly this reason, and it is still not a gap a page can close — /dom-to-png, shipped 2026-07-31, answers the same questions on-origin instead, but a readable repo would outrank it. Re-checked 2026-08-01: `gh repo view kyisaiah47/tearline --json visibility` returns {\"visibility\":\"PRIVATE\"}. Every removal from 2026-07-29 still stands. github.com is again today's top competitor-gap domain (cited on 4 of the last 7 days across 2 engines) for exactly this reason, and it is still not a gap a page can close. /receipt-ui, shipped 2026-08-01, is the second on-origin answer written to stand in for a readable repo — it gives the whole receipt-look implementation away in copyable CSS, quoted out of the shipped file. A public repo would still outrank both."
     },
     {
       "id": "hosted-script-url",
@@ -62,11 +62,12 @@
         "src/components/sections/SiteFooter.tsx",
         "src/app/docs/page.tsx",
         "public/llms.txt",
-        "README.md"
+        "README.md",
+        "src/app/receipt-ui/page.tsx"
       ],
-      "lastVerified": "2026-07-31",
+      "lastVerified": "2026-08-01",
       "status": "verified",
-      "note": "Re-checked 2026-07-30: HTTP 200, still resolving. This claim is now load-bearing in a way it was not before — with npm and GitHub both removed, this URL is the product's ONLY install path and its only route to the source. If it ever stops resolving the site has no working call to action at all, so it is the highest-priority entry in this register. Re-checked 2026-07-31: HTTP 200, 12,756 bytes, content-type application/javascript. Still the product's only install path and only route to the source."
+      "note": "Re-checked 2026-07-30: HTTP 200, still resolving. This claim is now load-bearing in a way it was not before — with npm and GitHub both removed, this URL is the product's ONLY install path and its only route to the source. If it ever stops resolving the site has no working call to action at all, so it is the highest-priority entry in this register. Re-checked 2026-07-31: HTTP 200, 12,756 bytes, content-type application/javascript. Still the product's only install path and only route to the source. Re-checked 2026-08-01: HTTP 200, 12,756 bytes, content-type application/javascript. Unchanged byte-for-byte in size since 2026-07-31. Still the product's only install path and only route to the source, and now also the cited source for the CSS quoted on /receipt-ui."
     },
     {
       "id": "npm-modern-screenshot",
@@ -79,9 +80,9 @@
       "appearsOn": [
         "src/app/dom-to-png/page.tsx"
       ],
-      "lastVerified": "2026-07-31",
+      "lastVerified": "2026-08-01",
       "status": "verified",
-      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it."
+      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change."
     },
     {
       "id": "npm-html-to-image",
@@ -94,9 +95,9 @@
       "appearsOn": [
         "src/app/dom-to-png/page.tsx"
       ],
-      "lastVerified": "2026-07-31",
+      "lastVerified": "2026-08-01",
       "status": "verified",
-      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it."
+      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change."
     },
     {
       "id": "npm-html2canvas",
@@ -109,9 +110,9 @@
       "appearsOn": [
         "src/app/dom-to-png/page.tsx"
       ],
-      "lastVerified": "2026-07-31",
+      "lastVerified": "2026-08-01",
       "status": "verified",
-      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it."
+      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change."
     },
     {
       "id": "npm-dom-to-image",
@@ -124,9 +125,9 @@
       "appearsOn": [
         "src/app/dom-to-png/page.tsx"
       ],
-      "lastVerified": "2026-07-31",
+      "lastVerified": "2026-08-01",
       "status": "verified",
-      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it."
+      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change."
     },
     {
       "id": "canvas-tainting-rule",
@@ -143,6 +144,54 @@
       "lastVerified": "2026-07-31",
       "status": "verified",
       "note": "Fetched from MDN on 2026-07-31; the wording on the page is a paraphrase of the 'Security and tainted canvases' section, not a quote. This is browser security behaviour rather than a dated announcement, so it decays far more slowly than the package rows above — but it is the load-bearing technical claim on /dom-to-png, so it is recorded rather than assumed."
+    },
+    {
+      "id": "custom-element-name-rule",
+      "claim": "The naming and lifecycle rules a custom element must satisfy",
+      "value": "the name must start with a lowercase letter and contain a hyphen; observedAttributes is a static array of attribute names, and attributeChangedCallback() fires after an observed attribute is initialised when the declaration is first parsed",
+      "kind": "spec-behaviour",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements",
+      "sourceTitle": "MDN — Using custom elements",
+      "asOf": "2026-08-01",
+      "appearsOn": [
+        "src/app/receipt-ui/page.tsx"
+      ],
+      "lastVerified": "2026-08-01",
+      "status": "verified",
+      "note": "Fetched from MDN on 2026-08-01. The hyphen rule is quoted on the page; the first-parse timing of attributeChangedCallback() is paraphrased. Both are load-bearing for the argument that a share-image widget belongs in a custom element, so they are recorded rather than assumed. Spec behaviour decays slowly, but MDN revises wording and this entry is what catches it."
+    },
+    {
+      "id": "shadow-cascade-outer-wins",
+      "claim": "Which declaration wins between a shadow tree and the outer document",
+      "value": "in cascade sorting order, when declarations come from different encapsulation contexts the outer context wins for normal rules and the inner context wins for important rules",
+      "kind": "spec-behaviour",
+      "sourceUrl": "https://www.w3.org/TR/css-cascade-5/",
+      "sourceTitle": "W3C — CSS Cascade and Inheritance Level 5",
+      "asOf": "2026-08-01",
+      "appearsOn": [
+        "src/app/receipt-ui/page.tsx",
+        "public/llms.txt",
+        "src/tearline.js"
+      ],
+      "lastVerified": "2026-08-01",
+      "status": "verified",
+      "note": "Fetched from the W3C TR on 2026-08-01. This is the normative source for a claim the codebase and llms.txt had been making in their own words since launch — that ::slotted() rules 'lose to your own CSS'. MDN's ::slotted and Using-shadow-DOM pages were both checked first and neither states the cascade direction, so the spec is the citation. The claim is now sourced everywhere it appears rather than asserted."
+    },
+    {
+      "id": "tabular-nums-definition",
+      "claim": "What font-variant-numeric: tabular-nums does",
+      "value": "activates the set of figures where numbers are all of the same size, allowing them to be easily aligned like in tables; maps to the OpenType tnum feature",
+      "kind": "spec-behaviour",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric",
+      "sourceTitle": "MDN — font-variant-numeric",
+      "asOf": "2026-08-01",
+      "appearsOn": [
+        "src/app/receipt-ui/page.tsx",
+        "public/llms.txt"
+      ],
+      "lastVerified": "2026-08-01",
+      "status": "verified",
+      "note": "Fetched from MDN on 2026-08-01. Quoted near-verbatim on /receipt-ui. Worth flagging for a future run: this is the one line in the page's CSS panel that is NOT in the shipped component — src/tearline.js does not set font-variant-numeric, and the page says so out loud rather than implying the quote is complete. If the component adds it, this note and that sentence both need removing."
     }
   ]
 }

@@ -480,6 +480,10 @@ export default function DomToPng() {
                       <a href={"/tearline.js"}>
                         {"/tearline.js"}
                       </a>
+                      {". How the receipt look itself is built — the paper, the type and the torn edge, in copyable CSS — is a "}
+                      <a href={"/receipt-ui"}>
+                        {"separate write-up"}
+                      </a>
                       {"."}
                     </p>
                   </div>
