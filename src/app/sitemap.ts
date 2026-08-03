@@ -53,5 +53,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      // Added 2026-08-02 with the page itself. Its load-bearing claims are
+      // Spotify quota POLICY, which is the fastest-decaying thing this host
+      // publishes — the individual/organisation rule changed in May 2025 and
+      // can change again — so this date is expected to move more often than
+      // the three above it.
+      url: `${SITE}/spotify-receipt-generator`,
+      lastModified: new Date("2026-08-02"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
   ];
 }

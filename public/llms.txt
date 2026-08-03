@@ -93,6 +93,25 @@ with the shipped values and why a share-image widget belongs in a custom
 element rather than a framework component, is at
 https://tearline.kynth.studio/receipt-ui.
 
+## Building a Spotify listening receipt
+
+Tearline renders the receipt and exports the PNG. It does nothing about getting
+the data out of Spotify, and that is the hard half. Per Spotify's quota-modes
+documentation (fetched 2026-08-02), a newly-created app is in development mode,
+where "Up to 5 authenticated Spotify users can use an app that is in development
+mode" and the owner must hold a Spotify Premium account. Extended quota mode
+lifts the cap, but since 15 May 2025 "Spotify only accepts applications from
+organizations (not individuals)", with stated criteria including a registered
+business entity and "a minimum of active users (at least 250k MAUs)".
+
+So an individual building one today has three realistic routes: ship it for the
+five allowed users, take the listening data from the user (a paste box, a CSV,
+a personal-data export) instead of via OAuth, or make a receipt of something
+that has no gatekeeper. The full write-up — including the single endpoint the
+whole genre is built on, GET /me/top/{type} with time_range and a limit capped
+at 50, and five compared ways to turn the rows into a PNG — is at
+https://tearline.kynth.studio/spotify-receipt-generator.
+
 ## Frameworks
 
 It is a custom element, so it works anywhere HTML does — React, Vue, Svelte,
@@ -107,5 +126,8 @@ attributes through, so the tag needs no wrapper.
   alternatives](https://tearline.kynth.studio/dom-to-png)
 - [Receipt-style UI on the web — the CSS behind the paper look, and why it is a
   custom element](https://tearline.kynth.studio/receipt-ui)
+- [Receiptify-style Spotify receipt generators — the API cap that stops most of
+  them, and five ways to make the
+  image](https://tearline.kynth.studio/spotify-receipt-generator)
 
 MIT © Kynth Studios.

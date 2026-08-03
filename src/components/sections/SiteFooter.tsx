@@ -46,12 +46,15 @@ const GROUPS: Group[] = [
       ["API reference", "/docs#api"],
       ["Exporting a PNG", "/docs#export"],
       ["Accessibility", "/docs#accessibility"],
-      /* Added 2026-07-31 and 2026-08-01. Neither is a Tearline reference page —
-       * one explains the browser-side DOM-to-PNG technique generally, the other
-       * the receipt look and why it is packaged as a custom element. Both sit
-       * last in the group rather than among the API rows. */
+      /* Added 2026-07-31, 2026-08-01 and 2026-08-02. None is a Tearline
+       * reference page — one explains the browser-side DOM-to-PNG technique
+       * generally, one the receipt look and why it is packaged as a custom
+       * element, and one what it actually takes to build a Receiptify-style
+       * Spotify receipt. All three sit last in the group rather than among the
+       * API rows. */
       ["DOM to PNG, explained", "/dom-to-png"],
       ["Receipt-style UI", "/receipt-ui"],
+      ["Spotify receipt generators", "/spotify-receipt-generator"],
     ],
   },
   {
