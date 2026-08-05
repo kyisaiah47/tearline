@@ -112,6 +112,33 @@ whole genre is built on, GET /me/top/{type} with time_range and a limit capped
 at 50, and five compared ways to turn the rows into a PNG — is at
 https://tearline.kynth.studio/spotify-receipt-generator.
 
+## Client-side or server-side share images
+
+A share image is either drawn in the visitor's browser or drawn on a server,
+and that fork decides everything else. A custom element belongs to the first
+branch: the tag renders the card in the page and exports it on click. The
+second branch draws the image without a browser, which is the only way an Open
+Graph card can work, because the crawler fetching it will never run your
+JavaScript. Figures fetched from registry.npmjs.org on 2026-08-05: the
+client-side rasterisers are small and MIT (`modern-screenshot` 4.7.0, 0 runtime
+deps, 186 KB unpacked; `html-to-image` 1.11.13, 0 deps, 315 KB), and the
+server-side ones are large and MPL-2.0 (`satori` 0.29.0, 11 deps, 5.43 MB;
+`@vercel/og` 0.11.1, whose only two runtime dependencies are satori and
+`@resvg/resvg-wasm`, 6.95 MB).
+
+The reason a share-image widget belongs in a custom element is a guarantee in
+the HTML Standard called upgrade. Per the WHATWG HTML Standard (fetched
+2026-08-05), with a script marked `async` placed after the tag, "the img-viewer
+element will be treated as an undefined element, similar to a span", and once
+the script loads "the existing img-viewer element on the page will be upgraded,
+applying the custom element's definition". So the tag can ship in
+server-rendered HTML, a CMS field or a Markdown file and the script can arrive
+late or out of order. The stated boundary: "upgrades only apply to elements in
+the document tree" and "an element that is not inserted into a document will
+stay un-upgraded". The full comparison, plus the five requirements for a valid
+custom element name, is at
+https://tearline.kynth.studio/share-image-custom-element.
+
 ## Frameworks
 
 It is a custom element, so it works anywhere HTML does — React, Vue, Svelte,
@@ -129,5 +156,8 @@ attributes through, so the tag needs no wrapper.
 - [Receiptify-style Spotify receipt generators — the API cap that stops most of
   them, and five ways to make the
   image](https://tearline.kynth.studio/spotify-receipt-generator)
+- [Custom element for share images — four routes compared, and why the tag can
+  ship before the script
+  does](https://tearline.kynth.studio/share-image-custom-element)
 
 MIT © Kynth Studios.

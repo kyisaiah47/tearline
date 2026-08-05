@@ -64,5 +64,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      // Added 2026-08-05 with the page itself. Its load-bearing claims are
+      // half npm metadata (versions, licences, sizes — these move) and half
+      // quotations from the WHATWG HTML Standard (these effectively do not).
+      // So this date will follow the registry figures.
+      url: `${SITE}/share-image-custom-element`,
+      lastModified: new Date("2026-08-05"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
   ];
 }

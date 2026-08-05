@@ -449,6 +449,15 @@ export default function DomToPng() {
                         "If you want a general-purpose rasteriser you can point at any node, one of these four is the right answer and Tearline is not."
                       }
                     </p>
+                    <p className={"tl-docs-note"}>
+                      {
+                        "All four also share one hard limit: they need a browser. An Open Graph card is fetched by a crawler that will never run your JavaScript, so it has to be drawn on a server instead — a different set of packages, and a different licence. That fork, with today's figures for both sides, is "
+                      }
+                      <a href={"/share-image-custom-element"}>
+                        {"compared separately"}
+                      </a>
+                      {"."}
+                    </p>
                   </div>
 
                   <div className={"tl-api-col"}>

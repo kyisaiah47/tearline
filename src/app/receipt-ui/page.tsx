@@ -589,6 +589,15 @@ export default function ReceiptUi() {
                       </a>
                       {"."}
                     </p>
+                    <p className={"tl-docs-note"}>
+                      {
+                        "There is a second argument for the element boundary that is stronger than either of those, because it is a guarantee written into the HTML Standard rather than a matter of taste: an element whose defining script has not loaded yet is not an error, and gets upgraded in place when the script arrives. Which means the tag can sit in server-rendered HTML, a CMS field or someone else's template while the script loads late. That, and the client-versus-server fork behind any share image, is "
+                      }
+                      <a href={"/share-image-custom-element"}>
+                        {"compared separately"}
+                      </a>
+                      {"."}
+                    </p>
                   </div>
                 </div>
               </DocsSection>
