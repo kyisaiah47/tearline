@@ -402,7 +402,7 @@ const SOURCES: [string, string][] = [
   ],
   [
     "tearline.kynth.studio/tearline.js",
-    "The shipped implementation every measurement on this page was read out of — the paper CSS, the seeded tear polygon and the element class. 12.7 KB, unminified, HTTP 200 on 1 August 2026.",
+    "The shipped implementation every measurement on this page was read out of — the paper CSS, the seeded tear polygon and the element class. 13.7 KB, unminified, HTTP 200 on 7 August 2026.",
   ],
 ];
 

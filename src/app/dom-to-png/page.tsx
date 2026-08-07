@@ -285,7 +285,7 @@ const SOURCES: [string, string][] = [
   ],
   [
     "tearline.kynth.studio/tearline.js",
-    "The Tearline implementation described above — 12.7 KB, served unminified, HTTP 200 on 31 July 2026. It is the whole component; there is nothing else to read.",
+    "The Tearline implementation described above — 13.7 KB, served unminified, HTTP 200 on 7 August 2026. It is the whole component; there is nothing else to read.",
   ],
 ];
 

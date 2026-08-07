@@ -327,7 +327,7 @@ const SOURCES: [string, string][] = [
   ],
   [
     "tearline.kynth.studio/tearline.js",
-    "The component the render panel loads. 12,756 bytes, unminified, HTTP 200 on 2 August 2026.",
+    "The component the render panel loads. 14,048 bytes, unminified, HTTP 200 on 7 August 2026.",
   ],
 ];
 

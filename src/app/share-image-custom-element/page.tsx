@@ -107,7 +107,7 @@ const ROUTES: [string, string, string][] = [
   [
     "a custom element",
     "one script tag · 0 deps · MIT",
-    "The element renders the thing AND exports it. Right when the user is looking at the artefact and wants a PNG of it on click. Tearline is 12,756 bytes served, HTTP 200 on 5 Aug 2026.",
+    "The element renders the thing AND exports it. Right when the user is looking at the artefact and wants a PNG of it on click. Tearline is 14,048 bytes served, HTTP 200 on 7 Aug 2026.",
   ],
   [
     "modern-screenshot",
@@ -242,7 +242,7 @@ const SOURCES: [string, string][] = [
   ],
   [
     "tearline.kynth.studio/tearline.js",
-    "The served component: 12,756 bytes, unminified, HTTP 200 on 5 August 2026. It is the whole thing; there is nothing else to read.",
+    "The served component: 14,048 bytes, unminified, HTTP 200 on 7 August 2026. It is the whole thing; there is nothing else to read.",
   ],
 ];
 
@@ -481,7 +481,7 @@ export default function ShareImageCustomElement() {
                       }
                       <code>{"<tear-line>"}</code>
                       {
-                        " and it renders as a thermal receipt — paper texture, dashed rules, seeded torn edge, barcode — and the element exports that. One script tag, no build step, no runtime dependencies, 12,756 bytes served unminified at "
+                        " and it renders as a thermal receipt — paper texture, dashed rules, seeded torn edge, barcode — and the element exports that. One script tag, no build step, no runtime dependencies, 14,048 bytes served unminified at "
                       }
                       <a href={"/tearline.js"}>{"/tearline.js"}</a>
                       {" and HTTP 200 on 5 August 2026."}
@@ -508,7 +508,7 @@ export default function ShareImageCustomElement() {
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "Two more limits worth knowing before adopting it: there is no npm package today, so the script tag is the supported install path, and the repository is private, so the source cannot be read on GitHub. The component is served unminified instead, which is the same 12,756 bytes either way."
+                        "Two more limits worth knowing before adopting it: there is no npm package today, so the script tag is the supported install path, and the repository is private, so the source cannot be read on GitHub. The component is served unminified instead, which is the same 14,048 bytes either way."
                       }
                     </p>
                   </div>

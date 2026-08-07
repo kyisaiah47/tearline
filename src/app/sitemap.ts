@@ -13,12 +13,22 @@ import type { MetadataRoute } from "next";
  * (the npm CTA came out of page.tsx and docs/page.tsx) after these dates were
  * set, so 2026-07-28 was under-reporting a real content change.
  *
- * CRAWL STATE, measured 2026-08-06 (this comment used to say the file had never
- * been served; that stopped being true around 2026-07-30). /sitemap.xml now
- * returns 200 and Google has read it: /docs, /dom-to-png and
- * /spotify-receipt-generator all report "Discovered - currently not indexed" in
- * the URL Inspection API. The home page, /receipt-ui and
- * /share-image-custom-element still report "URL is unknown to Google".
+ * Bumped again 2026-08-07, and for the same reason: commits b76c925 and aac12af
+ * on 2026-08-06 added the `tearline:stage` export event to the component, the
+ * four-orb stage readout to the playground on the home page, and 47 lines
+ * documenting the stages and their failure contract on /docs — none of which
+ * moved these dates. The four content pages move to 2026-08-07 because the
+ * served-size figure they each cite was corrected today (12,756 -> 14,048 bytes,
+ * see FACTS.json#tearline-js-served-size); / and /docs move to 2026-08-06, the
+ * day their content actually changed.
+ *
+ * CRAWL STATE, measured 2026-08-07 via the URL Inspection API. /sitemap.xml is
+ * enrolled on sc-domain:kynth.studio (submitted 2026-08-03, last downloaded
+ * 2026-08-06, 6 URLs, 0 warnings, 0 errors) and Google is reading it: /docs,
+ * /receipt-ui, /spotify-receipt-generator and /share-image-custom-element all
+ * report "Discovered - currently not indexed", up from three yesterday. The home
+ * page and /dom-to-png still report "URL is unknown to Google", and indexed is
+ * still 0 of 6.
  *
  * The home page was inspected in BOTH URL forms on 2026-08-06 —
  * `https://tearline.kynth.studio` and `https://tearline.kynth.studio/` — and
@@ -40,13 +50,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // page's rel=canonical, and a sitemap that disagrees with the canonical
       // is a second candidate URL for Google to pick between.
       url: SITE,
-      lastModified: new Date("2026-07-29"),
+      lastModified: new Date("2026-08-06"),
       changeFrequency: "monthly",
       priority: 1,
     },
     {
       url: `${SITE}/docs`,
-      lastModified: new Date("2026-07-29"),
+      lastModified: new Date("2026-08-06"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -55,7 +65,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // page and re-checked against FACTS.json, so when they are refreshed
       // this date moves with them — that is a real content change.
       url: `${SITE}/dom-to-png`,
-      lastModified: new Date("2026-07-31"),
+      lastModified: new Date("2026-08-07"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -65,7 +75,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // /dom-to-png — but the CSS it quotes is read out of the shipped
       // component, so a change to tearline.js is a change here too.
       url: `${SITE}/receipt-ui`,
-      lastModified: new Date("2026-08-01"),
+      lastModified: new Date("2026-08-07"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -76,7 +86,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // can change again — so this date is expected to move more often than
       // the three above it.
       url: `${SITE}/spotify-receipt-generator`,
-      lastModified: new Date("2026-08-02"),
+      lastModified: new Date("2026-08-07"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -86,7 +96,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // quotations from the WHATWG HTML Standard (these effectively do not).
       // So this date will follow the registry figures.
       url: `${SITE}/share-image-custom-element`,
-      lastModified: new Date("2026-08-05"),
+      lastModified: new Date("2026-08-07"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
