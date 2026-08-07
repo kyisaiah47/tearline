@@ -282,9 +282,29 @@ body {
   --color-text: #d1d1d1;
   --color-gray: #b0b0b0;
   --color-gray-2: #999;
-  --value-gray-2: gray;
+  /* THE TWO QUIET TIERS WERE INVERTED, and between them they were 40 of this host's 62 findings.
+   *
+   * `--value-gray-2` arrived from the template as the CSS keyword `gray` — #808080, which is not a
+   * chosen number, it is the default. Against this site's #1a1a1a page it measures 4.45:1 and
+   * against the #1f1f1f panels 4.16:1, so it missed the floor on every heading-4, nav-link-text,
+   * menu-label, hero-subtext, body-text, docs note and reference-table cell at once. #8a8a8a is
+   * the estate's settled floor — the lowest grey clearing 4.5:1 on both #121212 and #0a0a0a — and
+   * on these lighter surfaces it comes out at 4.78:1.
+   *
+   * `--color-gray-dark-2` was #404040, 1.69:1, and it is the tier BELOW that one: docs labels,
+   * filename chips, the seed readout, the editor label, the copy affordance, the reference
+   * table's defaults. Every one of those is 11px mono. Small text needs MORE contrast than body
+   * text, not less, so a quiet tier that goes darker as the type gets smaller has the hierarchy
+   * upside down — which is how a legibility floor gets crossed by 3 points rather than by 0.05.
+   *
+   * There is no legible tier below the floor, so these two do not separate by lightness at all
+   * any more. The label tier is a step LIGHTER, at 5.84:1, and it stays distinct the way it was
+   * already distinct: mono, 11px, 0.08em tracking. `--color-gray-dark-2` is a text colour at every
+   * one of its sixteen call sites and nothing else, so this is one declaration and no side
+   * effects. */
+  --value-gray-2: #8a8a8a;
   --color-brown: #5c5c5c;
-  --color-gray-dark-2: #404040;
+  --color-gray-dark-2: #9a9a9a;
   --color-gray-dark: #2a2a2a;
   --color-black-12: #1f1f1f;
   --color-black: #1a1a1a;
@@ -3764,7 +3784,27 @@ code.heading-4 span.heading-4:not([data-text-fill]) {
   padding: 0px;
   display: flex;
   position: relative;
-  overflow: visible;
+  /* A CLOSED ANSWER WAS STILL IN THE PAGE. The captured rule collapsed the panel to 1px and left
+   * `overflow: visible`, so all seven answers spilled their full height out of a 1px box and were
+   * hidden by nothing but `opacity: 0` on the wrapper. The gate saw six paragraphs occupying real
+   * space at opacity 0 — the StoreReady signature exactly — and it was right to: a screen reader
+   * and a Tab key both reached the closed answers, because opacity hides a thing from an eye and
+   * from nothing else.
+   *
+   * `overflow: hidden` is the clip the 1px height was always implying. `visibility: hidden` is
+   * what takes it out of the accessibility tree, and it is delayed by the fade's own duration on
+   * the way out so the answer is still painted while it fades, then switches at the end. On the
+   * way in it flips immediately, so the fade opens on visible text. */
+  overflow: hidden;
+  visibility: hidden;
+  transition: visibility 0s linear 0.28s;
+}
+.faqsection-closed-2.state-2 .faqsection-bottom {
+  visibility: visible;
+  transition: visibility 0s linear 0s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .faqsection-closed-2 .faqsection-bottom { transition: none; }
 }
 .faqsection-closed-2 .faq-answer-text {
   white-space: pre-wrap;

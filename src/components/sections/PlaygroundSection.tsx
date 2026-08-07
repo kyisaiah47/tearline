@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Toaster, toast } from "sonner";
 
 import MarkupEditor from "@/components/MarkupEditor";
+import ExportStage, { explain, type ExportState } from "@/components/ExportStage";
 
 /**
  * The playground.
@@ -51,16 +53,19 @@ const SAMPLE = `<h1>Meridian</h1>
 
 type TearLineEl = HTMLElement & {
   download: (name?: string, opts?: { scale?: number }) => Promise<void>;
+  toBlob: (opts?: { scale?: number }) => Promise<Blob | null>;
 };
 
 const MONO = "'Geist Mono', 'Fira Code', monospace";
 
+type Stage = "flatten" | "serialise" | "rasterise" | "encode";
 
 export default function PlaygroundSection() {
   const [src, setSrc] = useState(SAMPLE);
   const [seed, setSeed] = useState(20260726);
-  const [status, setStatus] = useState<"idle" | "working" | "failed">("idle");
+  const [exp, setExp] = useState<ExportState>({ kind: "idle" });
   const receipt = useRef<TearLineEl | null>(null);
+  const lastUrl = useRef<string | null>(null);
 
   // The receipt's content is light-DOM children of a custom element, so React
   // cannot own it — set it imperatively and let the element re-render itself.
@@ -68,15 +73,77 @@ export default function PlaygroundSection() {
     if (receipt.current) receipt.current.innerHTML = src;
   }, [src]);
 
-  async function download() {
-    if (!receipt.current) return;
-    setStatus("working");
+  /* An object URL is held for as long as the result card shows the thumbnail and the "save it
+   * again" link points at it. Revoking it on the next export is what stops a session of twenty
+   * exports pinning twenty PNGs in memory — the old `download()` revoked immediately, which was
+   * right when nothing on the page referred to the blob afterwards and is wrong now that
+   * something does. */
+  const releaseLast = () => {
+    if (lastUrl.current) {
+      URL.revokeObjectURL(lastUrl.current);
+      lastUrl.current = null;
+    }
+  };
+  useEffect(() => releaseLast, []);
+
+  async function runExport() {
+    const el = receipt.current;
+    if (!el) return;
+
+    /* The stage the export reached, tracked outside React state as well as in it: when the
+     * promise rejects we need to know WHERE, and a state setter's value is not readable from the
+     * catch block that needs it. */
+    let at: Stage = "flatten";
+    const onStage = (e: Event) => {
+      at = (e as CustomEvent<{ stage: Stage }>).detail.stage;
+      setExp({ kind: "working", stage: at });
+    };
+    el.addEventListener("tearline:stage", onStage);
+
+    releaseLast();
+    setExp({ kind: "working", stage: "flatten" });
+
     try {
-      await receipt.current.download("receipt.png");
-      setStatus("idle");
-    } catch {
-      setStatus("failed");
-      setTimeout(() => setStatus("idle"), 2400);
+      /* `toBlob` rather than `download`, because the panel needs the artefact — its real byte
+       * count and its real pixel size — and `download` throws the blob away after clicking a
+       * link. The save still happens here, immediately, exactly as before: pressing the button
+       * saves the file, and the card is what the page has to show for it rather than a step the
+       * reader has to take. */
+      const blob = await el.toBlob();
+      if (!blob) throw new Error("encode: the canvas produced no blob");
+
+      const url = URL.createObjectURL(blob);
+      lastUrl.current = url;
+
+      const size = await new Promise<{ w: number; h: number }>((res) => {
+        const probe = new Image();
+        probe.onload = () => res({ w: probe.naturalWidth, h: probe.naturalHeight });
+        probe.onerror = () => res({ w: 0, h: 0 });
+        probe.src = url;
+      });
+
+      const name = "receipt.png";
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = name;
+      a.click();
+
+      setExp({ kind: "done", result: { url, w: size.w, h: size.h, bytes: blob.size, name } });
+    } catch (err) {
+      setExp({ kind: "failed", stage: at, message: explain(at, err) });
+      /* SONNER, FOR THE FAILURE — and only for the failure.
+       *
+       * Failures and undo only. A toast confirming a successful export would be a notification
+       * about something the reader is already looking at, three lines below, in a card built to
+       * show it. This one exists because an export can be started and then scrolled away from:
+       * the panel is in the playground, and a reader who has moved on to the docs would otherwise
+       * never learn it broke. The toast is short and points back; the panel keeps the sentence
+       * that says what to do. */
+      toast.error("The export did not finish.", {
+        description: "The playground says which step stopped it, and how to fix it.",
+      });
+    } finally {
+      el.removeEventListener("tearline:stage", onStage);
     }
   }
 
@@ -167,21 +234,55 @@ export default function PlaygroundSection() {
                   </label>
                   <MarkupEditor id={"tl-src"} value={src} onChange={setSrc} />
                   <div className={"tl-editor-controls"}>
-                    <button className={"tl-btn"} onClick={download}>
-                      {status === "working"
-                        ? "Rendering…"
-                        : status === "failed"
-                          ? "Export failed"
-                          : "Download PNG"}
+                    {/* The label no longer carries the state. It said "Rendering…" and then
+                        "Export failed" and then went back to itself, which meant the button was
+                        the progress indicator, the result and the error message all at once — and
+                        each of those overwrote the last. Disabled while working, in three
+                        channels; the panel below says everything else. */}
+                    <button
+                      className={"tl-btn"}
+                      type={"button"}
+                      onClick={runExport}
+                      disabled={exp.kind === "working"}
+                    >
+                      {"Download PNG"}
                     </button>
                     <button
                       className={"tl-btn tl-btn-ghost"}
+                      type={"button"}
                       onClick={() => setSeed(Math.floor(Math.random() * 1e6))}
+                      disabled={exp.kind === "working"}
                     >
                       {"New tear"}
                     </button>
                     <span className={"tl-seed"}>{`seed ${seed}`}</span>
                   </div>
+
+                  <ExportStage
+                    state={exp}
+                    onRetry={runExport}
+                    onDismiss={() => {
+                      releaseLast();
+                      setExp({ kind: "idle" });
+                    }}
+                  />
+
+                  {/* Dressed in the product's own tokens rather than Sonner's default light
+                      card: a white panel on this page is the one thing that would make a toast
+                      read as a browser artefact rather than as part of Tearline. */}
+                  <Toaster
+                    position={"bottom-center"}
+                    toastOptions={{
+                      style: {
+                        background: "var(--color-black, #1a1a1a)",
+                        border: "1px solid var(--color-gray-dark, #2a2a2a)",
+                        color: "var(--color-text, #d1d1d1)",
+                        borderRadius: "12px",
+                        fontFamily: MONO,
+                        fontSize: "13px",
+                      },
+                    }}
+                  />
                 </div>
               </div>
 

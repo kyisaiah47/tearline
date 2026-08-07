@@ -44,16 +44,17 @@
     "next": "15.5.22",
     "posthog-js": "^1.407.0",
     "react": "19.1.1",
-    "react-dom": "19.1.1"
+    "react-dom": "19.1.1",
+    "sonner": "^2.0.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "typescript": "^5",
     "eslint": "^9",
-    "eslint-config-next": "15.5.22"
+    "eslint-config-next": "15.5.22",
+    "typescript": "^5"
   },
   "private": true
 }

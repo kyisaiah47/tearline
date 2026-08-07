@@ -236,17 +236,41 @@ body {
 }
 
 /* Lifted from the donor's primary/secondary link pair rather than invented:
- * same radius, same weight, same 40px box. */
+ * same radius, same weight, same 40px box.
+ *
+ * THE EIGHT STATES, checked rather than assumed. This shipped with two — a resting look and a
+ * `brightness(1.08)` hover — which meant a keyboard user got the browser's default ring wherever
+ * it happened to land, a press produced no acknowledgement at all, and there was no disabled
+ * treatment for a control that spends two seconds of every use unable to be pressed again. */
 .tl-btn {
   font-family: "Geist", sans-serif;
   font-size: 14px;
   line-height: 1;
   padding: 12px 18px;
+  /* 44px on the box, measured, not on the padding. 12 + 14 + 12 + 2 borders is 40. */
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  /* A CONTROL'S LABEL NEVER WRAPS. "Download PNG" broke onto two lines at 320, 375 and 414 and
+   * "New tear" at 320 — four of this host's findings, one declaration. Safe because the controls
+   * row is `display: flex` with `flex-wrap: wrap`, so the row reflows instead of the label; the
+   * no-horizontal-scroll check at 320 is what makes that a fix rather than a trade. */
+  white-space: nowrap;
   border: 1px solid transparent;
   border-radius: 8px;
   background: var(--color-background, #ffa552);
   color: var(--color-black, #1a1917);
   cursor: pointer;
+  /* Reserved transparent at rest, so activating it moves nothing. `transition` deliberately omits
+   * `outline-color` — a focus ring that fades in is one a keyboard user cannot trust. */
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition:
+    filter 140ms cubic-bezier(0.32, 0.72, 0, 1),
+    background-color 140ms cubic-bezier(0.32, 0.72, 0, 1),
+    transform 140ms cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 .tl-btn-ghost {
@@ -255,8 +279,45 @@ body {
   color: var(--color-text, #d1d1d1);
 }
 
-.tl-btn:hover {
+.tl-btn:hover:not(:disabled) {
   filter: brightness(1.08);
+}
+
+.tl-btn-ghost:hover:not(:disabled) {
+  filter: none;
+  /* `border-width` never changes between states — the colour does. A border that thickens on
+   * hover moves every sibling in the row by a pixel. */
+  border-color: var(--color-gray-dark-2, #9a9a9a);
+  background: #ffffff08;
+}
+
+.tl-btn:focus-visible {
+  outline-color: var(--color-background, #ffa552);
+}
+
+.tl-btn-ghost:focus-visible {
+  outline-color: var(--color-text, #d1d1d1);
+}
+
+.tl-btn:active:not(:disabled) {
+  transform: translateY(1px);
+  filter: brightness(0.94);
+}
+
+/* Three channels, because any one of them alone is ambiguous: an opacity change alone reads as a
+ * style, a cursor alone is invisible until the pointer arrives, and the attribute alone is
+ * invisible to everyone who is looking rather than tabbing. */
+.tl-btn:disabled,
+.tl-btn[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: none;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-btn { transition: none; }
+  .tl-btn:active:not(:disabled) { transform: none; }
 }
 
 /* The stage is deliberately not a card. The receipt already has paper, a torn
@@ -655,4 +716,163 @@ tear-line[data-ready] {
   tear-line[data-ready] {
     animation: none;
   }
+}
+
+/* --- the export: the wait, and the reveal ---------------------------------
+ * The button used to be the whole feedback loop — its label was the progress
+ * indicator, the result and the error, each overwriting the last. The panel
+ * below is what replaced that. See ExportStage.tsx for the argument; this file
+ * only has to make the four states legible. */
+
+.tl-export {
+  margin-top: 4px;
+  border: 1px solid var(--color-gray-dark, #2a2a2a);
+  border-radius: 12px;
+  background: var(--color-black-12, #1f1f1f);
+  padding: 16px;
+  /* The panel arrives once, on the way in. Nothing about the states inside it re-runs this —
+   * a container that re-enters on every stage change is a flicker, not a transition. */
+  animation: tl-export-in 240ms cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+@keyframes tl-export-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---- the orbs ----
+ * Four, one per real stage. State is carried by FILL, and the motion is added on top of a
+ * distinction that is already legible without it — which is why reduced-motion can drop the
+ * animation entirely and lose nothing. */
+.tl-orbs {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.tl-orbs-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: 0 0 auto;
+}
+.tl-orb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  /* `border-width` never changes between states — the colour and the fill do. A ring that
+   * thickens when a stage starts nudges the three orbs beside it. */
+  border: 1.5px solid var(--color-gray-dark-2, #9a9a9a);
+  background: transparent;
+  transition:
+    background-color 240ms cubic-bezier(0.32, 0.72, 0, 1),
+    border-color 240ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.tl-orb[data-state="done"] {
+  background: var(--color-gray-dark-2, #9a9a9a);
+  border-color: var(--color-gray-dark-2, #9a9a9a);
+}
+.tl-orb[data-state="active"] {
+  background: var(--color-background, #cceb6e);
+  border-color: var(--color-background, #cceb6e);
+  animation: tl-orb-breathe 1150ms cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.tl-orb[data-state="failed"] {
+  background: transparent;
+  border-color: #e0603f;
+  /* The one place a second colour is spent, because the difference between "this step is
+   * running" and "this step is where it stopped" cannot be a difference in fill alone — the
+   * failed orb is not filled, and neither is a waiting one. */
+  box-shadow: 0 0 0 3px rgba(224, 96, 63, 0.16);
+}
+@keyframes tl-orb-breathe {
+  0%, 100% { transform: scale(1);    opacity: 1; }
+  50%      { transform: scale(1.32); opacity: 0.72; }
+}
+.tl-orbs-label {
+  margin: 0;
+  font-family: "Geist Mono", "Fira Code", monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--value-gray-2, #8a8a8a);
+  /* The four labels are different lengths, so the row's width would step on every stage change
+   * and drag the orbs left and right with it. */
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+/* ---- the reveal ----
+ * A second beat after the orbs settle, so the card lifts in UNDER them rather than replacing
+ * them in the same frame. A swap is what this exists not to be. */
+.tl-result {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  animation: tl-result-in 320ms cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+@keyframes tl-result-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.985); }
+  to   { opacity: 1; transform: none; }
+}
+.tl-result-thumb {
+  width: 84px;
+  height: auto;
+  flex: 0 0 auto;
+  border-radius: 6px;
+  /* The receipt already has paper and a shadow of its own inside the PNG; a border here would be
+   * a frame around a frame. */
+  display: block;
+}
+.tl-result-facts {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.tl-result-name {
+  margin: 0;
+  font-family: "Geist Mono", "Fira Code", monospace;
+  font-size: 13px;
+  color: var(--color-text, #d1d1d1);
+}
+.tl-result-meta {
+  margin: 0 0 8px;
+  font-family: "Geist Mono", "Fira Code", monospace;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--value-gray-2, #8a8a8a);
+}
+.tl-result-acts {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+/* The `.tl-btn` in here is a real anchor (a download link), so it needs the flex centring the
+ * button rule gets from its own display. Everything else — the 44px floor, the nowrap, the eight
+ * states — it inherits from `.tl-btn` and must not restate. */
+.tl-result-acts .tl-btn { text-decoration: none; }
+
+.tl-fail {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 14px;
+}
+.tl-fail-msg {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--color-text, #d1d1d1);
+  max-width: 62ch;
+}
+
+@media (max-width: 640px) {
+  .tl-orbs { flex-wrap: wrap; gap: 10px; }
+  .tl-result { flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tl-export,
+  .tl-result { animation: none; }
+  .tl-orb { transition: none; }
+  .tl-orb[data-state="active"] { animation: none; }
 }
