@@ -308,6 +308,17 @@ const METHODS: [string, string][] = [
   ],
 ];
 
+/* The four real steps of an export, and — for the two that can stop — the cause and the fix.
+ * These are the same four `tearline.js` emits as `tearline:stage`, and the same sentences the
+ * playground's failure panel prints, because a docs page and a runtime that disagree about what
+ * went wrong is worse than either alone. */
+const STAGE_FAILURES: [string, string][] = [
+  ["flatten", "Clones the shadow tree and inlines the slotted light DOM. Does not fail in practice \u2014 if it does, the element had not finished loading."],
+  ["serialise", "XMLSerializer, into an SVG foreignObject. Stops only on markup that is not valid XML; an unclosed tag is the usual cause."],
+  ["rasterise", "Decodes that SVG in an <img>. Most of the wait, and the one step that stops: an <img> pointing at a URL rather than a data: URI, because the sandbox cannot reach the network."],
+  ["encode", "Canvas to a PNG blob. Stops when the canvas is larger than the browser allows \u2014 use a narrower width, or scale 1."],
+];
+
 const PROPS: [string, string, string][] = [
   ["--paper", "#f6f3ec", "Paper colour, under the fibre texture and the falloff."],
   ["--ink", "#2b2724", "Body text."],
@@ -511,6 +522,42 @@ export default function Docs() {
                       </a>
                       {
                         " walks through the technique on its own, including the tainted-canvas rule that throws instead of returning a blank image, and how the zero-dependency packages on npm compare."
+                      }
+                    </p>
+                    {/* THE EXPORT'S FAILURE CONTRACT, WRITTEN DOWN.
+                        The element already rejected with an explicit error; what was missing is
+                        anywhere an author could read what to DO with it, and what the four steps
+                        even are. `data-tl-explains` marks this block for intent.json's
+                        `export-failure-says-what-to-do`. */}
+                    <p className={"tl-docs-label tl-docs-label-gap"} data-tl-explains={"stages"}>
+                      {"watching it happen, and what to do when it stops"}
+                    </p>
+                    <p className={"tl-docs-note"}>
+                      {"An export fires "}
+                      <code>{"tearline:stage"}</code>
+                      {
+                        " as it moves through the four things it actually does — flatten, serialise, rasterise, encode. They are not a progress bar's worth of invented percentages: they are the real steps, and the third is where the time and the failures both live. On a long receipt "
+                      }
+                      <code>{"rasterise"}</code>
+                      {
+                        " is most of the wait, so a spinner tells the reader nothing a still frame would not."
+                      }
+                    </p>
+                    <table className={"tl-table"}>
+                      <tbody>
+                        {STAGE_FAILURES.map(([stage, what]) => (
+                          <tr key={stage}>
+                            <td className={"tl-td-name"}>
+                              <code>{stage}</code>
+                            </td>
+                            <td className={"tl-td-desc"}>{what}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                    <p className={"tl-docs-note"}>
+                      {
+                        "Which is why the playground names the step it stopped at rather than saying the export failed. \u201CAn error occurred\u201D tells a reader only that we noticed."
                       }
                     </p>
                     <p className={"tl-docs-label tl-docs-label-gap"}>
