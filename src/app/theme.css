@@ -83,3 +83,23 @@ body {
   --brand-paper: #f2ece1;
   --brand-ink: #17150f;
 }
+
+/* ── the focus ring ───────────────────────────────────────────────────────────────────────────
+ *
+ * ⛔ MEASURED, NOT ASSUMED. state-pass reported 39 FOCUS findings here — every interactive
+ * element "falls back to the browser's default ring". That default is a 1px rgb(0,95,204) blue,
+ * which on this page's near-black ground is thin and low-contrast, and is nobody's brand.
+ *
+ * house-standard §5, ported: focus is an OUTLINE, never a border — a border-width change reflows
+ * the row. It is RESERVED TRANSPARENT AT REST so activating it shifts no geometry. And it appears
+ * INSTANTLY: `transition` deliberately excludes outline, because a ring that fades in is one a
+ * keyboard user cannot trust.
+ *
+ * :focus-visible, not :focus — a mouse click should not paint a ring. */
+:where(a, button, input, select, textarea, summary, [tabindex]:not([tabindex="-1"])) {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+:where(a, button, input, select, textarea, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline-color: #ffa552;
+}
