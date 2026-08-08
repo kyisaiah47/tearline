@@ -22,13 +22,16 @@ import type { MetadataRoute } from "next";
  * see FACTS.json#tearline-js-served-size); / and /docs move to 2026-08-06, the
  * day their content actually changed.
  *
- * CRAWL STATE, measured 2026-08-07 via the URL Inspection API. /sitemap.xml is
- * enrolled on sc-domain:kynth.studio (submitted 2026-08-03, last downloaded
- * 2026-08-06, 6 URLs, 0 warnings, 0 errors) and Google is reading it: /docs,
- * /receipt-ui, /spotify-receipt-generator and /share-image-custom-element all
- * report "Discovered - currently not indexed", up from three yesterday. The home
- * page and /dom-to-png still report "URL is unknown to Google", and indexed is
+ * CRAWL STATE, measured 2026-08-08 via the URL Inspection API. /sitemap.xml is
+ * enrolled on sc-domain:kynth.studio and Google is reading it. /dom-to-png moved
+ * from "URL is unknown to Google" to "Discovered - currently not indexed" today,
+ * which makes it five of five subpages discovered: /docs, /dom-to-png,
+ * /receipt-ui, /spotify-receipt-generator and /share-image-custom-element. Every
+ * page this file lists except the home page is now known to Google. Indexed is
  * still 0 of 6.
+ *
+ * So discovery is working its way down the file in submission order, and the
+ * home page is the last holdout rather than a systemic failure.
  *
  * The home page was inspected in BOTH URL forms on 2026-08-06 —
  * `https://tearline.kynth.studio` and `https://tearline.kynth.studio/` — and
@@ -39,7 +42,10 @@ import type { MetadataRoute } from "next";
  *
  * What is left is the ordinary one: a host under ~90 days old with no inbound
  * links. Discovery is patchy rather than blocked, and the fix is links and time,
- * not markup.
+ * not markup. Note also that the dates below did NOT move on 2026-08-08: the
+ * five npm rows and the served-size measurement were all re-fetched that day and
+ * every one held, so no page content changed. Bumping lastModified without a
+ * content change is the exact thing the first paragraph warns against.
  */
 const SITE = "https://tearline.kynth.studio";
 
