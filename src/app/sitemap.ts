@@ -33,6 +33,12 @@ import type { MetadataRoute } from "next";
  * So discovery is working its way down the file in submission order, and the
  * home page is the last holdout rather than a systemic failure.
  *
+ * 2026-08-09: unchanged on both counts — the home page is still the only URL
+ * here Google reports as unknown, the other five are still discovered and
+ * nothing is indexed yet. No new markup theory was tried, because the two
+ * that were worth trying (a trailing slash, a sitemap/canonical mismatch) were
+ * tested on 2026-08-06 and ruled out. Links and time, as below.
+ *
  * The home page was inspected in BOTH URL forms on 2026-08-06 —
  * `https://tearline.kynth.studio` and `https://tearline.kynth.studio/` — and
  * both returned "URL is unknown to Google". So the pathless <loc> below is NOT
@@ -101,8 +107,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // half npm metadata (versions, licences, sizes — these move) and half
       // quotations from the WHATWG HTML Standard (these effectively do not).
       // So this date will follow the registry figures.
+      // Moves to 2026-08-09: @vercel/og published 1.0.1 on 2026-08-08 and the
+      // version, publish date and unpacked size in this page's routes table
+      // were all wrong until today. A real figure changed, so the date moves —
+      // the only one on this list that does. The other four pages had their
+      // npm figures re-fetched the same day and every one held, so their dates
+      // stay put; that re-verification is recorded in FACTS.json, which is
+      // where "we checked and nothing moved" belongs.
       url: `${SITE}/share-image-custom-element`,
-      lastModified: new Date("2026-08-07"),
+      lastModified: new Date("2026-08-09"),
       changeFrequency: "monthly",
       priority: 0.8,
     },

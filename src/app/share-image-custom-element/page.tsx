@@ -31,6 +31,19 @@ import SmoothScroll from "@/components/SmoothScroll";
  * rules and the upgrade behaviour are quoted from the WHATWG HTML Standard,
  * which is the primary source rather than a summary of it.
  *
+ * Re-fetched 2026-08-09 and the table DRIFTED for the first time: @vercel/og
+ * published 1.0.1 on 2026-08-08 — its first stable major — superseding the
+ * 0.11.1 / 6.95 MB / 5 Mar 2026 row this page had carried since it shipped. The
+ * new row is 1.0.1 · 2 deps · MPL-2.0 · 6,888,530 bytes (6.89 MB) · 8 Aug 2026.
+ * Licence and the two runtime dependencies (satori, @resvg/resvg-wasm) are
+ * unchanged, so the MPL-2.0-carries-through point still holds and the
+ * client-vs-server size argument is untouched — 6.89 MB is still three orders
+ * of magnitude off 186 KB. satori, modern-screenshot and html-to-image were
+ * re-fetched the same day and returned identical figures.
+ *
+ * The WHATWG quotations were NOT re-fetched today, so their source row still
+ * reads 5 August 2026. Only the rows actually re-read carry today's date.
+ *
  * Same discipline as /dom-to-png on other people's code: for satori,
  * @vercel/og, modern-screenshot and html-to-image the registry metadata was
  * fetched and the SOURCE WAS NOT, so this page reports what the registry
@@ -83,7 +96,7 @@ const ARTICLE_SCHEMA = {
   publisher: { "@id": ORG_ID },
   inLanguage: "en",
   datePublished: "2026-08-05",
-  dateModified: "2026-08-05",
+  dateModified: "2026-08-09",
   proficiencyLevel: "Intermediate",
   articleSection: [
     "Four routes to a share image",
@@ -126,7 +139,7 @@ const ROUTES: [string, string, string][] = [
   ],
   [
     "@vercel/og",
-    "0.11.1 · 2 deps · MPL-2.0 · 6.95 MB · 5 Mar 2026",
+    "1.0.1 · 2 deps · MPL-2.0 · 6.89 MB · 8 Aug 2026",
     "The same server route packaged for a framework route handler. Its two declared runtime dependencies are satori and @resvg/resvg-wasm, so the licence is MPL-2.0 here too, not MIT.",
   ],
 ];
@@ -234,7 +247,7 @@ const SKELETON: Line[] = [
 const SOURCES: [string, string][] = [
   [
     "registry.npmjs.org",
-    "Latest version, licence, declared runtime dependency count, publish date and unpacked size for satori, @vercel/og, modern-screenshot and html-to-image. Fetched 5 August 2026.",
+    "Latest version, licence, declared runtime dependency count, publish date and unpacked size for satori, @vercel/og, modern-screenshot and html-to-image. Re-fetched 9 August 2026; @vercel/og had published 1.0.1 the day before, the other three were unchanged.",
   ],
   [
     "html.spec.whatwg.org",
@@ -302,7 +315,7 @@ export default function ShareImageCustomElement() {
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "The client-side packages are two orders of magnitude smaller than the server ones — 186 KB and 315 KB unpacked against 5.43 MB and 6.95 MB. That gap is structural rather than a matter of care. Rendering in a browser means borrowing the layout engine that is already in the room, which is what the "
+                        "The client-side packages are two orders of magnitude smaller than the server ones — 186 KB and 315 KB unpacked against 5.43 MB and 6.89 MB. That gap is structural rather than a matter of care. Rendering in a browser means borrowing the layout engine that is already in the room, which is what the "
                       }
                       <code>{"<foreignObject>"}</code>
                       {" technique "}
@@ -322,7 +335,7 @@ export default function ShareImageCustomElement() {
                     />
                     <p className={"tl-docs-note"}>
                       {
-                        "Registry facts, not a review: read from registry.npmjs.org on 5 August 2026. One licence detail worth catching before it reaches a legal review — the two client-side rasterisers are MIT, and both server-side packages are MPL-2.0. "
+                        "Registry facts, not a review: read from registry.npmjs.org on 9 August 2026. @vercel/og left 0.x four days after this page first ran the table — 1.0.1 published 8 August 2026, two runtime dependencies still, and marginally smaller unpacked at 6.89 MB. One licence detail worth catching before it reaches a legal review — the two client-side rasterisers are MIT, and both server-side packages are MPL-2.0. "
                       }
                       <code>{"@vercel/og"}</code>
                       {" declares exactly two runtime dependencies, "}

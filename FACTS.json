@@ -85,9 +85,9 @@
         "src/app/dom-to-png/page.tsx",
         "src/app/share-image-custom-element/page.tsx"
       ],
-      "lastVerified": "2026-08-08",
+      "lastVerified": "2026-08-09",
       "status": "verified",
-      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-06: 4.7.0 · MIT · 0 runtime deps · 2026-04-16 · 186,023 bytes unpacked. Identical to the 2026-07-31 and 2026-08-01 readings. No drift, no page change."
+      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-06: 4.7.0 · MIT · 0 runtime deps · 2026-04-16 · 186,023 bytes unpacked. Identical to the 2026-07-31 and 2026-08-01 readings. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-09: 4.7.0 · MIT · 0 runtime deps · 2026-04-16 · 186,023 bytes unpacked. Identical to the prior reading. No drift, no page change."
     },
     {
       "id": "npm-html-to-image",
@@ -101,9 +101,9 @@
         "src/app/dom-to-png/page.tsx",
         "src/app/share-image-custom-element/page.tsx"
       ],
-      "lastVerified": "2026-08-08",
+      "lastVerified": "2026-08-09",
       "status": "verified",
-      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-06: 1.11.13 · MIT · 0 runtime deps · 2025-02-14 · 315,082 bytes unpacked. Identical to the prior readings. No drift, no page change."
+      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-06: 1.11.13 · MIT · 0 runtime deps · 2025-02-14 · 315,082 bytes unpacked. Identical to the prior readings. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-09: 1.11.13 · MIT · 0 runtime deps · 2025-02-14 · 315,082 bytes unpacked. Identical to the prior reading. No drift, no page change."
     },
     {
       "id": "npm-html2canvas",
@@ -116,9 +116,9 @@
       "appearsOn": [
         "src/app/dom-to-png/page.tsx"
       ],
-      "lastVerified": "2026-08-08",
+      "lastVerified": "2026-08-09",
       "status": "verified",
-      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-06 (first re-read since 2026-08-01): 1.4.1 · MIT · 2 runtime deps · 2022-01-22 · 3,379,055 bytes unpacked. Identical. No drift, no page change."
+      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-06 (first re-read since 2026-08-01): 1.4.1 · MIT · 2 runtime deps · 2022-01-22 · 3,379,055 bytes unpacked. Identical. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-09: 1.4.1 · MIT · 2 runtime deps · 2022-01-22 · 3,379,055 bytes unpacked. Identical to the prior reading. No drift, no page change."
     },
     {
       "id": "npm-dom-to-image",
@@ -131,9 +131,9 @@
       "appearsOn": [
         "src/app/dom-to-png/page.tsx"
       ],
-      "lastVerified": "2026-08-08",
+      "lastVerified": "2026-08-09",
       "status": "verified",
-      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-06 (first re-read since 2026-08-01): 2.6.0 · MIT · 0 runtime deps · 2017-10-04. The latest version's dist object still carries no unpackedSize field, which is why the page prints \"not reported\" rather than a number — that is the registry's gap, not ours, and it is still true today. No drift, no page change."
+      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-06 (first re-read since 2026-08-01): 2.6.0 · MIT · 0 runtime deps · 2017-10-04. The latest version's dist object still carries no unpackedSize field, which is why the page prints \"not reported\" rather than a number — that is the registry's gap, not ours, and it is still true today. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-09: 2.6.0 · MIT · 0 runtime deps · 2017-10-04 · still no unpackedSize field. Identical to the prior reading. No drift, no page change."
     },
     {
       "id": "canvas-tainting-rule",
@@ -261,25 +261,25 @@
         "public/llms.txt",
         "src/app/dom-to-png/page.tsx"
       ],
-      "lastVerified": "2026-08-07",
+      "lastVerified": "2026-08-09",
       "status": "verified",
-      "note": "Re-fetched from registry.npmjs.org on 2026-08-06: 0.29.0 · MPL-2.0 · 11 runtime deps · 2026-07-23 · 5,428,877 bytes unpacked. Identical to the 2026-08-05 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-07: 0.29.0 · MPL-2.0 · 11 runtime deps · 2026-07-23 · 5,428,877 bytes unpacked. Identical to the 2026-08-06 reading. No drift, no page change."
+      "note": "Re-fetched from registry.npmjs.org on 2026-08-06: 0.29.0 · MPL-2.0 · 11 runtime deps · 2026-07-23 · 5,428,877 bytes unpacked. Identical to the 2026-08-05 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-07: 0.29.0 · MPL-2.0 · 11 runtime deps · 2026-07-23 · 5,428,877 bytes unpacked. Identical to the 2026-08-06 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-09: 0.29.0 · MPL-2.0 · 11 runtime deps · 2026-07-23 · 5,428,877 bytes unpacked. Identical to the prior reading. No drift, no page change."
     },
     {
       "id": "npm-vercel-og",
       "claim": "@vercel/og latest version, licence, runtime dependencies, publish date and unpacked size",
-      "value": "0.11.1 · MPL-2.0 · 2 runtime deps (satori, @resvg/resvg-wasm) · published 2026-03-05 · 6.95 MB unpacked",
+      "value": "1.0.1 · MPL-2.0 · 2 runtime deps (satori, @resvg/resvg-wasm) · published 2026-08-08 · 6.89 MB unpacked",
       "kind": "package-metadata",
       "sourceUrl": "https://registry.npmjs.org/@vercel/og",
       "sourceTitle": "npm registry — @vercel/og",
-      "asOf": "2026-08-05",
+      "asOf": "2026-08-09",
       "appearsOn": [
         "src/app/share-image-custom-element/page.tsx",
         "public/llms.txt"
       ],
-      "lastVerified": "2026-08-07",
+      "lastVerified": "2026-08-09",
       "status": "verified",
-      "note": "Re-fetched from registry.npmjs.org on 2026-08-06: 0.11.1 · MPL-2.0 · 2 runtime deps · 2026-03-05 · 6,954,153 bytes unpacked. Identical to the 2026-08-05 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-07: 0.11.1 · MPL-2.0 · 2 runtime deps (satori, @resvg/resvg-wasm) · 2026-03-05 · 6,954,153 bytes unpacked. Identical to the 2026-08-06 reading. No drift, no page change."
+      "note": "Re-fetched from registry.npmjs.org on 2026-08-06: 0.11.1 · MPL-2.0 · 2 runtime deps · 2026-03-05 · 6,954,153 bytes unpacked. Identical to the 2026-08-05 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-07: 0.11.1 · MPL-2.0 · 2 runtime deps (satori, @resvg/resvg-wasm) · 2026-03-05 · 6,954,153 bytes unpacked. Identical to the 2026-08-06 reading. No drift, no page change. DRIFTED and CORRECTED 2026-08-09. Re-fetched from registry.npmjs.org: the package left 0.x — 1.0.1, its first stable major, published 2026-08-08, the day AFTER the 2026-08-07 re-read above, which is why the 2026-08-08 gate did not catch it. New figures: 1.0.1 · MPL-2.0 · 2 runtime deps (satori, @resvg/resvg-wasm) · 2026-08-08 · 6,888,530 bytes unpacked (6.89 MB, down from 6,954,153). Licence and the dependency pair are unchanged, so the \"MPL-2.0 carries through from satori\" point on /share-image-custom-element still holds and needed no rewrite. Corrected in both appearsOn targets the same day: the ROUTES row and the size sentence in src/app/share-image-custom-element/page.tsx, and the server-side paragraph in public/llms.txt."
     },
     {
       "id": "custom-element-upgrade-semantics",
