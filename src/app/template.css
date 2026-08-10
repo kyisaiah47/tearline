@@ -408,8 +408,10 @@ body {
   transition: opacity 0.15s ease;
 }
 
-.tl-docs-note a:hover {
-  opacity: 0.72;
+@media (hover: hover) and (pointer: fine) {
+  .tl-docs-note a:hover {
+    opacity: 0.72;
+  }
 }
 
 .tl-copy {
@@ -590,8 +592,10 @@ body {
   transition: opacity 0.2s;
 }
 
-.tl-cmd:hover .tl-cmd-action {
-  opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+  .tl-cmd:hover .tl-cmd-action {
+    opacity: 1;
+  }
 }
 
 .tl-cmd-word {

@@ -4627,9 +4627,7 @@ html body {
 .code-line {
   height: 22px;
   border-radius: 2px;
-  transition:
-    box-shadow 0.3s,
-    padding 0.3s;
+  transition: box-shadow 0.3s;
   line-height: 22px;
   white-space: pre;
   overflow: hidden;
@@ -5557,8 +5555,10 @@ html body {
     border-radius 0.3s,
     letter-spacing 0.3s;
 }
-.herosection-dot-4.nav-dropdown-trigger.herosection-dot.herosection-dot-2:hover {
-  opacity: 0.7;
+@media (hover: hover) and (pointer: fine) {
+  .herosection-dot-4.nav-dropdown-trigger.herosection-dot.herosection-dot-2:hover {
+    opacity: 0.7;
+  }
 }
 .story-card-link.story-tile-link {
   transition:
@@ -5572,9 +5572,11 @@ html body {
     border-radius 0.3s,
     letter-spacing 0.3s;
 }
-.story-card-link.story-tile-link:hover {
-  transform: matrix(1, 0, 0, 1, 0, 4.61548);
-  opacity: 0.846151;
+@media (hover: hover) and (pointer: fine) {
+  .story-card-link.story-tile-link:hover {
+    transform: matrix(1, 0, 0, 1, 0, 4.61548);
+    opacity: 0.846151;
+  }
 }
 .blog-card-link.story-tile-link {
   transition:
@@ -5588,9 +5590,11 @@ html body {
     border-radius 0.3s,
     letter-spacing 0.3s;
 }
-.blog-card-link.story-tile-link:hover {
-  transform: matrix(1, 0, 0, 1, 0, 29.6178);
-  opacity: 0.0127407;
+@media (hover: hover) and (pointer: fine) {
+  .blog-card-link.story-tile-link:hover {
+    transform: matrix(1, 0, 0, 1, 0, 29.6178);
+    opacity: 0.0127407;
+  }
 }
 .newsletter-submit-mobile.login-button.newsletter-submit-button {
   transition:
