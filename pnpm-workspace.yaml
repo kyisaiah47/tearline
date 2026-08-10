@@ -1,0 +1,16 @@
+# pnpm 10+ refuses to run a dependency's install scripts unless it is listed here, and an
+# UNRESOLVED placeholder is treated as a refusal — `pnpm install` exits 1 with
+# ERR_PNPM_IGNORED_BUILDS, so `vercel build` never gets past the install step and the repo
+# cannot be deployed at all. pnpm writes this file with the literal string
+# "set this to true or false" and nothing ever fails until a deploy is attempted, which is
+# why it sat unnoticed in 18 repos at once — including the apex.
+#
+# Same resolution certscope/quorumfile/truing already carry.
+allowBuilds:
+  # postinstall only prints a funding banner
+  core-js: false
+  # fetches a platform binary this app never calls — Next's image optimisation
+  # runs on Vercel's own infrastructure and the deploy is prebuilt from artifacts
+  sharp: false
+  # napi binding for the oxc resolver; lint-time only, falls back to JS
+  unrs-resolver: false
