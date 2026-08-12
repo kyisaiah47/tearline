@@ -20,7 +20,10 @@
 
 const SITE = "https://tearline.kynth.studio";
 
-export const ORG_ID = `${SITE}/#studio`;
+// Was `${SITE}/#studio` — the studio's node filed under TEARLINE's domain, which is a
+// different entity to an engine no matter what it is named. The apex defines the studio once;
+// everything else references that id.
+export const ORG_ID = "https://kynth.studio/#organization";
 export const SITE_ID = `${SITE}/#website`;
 export const APP_ID = `${SITE}/#tearline`;
 
@@ -58,9 +61,8 @@ export const siteGraph = {
       // because it points an engine at a dead end under our name.
       "@type": "Organization",
       "@id": ORG_ID,
-      name: "Kynth",
-      legalName: "Kynth Studios",
-      alternateName: "Kynth Studios",
+      name: "Kynth Studios",
+      alternateName: "Kynth",
       url: "https://kynth.studio",
       sameAs: ["https://github.com/kyisaiah47"],
     },
