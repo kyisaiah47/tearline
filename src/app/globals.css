@@ -5679,15 +5679,76 @@ html body {
  *
  * Scoped to `footer` on purpose — a product may link the studio from its nav or its body copy,
  * and those are sentences, not credits. */
+/* MARK AND NAME ARE ONE OBJECT. Both selectors carry it: `footer a[href^=…]` for the sites
+ * whose credit is inside a real <footer>, and `.kynth-credit` for the four whose footer is a
+ * plain <div> — goodstanding, quorumfile, agentwire and standup all shipped with no mark at all
+ * because the element the rule was scoped to does not exist on their pages.
+ *
+ * inline-flex, not two inline boxes: it is what keeps the glyph on the name's optical centre
+ * instead of the sentence's baseline, and what stops a wrap from leaving the mark on one line and
+ * the studio on the next. `font: inherit` because the credit is a sentence and the name is a word
+ * in it — truing shipped the name at 17px inside 12px prose. */
+/* ⚠️ `html body` IS NOT PADDING — it is the only thing that wins. The rule was
+ * `footer a[href^=…]` at (0,1,2); framer styles its pseudo-elements with two-class selectors at
+ * (0,2,0) and loads after, so the preset took `position: absolute` and the glyph painted over
+ * the name no matter how many `!important`s were stacked on it. `!important` does not beat a
+ * more specific `!important`. This is (0,2,3). */
+html body a.kynth-credit[href],
+footer a[href^="https://kynth.studio"] {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+  /* The anchor sits in a SENTENCE and must not be nudged out of it. Framer presets give footer
+   * links `position: relative` with their own offsets, which slid the lockup left until the mark
+   * overlapped the "A" in front of it. */
+  position: static !important;
+  inset: auto !important;
+  /* 3px of air on the left so the glyph does not crowd the word in front of it — the text
+   * space that precedes the anchor renders at ~3px at this size, and a mark butted against the
+   * previous letter reads as a typo. Nothing on the right: the 6px gap already separates the
+   * glyph from the name it belongs to, and that pair has to stay tighter than the sentence. */
+  margin: 0 0 0 3px !important;
+  /* The shorthand alone loses to a later longhand `font-size` — Truing shipped the studio at
+   * 17px inside 12px prose with `font: inherit` already on the anchor. Longhands, explicitly. */
+  font: inherit !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+  vertical-align: -3px;
+}
+
+/* ⚠️ `!important` ON EVERY BOX DECLARATION, and it is load-bearing. The framer presets carry
+ * their own `::before` rules on preset-classed text; on CivicBinder Health one of them won and
+ * the glyph painted at 76.8x44 straight over "Kynth Studios product". A decoration that an
+ * unrelated preset can resize is not sized at all. */
+html body a.kynth-credit[href]::before,
 footer a[href^="https://kynth.studio"]::before {
-  content: "";
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  margin-right: 7px;
-  vertical-align: -2px;
-  background-image: url("/brand/kynth-studios.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  content: "" !important;
+  display: block !important;
+  /* IN FLOW, and forced to be. The framer presets position their own `::before` absolutely — an
+   * out-of-flow pseudo takes no space, so the glyph painted straight over the first letters of
+   * "Kynth Studios" instead of sitting in front of them. It reserves its own 14px or it is not a
+   * lockup. */
+  position: static !important;
+  float: none !important;
+  inset: auto !important;
+  transform: none !important;
+  flex: 0 0 14px !important;
+  width: 14px !important;
+  height: 14px !important;
+  /* min/max as well as width: the framer tap-target rule sets `min-width: 44px; min-height: 44px`
+   * on interactive descendants, and a min- beats a width. That is the whole reason CivicBinder
+   * Health painted a 44px block after the width was already forced to 14. */
+  min-width: 14px !important;
+  min-height: 14px !important;
+  max-width: 14px !important;
+  max-height: 14px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-image: url("/brand/kynth-studios.svg") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
 }
