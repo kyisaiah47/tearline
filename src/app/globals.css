@@ -5662,3 +5662,32 @@ html body {
   }
 }
 /* === end reveal hidden state === */
+
+
+/* ─────────────────────────────────────────────────────────────────────────────────────────────
+ * THE STUDIO MARK IN THE FOOTER.
+ *
+ * Audited live 2026-08-11: across twenty product sites exactly ONE carried the studio's mark.
+ * Every other site named Kynth Studios in text only, and six named it nowhere at all.
+ *
+ * It is attached here rather than in the JSX because these footers are framer dumps that repeat
+ * their whole markup once per breakpoint — three copies of the same anchor, in three places, in
+ * every repo. A rule keyed on the link reaches all three and cannot fall out of sync with them.
+ * The mark is decoration in the strict sense (the link already says "Kynth Studios" in live
+ * text), so a background is the honest way to attach it: nothing is added for a screen reader to
+ * read twice, and the name stays selectable, searchable text.
+ *
+ * Scoped to `footer` on purpose — a product may link the studio from its nav or its body copy,
+ * and those are sentences, not credits. */
+footer a[href^="https://kynth.studio"]::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 7px;
+  vertical-align: -2px;
+  background-image: url("/brand/kynth-studios.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
