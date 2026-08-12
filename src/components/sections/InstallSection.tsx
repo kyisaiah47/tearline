@@ -19,6 +19,20 @@ import Copyable from "@/components/Copyable";
  *
  * The two-column body is new — nothing in the template holds a reference table
  * — and takes its measurements from the code window so it stays in family.
+ *
+ * 2026-08-12: this section now also carries the home page's only in-body links
+ * to the four content pages. Before today every link from / to /dom-to-png,
+ * /receipt-ui, /spotify-receipt-generator and /share-image-custom-element lived
+ * in SiteFooter.tsx and nowhere else — a sitewide boilerplate nav, which is the
+ * weakest inbound signal a page can have, and Google had four of those five
+ * subpages back at "URL is unknown to Google" this morning. They are placed
+ * here rather than in the FAQ because the FAQ's answers sit in a collapsed
+ * accordion, and because each one already had a paragraph it genuinely belongs
+ * in: the foreignObject note wants /dom-to-png, the upgrade-in-place note wants
+ * /share-image-custom-element, the --ink/--paper note wants /receipt-ui, and
+ * the usage snippet wants the live-data case. Each link is a sentence a reader
+ * of that paragraph would want next, not a "related posts" strip. Do not
+ * convert them into one.
  */
 
 const USAGE: Line[] = [
@@ -179,7 +193,11 @@ export default function InstallSection() {
                   "That is the install. It is an ES module served from this origin, so there is no package to add, no bundler to configure and no build step — the custom element registers itself on load and every "
                 }
                 <code>{"<tear-line>"}</code>
-                {" on the page upgrades in place."}
+                {" on the page upgrades in place. That upgrade order is a WHATWG rule rather than a Tearline one, and it is why the tag can ship in your HTML before the script that defines it — "}
+                <a href={"/share-image-custom-element"}>
+                  {"the four ways to build a share image"}
+                </a>
+                {" quotes the spec on it, and covers when a server render beats a browser one."}
               </p>
               <p className={"tl-docs-note"}>
                 {
@@ -190,11 +208,21 @@ export default function InstallSection() {
                   " URI. The export throws with a message saying so rather than handing you a receipt with a hole in it."
                 }
               </p>
+              <p className={"tl-docs-note"}>
+                {"The technique underneath — serialise the node, paint the SVG, read the PNG back — and the tainted-canvas rule that makes most browser exports come out blank are "}
+                <a href={"/dom-to-png"}>{"explained in full"}</a>
+                {", alongside today's registry figures for the four packages that do the same job as a dependency."}
+              </p>
             </div>
 
             <div className={"tl-docs-col"}>
               <p className={"tl-docs-label"}>{"then wrap anything"}</p>
               <CodePanel title={"index.html"} lines={USAGE} />
+              <p className={"tl-docs-note"}>
+                {"That is the whole of it for a receipt you already have the markup for. Assembling one from live data is a different job — the Receiptify-style case, with Spotify's top-tracks endpoint and the five-user cap that stops most of these apps ever shipping, is "}
+                <a href={"/spotify-receipt-generator"}>{"worked through end to end"}</a>
+                {"."}
+              </p>
           </div>
         </div>
 
@@ -242,6 +270,11 @@ export default function InstallSection() {
               {" and "}
               <code>{"--paper"}</code>
               {" so you can raise contrast past the default receipt look."}
+            </p>
+            <p className={"tl-docs-note"}>
+              {"How the paper is built out of those two tokens — the monospace grid, the tabular figures, the dashed rules, the SVG-turbulence fibre layer and the clip-path tear — is "}
+              <a href={"/receipt-ui"}>{"a separate write-up in copyable CSS"}</a>
+              {"."}
             </p>
           </div>
         </div>

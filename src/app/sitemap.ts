@@ -39,6 +39,39 @@ import type { MetadataRoute } from "next";
  * that were worth trying (a trailing slash, a sitemap/canonical mismatch) were
  * tested on 2026-08-06 and ruled out. Links and time, as below.
  *
+ * 2026-08-12: THE PARAGRAPH ABOVE NO LONGER DESCRIBES THE MEASUREMENT. Today's
+ * URL Inspection run reports six of seven URLs as "URL is unknown to Google" —
+ * /docs, /dom-to-png, /receipt-ui and /share-image-custom-element have all gone
+ * BACK to unknown, and /spotify-receipt-generator is the only subpage still
+ * reading "Discovered - currently not indexed". So "five of five discovered"
+ * was either transient or has since lapsed; it is not the current state and
+ * this file should not have kept asserting it. Indexed is still 0 of 6.
+ *
+ * Two things were checked today rather than assumed:
+ *
+ * 1. The host is NOT orphaned. kynth.studio was fetched (HTTP 200) and it
+ *    carries real crawlable `<a href="https://tearline.kynth.studio">` links —
+ *    a Selected Work card and the logo ticker. So an inbound path from the
+ *    parent domain exists and the "no inbound links" half of the note below is
+ *    weaker than it reads; what the subdomain lacks is inbound links from
+ *    anywhere Google already crawls often.
+ *
+ * 2. Every link from the HOME PAGE to the five subpages lived in SiteFooter.tsx
+ *    and nowhere else. Sibling-to-sibling prose links between the content pages
+ *    were already dense (/dom-to-png ↔ /receipt-ui ↔ /share-image-custom-element
+ *    ↔ /spotify-receipt-generator, plus /docs), but those carry nothing while
+ *    the siblings are themselves uncrawled. A sitewide boilerplate footer link
+ *    is the weakest inbound signal a page can have, and it was the only one the
+ *    home page gave them. Fixed the same day: four contextual prose links now
+ *    sit in InstallSection.tsx, in visible body copy rather than a collapsed
+ *    accordion or a footer nav. That is a real change to the home page's
+ *    content, so / moves to 2026-08-12 below.
+ *
+ * This does not make discovery certain — it removes the one structural excuse
+ * that was left. If the subpages are still unknown in a fortnight's rotation,
+ * the remaining lever is external: links from somewhere Google crawls daily,
+ * which is not a thing this repo can ship.
+ *
  * The home page was inspected in BOTH URL forms on 2026-08-06 —
  * `https://tearline.kynth.studio` and `https://tearline.kynth.studio/` — and
  * both returned "URL is unknown to Google". So the pathless <loc> below is NOT
@@ -62,7 +95,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // page's rel=canonical, and a sitemap that disagrees with the canonical
       // is a second candidate URL for Google to pick between.
       url: SITE,
-      lastModified: new Date("2026-08-06"),
+      // Moves to 2026-08-12: four contextual prose links to the content pages
+      // were added to the install section's body copy today. That is a content
+      // change to this page, not a date bump — see the crawl-state note above.
+      lastModified: new Date("2026-08-12"),
       changeFrequency: "monthly",
       priority: 1,
     },
