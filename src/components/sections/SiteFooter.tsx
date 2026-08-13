@@ -223,7 +223,27 @@ function FooterBody() {
                 data-component={"RichTextContainer"}
               >
                 <p className={"heading-4 body-text"} dir={"auto"}>
-                  {"© 2026 Tearline. MIT licensed — free forever."}
+                  {/* The © named the product and the licence and stopped there; the studio was
+                    * named only as an unlinked line in the column above. Both names in one string
+                    * is the form every other product ships. */}
+                  {"© 2026 Tearline. MIT licensed — free forever. A "}
+                  <a
+                    className={"kynth-credit"}
+                    href={"https://kynth.studio/?utm_source=tearline&utm_medium=studio_credit"}
+                    target={"_blank"}
+                    rel={"noopener"}
+                    style={{ color: "inherit", textDecoration: "none" }}
+                  >
+                    {"Kynth Studios"}
+                  </a>
+                  {" project."}
+                  {" The studio behind "}
+                  <a className={"kynth-sibling"} href={"https://agentwire.kynth.studio"} rel={"noopener"}>{"Agentwire"}</a>
+                  {", "}
+                  <a className={"kynth-sibling"} href={"https://breachprobe.kynth.studio"} rel={"noopener"}>{"BreachProbe"}</a>
+                  {" and "}
+                  <a className={"kynth-sibling"} href={"https://citerank.kynth.studio"} rel={"noopener"}>{"CiteRank"}</a>
+                  {"."}
                 </p>
               </div>
               <div className={"status-badge-container"}>
