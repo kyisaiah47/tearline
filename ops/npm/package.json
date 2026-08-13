@@ -1,0 +1,45 @@
+{
+  "name": "@kynth/tearline",
+  "version": "0.1.0",
+  "description": "Wrap any HTML in one tag and it prints out as a thermal receipt. Save it as a PNG. Zero dependencies, no build step.",
+  "type": "module",
+  "main": "./tearline.js",
+  "module": "./tearline.js",
+  "exports": {
+    ".": "./tearline.js",
+    "./tearline.js": "./tearline.js"
+  },
+  "unpkg": "./tearline.js",
+  "jsdelivr": "./tearline.js",
+  "files": [
+    "tearline.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "./tearline.js"
+  ],
+  "keywords": [
+    "receipt",
+    "thermal-receipt",
+    "web-component",
+    "custom-element",
+    "custom-elements",
+    "share-image",
+    "png-export",
+    "dom-to-png",
+    "dom-to-image",
+    "receiptify",
+    "shadow-dom",
+    "zero-dependencies"
+  ],
+  "license": "MIT",
+  "author": "Kynth Studios (https://kynth.studio)",
+  "homepage": "https://tearline.kynth.studio",
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

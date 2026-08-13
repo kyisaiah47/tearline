@@ -2,23 +2,11 @@
 
 **Any HTML you wrap in this one tag prints out as a thermal receipt.** Then save it as a PNG your users will actually post.
 
-Zero dependencies. No build step. Works from a `<script>` tag. MIT.
+Zero dependencies. No build step. One custom element. MIT.
 
-![Tearline](site/og.png)
+**[Live playground → tearline.kynth.studio](https://tearline.kynth.studio)**
 
-```html
-<script type="module" src="https://tearline.kynth.studio/tearline.js"></script>
-
-<tear-line barcode="047320260726">
-  <h1>Meridian</h1>
-  <hr>
-  <p>Cortado &middot; 4.25</p>
-</tear-line>
-```
-
-That script tag is a complete install — it is an ES module, so there is no bundler to configure and no build step. Verified reachable (HTTP 200) on 2026-07-29.
-
-Or install it from npm:
+## Install
 
 ```bash
 npm i @kynth/tearline
@@ -28,9 +16,25 @@ npm i @kynth/tearline
 import '@kynth/tearline';
 ```
 
-The package is scoped because the registry refuses the bare name `tearline` — npm's similarity filter reads it as too close to the existing `readline` package. The element is still `<tear-line>`. Published 2026-08-12; `ops/npm/publish.mjs` gates every publish on a byte-for-byte match against the component this site serves.
+The package is scoped because npm's registry refuses the bare name `tearline` — its similarity filter reads it as too close to the existing `readline` package. The element is still `<tear-line>`.
 
-**[Live playground →](https://tearline.kynth.studio)**
+Importing the package registers the `<tear-line>` element. There is nothing to configure and nothing to call.
+
+Or skip the install entirely — it is an ES module, so a script tag is a complete install:
+
+```html
+<script type="module" src="https://tearline.kynth.studio/tearline.js"></script>
+```
+
+## Use it
+
+```html
+<tear-line barcode="047320260726">
+  <h1>Meridian</h1>
+  <hr>
+  <p>Cortado &middot; 4.25</p>
+</tear-line>
+```
 
 ## Why
 
@@ -67,6 +71,25 @@ const url  = await el.toDataURL();
 | `toDataURL({scale})` | Resolves to a PNG data URL. |
 | `download(name, {scale})` | Saves the PNG. |
 
+## Export progress
+
+An export fires a `tearline:stage` event as it enters each of its four real steps, with `detail: { stage, index, of }`:
+
+| | |
+|---|---|
+| `flatten` | Clone the shadow tree and inline the slotted light DOM. |
+| `serialise` | `XMLSerializer` into an SVG `<foreignObject>`. |
+| `rasterise` | Decode that SVG in an `<img>`. On a long receipt this is most of the wait, and it is the step that fails. |
+| `encode` | Canvas to PNG blob. |
+
+They are the four things the code actually does, not a progress bar's worth of invented percentages. When an export throws, the stage is the difference between "export failed" and "the browser could not decode the receipt as an image".
+
+```js
+el.addEventListener('tearline:stage', (e) => {
+  const { stage, index, of } = e.detail;   // e.g. 'rasterise', 3, 4
+});
+```
+
 ## Styling
 
 `h1`, `h2`, `hr`, `p`, `small`, `strong`, `table`, `ul` and `ol` are styled for you inside the receipt. Every one of those rules is `::slotted()`, which loses to your own CSS — so restyle anything you like from the outside without fighting specificity.
@@ -87,19 +110,13 @@ tear-line {
 
 Rendering to an image uses an SVG `<foreignObject>`, which is sandboxed and **cannot fetch anything over the network**. Text and styles are inlined for you automatically. But an `<img>` inside the receipt must be a `data:` URI, or it will be missing from the exported PNG. The export throws with a message saying so rather than silently handing you a receipt with a hole in it.
 
+Separately, drawing cross-origin data onto a canvas without CORS approval taints it, after which `toBlob()`, `toDataURL()` and `captureStream()` throw a `SecurityError`. A blank export and a thrown export are different bugs with different fixes. Both are written up at [tearline.kynth.studio/dom-to-png](https://tearline.kynth.studio/dom-to-png).
+
 ## Accessibility
 
 The receipt is **real text in the light DOM** — not a canvas, not an image. It stays selectable, searchable, translatable, and is read by screen readers in document order, because the paper is styling wrapped around your markup rather than a picture of it. Your headings stay headings and your tables stay tables.
 
 The print-out animation is skipped entirely under `prefers-reduced-motion`, and `--ink` / `--paper` are exposed so you can push contrast past the default receipt look where you need to.
-
-## Local development
-
-```bash
-npm run dev      # syncs the component into site/ and serves it on :8791
-```
-
-`dev/export-test.html` renders a receipt, exports it, and loads the PNG back into an `<img>` — so a broken export is visible rather than silent. `dev/og.html` renders the 1200×630 share card.
 
 ## License
 

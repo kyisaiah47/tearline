@@ -22,6 +22,24 @@
  *   el.toDataURL({scale})  -> Promise<string>
  *   el.download(filename)  -> Promise<void>
  *
+ * Events
+ *   tearline:stage   detail: { stage, index, of }
+ *
+ *     Fired as an export moves through its four real steps. They are not a
+ *     progress bar's worth of invented percentages — they are the four things
+ *     the code actually does, and the third is where the time and the failures
+ *     both live:
+ *
+ *       flatten    clone the shadow tree and inline the slotted light DOM
+ *       serialise  XMLSerializer -> an SVG <foreignObject>
+ *       rasterise  decode that SVG in an <img>   <- slow, and the one that fails
+ *       encode     canvas -> PNG blob
+ *
+ *     An export with nothing to report would not need this. This one does: on a
+ *     long receipt `rasterise` is most of the wait, and when it throws, the
+ *     stage is the difference between "export failed" and "the browser could not
+ *     decode the receipt as an image".
+ *
  * Export note: rendering to an image uses SVG <foreignObject>, which cannot
  * reach across the network. Any <img> inside the receipt must be a data: URI
  * or the export will drop it. Text and CSS are inlined automatically.
@@ -253,7 +271,16 @@ class TearLine extends HTMLElement {
    * onto a canvas. No dependency, but it is a sandbox: the SVG cannot fetch
    * anything, so styles are inlined and remote images will not survive. */
 
+  /* The four steps an export actually takes, announced as they start. See the
+   * `tearline:stage` note in the header for why these four and not a percentage. */
+  #stage(stage, index) {
+    this.dispatchEvent(new CustomEvent('tearline:stage', {
+      detail: { stage, index, of: 4 },
+    }));
+  }
+
   async #toCanvas({ scale = 2, padding = 44 } = {}) {
+    this.#stage('flatten', 1);
     const wrap = this.#root.querySelector('.wrap');
     const rect = wrap.getBoundingClientRect();
     // getBoundingClientRect already accounts for the tilt, but the drop shadow
@@ -293,12 +320,14 @@ class TearLine extends HTMLElement {
      * parse errors inside SVG, and a receipt is mostly <hr>. XMLSerializer is
      * the only serialiser that self-closes void elements and namespaces the
      * output correctly, so the export silently died without it. */
+    this.#stage('serialise', 2);
     const xhtml = new XMLSerializer().serializeToString(host);
 
     const svg =
       `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}">` +
       `<foreignObject x="0" y="0" width="${w}" height="${h}">${xhtml}</foreignObject></svg>`;
 
+    this.#stage('rasterise', 3);
     const img = new Image();
     await new Promise((res, rej) => {
       img.onload = res;
@@ -306,6 +335,7 @@ class TearLine extends HTMLElement {
       img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
     });
 
+    this.#stage('encode', 4);
     const canvas = document.createElement('canvas');
     canvas.width = w * scale;
     canvas.height = h * scale;

@@ -11,3 +11,8 @@ tsconfig.tsbuildinfo
 .venv/
 .env*
 .next-verify
+
+# staged by ops/npm/publish.mjs from public/ + LICENSE at publish time
+ops/npm/tearline.js
+ops/npm/LICENSE
+ops/npm/*.tgz

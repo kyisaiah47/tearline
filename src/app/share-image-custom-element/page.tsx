@@ -521,7 +521,7 @@ export default function ShareImageCustomElement() {
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "Two more limits worth knowing before adopting it: there is no npm package today, so the script tag is the supported install path, and the repository is private, so the source cannot be read on GitHub. The component is served unminified instead, which is the same 14,048 bytes either way."
+                        "One limit worth knowing before adopting it: the repository is private, so the source cannot be read on GitHub. The component is served unminified instead, which is the same 14,048 bytes either way. It installs as @kynth/tearline on npm, or from the script tag above — npm refuses the bare name tearline as too close to readline, so the package is scoped."
                       }
                     </p>
                   </div>

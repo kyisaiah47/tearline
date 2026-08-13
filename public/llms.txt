@@ -22,9 +22,13 @@ document order.
 </tear-line>
 ```
 
-Verified reachable (HTTP 200) on 2026-07-31. There is no npm package to install
-today — `npm i tearline` does not resolve, and the script tag above is the
-supported install path.
+Verified reachable (HTTP 200) on 2026-07-31. The script tag above is a complete install. There is also an npm package, published 2026-08-12:
+
+```bash
+npm i @kynth/tearline
+```
+
+It is scoped because the registry refuses the bare name `tearline` — npm's similarity filter reads it as too close to the existing `readline` package. The element is still `<tear-line>`, and the published file is byte-for-byte the same component this origin serves.
 
 ## Export it to a PNG
 
