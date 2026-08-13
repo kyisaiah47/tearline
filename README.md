@@ -34,7 +34,9 @@ The package is scoped because the registry refuses the bare name `tearline` — 
 
 ## Why
 
-The receipt look gets rebuilt from scratch every time somebody wants it. Receiptify turned one person's Spotify history into a receipt and got used millions of times; the aesthetic has been cloned for years. Nobody shipped the reusable piece underneath it — every `receipt` package on npm is an ESC/POS driver for *actual* thermal printers, not the look.
+The receipt look gets rebuilt from scratch every time somebody wants it. Receiptify turned one person's Spotify history into a receipt and got used millions of times; the aesthetic has been cloned for years. What npm has is either a driver for a real thermal printer, or a renderer with its own document format: `receiptline` (25,099 downloads/week, Apache-2.0, checked 2026-08-13) does render the look — its `transform()` emits SVG in the browser as well as printer commands — but you write your receipt in ReceiptLine markdown first, and getting a PNG out means puppeteer or sharp.
+
+Tearline takes the HTML you already have. No new markup language, no build step, no server, and the export is a PNG straight from the browser.
 
 This is the look, as one custom element, with a PNG export so the thing your users make is a thing they can post.
 

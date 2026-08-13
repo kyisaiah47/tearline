@@ -7,15 +7,23 @@
  * property that can be checked against the shipped file — so the schema cannot
  * drift away from the copy without the copy changing too.
  *
- * Two claims are deliberately absent. There is no `codeRepository` and no npm
- * `installUrl`, because as of 2026-07-29 the GitHub repository is private and
- * the npm package is unpublished (see FACTS.json, both re-checked that day).
- * Asserting either in schema
- * would be handing a machine a fact a human can immediately disprove.
+ * `codeRepository` IS PRESENT AGAIN, and the reason it was absent is worth keeping.
+ * From 2026-07-29 it was deliberately omitted, along with an npm `installUrl`,
+ * because the repository was private and the package unpublished — asserting
+ * either would have handed a machine a fact a human could immediately disprove.
+ * Both of those states ended and neither was noticed: measured 2026-08-13,
+ * api.github.com reports the repo `"private": false` and an anonymous read of
+ * src/tearline.js returns 200 with the same 14,048 bytes the origin serves, and
+ * @kynth/tearline is on the npm registry. FACTS.json had gone on asserting PRIVATE,
+ * re-verified as such as late as 2026-08-12, so nothing downstream was ever told.
  *
- * The Organization's `sameAs` GitHub link is NOT a reintroduction of either.
- * It is the publisher's own profile page, which is public and returns 200; it
- * says nothing about whether this product's repository can be read.
+ * The lesson this file should carry: a claim that decays toward MORE capability
+ * fails silently in both directions. Nothing 404s, nothing errors, the schema is
+ * simply quieter than the truth — and for a component whose only growth path is
+ * being found and read, the missing property WAS the growth path.
+ *
+ * The Organization's `sameAs` GitHub link is still the publisher's profile page
+ * rather than this repo, and says nothing about whether this product can be read.
  */
 
 const SITE = "https://tearline.kynth.studio";
@@ -97,7 +105,11 @@ export const siteGraph = {
         "Real text in the light DOM: selectable, searchable, translatable, screen-reader readable",
         "Works in React, Vue, Svelte, Astro or a plain script tag",
       ],
-      license: "https://opensource.org/license/mit",
+      license: "https://github.com/kyisaiah47/tearline/blob/main/LICENSE",
+      /* The one property that tells an answer engine where the source is. Absent while the
+       * repo was private, and never restored when it went public — so the structured data
+       * described a zero-dependency readable component and gave no way to read it. */
+      codeRepository: "https://github.com/kyisaiah47/tearline",
       isAccessibleForFree: true,
       offers: {
         "@type": "Offer",

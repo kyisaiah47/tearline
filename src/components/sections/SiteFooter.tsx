@@ -62,19 +62,24 @@ const GROUPS: Group[] = [
   {
     label: "Code",
     links: [
-      /* The GitHub and npm rows are gone. Both 404 for an anonymous visitor:
-       * the repository is PRIVATE and the package is unpublished (FACTS.json →
-       * github-repo-public, npm-package-published; both re-checked 2026-07-29).
-       * A footer column headed "Code" whose every link dead-ends is worse than
-       * a shorter column. They come back when the repo goes public and the
-       * package ships — the entries are still tracked in FACTS.json so the
-       * check runs daily. */
+      /* THE GITHUB AND NPM ROWS ARE BACK. They were removed on 2026-07-29 because both
+       * 404'd for an anonymous visitor, with a note saying they "come back when the repo
+       * goes public and the package ships". Both of those happened and nothing came back:
+       * measured 2026-08-13, api.github.com reports the repo `"private": false`, an
+       * anonymous GET of raw.githubusercontent.com/.../src/tearline.js returns 200 and
+       * 14,048 bytes, and @kynth/tearline is on the npm registry. FACTS.json still asserted
+       * PRIVATE — re-verified as such as recently as 2026-08-12 — so the daily check was
+       * passing on a stale reading and the site went on declining to mention an asset it
+       * already had. A claim that decays toward MORE capability breaks nothing and shows
+       * nothing; this product's only growth path is being found and trusted, and both of
+       * its discovery surfaces were pointing nowhere. */
+      ["Source on GitHub", "https://github.com/kyisaiah47/tearline", true],
+      ["@kynth/tearline on npm", "https://www.npmjs.com/package/@kynth/tearline", true],
       ["Read the source", "/tearline.js", true],
       ["llms.txt", "/llms.txt", true],
-      /* Pointed at the licence text itself rather than at blob/main/LICENSE in
-       * the repo, which is unreachable while the repo is private — and "MIT" is
-       * the one claim on this page a reader should always be able to check. */
-      ["MIT licence", "https://opensource.org/license/mit", true],
+      /* Now that the repo is readable, the licence links to the LICENSE file in it — the
+       * primary artefact rather than a description of the licence. */
+      ["MIT licence", "https://github.com/kyisaiah47/tearline/blob/main/LICENSE", true],
     ],
   },
   {

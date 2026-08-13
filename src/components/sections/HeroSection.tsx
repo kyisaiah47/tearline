@@ -93,13 +93,14 @@ export default function HeroSection() {
                     "herosection-dot-4 nav-dropdown-trigger herosection-dot herosection-dot-4-state herosection-dot-2"
                   }
                   data-name={"Dot"}
-                  /* The badge says MIT, so it links to the licence a reader can
-                   * actually open. It used to point at the repository, which is
-                   * PRIVATE (FACTS.json → github-repo-public, anonymous GET 404
-                   * on 2026-07-29) — a licence claim whose only evidence link
-                   * 404s is a claim the buyer cannot check. Same destination the
-                   * footer's "MIT licence" already uses. */
-                  href={"https://opensource.org/license/mit"}
+                  /* Back to the repository. It was repointed at opensource.org on
+                   * 2026-07-29 because the repo was private and a licence claim whose only
+                   * evidence link 404s is a claim the buyer cannot check — correct then,
+                   * stale now: the repo has been public and anonymously readable since at
+                   * least 2026-08-13 (api.github.com, `"private": false`). The badge says
+                   * MIT AND zero-dependencies, and the repo is where a reader can verify
+                   * both at once. */
+                  href={"https://github.com/kyisaiah47/tearline"}
                   rel={"noopener"}
                   target={"_blank"}
                 >

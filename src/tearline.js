@@ -296,12 +296,44 @@ class TearLine extends HTMLElement {
       for (const node of this.childNodes) frag.append(node.cloneNode(true));
       slot.replaceWith(frag);
     }
-    // The reveal animation must not be captured mid-flight.
-    clone.querySelector('.paper')?.style.setProperty('animation', 'none');
+    /* ⛔ HOST ATTRIBUTES DO NOT SURVIVE THE CLONE, SO THEY ARE COPIED ONTO IT AS CLASSES.
+     *
+     * `wrap` lives in the shadow root; the `flat` and `animate` attributes live on the HOST. The
+     * clone is of `wrap`, so it carried neither, and the rewritten `:host([flat])` rules below had
+     * nothing to match even once they were spelled correctly. That is why `flat` worked perfectly
+     * on screen and was silently ignored in every export.
+     *
+     * MEASURED 2026-08-13 in headless Chromium against the shipped file: on screen a `flat`
+     * element computes `transform: "none"` and `filter: "none"`; in the exported PNG of that same
+     * element the paper's top edge sat at y = 50, 49, 48, 45, 43 across x = 60…380 — a 7px rise
+     * over 320px, about -1.25°, the default tilt still baked in — alongside 47,741 semi-transparent
+     * drop-shadow pixels that `flat` had removed from the screen. */
+    if (this.hasAttribute('flat')) clone.classList.add('flat');
+    if (this.hasAttribute('animate')) clone.classList.add('animate');
 
-    // Shadow DOM selectors have no meaning once the markup is flattened into
-    // the SVG, so rewrite them against the classes that survive the clone.
+    /* The reveal animation must not be captured mid-flight — and it runs on `.wrap`, which IS the
+     * clone, not on `.paper`. Setting it on `.paper` (which this did) killed an animation that was
+     * never there; see the `animate` rule in PAPER_CSS, whose selector is `:host([animate]) .wrap`.
+     * Harmless until today only because the rewritten selector could not match either. */
+    clone.style.setProperty('animation', 'none');
+
+    /* Shadow DOM selectors have no meaning once the markup is flattened into the SVG, so rewrite
+     * them against the classes that survive the clone.
+     *
+     * ⛔ THE ` .wrap` MUST BE CONSUMED BY THE MATCH. These two were
+     * `.replace(/:host\(\[flat\]\)/g, '.wrap.flat')`, which turned `:host([flat]) .wrap` into
+     * `.wrap.flat .wrap` — a DESCENDANT selector asking for a `.wrap` nested inside a `.wrap.flat`.
+     * There is exactly one `.wrap`, so it could never match, and `flat`'s whole rule
+     * (`filter: none; transform: none`) was dropped from every export.
+     *
+     * The `\s*\.wrap` in the pattern is the fix: the rule becomes `.wrap.flat`, one element,
+     * which is what the clone now is. The docs' own tight-crop recipe — `flat` plus `padding: 0` —
+     * produced a 382x153 PNG with the paper sloping from y=6 to y=1 across the frame, 89 opaque
+     * pixels against the right border and 61 against the bottom: a receipt rendered rotated inside
+     * an unrotated box, and clipped on two edges. */
     const css = PAPER_CSS
+      .replace(/:host\(\[flat\]\)\s*\.wrap/g, '.wrap.flat')
+      .replace(/:host\(\[animate\]\)\s*\.wrap/g, '.wrap.animate')
       .replace(/:host\(\[flat\]\)/g, '.wrap.flat')
       .replace(/:host\(\[animate\]\)/g, '.wrap.animate')
       .replace(/:host\(\[hidden\]\)/g, '.wrap[hidden]')
@@ -347,7 +379,24 @@ class TearLine extends HTMLElement {
 
   async toBlob(opts) {
     const canvas = await this.#toCanvas(opts);
-    return new Promise((res) => canvas.toBlob(res, 'image/png'));
+    /* ⛔ `toBlob` HANDS BACK null WHEN THE CANVAS EXCEEDS THE BROWSER'S LIMIT, and this used to
+     * resolve that null straight to the caller. `toDataURL` inherits the same canvas, and
+     * `download` then did `URL.createObjectURL(null)` — so the one failure the docs promise to
+     * name by name surfaced as `TypeError: Failed to execute 'createObjectURL' on 'URL': Overload
+     * resolution failed`, which tells a reader nothing.
+     *
+     * The site's own playground already worked around it (PlaygroundSection.tsx: `if (!blob) throw
+     * new Error("encode: the canvas produced no blob")`), and ExportStage.tsx has the authored
+     * sentence for this exact stage. npm consumers got neither. The library owns the failure now,
+     * so every entry point — toBlob, toDataURL, download — reports the same thing. */
+    const blob = await new Promise((res) => canvas.toBlob(res, 'image/png'));
+    if (!blob) {
+      throw new Error(
+        'tearline: the receipt rendered but the PNG could not be written — usually a canvas ' +
+        'larger than this browser allows. Try a narrower width, or scale 1.',
+      );
+    }
+    return blob;
   }
 
   async toDataURL(opts) {
@@ -360,8 +409,15 @@ class TearLine extends HTMLElement {
     const a = document.createElement('a');
     a.href = url;
     a.download = filename;
+    /* In the document and removed after, rather than a detached node: a detached anchor's click
+     * is ignored outright by Firefox. */
+    document.body.append(a);
     a.click();
-    URL.revokeObjectURL(url);
+    a.remove();
+    /* ⛔ NOT SYNCHRONOUS. Revoking in the same task as `click()` is the pattern that races the
+     * download in Gecko and WebKit — Chromium tolerates it, which is exactly why it survives
+     * testing. One task later is enough and costs nothing. */
+    setTimeout(() => URL.revokeObjectURL(url), 0);
   }
 }
 
