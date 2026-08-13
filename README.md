@@ -4,7 +4,7 @@
 
 Zero dependencies. No build step. Works from a `<script>` tag. MIT.
 
-![Tearline](site/og.png)
+![Tearline](public/og.jpg)
 
 ```html
 <script type="module" src="https://tearline.kynth.studio/tearline.js"></script>
@@ -95,11 +95,20 @@ The print-out animation is skipped entirely under `prefers-reduced-motion`, and 
 
 ## Local development
 
+The component itself is a single dependency-free file, `src/tearline.js`. The rest of this repo is the Next.js site that hosts the playground.
+
 ```bash
-npm run dev      # syncs the component into site/ and serves it on :8791
+npm run sync     # cp src/tearline.js public/tearline.js — the site serves the copy
+npm run dev      # next dev — playground on http://localhost:3000
+npm run build    # next build
+npm run start    # next start — serves the production build
+npm run lint     # next lint
+npm run verify   # next build into .next-verify instead of .next
 ```
 
-`dev/export-test.html` renders a receipt, exports it, and loads the PNG back into an `<img>` — so a broken export is visible rather than silent. `dev/og.html` renders the 1200×630 share card.
+Run `npm run sync` after editing `src/tearline.js`, or the playground keeps serving the previous copy. Use `npm run verify` rather than `npm run build` while a dev server is up — it builds into a separate directory, because writing into `.next` under a running `next dev` overwrites the manifests it holds open.
+
+Nothing in `dev/` is served; Next only publishes `public/`. `dev/export-test.html` renders a receipt, exports it, and loads the PNG back into an `<img>` — so a broken export is visible rather than silent. `dev/product-shot.html` renders the hero product shot — a receipt on a transparent background, sized for a 1000×1000 square slot. Both load `../src/tearline.js` and open directly from disk. `dev/og-card.html` renders the 1200×630 share card and needs the dev server's origin, since it loads `/tearline.js` as a module — see `dev/README.md`.
 
 ## License
 
