@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import posthog from "posthog-js";
 import { Toaster, toast } from "sonner";
 
 import MarkupEditor from "@/components/MarkupEditor";
@@ -56,6 +57,31 @@ type TearLineEl = HTMLElement & {
   toBlob: (opts?: { scale?: number }) => Promise<Blob | null>;
 };
 
+/**
+ * DOES A SYNTHETIC ANCHOR CLICK SAVE THE FILE, OR NAVIGATE AWAY FROM THE PAGE?
+ *
+ * On iOS and iPadOS every browser is WebKit, and WebKit does not honour `a.download` for a
+ * `blob:` URL — it treats the click as a navigation. The tab goes to the blob, the playground
+ * unloads, and the reader's markup goes with it.
+ *
+ * This is not a guess about WebKit. Session 019ffb4a-c354 (iPhone, iOS 18.7 / Safari 26.6,
+ * 2026-08-13) pressed "Download PNG" twice, and each press was followed by `$pageleave` ~150ms
+ * later and a fresh `$pageview` ~13s after that — they came back to a page reset to the sample.
+ * Then they pressed "New tear" five times in 3.8 seconds looking for the receipt they had made.
+ * That reader was the only person to actually use the tool that day.
+ *
+ * So there, the auto-click does not happen at all: the result card IS the delivery, and its link
+ * opens in its own tab so the playground survives being saved from.
+ */
+function savesInPlace(): boolean {
+  if (typeof navigator === "undefined") return true;
+  const ua = navigator.userAgent || "";
+  // iPadOS reports itself as MacIntel, so the touch-point count is what separates it from a Mac.
+  const webkitMobile =
+    /iP(hone|od|ad)/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  return !webkitMobile;
+}
+
 const MONO = "'Geist Mono', 'Fira Code', monospace";
 
 type Stage = "flatten" | "serialise" | "rasterise" | "encode";
@@ -103,6 +129,12 @@ export default function PlaygroundSection() {
     releaseLast();
     setExp({ kind: "working", stage: "flatten" });
 
+    /* The playground is the product, and until now it was silent: this host emitted `$pageview`,
+     * `checkout_started` and `purchase_completed` and nothing else, so a reader who typed their
+     * own markup and exported a receipt was indistinguishable from one who bounced off the hero.
+     * Same three events, and the same shape, as the CertScope tools. */
+    try { posthog.capture("demo_started", { tool: "playground_export" }); } catch {}
+
     try {
       /* `toBlob` rather than `download`, because the panel needs the artefact — its real byte
        * count and its real pixel size — and `download` throws the blob away after clicking a
@@ -123,14 +155,33 @@ export default function PlaygroundSection() {
       });
 
       const name = "receipt.png";
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = name;
-      a.click();
+      const saved = savesInPlace();
+      if (saved) {
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = name;
+        a.click();
+      }
 
-      setExp({ kind: "done", result: { url, w: size.w, h: size.h, bytes: blob.size, name } });
+      setExp({
+        kind: "done",
+        result: { url, w: size.w, h: size.h, bytes: blob.size, name, saved },
+      });
+      try {
+        posthog.capture("demo_completed", {
+          tool: "playground_export",
+          width: size.w,
+          height: size.h,
+          bytes: blob.size,
+          auto_saved: saved,
+          /* Whether they exported OUR sample or their own markup is the difference between
+           * a reader poking the demo and a reader trying the product on their own receipt. */
+          edited: src !== SAMPLE,
+        });
+      } catch {}
     } catch (err) {
       setExp({ kind: "failed", stage: at, message: explain(at, err) });
+      try { posthog.capture("demo_failed", { tool: "playground_export", reason: at }); } catch {}
       /* SONNER, FOR THE FAILURE — and only for the failure.
        *
        * Failures and undo only. A toast confirming a successful export would be a notification

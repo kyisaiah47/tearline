@@ -45,7 +45,18 @@ const STAGES: { key: Stage; label: string }[] = [
   { key: "encode", label: "Encoding the PNG" },
 ];
 
-export type Result = { url: string; w: number; h: number; bytes: number; name: string };
+/** `saved` is whether the file already landed in the reader's downloads. On iOS/iPadOS WebKit it
+ *  did not — a synthetic `a.download` click there navigates to the blob and unloads the page — so
+ *  the card is the delivery rather than the receipt for one, and it has to say so. Claiming a save
+ *  that did not happen is the one thing this panel exists not to do. */
+export type Result = {
+  url: string;
+  w: number;
+  h: number;
+  bytes: number;
+  name: string;
+  saved: boolean;
+};
 
 export type ExportState =
   | { kind: "idle" }
@@ -141,11 +152,23 @@ export default function ExportStage({
               * into a claim. The scale is 2x, so the pixel size is not the CSS size and saying so
               * is the difference between a fact and a surprise. */}
             <p className={"tl-result-meta"}>
-              {`${state.result.w} x ${state.result.h} px · ${kb(state.result.bytes)} · saved to your downloads`}
+              {`${state.result.w} x ${state.result.h} px · ${kb(state.result.bytes)} · ${
+                state.result.saved ? "saved to your downloads" : "ready to save"
+              }`}
             </p>
             <div className={"tl-result-acts"}>
-              <a className={"tl-btn"} href={state.result.url} download={state.result.name}>
-                {"Save it again"}
+              {/* `target="_blank"` costs a desktop reader nothing — with `download` set the file
+                * saves and no tab opens — and it is what stops the same tap from unloading the
+                * playground on a phone, where the receipt would open in place and take the
+                * markup with it. */}
+              <a
+                className={"tl-btn"}
+                href={state.result.url}
+                download={state.result.name}
+                target={"_blank"}
+                rel={"noopener"}
+              >
+                {state.result.saved ? "Save it again" : "Save the PNG"}
               </a>
               <button className={"tl-btn tl-btn-ghost"} type={"button"} onClick={onDismiss}>
                 {"Done"}
