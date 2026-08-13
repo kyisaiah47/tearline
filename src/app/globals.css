@@ -5741,22 +5741,26 @@ footer a[href^="https://kynth.studio"]::before {
   float: none !important;
   inset: auto !important;
   transform: none !important;
-  flex: 0 0 14px !important;
-  width: 14px !important;
-  height: 14px !important;
+  flex: 0 0 auto !important;
   /* min/max as well as width: the framer tap-target rule sets `min-width: 44px; min-height: 44px`
    * on interactive descendants, and a min- beats a width. That is the whole reason CivicBinder
    * Health painted a 44px block after the width was already forced to 14. */
-  min-width: 14px !important;
-  min-height: 14px !important;
-  max-width: 14px !important;
-  max-height: 14px !important;
   margin: 0 !important;
   padding: 0 !important;
   background-image: url("/brand/kynth-studios.svg") !important;
   background-size: contain !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
+
+  /* SIZED TO ITS TEXT, not to a constant. A fixed 14px glyph is right beside 12px prose and reads
+   * as a stray dot beside a credit line set at 28px — HeldBack's is. `1em` tracks whatever the
+   * sentence is set at; the 14px floor keeps it legible in small print. */
+  width: max(1em, 14px) !important;
+  height: max(1em, 14px) !important;
+  min-width: max(1em, 14px) !important;
+  min-height: max(1em, 14px) !important;
+  max-width: max(1em, 14px) !important;
+  max-height: max(1em, 14px) !important;
 }
 
 
