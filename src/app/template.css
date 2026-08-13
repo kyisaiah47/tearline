@@ -541,6 +541,36 @@ body {
   .tl-td-def {
     margin-bottom: 2px;
   }
+
+  /* THE PLAYGROUND ROW NEVER STACKED. The donor's `howitworkssection-desktop-tablet-2-2`
+   * is `flex-flow: row` at every width — correct for the slot it came from, which held
+   * three short text steps beside a screenshot, and wrong for the two columns now in it.
+   * Measured at 411px on the live page: the left column collapsed to 176px and the code
+   * textarea inside it to 126px, which truncates every line of the sample mid-token
+   * (`<td>Cortad`, `<td align=`); the right column's `overflow: clip` then cut the paper,
+   * which lays out 293px wide from x=59 inside a column starting near x=187, so the
+   * receipt's line items rendered as "rtado" / "urdough" / "OU". The product's one
+   * demonstrable output was unreadable on a phone.
+   *
+   * `flex: 0 0 auto` on both columns undoes the donor's `flex: 1 0 0px` / `1.2 0 0px`
+   * ratio, which is what forces the two into one line's worth of space; without it a
+   * column direction still leaves each child sized from that basis. 810px is this
+   * sheet's existing phone breakpoint, the same one the tables above stack at. */
+  .howitworkssection-desktop-tablet-2-2.howitworkssection-desktop-tablet-2 {
+    flex-flow: column;
+    gap: 32px;
+  }
+
+  .howitworkssection-desktop-tablet-2-2 .howitworkssection-left,
+  .howitworkssection-desktop-tablet-2-2 .howitworkssection-right {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  /* The clip was only ever load-bearing for a column narrower than its contents. */
+  .howitworkssection-desktop-tablet-2-2 .howitworkssection-right {
+    overflow: visible;
+  }
 }
 
 /* --- command buttons -------------------------------------------------------
