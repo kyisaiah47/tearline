@@ -81,3 +81,74 @@
     font-size: 16px !important;
   }
 }
+
+/* ── phone width · containment for the ported template containers ───────────────────────────── */
+/*
+ * A flex or grid item's initial `min-width: auto` refuses to shrink below its own content, and
+ * every ported landing in the estate inherits containers that rely on that being harmless. On a
+ * phone it is not: a text block sized to its content pushes its track wide, the track is centred,
+ * and the block is clipped equally on BOTH sides by whichever ancestor clips first. The reader
+ * gets a sentence that starts mid-word and no scroll position that reaches the rest.
+ *
+ * Measured on the live sites 2026-08-13 at 390x844 — the mandated Kynth Studios credit:
+ *   partsproof    left -351px, 706px wide   ("© 2026 PartsProof. A Kynth Studios product…")
+ *   benchfile     left -380px, 650px wide, inside a 310px GRID track
+ *   goodstanding  left -146px, 681px wide
+ *
+ * It reported clean to everything that looked. The document's own `scrollWidth - clientWidth` was
+ * 0 because a clipping ancestor absorbed it, and studio-gate.mjs asks whether the credit is
+ * PRESENT, not whether it can be read.
+ *
+ * All three declarations are load-bearing, verified by removing each in turn against benchfile:
+ *   1. `min-width: 0`                       lets the item shrink at all
+ *   2. `max-width: 100%`                    caps it — alone it does nothing, because it resolves
+ *                                            against a track already sized to max-content
+ *   3. `grid-template-columns: minmax(0,1fr)` the part that was missing; 1 and 2 together left
+ *                                            benchfile's credit at left -380px unchanged
+ * `pre-wrap` rather than `normal` so an authored line break in the copy still survives.
+ */
+@media (max-width: 809.98px) {
+  footer [class*="framer-"],
+  footer .body,
+  footer .text-node,
+  footer .text-block,
+  footer .footer-copyright,
+  footer .footer-copyright *,
+  .footer-copyright,
+  .footer-copyright * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  footer [class*="framer-"]:has(> [class*="framer-"] .framer-text),
+  footer [class*="framer-"]:has(> .framer-text),
+  footer .footer-copyright:has(> *),
+  .footer-copyright:has(> *) {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  footer .framer-text,
+  footer .text-node,
+  footer .text-block,
+  .footer-copyright p,
+  .footer-copyright div {
+    white-space: pre-wrap !important;
+  }
+}
+
+
+/* ── phone width · the 12px type floor ──────────────────────────────────────────────────────── */
+/*
+ * 51 runs under 12px on /docs, floor 9.58px.
+ *
+ * 12px is the register's own modal size — 45 of its 109 font-size declarations — so this ratifies
+ * the house scale rather than inventing a new one. What changes is only that nothing renders BELOW
+ * it at phone width. The scale stays pinned; this is a floor, not a fluid ramp.
+ */
+@media (max-width: 809.98px) {
+  .tl-docs-label,
+  .heading-4.menu-label,
+  .tl-copy-action,
+  small {
+    --rt-font-size: 12px !important;
+    font-size: 12px !important;
+  }
+}
