@@ -72,6 +72,29 @@ import type { MetadataRoute } from "next";
  * the remaining lever is external: links from somewhere Google crawls daily,
  * which is not a thing this repo can ship.
  *
+ * 2026-08-13, ONE DAY LATER, AND IT MOVED THE RIGHT WAY. Today's URL Inspection
+ * run reports 4 of 7 URLs unknown, against 6 of 7 yesterday: /docs and
+ * /dom-to-png are back to "Discovered - currently not indexed", joining
+ * /spotify-receipt-generator. /receipt-ui, /share-image-custom-element and the
+ * home page are still unknown. Indexed is still 0.
+ *
+ * Do not read that as proof the prose links worked — they shipped yesterday and
+ * Google had not recrawled the home page. Two readings a day apart, on a host
+ * this cold, are noise around a trend, which is exactly why the 2026-08-08
+ * "five of five discovered" line was wrong to harden into a claim. Record the
+ * reading, do not narrate it.
+ *
+ * The external lever is now less external than it was. The repo went public
+ * (FACTS.json → github-repo-public) and @kynth/tearline is on the registry, so
+ * two pages Google crawls constantly — github.com/kyisaiah47/tearline and
+ * npmjs.com/package/@kynth/tearline — now exist for this component. Both carry
+ * homepage → tearline.kynth.studio; the GitHub one also carries the twelve
+ * topics and the description. Those links are nofollow, so they pass no
+ * equity, but nofollow is a ranking hint and not a discovery block, and a
+ * high-crawl-rate page pointing here is the first inbound signal this host has
+ * had that is not our own parent domain. Nothing to build for it — it is a
+ * consequence of the repo being public, and it wants time, not markup.
+ *
  * The home page was inspected in BOTH URL forms on 2026-08-06 —
  * `https://tearline.kynth.studio` and `https://tearline.kynth.studio/` — and
  * both returned "URL is unknown to Google". So the pathless <loc> below is NOT
@@ -103,8 +126,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      // Moves to 2026-08-13: the install section gained a second install path
+      // — `npm i @kynth/tearline`, with a link to the now-public MIT source.
+      // This page had documented the script tag as the ONLY path on the
+      // grounds that nothing was published, which stopped being true when the
+      // package shipped. New copy and a new Copyable, so a real change.
       url: `${SITE}/docs`,
-      lastModified: new Date("2026-08-06"),
+      lastModified: new Date("2026-08-13"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -133,8 +161,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // publishes — the individual/organisation rule changed in May 2025 and
       // can change again — so this date is expected to move more often than
       // the three above it.
+      // Moves to 2026-08-13: the served-size figure in its sources table went
+      // 14,048 -> 17,991 bytes, following commit 4f2b21d's change to the
+      // component. A dated figure changed, so the date moves with it.
       url: `${SITE}/spotify-receipt-generator`,
-      lastModified: new Date("2026-08-07"),
+      lastModified: new Date("2026-08-13"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -150,8 +181,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // npm figures re-fetched the same day and every one held, so their dates
       // stay put; that re-verification is recorded in FACTS.json, which is
       // where "we checked and nothing moved" belongs.
+      // Moves to 2026-08-13, and this one was a correction rather than a
+      // refresh. The "when to use something else" column told readers "the
+      // repository is private, so the source cannot be read on GitHub" — false
+      // since the repo went public, and the last live surface still saying it.
+      // Rewritten against api.github.com and an anonymous raw read. Its three
+      // served-size figures also move 14,048 -> 17,991 bytes.
       url: `${SITE}/share-image-custom-element`,
-      lastModified: new Date("2026-08-09"),
+      lastModified: new Date("2026-08-13"),
       changeFrequency: "monthly",
       priority: 0.8,
     },

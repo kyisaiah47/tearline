@@ -120,7 +120,7 @@ const ROUTES: [string, string, string][] = [
   [
     "a custom element",
     "one script tag · 0 deps · MIT",
-    "The element renders the thing AND exports it. Right when the user is looking at the artefact and wants a PNG of it on click. Tearline is 14,048 bytes served, HTTP 200 on 7 Aug 2026.",
+    "The element renders the thing AND exports it. Right when the user is looking at the artefact and wants a PNG of it on click. Tearline is 17,991 bytes served, HTTP 200 on 13 Aug 2026.",
   ],
   [
     "modern-screenshot",
@@ -255,7 +255,7 @@ const SOURCES: [string, string][] = [
   ],
   [
     "tearline.kynth.studio/tearline.js",
-    "The served component: 14,048 bytes, unminified, HTTP 200 on 7 August 2026. It is the whole thing; there is nothing else to read.",
+    "The served component: 17,991 bytes, unminified, HTTP 200 on 13 August 2026. It is the whole thing; there is nothing else to read.",
   ],
 ];
 
@@ -494,7 +494,7 @@ export default function ShareImageCustomElement() {
                       }
                       <code>{"<tear-line>"}</code>
                       {
-                        " and it renders as a thermal receipt — paper texture, dashed rules, seeded torn edge, barcode — and the element exports that. One script tag, no build step, no runtime dependencies, 14,048 bytes served unminified at "
+                        " and it renders as a thermal receipt — paper texture, dashed rules, seeded torn edge, barcode — and the element exports that. One script tag, no build step, no runtime dependencies, 17,991 bytes served unminified at "
                       }
                       <a href={"/tearline.js"}>{"/tearline.js"}</a>
                       {" and HTTP 200 on 5 August 2026."}
@@ -521,7 +521,7 @@ export default function ShareImageCustomElement() {
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "One limit worth knowing before adopting it: the repository is private, so the source cannot be read on GitHub. The component is served unminified instead, which is the same 14,048 bytes either way. It installs as @kynth/tearline on npm, or from the script tag above — npm refuses the bare name tearline as too close to readline, so the package is scoped."
+                        "Read it before you adopt it, because all of it is readable. The source is MIT at github.com/kyisaiah47/tearline, public and anonymous — an unauthenticated GET of the raw file returned HTTP 200 on 13 August 2026, byte-identical to what this origin serves. The same component is served unminified at /tearline.js, so there is no minified build hiding a second implementation. It installs as @kynth/tearline on npm, or from the script tag above — npm refuses the bare name tearline as too close to readline, so the package is scoped."
                       }
                     </p>
                   </div>

@@ -27,13 +27,18 @@ import SmoothScroll from "@/components/SmoothScroll";
  * entry. A reveal attribute here would render the whole page invisible to
  * anyone with JavaScript on.
  *
- * None of this page's own copy tells a visitor to `npm i tearline`. The package
- * is not published — registry.npmjs.org/tearline returned 404 again on
- * 2026-07-29, see FACTS.json — so the script tag is the only install path
- * documented here. As of 2026-07-29 the shared header and hero no longer carry
- * the npm chip either: every install surface on the site now shows the script
- * tag, so this page is consistent with the rest rather than the exception. The
- * claim stays recorded as drifted, and publishing it is Isaiah's to do.
+ * INSTALL PATHS. This page documented the script tag as the ONLY one, on the
+ * grounds that nothing was published — true when it was written on 2026-07-29,
+ * false since 2026-08-13. @kynth/tearline@0.1.0 is on the registry
+ * (registry.npmjs.org returned 200, re-read 2026-08-13; FACTS.json →
+ * npm-package-published) and the repo is public and MIT
+ * (FACTS.json → github-repo-public). The package shipped and this page, the
+ * install reference, was the last surface still saying it had not.
+ *
+ * Both paths are documented now, script tag first: it is the one with no step
+ * before it. The bare name `tearline` is still unregisterable — npm rejects it
+ * as too similar to `readline` — which is why every npm line on the site is
+ * scoped, and why none of them says `npm i tearline`.
  */
 
 const SITE = "https://tearline.kynth.studio";
@@ -389,6 +394,23 @@ export default function Docs() {
                       {
                         ". Everything after that is markup you already know how to write — headings, rules, tables, lists — and the paper is CSS wrapped around it rather than a picture of it."
                       }
+                    </p>
+                    <p className={"tl-docs-label tl-docs-label-gap"}>
+                      {"or from npm"}
+                    </p>
+                    <Copyable prompt={"$"} text={"npm i @kynth/tearline"} />
+                    <p className={"tl-docs-note"}>
+                      {
+                        "The same file, versioned. Published as @kynth/tearline (0.1.0) — scoped because npm rejects the bare name tearline as too close to readline. Zero dependencies either way, so the only difference is whether you want a lockfile entry. The source is MIT and public at "
+                      }
+                      <a
+                        href={"https://github.com/kyisaiah47/tearline"}
+                        rel={"noreferrer"}
+                        target={"_blank"}
+                      >
+                        {"github.com/kyisaiah47/tearline"}
+                      </a>
+                      {"."}
                     </p>
                     <p className={"tl-docs-label tl-docs-label-gap"}>
                       {"what it is not"}

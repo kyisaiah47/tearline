@@ -119,13 +119,19 @@ function Ctas() {
   return (
     <div className={"ctas-2"} data-name={"CTAs"} style={{ opacity: "1" }}>
       <div className={"login-link-container"}>
-        {/* Was a GitHub link. The repository is PRIVATE (FACTS.json →
-         * github-repo-public; `gh repo view` reports PRIVATE and an anonymous
-         * GET returns 404 on 2026-07-29), so that link sent every visitor who
-         * was not signed in as the owner to a 404 — the worst possible landing
-         * for the one click that says "show me the source". The tertiary slot
-         * now mirrors the hero's own pair: try it, then take the install line.
-         * The playground is on this origin and cannot 404. */}
+        {/* Was a GitHub link, removed 2026-07-29 because the repository was
+         * private and the link 404'd for everyone but the owner.
+         *
+         * THAT REASON IS GONE: the repo is public (FACTS.json →
+         * github-repo-public; api.github.com reports "private": false and MIT,
+         * and an anonymous raw GET returns 200, both re-read 2026-08-13). The
+         * source is linked from the footer's Code column and the hero's MIT
+         * badge, so it is reachable from every page.
+         *
+         * The slot stays on the playground on its own merits, not on the 404:
+         * it mirrors the hero's pair — try it, then take the install line —
+         * and the header has one tertiary slot, which the thing you can do
+         * without leaving the origin earns ahead of the thing you can read. */}
         <a
           className={
             "login-link-mobile login-button login-link-tablet link-12-state-2 login-link"
@@ -177,9 +183,16 @@ function Ctas() {
         </a>
       </div>
       <div className={"footer-get-started-cta"}>
-        {/* Not `npm i tearline`: there is no published package (FACTS.json →
-          * npm-package-published, registry 404 on 2026-07-29). This is the
-          * install path that resolves today. */}
+        {/* Not `npm i tearline` — but no longer because nothing is published.
+          * @kynth/tearline@0.1.0 IS on the registry (FACTS.json →
+          * npm-package-published; registry.npmjs.org returned 200 on
+          * 2026-08-13). The bare name stays unregisterable: npm rejects it as
+          * too similar to `readline`, which is why the package is scoped.
+          *
+          * The script tag keeps this slot because it is the install path with
+          * no step before it — no package manager, no build. The scoped npm
+          * line is equally supported and is documented on /docs, under "or
+          * from npm" in the install section, added 2026-08-13. */}
         <CommandButton
           text={"tearline.kynth.studio/tearline.js"}
           prompt={"<>"}
