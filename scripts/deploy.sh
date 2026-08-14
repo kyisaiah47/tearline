@@ -89,6 +89,30 @@ if [ "$ROOT_CODE" != "200" ]; then
   exit 22
 fi
 
+# ⛔ A 200 ON THE DOCUMENT IS NOT A DEPLOYMENT THAT IS READY TO BE MEASURED.
+#
+# Every gate below opens the LIVE host, seconds after a prebuilt promote swapped the alias. The
+# static assets behind that alias are pulled through the edge on demand, and for a few seconds a
+# request for one of them can miss — so the first visitor can be served the document without its
+# stylesheet while the document itself returns a perfectly good 200.
+#
+# Measured 2026-08-14 on tearline: the mobile gate ran immediately after the deploy and reported
+# TEN failures at 360x800 and none at the other two viewports, including `INPUT-ZOOM
+# textarea#tl-src — font-size 12px`. 12px is not a size anything declares for that element;
+# template.css says 13px and mobile.css says 16px, and both are in the same CSS chunk. 12px is
+# what it inherits with NEITHER applied. The page had rendered with no stylesheet. Three minutes
+# later the same gate against the same unchanged build: 0 fail, 0 warn.
+#
+# That is the most expensive false finding this estate produces, because the deploy has already
+# landed by the time it happens: the report says "deployed, gate failed", the next person re-runs
+# the gate, finds it clean, and has no way to tell that from a defect somebody fixed in between.
+#
+# So the host is warmed first — the document plus every stylesheet and script it references, all
+# 200, twice in a row. It is not a retry and not a grace period; it never looks at a finding and
+# cannot make one go away. Images are deliberately NOT warmed: a missing image is a finding the
+# gates should report.
+node "$HOME/Projects/kynth-ops/tools/warm-host.mjs" "https://$HOST/"
+
 # The phone-width gate. Fails closed on: a table column owning more than 55% of the SCREEN,
 # content painted off the left edge that no scroll reaches, an overflow-x wrapper that grew to its
 # content instead of scrolling it, text under 12px, a control under 16px (which makes iOS zoom the
