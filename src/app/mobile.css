@@ -108,12 +108,16 @@
  * `pre-wrap` rather than `normal` so an authored line break in the copy still survives.
  */
 @media (max-width: 809.98px) {
-  footer [class*="framer-"],
-  footer .body,
-  footer .text-node,
-  footer .text-block,
-  footer .footer-copyright,
-  footer .footer-copyright *,
+  /* ⛔ EVERY DESCENDANT, NOT A LIST OF KNOWN CLASSES.
+   *
+   * The first version named the text elements and missed the box holding them. Measured on the
+   * deployed covercheck after that fix shipped: `p.text-block.caption-text` carried min-width 0,
+   * max-width 100% and pre-wrap — and was still 837px wide, because `max-width: 100%` resolves
+   * against its parent and `div.all-rights-reserved` was 837px with `min-width: auto` and
+   * `white-space: pre`. Same trap as the comment above describes, one level up from where the fix
+   * landed. The box that refuses to shrink has a different class in every ported template, so
+   * enumerating classes was never going to reach it. */
+  footer *,
   .footer-copyright,
   .footer-copyright * {
     min-width: 0 !important;
@@ -125,9 +129,19 @@
   .footer-copyright:has(> *) {
     grid-template-columns: minmax(0, 1fr) !important;
   }
+  /* The credit sentence has to wrap wherever it lives, and `white-space` INHERITS — so the
+   * wrapping container is what has to say so, not the paragraph inside it. */
   footer .framer-text,
   footer .text-node,
   footer .text-block,
+  footer [class*="right"],
+  footer [class*="copyright"],
+  footer [class*="credit"],
+  footer [class*="reserved"],
+  footer [class*="right"] *,
+  footer [class*="copyright"] *,
+  footer [class*="credit"] *,
+  footer [class*="reserved"] *,
   .footer-copyright p,
   .footer-copyright div {
     white-space: pre-wrap !important;
