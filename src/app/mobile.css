@@ -166,3 +166,46 @@
     font-size: 12px !important;
   }
 }
+
+/* ── phone width · the 12px floor, for type set INLINE ──────────────────────────────────────── */
+/*
+ * Measured live on /docs: 27 text runs under 12px at 11px — the line-number gutter of the code
+ * illustration, a 40px column of digits nobody could read on a phone.
+ *
+ * These sizes are written as INLINE STYLES on the elements themselves, so no class selector can
+ * reach them and no stylesheet rule appears in the cascade at all — a first pass looking for the
+ * winning rule found `winners: []`, because there was no rule. An attribute selector on the inline
+ * declaration is the only handle, and it is precise: it matches exactly the elements that declared
+ * that size and nothing else.
+ *
+ * The range is 6px to 11.5px in half-steps rather than the two sizes measured today, so a new mock
+ * panel written at 9px is covered the day it ships instead of the next time somebody sweeps.
+ */
+@media (max-width: 809.98px) {
+  [style*="font-size:6px"],
+  [style*="font-size: 6px"],
+  [style*="font-size:6.5px"],
+  [style*="font-size: 6.5px"],
+  [style*="font-size:7px"],
+  [style*="font-size: 7px"],
+  [style*="font-size:7.5px"],
+  [style*="font-size: 7.5px"],
+  [style*="font-size:8px"],
+  [style*="font-size: 8px"],
+  [style*="font-size:8.5px"],
+  [style*="font-size: 8.5px"],
+  [style*="font-size:9px"],
+  [style*="font-size: 9px"],
+  [style*="font-size:9.5px"],
+  [style*="font-size: 9.5px"],
+  [style*="font-size:10px"],
+  [style*="font-size: 10px"],
+  [style*="font-size:10.5px"],
+  [style*="font-size: 10.5px"],
+  [style*="font-size:11px"],
+  [style*="font-size: 11px"],
+  [style*="font-size:11.5px"],
+  [style*="font-size: 11.5px"] {
+    font-size: 12px !important;
+  }
+}
