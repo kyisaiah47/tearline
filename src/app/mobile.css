@@ -164,11 +164,27 @@
   footer .framer-text,
   footer .text-node,
   footer .text-block,
-  footer [class*="right"],
+  /* ⛔ `[class*="rights"]`, NOT `[class*="right"]`. This block exists to wrap the credit
+   * sentence — `div.all-rights-reserved` and friends — and the substring was written wide on
+   * purpose, because the box that refuses to shrink has a different class in every ported
+   * template. "right" is too wide: it also matches every LAYOUT column called `right`, and
+   * `white-space` inherits, so everything inside one loses its own value.
+   *
+   * Measured on certscope 2026-08-14 at 390x844, and it is not cosmetic. The final CTA sits in
+   * `div.right-2` inside the footer, so its label inherited `pre-wrap` — and the pill is
+   * `width: min-content`. With `pre` that is the whole line; with `pre-wrap` it is the longest
+   * WORD. The button sized itself to 182px for 155px of text and clipped the first letter: the
+   * call to action read "et your determination", and `overflow: clip` meant no scroll position
+   * reached the G. mobile-gate caught it as CLIPPED-TEXT at all three phone widths.
+   *
+   * Nothing is lost by narrowing. `all-rights-reserved` still matches here and again on
+   * `[class*="reserved"]`, and `copyright` has its own selector two lines down.
+   */
+  footer [class*="rights"],
   footer [class*="copyright"],
   footer [class*="credit"],
   footer [class*="reserved"],
-  footer [class*="right"] *,
+  footer [class*="rights"] *,
   footer [class*="copyright"] *,
   footer [class*="credit"] *,
   footer [class*="reserved"] *,
