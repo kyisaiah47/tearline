@@ -1,0 +1,41 @@
+{
+ "product": "TEARLINE",
+ "slug": "tearline",
+ "_note": "Created by W13 (kynth-ops/social/tools/_tokens.cjs --assign) because this product had no brand record. Only `cardTokens` below is authoritative; fill the rest in as the product gets art-directed.",
+ "cardTokens": {
+  "_note": "W13 card tokens — what the social/portfolio card renderers vary per product. Widened past accent-hue on 2026-08-13; see kynth-ops/social/tools/_tokens.cjs. The renderers read these values first, so editing any line art-directs this product immediately. ⚠️ Re-running `node _tokens.cjs --assign` RE-BASELINES every product and will overwrite hand edits here — art-direct a product by editing this block and then leaving --assign alone.",
+  "scheme": "dark",
+  "accent": "#ffa552",
+  "ground": {
+   "tone": {
+    "tint": 0.12,
+    "lift": 0
+   },
+   "family": "field",
+   "base": "#352b21",
+   "panel": "#40372d"
+  },
+  "ink": "#f4f4f0",
+  "dim": "#a8a39c",
+  "hairline": "rgba(244,244,240,0.13)",
+  "type": {
+   "pairing": "techno/tektur"
+  },
+  "grid": {
+   "density": "airy"
+  },
+  "corner": {
+   "style": "sharp"
+  },
+  "mark": {
+   "placement": "tl"
+  },
+  "figure": {
+   "scale": "inset",
+   "bleed": false
+  },
+  "window": {
+   "theme": "dracula"
+  }
+ }
+}
