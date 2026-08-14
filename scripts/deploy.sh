@@ -11,6 +11,17 @@ export CLAUDE_JOB_CLASS=critical
 # disk-IO stall and take the whole estate to 522 while every project still reports healthy.
 set -euo pipefail
 
+# ⛔ ESTATE DEPLOY GUARD — do not deploy while other Claude sessions are still working.
+# Isaiah runs several sessions at once. Deploying into that ships a tree the others are
+# still changing, and it is stale before the build finishes — so this defers instead:
+# the repo is registered as pending and deploy-watch runs ONE deploy-all pass for
+# everything pending the moment the estate goes quiet. `DEPLOY_NOW=1` overrides.
+# Wired by kynth-ops/tools/wire-deploy-guard.mjs — do not remove, do not make it
+# conditional. `deploy-all.sh --check` fails closed if it goes missing from any script.
+. "$HOME/Projects/kynth-ops/tools/deploy-lock.sh" || { echo "deploy gate missing — refusing to deploy" >&2; exit 1; }
+deploy_gate "tearline"
+
+
 # Gates below record a failure instead of aborting, so a red gate cannot silence the gates
 # after it. The script still exits non-zero at the end if any of them failed — see the tail.
 GATE_FAILED=0
