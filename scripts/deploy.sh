@@ -120,10 +120,26 @@ node "$HOME/Projects/kynth-ops/tools/warm-host.mjs" "https://$HOST/"
 # ⛔ It never asks the document for its overflow. Measured 2026-08-13, trustdesk.kynth.studio
 # reported scrollWidth === clientWidth while its body copy was cut off at both edges — a clipping
 # ancestor absorbs the difference, so a clean overflow number is not evidence of a reachable page.
-if [ -f "$WORKBENCH/ops/qa/mobile-gate.mjs" ]; then
-  echo "==> mobile gate (live, 390x844 / 360x800 / 430x932)"
-  if ! node "$WORKBENCH/ops/qa/mobile-gate.mjs" "https://$HOST/"; then GATE_FAILED=1; fi
-fi
+# ⛔ A GATE THAT DID NOT RUN IS NOT A GATE THAT PASSED.
+#
+# The blocking gates below used to be wrapped in `if [ -f <path> ]; then … fi`, so a missing
+# file took the SKIP branch — which printed nothing, set nothing, and shared its exit with the
+# pass branch. If the workbench moved, was renamed, or a path constant drifted, this product
+# would deploy with no render gate, no phone gate and no intent gate, print OK, and exit 0.
+# Nothing anywhere would say the page had never been opened, and the render gate is the only
+# check in this estate that opens a page at all.
+#
+# The shape is not hypothetical. kynth-ops/portals/mcpdir/tick.mjs printed "everything in
+# parity, every listing live" on every --no-browser run for the same reason — the skipped check
+# produced zero findings and fell into the all-clear branch — and said it three times on
+# 2026-08-14 while seven of eleven listings were missing or stale.
+#
+# So a missing gate is now a FAILURE, said out loud, with the path that was not there.
+echo "==> mobile gate (live, 390x844 / 360x800 / 430x932)"
+if [ ! -f "$WORKBENCH/ops/qa/mobile-gate.mjs" ]; then
+  echo "✗ mobile-gate NOT CHECKED — $WORKBENCH/ops/qa/mobile-gate.mjs is missing" >&2
+  GATE_FAILED=1
+elif ! node "$WORKBENCH/ops/qa/mobile-gate.mjs" "https://$HOST/"; then GATE_FAILED=1; fi
 
 if [ "$GATE_FAILED" != "0" ]; then
   echo "GATE FAILURE — the deploy landed, but one or more gates above failed." >&2
