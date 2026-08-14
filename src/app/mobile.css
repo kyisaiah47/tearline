@@ -353,3 +353,24 @@
     }
   }
 }
+
+/* ── phone width · the Kynth Studios credit is under the 24px AA floor ──────────────────────── */
+/*
+ * Measured live at 390x844 on 2026-08-14, probing the HIT AREA with elementFromPoint rather than
+ * reading the box: `a.kynth-credit` — the words "Kynth Studios" — gave a finger 18px against
+ * WCAG 2.5.8's 24px AA floor. It is `display: inline-flex` with no padding, and it is a
+ * STANDALONE link that is the whole content of its slot, so the spec's "in a sentence, or
+ * constrained by the line-height of non-target text" exemption does not reach it.
+ *
+ * The same treatment goodstanding already carries, copied rather than re-derived: padding
+ * cancelled by an equal negative margin, so the credit line does not move and only the thing
+ * being aimed at grows. Seven off-shell products measured the same way and this is one of them —
+ * the credit is mandated on every product site, which makes it the one link that has to work.
+ */
+@media (pointer: coarse), (max-width: 809.98px) {
+  a.kynth-credit {
+    display: inline-block;
+    padding: 6px 4px;
+    margin: -6px -4px;
+  }
+}
