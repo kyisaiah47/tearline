@@ -10,6 +10,10 @@ export CLAUDE_JOB_CLASS=critical
 # ⛔ DEPLOY ONE PRODUCT AT A TIME. Parallel builds across sessions trip the shared Supabase
 # disk-IO stall and take the whole estate to 522 while every project still reports healthy.
 set -euo pipefail
+
+# Gates below record a failure instead of aborting, so a red gate cannot silence the gates
+# after it. The script still exits non-zero at the end if any of them failed — see the tail.
+GATE_FAILED=0
 export CI=1
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -83,7 +87,12 @@ fi
 # ancestor absorbs the difference, so a clean overflow number is not evidence of a reachable page.
 if [ -f "$WORKBENCH/ops/qa/mobile-gate.mjs" ]; then
   echo "==> mobile gate (live, 390x844 / 360x800 / 430x932)"
-  node "$WORKBENCH/ops/qa/mobile-gate.mjs" "https://$HOST/"
+  if ! node "$WORKBENCH/ops/qa/mobile-gate.mjs" "https://$HOST/"; then GATE_FAILED=1; fi
+fi
+
+if [ "$GATE_FAILED" != "0" ]; then
+  echo "GATE FAILURE — the deploy landed, but one or more gates above failed." >&2
+  exit 1
 fi
 
 echo "OK"
