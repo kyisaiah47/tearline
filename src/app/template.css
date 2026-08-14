@@ -170,16 +170,34 @@ body {
   letter-spacing: 0;
 }
 
+/* ⛔ `overflow: auto`, NOT `hidden`, AND THE SCROLLBARS ARE HIDDEN RATHER THAN ABSENT.
+ *
+ * This layer holds the same text as the textarea on top of it and used to clip it outright.
+ * Measured live 2026-08-14 at 390x844: 407px of tokens inside a 317px box, so
+ * `span.t-tag` — the `<strong>` and `<td>` tag names — sat past the right edge with, as far
+ * as anything walking the DOM could tell, no scroller between the text and the clip. That is
+ * indistinguishable from a line that was simply cut, which is what mobile-gate's rule J
+ * reports and what a reader concludes.
+ *
+ * The layer DOES scroll — MarkupEditor's onScroll copies the textarea's scrollLeft/scrollTop
+ * onto it every frame — and now it says so. The original comment here warned that two
+ * `overflow: auto` layers give two scrollbars and two positions; neither follows once the
+ * scrollbars are suppressed and `pointer-events: none` makes it impossible for a reader to
+ * drive this layer independently. The textarea is still the only thing taking the gesture. */
 .tl-code-hl {
   position: absolute;
   inset: 0;
-  overflow: hidden;
+  overflow: auto;
+  scrollbar-width: none;
   pointer-events: none;
   color: var(--color-text, #d1d1d1);
 }
 
-/* The input is the scroller — the highlight layer follows it from onScroll.
- * Giving both `overflow: auto` would produce two scrollbars and two positions. */
+.tl-code-hl::-webkit-scrollbar {
+  display: none;
+}
+
+/* The input is the scroller the reader drives — the highlight layer follows it from onScroll. */
 .tl-code-input {
   position: relative;
   width: 100%;

@@ -162,7 +162,16 @@ export default function CodePanel({
           </div>
         ) : null}
 
+        {/* ⛔ THE CLASSES ARE LOAD-BEARING — mobile.css turns this body into a real
+         * horizontal scroller at phone width and needs a handle on all three boxes.
+         * Measured live 2026-08-14 at 390x844: the features panel's `21.1 km` sat at
+         * right 380 inside a 237px box carrying `overflow: hidden` with 361px of
+         * content, so 46px of the line was in the DOM, painted, and unreachable from
+         * any scroll position. The donor's per-line fade below made it read as a
+         * deliberate truncation, which is exactly what mobile-gate's rule J calls the
+         * worst version of the defect. */}
         <div
+          className={"tl-code-body"}
           style={{
             flex: 1,
             padding: "16px 20px",
@@ -174,6 +183,7 @@ export default function CodePanel({
           {lines.map((line, i) => (
             <div
               key={i}
+              className={"tl-code-line"}
               style={{
                 height: "22px",
                 lineHeight: "22px",
@@ -190,8 +200,12 @@ export default function CodePanel({
               ))}
               {/* The donor fades the right edge of every line rather than
                * wrapping or scrolling, so a long line reads as "continues"
-               * instead of being visibly clipped. */}
+               * instead of being visibly clipped. At phone width mobile.css
+               * drops it: once the body scrolls, a fade pinned to each line's
+               * own right edge travels WITH the content and paints a gradient
+               * in the middle of a line the reader has scrolled to. */}
               <div
+                className={"tl-code-line-fade"}
                 style={{
                   position: "absolute",
                   top: 0,

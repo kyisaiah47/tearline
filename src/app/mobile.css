@@ -65,10 +65,40 @@
   }
 
   /* ── Prose floor ─────────────────────────────────────────────────────────
-   * The dropzone's format hint is a full line of copy at 11px. The neighbouring
-   * 11px strings are short labels and stay as designed. */
-  .tl-code-editor .tl-editor-label {
+   * The dropzone's format hint is a full line of copy at 11px.
+   *
+   * ⛔ THE DESCENDANT SELECTOR MATCHED NOTHING AND NOBODY NOTICED. `.tl-editor-label`
+   * is a child of `div.tl-editor`, not of `div.tl-code-editor` — the editor label sits
+   * ABOVE the code editor, as its caption, and is its sibling. Measured live on the
+   * deployed build 2026-08-14 at 390x844: `label.tl-editor-label` "your markup" still
+   * rendered at 11px, with the rule that was written to fix it sitting right here
+   * winning nothing. `.tl-seed` shares the same declaration in template.css and the
+   * same floor, so both are named. */
+  .tl-editor-label,
+  .tl-seed {
     font-size: 13px !important;
+  }
+
+  /* ── The header's install command ran off the right edge at 360 ──────────
+   * `.content-2` already wraps, which puts the logo on one row and the CTA group on
+   * the next. Inside that group the tertiary "Try it ↳" link is 143px before the
+   * command button starts, and the button is 234px of `white-space: nowrap` mono, so
+   * it wants 377px of the 336px a 360px phone has between its gutters. Measured live
+   * 2026-08-14: `code.tl-cmd-text` right 377 inside a `nav` carrying `overflow-x:
+   * clip` at 360 — the ".js" and the copy mark were both gone.
+   *
+   * Wrapping the CTA group rather than shrinking the type: the command is the one
+   * string on the page a visitor is meant to copy, and it is already at the 12px
+   * floor set above. Giving the button its own full-width row puts its left edge at
+   * the gutter, so it needs 234px of the 336 a 360px phone has — and 234 of the 366
+   * a 390px phone has. Both fit with the copy mark intact. */
+  .ctas-2 {
+    flex-wrap: wrap !important;
+  }
+
+  .ctas-2 > .footer-get-started-cta {
+    min-width: 0 !important;
+    flex: 1 0 100% !important;
   }
 
   /* ── Form controls ───────────────────────────────────────────────────────
@@ -165,6 +195,24 @@
     --rt-font-size: 12px !important;
     font-size: 12px !important;
   }
+
+  /* The receipt's own body copy. `.paper` in src/tearline.js sets 11.5px and every slotted
+   * paragraph and table cell inherits it, so the demo receipts on this page render "Cortado ·
+   * 4.25" and "Total · 4.25" at 11.5px — measured at 390x844 on a local production build
+   * 2026-08-14, ten runs.
+   *
+   * ⛔ THE LIBRARY IS NOT THE PLACE FOR THIS. 11.5px is the product's rendered output and
+   * every consumer's receipt inherits it; a floor that belongs to this estate's phone rules
+   * must not silently restyle everybody's receipts. The landing overrides it the same way the
+   * `small` rule directly above already does — slotted rules lose to author rules, which
+   * src/tearline.js documents as deliberate ("All of it is overridable from the light DOM").
+   * h1 and h2 carry their own sizes and are left alone. */
+  tear-line p,
+  tear-line li,
+  tear-line td,
+  tear-line th {
+    font-size: 12px !important;
+  }
 }
 
 /* ── phone width · the 12px floor, for type set INLINE ──────────────────────────────────────── */
@@ -207,5 +255,85 @@
   [style*="font-size:11.5px"],
   [style*="font-size: 11.5px"] {
     font-size: 12px !important;
+  }
+}
+
+/* ── phone width · the code panels scroll instead of severing the line ──────────────────────── */
+/*
+ * CodePanel draws the donor's window chrome nine times across the page. Its body carries
+ * `overflow: hidden` and each line carries it again, with a 32px gradient pinned to the line's
+ * right edge — the donor's way of saying "this continues". On a laptop the panel is wide enough
+ * that nothing continues. On a phone it is not, and "this continues" is not the same offer as
+ * "you can read it".
+ *
+ * Measured live on the deployed build 2026-08-14 at 390x844: the features panel held 361px of
+ * markup in a 237px box, so `21.1 km` painted at right 380 with the box ending at 333 — 46px of
+ * a table row in the DOM and unreachable, because `overflow: hidden` is not a scroller. The hero
+ * panel cut `<tear-line barcode="047320` mid-attribute in the same way. Screenshotted at 360
+ * before the change.
+ *
+ * Three declarations, all load-bearing:
+ *   1. the body becomes a real horizontal scroller
+ *   2. the LINE stops clipping, or the body has nothing to scroll — each line was its own
+ *      `overflow: hidden` box sized to the container, so the body's scrollWidth equalled its
+ *      clientWidth and `overflow-x: auto` would have been inert
+ *   3. the per-line fade goes, because it is pinned to the line's own right edge and would
+ *      travel with the content into the middle of whatever the reader scrolled to
+ *
+ * Desktop is untouched: outside this query the panels clip and fade exactly as the donor drew.
+ */
+@media (max-width: 809.98px) {
+  .tl-code-body {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scrollbar-width: none;
+  }
+
+  .tl-code-body::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tl-code-line {
+    overflow: visible !important;
+  }
+
+  .tl-code-line-fade {
+    display: none !important;
+  }
+}
+
+/* ── phone width · a scroller has to SAY it scrolls ─────────────────────────────────────────── */
+/*
+ * The register's own answer, lifted verbatim from `~/Projects/workbench/src/app/register.css`
+ * (`@keyframes rs-edge-fade`, applied there to `.rs-chiprail`, `.rs-filter-row`, `.rs-code pre`
+ * and `.rs-code-scroll`). A scroll-driven mask rather than a static gradient, so the fade is
+ * spent exactly when the travel is: a strip already scrolled to its end does not keep hinting at
+ * more.
+ *
+ * Three surfaces need it here, measured live 2026-08-14 at 390x844:
+ *   .tl-code-body   the code panels, once the block above lets them scroll at all
+ *   .tl-code-input  the playground textarea — 477px of markup in a 317px box, 160px of unspent
+ *                   travel and nothing at its edge
+ *   .tl-code-hl     the highlight layer under it, now `overflow: auto` (see template.css)
+ *
+ * Both editor layers get the same mask because they are the same rectangle and the reader is
+ * looking at the `pre` — the textarea's own ink is transparent, so masking it costs only the
+ * caret at the very edge of a line that is scrolling away anyway.
+ */
+@keyframes rs-edge-fade {
+  from,
+  to {
+    mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 40px), transparent 100%);
+  }
+}
+
+@supports (animation-timeline: scroll(self inline)) {
+  @media (max-width: 809.98px) {
+    .tl-code-body,
+    .tl-code-input,
+    .tl-code-hl {
+      animation: rs-edge-fade 1s linear both;
+      animation-timeline: scroll(self inline);
+    }
   }
 }
