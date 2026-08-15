@@ -1,5 +1,8 @@
 import type { MetadataRoute } from "next";
 
+import { PRODUCT } from "@/lib/product";
+import { surfaceSitemapRows } from "@/lib/surfaces";
+
 /**
  * sitemap.xml.
  *
@@ -192,5 +195,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
-  ];
+  
+    /* THE ROUTE SHIMS, listed from the same declaration the router builds them from — so a surface
+     * can never be live on this host and missing from here. Aliases are excluded: a sitemap that
+     * lists a redirect spends crawl budget to arrive at a page already listed under its own name. */
+    ...surfaceSitemapRows(PRODUCT.surfaces, SITE),
+];
 }

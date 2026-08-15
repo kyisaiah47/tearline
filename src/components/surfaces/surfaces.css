@@ -1,0 +1,185 @@
+/* STRUCTURE ONLY. NO PALETTE, NO TYPE SCALE, NO FONT.
+ *
+ * This stylesheet lands in fifteen repos with fifteen different design systems — light pages and
+ * dark ones, three different type scales, no shared token vocabulary between any two of them. A
+ * stylesheet that declared a colour would therefore be declaring the WRONG colour in most of them,
+ * and the failure would be silent: the page still renders, still returns 200, and only looks wrong
+ * to somebody who opens it.
+ *
+ * So nothing here sets `color`, `font-family` or `font-size` on text. Headings, paragraphs, lists
+ * and links inside `.kx-surface` are styled by whatever the host page already styles them with —
+ * `.guide-article__body` in the ten repos that carry `article.css`, the repo's own body rules in
+ * the rest. The three genuinely new elements — a bordered panel, a state chip and a muted footnote
+ * — take every colour from `currentColor` through `color-mix`, so they resolve against the host's
+ * own ink on a light page and against the host's own paper on a dark one with nothing to configure
+ * and nothing to keep in sync.
+ *
+ * `color-mix()` is Baseline-available in every browser these sites are served to; the `border` and
+ * `background` shorthands below still resolve to a visible, if flatter, result in anything that
+ * does not support it, because the fallback is the untouched `currentColor`.
+ */
+
+.kx-surface {
+  /* The one thing a host cannot supply, because it is a property of this content and not of the
+     page: the vertical rhythm between the five or six blocks a surface is made of. */
+  display: flow-root;
+
+  /* ⛔ THE INK CONTRACT, AND IT EXISTS BECAUSE "INHERIT THE HOST'S COLOUR" IS NOT SAFE ON THIS
+     ESTATE. Several of these sites are Framer captures that style only their OWN class names and
+     never set a colour on `body` or on bare `p`/`h2`/`a`. On a light page that is harmless — the
+     browser default is black and black was right. On a DARK page it is catastrophic and silent:
+     Tearline's body colour computes to rgb(0, 0, 0) against a rgb(26, 25, 23) ground, so the whole
+     of /security rendered near-black on near-black with pure-blue default links. It returned 200,
+     carried its canonical, its title and its JSON-LD, and passed every check a gate can make from
+     outside. Measured in a real browser at 1440px on 2026-08-15, and found by looking at it.
+
+     So a host that DOES style bare elements sets none of these and nothing changes — `inherit` is
+     the fallback in all three. A host that does not, sets them from ITS OWN tokens in its
+     `SurfaceShell`, which is the one file that knows what this product's tokens are called. This
+     file still declares no colour of its own; it declares where to look for one. */
+  color: var(--kx-ink, inherit);
+}
+
+.kx-surface :where(a) {
+  color: var(--kx-link, inherit);
+}
+
+.kx-surface :where(h1, h2, h3) {
+  color: var(--kx-heading, var(--kx-ink, inherit));
+}
+
+.kx-block + .kx-block {
+  margin-top: 2.5rem;
+}
+
+/* THE PANEL. A bordered group — the pricing tier, the status row, the About record. */
+.kx-panel {
+  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin: 0 0 1.5rem;
+}
+
+.kx-panel > :first-child {
+  margin-top: 0;
+}
+
+.kx-panel > :last-child {
+  margin-bottom: 0;
+}
+
+/* THE PROSE FALLBACK. ⛔ EVERY RULE IN THIS BLOCK IS WRAPPED IN `:where()`, WHICH GIVES IT ZERO
+   SPECIFICITY OF ITS OWN — so it applies only where the host page has no opinion, and any rule the
+   host already has wins without a fight. That is the whole design: these fifteen sites style their
+   own prose and this file must not argue with them.
+
+   It exists because one of them does not reach these elements at all. The agent frame's document
+   styles are written as `.doc-prose > p` — a DIRECT-CHILD selector — and `SurfaceBody` renders its
+   paragraphs one level deeper, inside `.kx-block`. Measured in a real browser at 1440px on
+   2026-08-15: `margin-bottom: 0px` on every paragraph and `margin-top: 0px` on every h2, so
+   MatchRail's /about ran two paragraphs together with no gap and its headings sat flush against
+   the text above them. Nothing errored. On the ten products whose `article.css` sets these, every
+   line below loses and nothing changes. */
+.kx-surface :where(p) {
+  margin: 0 0 1em;
+}
+
+.kx-surface :where(h2) {
+  margin: 2em 0 0.5em;
+}
+
+.kx-surface :where(h2):first-child {
+  margin-top: 0;
+}
+
+.kx-surface :where(ul) {
+  padding-left: 1.25em;
+  margin: 0 0 1.5rem;
+}
+
+.kx-surface :where(li) {
+  margin: 0 0 0.5rem;
+}
+
+/* THE LIST MARKERS. ⛔ THESE TWO ARE DELIBERATE OVERRIDES rather than fallbacks, and they are the
+   only ones in this file. Several of these design systems reset `list-style` to none globally, and
+   on the agent frame the result was a /security page whose "What is stored" and "Who else
+   processes data" sections were four unbulleted lines each, reading as a run-on paragraph with
+   hard breaks in it. A list of what a product stores about you is the last list on this estate
+   that should be hard to count. */
+.kx-surface ul {
+  list-style: disc;
+}
+
+.kx-surface li {
+  display: list-item;
+}
+
+/* THE PRICE, beside the tier name in the same heading, so the two can never be separated by a
+   layout change into a number with no label. It is deliberately not larger than the heading: a
+   pricing page whose loudest element is the number reads as a sales page, and these pages exist to
+   answer a question rather than to close. */
+.kx-price {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+.kx-price::before {
+  content: "· ";
+  opacity: 0.5;
+}
+
+/* THE STATE CHIP. ⛔ THE THREE STATES ARE DISTINGUISHED BY MORE THAN COLOUR — the border weight
+   and the label text differ too, because a status page that encodes its one fact in hue alone is
+   unreadable to a colourblind reader on the single surface where being unreadable matters most.
+   The label is always spelled out: "Operational", "Degraded", "Down". */
+.kx-chip {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.5em;
+  padding: 0.15em 0.6em;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  font-size: 0.7em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.kx-chip--operational {
+  color: #15803d;
+  background: color-mix(in srgb, #15803d 10%, transparent);
+}
+
+.kx-chip--degraded {
+  color: #b45309;
+  background: color-mix(in srgb, #b45309 12%, transparent);
+  border-width: 2px;
+}
+
+.kx-chip--down {
+  color: #b91c1c;
+  background: color-mix(in srgb, #b91c1c 12%, transparent);
+  border-width: 2px;
+}
+
+/* THE METHOD FOOTNOTE. Every surface ends with one: where its content came from, and what re-runs
+   it. Muted relative to the body, never below the host's own smallest readable size — it is set in
+   `em` so it tracks whatever the host decided that was. */
+.kx-hint {
+  font-size: 0.875em;
+  opacity: 0.7;
+}
+
+.kx-empty {
+  opacity: 0.8;
+}
+
+.kx-surface code {
+  font-size: 0.9em;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+}
