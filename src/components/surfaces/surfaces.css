@@ -42,6 +42,13 @@
 
 .kx-surface :where(a) {
   color: var(--kx-link, inherit);
+  /* ⛔ UNDERLINED BY DEFAULT, because a link has to be FINDABLE and not only legible. Several of
+     these captures style no link at all, which leaves the browser's #0000EE — 2.4:1 on a dark
+     ground and indistinguishable from body text once a colour IS set. The underline survives both
+     mistakes. It is inside :where() like everything else here, so a host that styles its own links
+     wins without a fight. */
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 
 .kx-surface :where(h1, h2, h3) {
@@ -88,8 +95,12 @@
   margin: 2em 0 0.5em;
 }
 
+/* The first heading still needs air above it, just less. Every SurfaceShell renders the lede
+   ABOVE `.kx-surface`, and whether that paragraph has a bottom margin is the host's business —
+   The Standup's does not, so a zero here ran the lede straight into "Reporting a vulnerability"
+   with no gap at all. Measured at 1440px on 2026-08-15. */
 .kx-surface :where(h2):first-child {
-  margin-top: 0;
+  margin-top: 1em;
 }
 
 .kx-surface :where(ul) {
