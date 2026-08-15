@@ -257,7 +257,7 @@ function FooterBody() {
                     "herosection-dot-4 nav-dropdown-trigger herosection-dot herosection-dot-4-state herosection-dot-2"
                   }
                   data-name={"Dot"}
-                  href={"https://kynth.studio"}
+                  href={"https://kynth.studio/?utm_source=tearline&utm_medium=studio_credit"}
                   target={"_blank"}
                   rel={"noopener"}
                 >
