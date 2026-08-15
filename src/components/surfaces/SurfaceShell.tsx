@@ -84,9 +84,9 @@ export default function SurfaceShell({
                     stylesheet already names for the first of the three. */}
                 <div
                   style={{
-                    "--kx-ink": "var(--value-gray-2, rgb(138, 138, 138))",
-                    "--kx-heading": "rgb(209, 209, 209)",
-                    "--kx-link": "rgb(255, 165, 82)",
+                    "--kx-surface-ink": "var(--value-gray-2, rgb(138, 138, 138))",
+                    "--kx-surface-heading": "rgb(209, 209, 209)",
+                    "--kx-surface-link": "rgb(255, 165, 82)",
                   } as CSSProperties}
                 >
                   {children}

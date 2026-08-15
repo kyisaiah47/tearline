@@ -36,12 +36,21 @@
      So a host that DOES style bare elements sets none of these and nothing changes — `inherit` is
      the fallback in all three. A host that does not, sets them from ITS OWN tokens in its
      `SurfaceShell`, which is the one file that knows what this product's tokens are called. This
-     file still declares no colour of its own; it declares where to look for one. */
-  color: var(--kx-ink, inherit);
+     file still declares no colour of its own; it declares where to look for one.
+
+     ⛔ AND THE NAMES ARE `--kx-surface-*`, NOT `--kx-*`, BECAUSE `--kx-ink` IS ALREADY TAKEN. Five
+     of these repos ship `src/app/kit.css`, the house design kit, which declares `--kx-ink`,
+     `--kx-heading`, `--kx-link`, `--kx-paper`, `--kx-accent` and more. On CivicBinder Health that
+     kit sets `--kx-ink: #ffffff` for a dark surface, so the first version of this file inherited
+     white and rendered the whole of /faq at rgb(255,255,255) on rgb(255,255,255) — 1.00:1, six
+     paragraphs and five headings of completely invisible text. Squatting on a prefix somebody else
+     already owns is a defect that only appears on the repos that own it, which is why it appeared
+     on one product out of twenty-one and passed on the rest. */
+  color: var(--kx-surface-ink, inherit);
 }
 
 .kx-surface :where(a) {
-  color: var(--kx-link, inherit);
+  color: var(--kx-surface-link, inherit);
   /* ⛔ UNDERLINED BY DEFAULT, because a link has to be FINDABLE and not only legible. Several of
      these captures style no link at all, which leaves the browser's #0000EE — 2.4:1 on a dark
      ground and indistinguishable from body text once a colour IS set. The underline survives both
@@ -52,7 +61,7 @@
 }
 
 .kx-surface :where(h1, h2, h3) {
-  color: var(--kx-heading, var(--kx-ink, inherit));
+  color: var(--kx-surface-heading, var(--kx-surface-ink, inherit));
 }
 
 .kx-block + .kx-block {
