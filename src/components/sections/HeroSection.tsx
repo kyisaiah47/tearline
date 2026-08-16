@@ -36,11 +36,13 @@ const MARKUP: Line[] = [
   ],
   [
     ["  <", "text"],
-    ["h1", "tag"],
+    ["h2", "tag"],
+    [" ", "text"],
+    ["data-title", "attr"],
     [">", "text"],
     ["Meridian", "text"],
     ["</", "text"],
-    ["h1", "tag"],
+    ["h2", "tag"],
     [">", "text"],
   ],
   [
@@ -231,7 +233,7 @@ export default function HeroSection() {
                     barcode={"04732026"}
                     width={"236"}
                   >
-                    <h1>{"Meridian"}</h1>
+                    <h2 data-title>{"Meridian"}</h2>
                     <hr />
                     <p>{"Cortado · 4.25"}</p>
                     <p>{"Total · 4.25"}</p>

@@ -24,7 +24,14 @@ import ExportStage, { explain, type ExportState } from "@/components/ExportStage
 /* Formatted to sit inside the editor column without wrapping. A sample that
  * wraps every table row across three visual lines is the first thing a visitor
  * reads, and it makes the format look harder than it is. */
-const SAMPLE = `<h1>Meridian</h1>
+/* ⛔ `<h2 data-title>`, NOT `<h1>`. This sample is RENDERED live into the receipt beside the
+ * editor, so an `<h1>` here is a second level-one heading on a page that already has one — the
+ * landing was painting three at once (its hero h1 plus the two demo receipts) and failing
+ * single-h1 on the nightly craft gate. `data-title` is the component's own opt-in: it takes the
+ * h1 treatment verbatim, so the receipt prints exactly as before, and it is the correct thing to
+ * teach for the case this sample is showing, which is a receipt embedded in a page. A receipt
+ * that IS the whole document still uses `<h1>` and still gets the same treatment. */
+const SAMPLE = `<h2 data-title>Meridian</h2>
 <p><small>WRAP ANYTHING</small></p>
 <hr>
 
