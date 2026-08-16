@@ -104,13 +104,20 @@ export default function ExportStage({
         ? STAGES.findIndex((s) => s.key === state.stage)
         : STAGES.length;
 
+  /* One live region for the whole panel. A reader who cannot see the orbs gets the stage names
+   * as they change and then the result, in order, from the same element — rather than three
+   * regions competing to announce parts of one event.
+   *
+   * ⛔ THE COMMENT LIVES HERE, NOT BETWEEN THE ATTRIBUTES. An attribute list is JSX, and JSX has
+   * nowhere to put a comment: a bare block comment is a parse error, and `{/* … *\/}` is one too
+   * — an expression container is not a valid attribute. It reported as "',' expected" at the
+   * NEXT attribute twelve lines down, which is why it does not read as a comment problem at all.
+   * It failed the build outright, so tearline could not deploy — caught by the estate deploy
+   * pass on 2026-08-16, where it was the one error in the whole run. */
   return (
     <div
       className={"tl-export"}
       data-kind={state.kind}
-      /* One live region for the whole panel. A reader who cannot see the orbs gets the stage
-       * names as they change and then the result, in order, from the same element — rather than
-       * three regions competing to announce parts of one event. */
       role={state.kind === "failed" ? "alert" : "status"}
       aria-live={state.kind === "failed" ? "assertive" : "polite"}
     >
