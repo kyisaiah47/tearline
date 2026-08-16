@@ -25,6 +25,14 @@
     display: flex !important;
     align-items: center !important;
     min-height: 44px !important;
+    /* THE FLOOR IS 44 IN BOTH AXES. min-height fixed the tall side and left the
+     * narrow one: measured live at 390px, "FAQ" is 24x44 and "Install" is 36x44
+     * — short words are simply narrower than the target is tall, so the two
+     * shortest labels in the row were the only ones still failing. Centred
+     * rather than left-aligned so the glyphs keep their position in the nav row
+     * and only the hit area grows around them. */
+    justify-content: center !important;
+    min-width: 44px !important;
   }
 
   .tl-btn {
