@@ -80,6 +80,7 @@ if [ -z "$URL" ]; then
   exit 21
 fi
 echo "deployed: $URL"
+deploy_landed   # production has changed; every gate below is verification
 
 echo "==> verify"
 ROOT_CODE=$(curl -sL -o /dev/null -w "%{http_code}" "https://$HOST/")
