@@ -1,0 +1,4 @@
+# Paths a daemon rewrites on its own schedule — see kynth-ops/tools/deploy-dirty.sh.
+# Without this the tree reads as a half-finished edit and every deploy pass skips the repo.
+# workbench/ops/qa/og-fresh.mjs — the OG card's input digest, rewritten every time the card is re-rendered
+^public/og\.inputs\.json$
