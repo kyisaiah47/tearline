@@ -45,6 +45,24 @@ function init() {
     person_profiles: 'identified_only',
     session_recording: { maskAllInputs: true },
     capture_exceptions: true,
+    // Error-tracking noise gate (2026-08-17). PostHog's weekly digest was 363 exceptions of
+    // which 333 were two browser artifacts no code here can fix — Outlook's SafeLink wrapper
+    // ("Object Not Found Matching Id:N, MethodName:update") and the benign ResizeObserver
+    // loop notice — and the rest were a dev server's compile errors on localhost. All three
+    // drown out real crashes, so they are dropped here, before the request leaves the page.
+    before_send: (event) => {
+      if (!event || event.event !== '$exception') return event;
+      try {
+        const host = window.location.host.split(':')[0].toLowerCase();
+        if (host === 'localhost' || host.endsWith('.localhost') || /^[\d.]+$/.test(host) || host.endsWith('.vercel.app')) return null;
+        const v = JSON.stringify(event.properties?.$exception_values ?? '');
+        if (/Object Not Found Matching Id:\d+/.test(v)) return null;
+        if (/ResizeObserver loop/.test(v)) return null;
+      } catch {
+        // a noise gate must never be the thing that breaks a page
+      }
+      return event;
+    },
   });
   initialized = true;
   try {
