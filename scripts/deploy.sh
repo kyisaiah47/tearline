@@ -84,7 +84,9 @@ echo "==> deploy prebuilt (artifacts only, 0 cloud build)"
 # it does not deploy, and there is no --force, no allowlist and no known-issues file to get past
 # it with. Fix the card.
 echo "==> landing layout"
-node "$HOME/Projects/kynth-ops/standards/landing-layout-gate.mjs" --dir "$PWD" --slug tearline || exit 1
+GATE_APP_DIR="$HOME/Projects/tearline"
+( cd "$GATE_APP_DIR" && { [ -d .next ] || npm run build; } ) || exit 1
+node "$HOME/Projects/kynth-ops/standards/landing-layout-gate.mjs" --dir "$GATE_APP_DIR" --slug tearline || exit 1
 
 
 DEPLOY_OUT=$(npx vercel deploy --prebuilt --prod --archive=tgz --scope="$TEAM" < /dev/null 2>&1)
