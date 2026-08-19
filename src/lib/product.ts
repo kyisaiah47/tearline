@@ -19,7 +19,7 @@ export const PRODUCT: SurfaceProduct & { surfaces: ProductSurfaces } = {
   url: "https://tearline.kynth.studio",
   /* The description this site's own root layout already publishes, verbatim. */
   blurb:
-    "Render supported HTML and CSS as a thermal receipt, then export a PNG—with documented browser support, limits, failure behavior and an MIT license.",
+    "One custom element that renders anything you wrap in it as a thermal receipt, then exports it as a PNG. Zero dependencies, no build step, MIT.",
 
   surfaces: {
     /* ⛔ `free: true` IS A CLAIM THE GATE CHECKS, NOT ONE IT BELIEVES — it fails this declaration
