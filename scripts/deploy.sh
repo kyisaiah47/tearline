@@ -67,6 +67,26 @@ fi
 # --archive=tgz or the estate runs out of uploads: a prebuilt deploy uploads one HTTP request PER
 # FILE and the budget is account-wide across every project, not per project.
 echo "==> deploy prebuilt (artifacts only, 0 cloud build)"
+# ⛔ THE LANDING LAYOUT GATE — standards/LANDING-LAYOUT-STANDARD.md §4 and §5, and it BLOCKS.
+#
+# Six bullets a card, twelve words a bullet, twenty in the blurb, no duplicate bullet, the
+# section inside 1400px, and every bullet carrying a real icon — Solar bold-duotone, one family,
+# one colour, the product's own accent, never the same glyph twice in a card and never a
+# checkmark, a dot or a bare indent. It also fails the banned label→paragraph transparency band.
+#
+# It drives a real Chromium at 1440x900 against the BUILT page and reads no source file. That is
+# the whole point: three checks in the 2026-08-18 commercial reset passed by grepping source and
+# were wrong about the rendered page every time, and the wall of text that reset had to be
+# reverted for was invisible to all nine of its gates because not one of them opened a browser.
+#
+# ⛔ IT EXITS THE SCRIPT. Every other gate here records a failure so a red one cannot silence the
+# gates after it; this one is different on purpose — the standard says a product that cannot pass
+# it does not deploy, and there is no --force, no allowlist and no known-issues file to get past
+# it with. Fix the card.
+echo "==> landing layout"
+node "$HOME/Projects/kynth-ops/standards/landing-layout-gate.mjs" --dir "$PWD" --slug tearline || exit 1
+
+
 DEPLOY_OUT=$(npx vercel deploy --prebuilt --prod --archive=tgz --scope="$TEAM" < /dev/null 2>&1)
 echo "$DEPLOY_OUT"
 
