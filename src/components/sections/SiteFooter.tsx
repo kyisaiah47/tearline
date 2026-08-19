@@ -232,15 +232,12 @@ function FooterBody() {
                     * named only as an unlinked line in the column above. Both names in one string
                     * is the form every other product ships. */}
                   {"© 2026 Tearline. MIT licensed — free forever. A "}
-                  <a
-                    className={"kynth-credit"}
-                    href={"https://kynth.studio/?utm_source=tearline&utm_medium=studio_credit"}
-                    target={"_blank"}
-                    rel={"noopener"}
-                    style={{ color: "inherit", textDecoration: "none" }}
-                  >
-                    {"Kynth Studios"}
-                  </a>
+                  {/* The studio's name is PLAIN TEXT here now. It was the credit link, with the
+                    * mark painted on it by a `::before` in globals.css — a lockup re-assembled
+                    * out of a glyph and a word whose size, gap and lift were decided in a
+                    * stylesheet in this repo, so it drifted from the real one the day either
+                    * side moved. The link is the signature below this paragraph. */}
+                  {"Kynth Studios"}
                   {" project."}
                   {" The studio behind "}
                   <a className={"kynth-sibling"} href={"https://agentwire.kynth.studio"} rel={"noopener"}>{"Agentwire"}</a>
@@ -249,6 +246,48 @@ function FooterBody() {
                   {" and "}
                   <a className={"kynth-sibling"} href={"https://citerank.kynth.studio"} rel={"noopener"}>{"CiteRank"}</a>
                   {"."}
+                </p>
+                {/* THE STUDIO SIGNATURE — "Built by" + the seal lockup, approved by Isaiah
+                  * 2026-08-19 off a rendered four-way comparison of this footer bar. Spec:
+                  * kynth-ops/standards/STUDIO-CREDIT-SEAL.md. Reference implementation:
+                  * kynth-agent-shell/frame/sections/SiteFooter.tsx, live on six products.
+                  *
+                  * ⛔ THIS PAGE WAS PAINTING THE OLD MARK THREE TIMES, and only one of the three
+                  * was the credit. `footer a[href^="https://kynth.studio"]::before` in globals.css
+                  * was keyed on the HREF rather than on a class, so it also drew on the footer nav
+                  * link labelled "Kynth Studios" and on the status badge reading "A Kynth Studios
+                  * project" — measured live at 1440 before this change. studio-gate fails a page
+                  * that paints the lockup and the old glyph together, so the rule was deleted
+                  * rather than overridden; the two other anchors are plain links now, which is
+                  * what they always were.
+                  *
+                  * ⛔ IT IS A SECOND `heading-4 body-text` PARAGRAPH, NOT A BARE ANCHOR, so the
+                  * signature inherits the credit sentence's own type and colour at every
+                  * breakpoint instead of whatever the wrapping div computes.
+                  *
+                  * ⛔ `alt` IS LOAD-BEARING: the wordmark is inside the picture, so that string is
+                  * the only machine-readable "Kynth Studios" on the signature, and studio-gate
+                  * asserts it reads exactly that alongside the height and the 4:1 ratio. Both
+                  * dimensions are declared — the shot is 1128x282, so 80x20; a PNG given only a
+                  * height reserves nothing until it decodes and reflows the bar. `-ondark`
+                  * because the ground behind this bar measures rgb(26, 25, 23). */}
+                <p className={"heading-4 body-text kynth-signature-line"} dir={"auto"}>
+                  <a
+                    className={"kynth-signature"}
+                    href={"https://kynth.studio/?utm_source=tearline&utm_medium=studio_credit"}
+                    target={"_blank"}
+                    rel={"publisher noopener"}
+                  >
+                    <span>{"Built by"}</span>
+                    <img
+                      src={"/brand/kynth-studios-lockup.png"}
+                      alt={"Kynth Studios"}
+                      width={80}
+                      height={20}
+                      loading={"lazy"}
+                      decoding={"async"}
+                    />
+                  </a>
                 </p>
               </div>
               <div className={"status-badge-container"}>

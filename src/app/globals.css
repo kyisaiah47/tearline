@@ -5665,102 +5665,112 @@ html body {
 
 
 /* ─────────────────────────────────────────────────────────────────────────────────────────────
- * THE STUDIO MARK IN THE FOOTER.
+ * THE STUDIO SIGNATURE IN THE FOOTER.
  *
  * Audited live 2026-08-11: across twenty product sites exactly ONE carried the studio's mark.
- * Every other site named Kynth Studios in text only, and six named it nowhere at all.
+ * Every other site named Kynth Studios in text only, and six named it nowhere at all. That audit
+ * is why there is anything here; what it produced was a CSS-painted glyph beside the studio's
+ * name set in live text, and that shape was retired on 2026-08-19 for the seal lockup.
  *
- * It is attached here rather than in the JSX because these footers are framer dumps that repeat
- * their whole markup once per breakpoint — three copies of the same anchor, in three places, in
- * every repo. A rule keyed on the link reaches all three and cannot fall out of sync with them.
- * The mark is decoration in the strict sense (the link already says "Kynth Studios" in live
- * text), so a background is the honest way to attach it: nothing is added for a screen reader to
- * read twice, and the name stays selectable, searchable text.
+ * ⛔ THE SIGNATURE IS MARKUP NOW, NOT A BACKGROUND, AND THE REASON THE OLD ONE WAS CSS NO LONGER
+ * HOLDS. It was attached here because these footers are framer dumps that repeat their whole
+ * markup once per breakpoint, so a rule keyed on the link reached all three copies at once — and
+ * because a glyph beside a word that already reads "Kynth Studios" is decoration in the strict
+ * sense, which a background expresses honestly and an <img> would have made a screen reader say
+ * twice. Neither is true of the lockup: the studio's NAME IS INSIDE THE PICTURE, so it is content
+ * and it needs an `alt`, and a background cannot carry one. Each breakpoint copy gets the same
+ * markup instead, and this file styles it. */
+/* ⛔ THE MARK AND THE NAME ARE ONE PICTURE NOW, AND THE ::before RULE IS GONE RATHER THAN RETUNED.
  *
- * Scoped to `footer` on purpose — a product may link the studio from its nav or its body copy,
- * and those are sentences, not credits. */
-/* MARK AND NAME ARE ONE OBJECT. Both selectors carry it: `footer a[href^=…]` for the sites
- * whose credit is inside a real <footer>, and `.kynth-credit` for the four whose footer is a
- * plain <div> — goodstanding, quorumfile, agentwire and standup all shipped with no mark at all
- * because the element the rule was scoped to does not exist on their pages.
+ * What stood here painted `/brand/kynth-studios.svg` on `a.kynth-credit` and on any footer anchor
+ * pointing at kynth.studio, and it was thirty lines of `!important` fighting framer presets for
+ * the right to draw a 14px square beside live text. The credit became the SEAL LOCKUP on
+ * 2026-08-19 — Isaiah picked it off a rendered four-way comparison of this exact footer bar; the
+ * spec is kynth-ops/standards/STUDIO-CREDIT-SEAL.md and the reference is
+ * kynth-agent-shell/frame/sections/SiteFooter.tsx, live on six products. A mark beside a
+ * separately-set word is a SECOND lockup: its size, its gap, its weight and its wordmark case get
+ * re-decided per surface — which is what every `!important` in the deleted block was paying for.
+ * There is one lockup and it is a picture. Serve the PNG and set its height.
  *
- * inline-flex, not two inline boxes: it is what keeps the glyph on the name's optical centre
- * instead of the sentence's baseline, and what stops a wrap from leaving the mark on one line and
- * the studio on the next. `font: inherit` because the credit is a sentence and the name is a word
- * in it — truing shipped the name at 17px inside 12px prose. */
-/* ⚠️ `html body` IS NOT PADDING — it is the only thing that wins. The rule was
- * `footer a[href^=…]` at (0,1,2); framer styles its pseudo-elements with two-class selectors at
- * (0,2,0) and loads after, so the preset took `position: absolute` and the glyph painted over
- * the name no matter how many `!important`s were stacked on it. `!important` does not beat a
- * more specific `!important`. This is (0,2,3). */
-html body a.kynth-credit[href],
-footer a[href^="https://kynth.studio"] {
+ * ⛔ DELETING THE RULE IS THE FIX, NOT AN OVERRIDE ON TOP OF IT, and on this site that matters
+ * beyond tidiness. `footer a[href^="https://kynth.studio"]::before` was keyed on the HREF, so it
+ * painted on every footer anchor pointing at the studio — not only the credit. Measured live on
+ * tearline before this change: three marks on one page, on the credit, on a footer nav link, and
+ * on the hero status badge reading "A Kynth Studios Project". studio-gate fails a page that
+ * paints the lockup and the old glyph together, and it is right to: the credit is one signature.
+ *
+ * The kill below is for the SIGNATURE's own anchor, which still matches that href-keyed rule
+ * wherever a copy of it survives in another sheet — it has to, it is the entity link.
+ * `content: none`, never `background-image: none` alone: an empty `content: ""` still generates a
+ * 14px box plus the anchor's gap, which reads as a failed asset in front of "Built by".
+ * Specificity, not source order and not `!important` alone — the house rule is (0,1,2) and its
+ * declarations are already `!important`, and `!important` does not beat a more specific
+ * `!important`. This is (0,2,4). */
+html body footer a.kynth-signature[href]::before,
+html body a.kynth-signature[href]::before {
+  content: none !important;
+  background-image: none !important;
+}
+
+/* THE SIGNATURE ITSELF. It is its own row under the credit sentence, not a run inside it, so the
+ * sentence keeps setting as a sentence and the signature reads as a signature.
+ *
+ * ⛔ THE `!important`s ARE NOT DECORATION. These footers are framer dumps: the presets give
+ * anchors `position: relative` with their own offsets, absolutely-position their pseudo-elements,
+ * and set `min-width: 44px; min-height: 44px` on interactive descendants — the last of which is
+ * what painted a 44px block where a 14px glyph was declared on CivicBinder Health. Anything the
+ * presets can reach, they eventually do. */
+html body a.kynth-signature[href] {
   display: inline-flex !important;
   align-items: center;
-  /* OPTICAL ALIGNMENT. `align-items: center` centres the glyph against the LINE BOX, and the
-   * line box carries the paragraph's leading — space the letterforms never fill, worst against
-   * uppercase. The mark sat visibly high beside the words on every site in the estate.
-   * `line-height: 1` collapses the anchor's line box onto the text, so centring the glyph
-   * against it centres it against the letters. */
-  line-height: 1 !important;
-  gap: 6px;
-  /* The anchor sits in a SENTENCE and must not be nudged out of it. Framer presets give footer
-   * links `position: relative` with their own offsets, which slid the lockup left until the mark
-   * overlapped the "A" in front of it. */
+  gap: 8px;
   position: static !important;
   inset: auto !important;
-  /* 3px of air on the left so the glyph does not crowd the word in front of it — the text
-   * space that precedes the anchor renders at ~3px at this size, and a mark butted against the
-   * previous letter reads as a typo. Nothing on the right: the 6px gap already separates the
-   * glyph from the name it belongs to, and that pair has to stay tighter than the sentence. */
-  margin: 0 0 0 3px !important;
-  /* The shorthand alone loses to a later longhand `font-size` — Truing shipped the studio at
-   * 17px inside 12px prose with `font: inherit` already on the anchor. Longhands, explicitly. */
+  transform: none !important;
+  margin: 10px 0 0 !important;
+  padding: 0 !important;
+  color: inherit !important;
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+  /* The credit is a sentence and the signature is set with it. Longhands as well as the
+   * shorthand: a later longhand `font-size` beats `font: inherit` on its own, which is how
+   * Truing shipped the studio's name at 17px inside 12px prose. */
   font: inherit !important;
   font-size: inherit !important;
   font-family: inherit !important;
   font-weight: inherit !important;
-  line-height: inherit !important;
   letter-spacing: inherit !important;
-  vertical-align: -3px;
+  line-height: 1 !important;
 }
 
-/* ⚠️ `!important` ON EVERY BOX DECLARATION, and it is load-bearing. The framer presets carry
- * their own `::before` rules on preset-classed text; on CivicBinder Health one of them won and
- * the glyph painted at 76.8x44 straight over "Kynth Studios product". A decoration that an
- * unrelated preset can resize is not sized at all. */
-html body a.kynth-credit[href]::before,
-footer a[href^="https://kynth.studio"]::before {
-  content: "" !important;
-  display: block !important;
-  /* IN FLOW, and forced to be. The framer presets position their own `::before` absolutely — an
-   * out-of-flow pseudo takes no space, so the glyph painted straight over the first letters of
-   * "Kynth Studios" instead of sitting in front of them. It reserves its own 14px or it is not a
-   * lockup. */
-  position: static !important;
-  float: none !important;
-  inset: auto !important;
-  transform: none !important;
+/* ⛔ THE HEIGHT IS SET AND THE WIDTH FOLLOWS, AND EVERY BOX CONSTRAINT IS PINNED. The shot is
+ * 1128x282, so 20px tall is 80px wide; studio-gate fails anything outside 14–34px or off the 4:1
+ * ratio, and a framer preset's `max-width: 100%` on an image inside a narrow footer column is
+ * exactly how a 4:1 picture becomes a squashed one. */
+html body a.kynth-signature[href] img {
+  height: 20px !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  max-height: none !important;
   flex: 0 0 auto !important;
-  /* min/max as well as width: the framer tap-target rule sets `min-width: 44px; min-height: 44px`
-   * on interactive descendants, and a min- beats a width. That is the whole reason CivicBinder
-   * Health painted a 44px block after the width was already forced to 14. */
+  display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  background-image: url("/brand/kynth-studios.svg") !important;
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
+  border-radius: 0 !important;
+}
 
-  /* SIZED TO ITS TEXT, not to a constant. A fixed 14px glyph is right beside 12px prose and reads
-   * as a stray dot beside a credit line set at 28px — HeldBack's is. `1em` tracks whatever the
-   * sentence is set at; the 14px floor keeps it legible in small print. */
-  width: max(1em, 14px) !important;
-  height: max(1em, 14px) !important;
-  min-width: max(1em, 14px) !important;
-  min-height: max(1em, 14px) !important;
-  max-width: max(1em, 14px) !important;
-  max-height: max(1em, 14px) !important;
+/* Phone width. The old credit was a link inline in a sentence — the case WCAG 2.5.8 exempts, and
+ * what the tap-target notes in this estate were written about. The signature is its own row, so
+ * mobile-gate measures its hit area like any other standalone link and 20px of picture is under
+ * the 24px floor. `min-height` only: no padding and no negative margin, because the padding half
+ * of that pairing does not always land (a later sheet re-declares `a { padding: … }` at a tying
+ * specificity) and the uncancelled negative margin then pulls the credit out of its own column. */
+@media (max-width: 809.98px) {
+  html body a.kynth-signature[href] {
+    min-height: 44px !important;
+  }
 }
 
 
