@@ -226,7 +226,7 @@ export default function FeaturesSection() {
                       "var(--extracted-r6o4lv, var(--color-background, rgb(255, 165, 82)))",
                   }}
                 >
-                  {"Coverage"}
+                  {"Features"}
                 </p>
               </div>
             </div>
@@ -235,7 +235,7 @@ export default function FeaturesSection() {
               data-component={"RichTextContainer"}
             >
               <h2 className={"heading-4 section-heading"} dir={"auto"}>
-                {"What is supported, where it runs,"}
+                {"Paper is a rendering target"}
                 <br className={"heading-4"} />
                 <span
                   className={"heading-4"}
@@ -243,7 +243,7 @@ export default function FeaturesSection() {
                     "--rt-text-color": "var(--value-gray-2, rgb(128, 128, 128))",
                   }}
                 >
-                  {"and what it does when it stops"}
+                  {"you already know how to write"}
                 </span>
               </h2>
             </div>
@@ -259,7 +259,7 @@ export default function FeaturesSection() {
                 }}
               >
                 {
-                  "Nothing here is a promise about the future. Every line is checkable against the file itself \u2014 tearline.js, unminified, 18,985 bytes \u2014 or against the docs, which carry the version they describe."
+                  "No canvas API, no template language, no image service. Markup goes in, paper comes out."
                 }
               </p>
             </div>
@@ -275,9 +275,9 @@ export default function FeaturesSection() {
             slot={"feature-graphic-slot"}
             reveal={"0"}
             id={"feature-wrap"}
-            title={"Coverage — the HTML it styles for you"}
+            title={"Wrap anything"}
             description={
-              "h1, h2, hr, p, small, strong, table, ul and ol arrive as receipt type with no CSS from you. Anything else renders as itself: it is your markup in the light DOM, not a receipt DSL. Every rule is written with ::slotted(), so a plain selector of yours wins without !important."
+              "Headings, rules, tables, lists, images. If it renders in HTML it prints on paper — you are not learning a receipt DSL."
             }
           >
             <CodePanel title={"run.html"} lines={WRAP} />
@@ -287,9 +287,9 @@ export default function FeaturesSection() {
             slot={"feature-image-slot"}
             reveal={"1"}
             id={"feature-export"}
-            title={"Method — a PNG, made in the reader\u2019s browser"}
+            title={"Hand them a PNG"}
             description={
-              "toBlob, toDataURL and download resolve to a PNG at any scale, default 2. The whole export runs in the page: the shadow tree is flattened, serialised into an SVG foreignObject, painted onto a canvas and read back. There is no server, no screenshot endpoint and no upload \u2014 nothing you render is sent anywhere, so there is nothing to retain and nothing to delete. The paper\u2019s own type is a system stack (ui-monospace, SF Mono, Menlo, Consolas), so no webfont is fetched and the export matches the screen; a webfont YOUR markup brings can fall back inside the export, because that sandbox reaches no network \u2014 the same rule that makes a remote <img> fail."
+              "One call turns the receipt into an image, at any scale, ready to post."
             }
           >
             <CodePanel title={"share.js"} lines={EXPORT} />
@@ -301,7 +301,7 @@ export default function FeaturesSection() {
             id={"feature-text"}
             title={"Real text, not a canvas"}
             description={
-              "The paper is styling wrapped around your markup, so everything a browser does with text still works. This panel is the check, not a claim about it \u2014 select the receipt in the demo below and you will find the words."
+              "The paper is styling wrapped around your markup, so everything a browser does with text still works."
             }
           >
             <StatusPanel
@@ -323,9 +323,9 @@ export default function FeaturesSection() {
             slot={"feature-demo-slot"}
             reveal={"32"}
             id={"feature-seed"}
-            title={"Same seed, same paper \u2014 and a named failure when it stops"}
+            title={"Same seed, same paper"}
             description={
-              "The torn edge and the barcode come out of a seed, so a receipt renders identically every time and the export matches what your user saw. When an export does stop it says which of the four steps it stopped at: serialise fails on markup that is not valid XML, rasterise fails on an <img> pointing at a URL rather than a data: URI because the SVG sandbox cannot reach the network, and encode fails when the canvas is larger than the browser allows \u2014 use a narrower width or scale 1. Those are the limits, and they are the browser\u2019s, not a quota of ours."
+              "The torn edge and the barcode are generated from a seed, so a receipt renders identically every time — and the export matches what your user actually saw."
             }
           >
             <ColumnsPanel
@@ -342,9 +342,9 @@ export default function FeaturesSection() {
             slot={"feature-preview-slot"}
             reveal={"33"}
             id={"feature-anywhere"}
-            title={"Install path — two of them, both live"}
+            title={"Drops in anywhere"}
             description={
-              "npm i @kynth/tearline \u2014 0.1.0, published 13 August 2026, and two export fixes behind the hosted file; or a <script type=\"module\"> tag at tearline.kynth.studio/tearline.js, which is the current one. It is a custom element either way, so React, Vue, Svelte, Astro and a plain static file all take it unchanged. The install section says exactly what the difference is."
+              "It is a custom element. React, Vue, Svelte, Astro, or a script tag in a static file."
             }
           >
             <CodePanel title={"Order.jsx"} lines={FRAMEWORKS} />
@@ -354,9 +354,9 @@ export default function FeaturesSection() {
             slot={"feature-visual-slot"}
             reveal={"0"}
             id={"feature-deps"}
-            title={"Free, MIT, and nothing is for sale"}
+            title={"Zero dependencies"}
             description={
-              "No build step, no runtime, no peer deps \u2014 one file you can read in an afternoon. It is free and there is no checkout, no account and no key, because there is no service to sell you: it runs on your page. Nothing here is sponsored or paid for. Bugs and unsupported-input surprises go to the GitHub issues, and the docs are corrected alongside the fix."
+              "No build step, no runtime, no peer deps. One file you can read in an afternoon."
             }
           >
             <CodePanel title={"package.json"} lines={PKG} gutter={false} />

@@ -183,12 +183,11 @@ function Ctas() {
         </a>
       </div>
       <div className={"footer-get-started-cta"}>
-        {/* Not `npm i tearline` — and not because nothing is published.
+        {/* Not `npm i tearline` — but no longer because nothing is published.
           * @kynth/tearline@0.1.0 IS on the registry (FACTS.json →
-          * npm-package-published; re-read 2026-08-19, 200, latest 0.1.0). The
-          * bare name 404s, which is why the package is scoped; the reason npm
-          * gives for that is not something this repo has ever observed, so it
-          * is no longer asserted anywhere.
+          * npm-package-published; registry.npmjs.org returned 200 on
+          * 2026-08-13). The bare name stays unregisterable: npm rejects it as
+          * too similar to `readline`, which is why the package is scoped.
           *
           * The script tag keeps this slot because it is the install path with
           * no step before it — no package manager, no build. The scoped npm

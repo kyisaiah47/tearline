@@ -120,7 +120,7 @@ const ROUTES: [string, string, string][] = [
   [
     "a custom element",
     "one script tag · 0 deps · MIT",
-    "The element renders the thing AND exports it. Right when the user is looking at the artefact and wants a PNG of it on click. Tearline is 18,985 bytes served, unminified, in the release this page ships with.",
+    "The element renders the thing AND exports it. Right when the user is looking at the artefact and wants a PNG of it on click. Tearline is 17,991 bytes served, HTTP 200 on 13 Aug 2026.",
   ],
   [
     "modern-screenshot",
@@ -255,7 +255,7 @@ const SOURCES: [string, string][] = [
   ],
   [
     "tearline.kynth.studio/tearline.js",
-    "The served component: 18,985 bytes, unminified, in the release this page ships with. It is the whole thing; there is nothing else to read.",
+    "The served component: 17,991 bytes, unminified, HTTP 200 on 13 August 2026. It is the whole thing; there is nothing else to read.",
   ],
 ];
 
@@ -494,7 +494,7 @@ export default function ShareImageCustomElement() {
                       }
                       <code>{"<tear-line>"}</code>
                       {
-                        " and it renders as a thermal receipt — paper texture, dashed rules, seeded torn edge, barcode — and the element exports that. One script tag, no build step, no runtime dependencies, 18,985 bytes served unminified at "
+                        " and it renders as a thermal receipt — paper texture, dashed rules, seeded torn edge, barcode — and the element exports that. One script tag, no build step, no runtime dependencies, 17,991 bytes served unminified at "
                       }
                       <a href={"/tearline.js"}>{"/tearline.js"}</a>
                       {" and HTTP 200 on 5 August 2026."}

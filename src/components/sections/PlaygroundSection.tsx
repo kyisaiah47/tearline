@@ -140,13 +140,7 @@ export default function PlaygroundSection() {
      * `checkout_started` and `purchase_completed` and nothing else, so a reader who typed their
      * own markup and exported a receipt was indistinguishable from one who bounced off the hero.
      * Same three events, and the same shape, as the CertScope tools. */
-    try {
-      posthog.capture("demo_started", { tool: "playground_export" });
-      /* The commercial reset's own vocabulary, emitted beside this host's existing names so the
-       * estate funnel and this site's history both resolve. `diagnostic_started` is the reader
-       * pressing export; `activated` below is the artefact actually existing. */
-      posthog.capture("diagnostic_started", { tool: "playground_export" });
-    } catch {}
+    try { posthog.capture("demo_started", { tool: "playground_export" }); } catch {}
 
     try {
       /* `toBlob` rather than `download`, because the panel needs the artefact — its real byte
@@ -190,15 +184,6 @@ export default function PlaygroundSection() {
           /* Whether they exported OUR sample or their own markup is the difference between
            * a reader poking the demo and a reader trying the product on their own receipt. */
           edited: src !== SAMPLE,
-        });
-        posthog.capture("diagnostic_completed", { tool: "playground_export" });
-        /* FIRST VALUE on this product: a receipt that exists as a file. Nothing is bought here,
-         * so the PNG is the whole activation \u2014 and `edited` separates a reader poking the
-         * sample from one who ran it on their own markup. */
-        posthog.capture("activated", {
-          kind: "export",
-          own_markup: src !== SAMPLE,
-          bytes: blob.size,
         });
       } catch {}
     } catch (err) {

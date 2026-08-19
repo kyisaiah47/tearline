@@ -44,30 +44,7 @@ const FAQS: [string, string][] = [
   ],
   [
     "What does it cost?",
-    "Nothing, and there is nothing to check out. MIT, zero dependencies, one file, no account and no key. There is no paid tier and no service behind it — it runs on your page, so there is nothing for us to bill.",
-  ],
-  /* The PDF's blocker for this product is \u201cstate browser/server support precisely\u201d. Precisely
-   * means naming the platform features it needs, not reciting version numbers nobody re-checked:
-   * a version table goes stale silently and this one would have nothing behind it. */
-  [
-    "Which browsers does it work in, and does it need a server?",
-    "To render it needs custom elements and shadow DOM. To export it additionally needs canvas toBlob and the ability to rasterise an SVG inside an <img>. Every current version of Chrome, Edge, Firefox and Safari has all four. There is no polyfill and no silent fallback: without them the tag stays an inert unknown element and the export rejects rather than producing a wrong image. It needs no server at all — if your page is server-rendered the markup ships in the HTML and the paper paints on hydration, because it is real elements rather than a picture of them.",
-  ],
-  [
-    "Does anything I render leave my page?",
-    "No. The receipt is drawn in the browser and the PNG is made in the browser — flatten, serialise, rasterise, encode, all in the tab. Nothing is uploaded, there is no render endpoint and no API key, so there is no retention policy to read and nothing of yours for us to delete.",
-  ],
-  [
-    "Are there rate limits, and is there an SLA?",
-    "Neither, because there is no service to limit or to guarantee. The only ceilings are the browser\u2019s own: the canvas has a maximum size, so a very long receipt at scale 2 can exceed it \u2014 the export then stops at the encode step and says so, and a narrower width or scale 1 clears it. The hosted script tag is a static file on this origin; if you want it to be impossible for us to affect, install from npm and serve it yourself.",
-  ],
-  [
-    "What happens when an export fails?",
-    "It names the step it stopped at rather than saying an error occurred. serialise stops on markup that is not valid XML, usually an unclosed tag. rasterise stops on an <img> pointing at a URL instead of a data: URI, because the SVG sandbox cannot reach the network \u2014 that one is the tainted-canvas rule and it is what makes most browser exports come out blank. encode stops when the canvas is larger than the browser allows. All four steps are documented, and the playground reports them.",
-  ],
-  [
-    "Can I use it commercially, and does it drive a printer?",
-    "Yes to the first: MIT, and the source is public. No to the second: it renders the look of a till receipt in the DOM and hands you a PNG. It is not an ESC/POS driver and does not talk to physical hardware \u2014 getting the image to a printer is your side of the line.",
+    "Nothing. MIT, zero dependencies, one file. There is no account, no key and no server — the export happens in the browser.",
   ],
 ];
 

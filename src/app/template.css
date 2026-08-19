@@ -401,30 +401,6 @@ body {
   color: var(--value-gray-2, gray);
 }
 
-/* The free-product offer line. Same prose as a docs note, given the width and
- * the top rule of a band opener so it reads as this page's answer to "what
- * does it cost", not as a caption on the install column beside it. */
-.tl-offer-line {
-  /* The site header is fixed, so an anchor jump to #offer parks this line UNDERNEATH it —
-   * which is what the first offer capture showed, and what anyone following an in-page link
-   * would get. Clears the header rather than landing behind it. */
-  scroll-margin-top: 130px;
-  /* ⛔ `max-width: 74ch` UNDER A CENTRING PARENT FLOATED THIS BLOCK OFF THE GRID. The offer
-   * capture showed it: the rule started 300px inside the section and its first word lined up
-   * with nothing — not the heading above, not the "from npm" label directly below. The section
-   * centres its children, so a narrow measure gets centred rather than left-aligned, and a
-   * hairline that stops short of both margins reads as a stray element instead of a band
-   * opener. Full width with `.tl-docs`'s own 24px inset, so the rule spans the band and the
-   * text starts exactly where the install column starts. */
-  width: 100%;
-  align-self: stretch;
-  margin: 8px 0 40px;
-  padding: 28px 24px 0;
-  border-top: 1px solid var(--color-gray-dark-2, rgba(255, 255, 255, 0.12));
-  font-size: 15px;
-  line-height: 26px;
-}
-
 .tl-docs-note code,
 .tl-td-name code {
   font-family: "Geist Mono", "Fira Code", monospace;

@@ -31,16 +31,10 @@ export const PRODUCT: SurfaceProduct & { surfaces: ProductSurfaces } = {
       kind: "pricing",
       lede: "Tearline is free and MIT-licensed. There is nothing to buy, and this page exists to say so plainly.",
       free: true,
-      /* ⛔ THE OLD NOTE GAVE A REASON NOTHING HERE OBSERVED — "npm rejects it as too similar to
-       * `readline`". That is a claim about what npm did; the registry simply 404s on `tearline`,
-       * which says only that nothing is published there. And it left out the thing a reader
-       * choosing an install path needs: the published version is behind the hosted file. */
       note:
-        "The package is published as @kynth/tearline on npm — scoped, MIT, latest 0.1.0 — and the repository is " +
-        "public under the same licence. One caveat worth knowing before you pin it: 0.1.0 is two export fixes " +
-        "behind the file the script tag serves, so on 0.1.0 the `flat` attribute is dropped from the export and an " +
-        "over-large export comes back empty rather than naming the step it stopped at. The install reference says " +
-        "which to take and why.",
+        "The package is published as @kynth/tearline on npm and the repository is public under the MIT licence. The " +
+        "bare name `tearline` is unregisterable — npm rejects it as too similar to `readline` — which is why every " +
+        "npm line on this site is scoped.",
       cta: { label: "The full reference", href: "/docs" },
     },
 
