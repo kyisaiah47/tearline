@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import posthog from "posthog-js";
 
 /**
  * Click-to-copy command chip.
@@ -47,6 +48,21 @@ export default function Copyable({
       }
     }
     setState("copied");
+    /* The reset's second activation route for this product. Its first-value event is "a receipt
+     * rendered or exported, OR the component installed" \u2014 and taking the install command is
+     * the closest observable thing to the second half, since the install itself happens in
+     * somebody else's terminal. Only install-shaped strings count; a copied colour token is not
+     * an activation. */
+    if (/tearline/i.test(text)) {
+      try {
+        posthog.capture("activated", {
+          kind: "install_copied",
+          via: text.startsWith("npm") ? "npm" : "script_tag",
+        });
+      } catch {
+        // analytics must never be the thing that breaks a copy button
+      }
+    }
     setTimeout(() => setState("idle"), 1400);
   }
 

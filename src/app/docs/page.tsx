@@ -36,9 +36,11 @@ import SmoothScroll from "@/components/SmoothScroll";
  * install reference, was the last surface still saying it had not.
  *
  * Both paths are documented now, script tag first: it is the one with no step
- * before it. The bare name `tearline` is still unregisterable — npm rejects it
- * as too similar to `readline` — which is why every npm line on the site is
- * scoped, and why none of them says `npm i tearline`.
+ * before it. Every npm line on the site is scoped, `@kynth/tearline`, and none of
+ * them says `npm i tearline` — the bare name returns 404 on the registry (checked
+ * 2026-08-19), so nothing is published there. An earlier version of this note gave
+ * npm's similarity-to-`readline` rule as the reason; that is a claim about what npm
+ * did, and nothing here has ever observed it. The scope is the fact; the reason is not.
  */
 
 const SITE = "https://tearline.kynth.studio";
@@ -401,8 +403,23 @@ export default function Docs() {
                     <Copyable prompt={"$"} text={"npm i @kynth/tearline"} />
                     <p className={"tl-docs-note"}>
                       {
-                        "The same file, versioned. Published as @kynth/tearline (0.1.0) — scoped because npm rejects the bare name tearline as too close to readline. Zero dependencies either way, so the only difference is whether you want a lockfile entry. The source is MIT and public at "
+                        /* ⛔ SAME CORRECTION AS THE LANDING'S INSTALL SECTION, AND THIS SURFACE IS
+                          * THE ONE A DEVELOPER ACTUALLY READS BEFORE INSTALLING. It said "the same
+                          * file, versioned" and "the only difference is whether you want a lockfile
+                          * entry". Read off the registry and the tarball on 2026-08-19: 0.1.0 ships
+                          * a 14,048-byte tearline.js (sha256 96debf4e…) against the 18,985 bytes
+                          * this release serves (sha256 50729aac…; public/ and src/ synced
+                          * 2026-08-19, and the origin served the previous 17,991 until this
+                          * deploy). 0.1.0 predates the `flat` export fix, so `flat` is
+                          * silently dropped from every export while working on screen, and its
+                          * `toBlob` resolves null where the current file throws the named
+                          * canvas-too-large error this page documents by name. */
+                        "Published as @kynth/tearline — latest 0.1.0, 13 August 2026, MIT, zero dependencies. It is two export fixes behind the file the script tag serves: on 0.1.0 the "
                       }
+                      <code>{"flat"}</code>
+                      {" attribute is ignored in the export, and an export larger than the browser\u2019s canvas limit comes back empty instead of naming the step it stopped at. Pin 0.1.0 if you want a lockfile entry and leave "}
+                      <code>{"flat"}</code>
+                      {" alone; take the script tag for the current behaviour. The source is MIT and public at "}
                       <a
                         href={"https://github.com/kyisaiah47/tearline"}
                         rel={"noreferrer"}

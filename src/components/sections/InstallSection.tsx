@@ -170,18 +170,68 @@ export default function InstallSection() {
           </div>
         </div>
 
+        {/* THE OFFER SURFACE FOR A FREE PRODUCT. The reset requires the offer and CTA to say
+          * "free / no checkout" in as many words rather than leaving a missing payment button to
+          * imply it, and for a component the offer IS the install: here is what you get and here
+          * is how to take it, for nothing. The id is what makes this the surface an offer
+          * capture lands on, because there is no pricing band on this page and there should
+          * not be one. */}
+        <p className={"tl-docs-note tl-offer-line"} id={"offer"} data-reveal={"2"}>
+          <strong>{"Free \u2014 no checkout, no account, no key, no paid tier."}</strong>
+          {
+            " MIT, zero dependencies, one unminified file \u2014 18,985 bytes, the whole of it. There is no service behind it to bill you for and no SLA to give you: it runs on your page. Take either install below and you have the whole product."
+          }
+        </p>
+
         <div className={"tl-docs"} data-reveal={"2"}>
             <div className={"tl-docs-col"}>
-              {/* The npm row is gone, not reworded. `npm i tearline` was the
-                * first thing on this section and it fails: the package is
-                * unpublished (FACTS.json → npm-package-published; the registry
-                * returned 404 again on 2026-07-29, and package.json still
-                * carries "private": true). An install command that errors in
-                * the reader's terminal costs more trust than the convenience
-                * ever bought. The script tag below is verified reachable and
-                * is the whole install — it comes back the moment the package
-                * ships. */}
-              <p className={"tl-docs-label"}>{"drop in a script tag"}</p>
+              {/* THE NPM ROW IS BACK, and every figure in this note was READ OFF THE REGISTRY
+                * AND THE TARBALL on 2026-08-19 rather than inferred:
+                *
+                *   registry.npmjs.org/@kynth/tearline  200; dist-tags.latest 0.1.0; licence MIT;
+                *                                       time.created 2026-08-13T01:48:28.552Z.
+                *   the 0.1.0 tarball                   package/tearline.js is 14,048 bytes.
+                *   this origin, before the sync      GET tearline.kynth.studio/tearline.js was
+                *                                       200 at 17,991 bytes, byte-identical to the
+                *                                       then-stale public/tearline.js. `npm run
+                *                                       sync` has since been run, so public/ and
+                *                                       src/ are both 18,985 / sha 50729aac and
+                *                                       ship together with this copy. Until that
+                *                                       deploy lands the origin still serves
+                *                                       17,991 \u2014 that is the pre-deploy state,
+                *                                       recorded rather than papered over.
+                *   they are NOT the same file          diffing the two, 0.1.0 lacks two export
+                *                                       fixes: host attributes are not copied onto
+                *                                       the clone, so `flat` is silently ignored in
+                *                                       every export while working perfectly on
+                *                                       screen; and `toBlob` resolves null instead
+                *                                       of throwing the named canvas-too-large
+                *                                       error the FAQ on this page promises.
+                *
+                * \u26d4 THE EARLIER VERSION OF THIS NOTE CLAIMED THE OPPOSITE and none of it was
+                * checked: "the same file, versioned", "nothing about the component changes",
+                * "package.json has no private field" (it does, at the bottom, next to
+                * `"name": "tearline"`), and that npm rejected the bare name for resembling
+                * `readline` \u2014 the registry 404s on `tearline`, which says nothing is published
+                * there and nothing at all about why.
+                *
+                * The skew is a real product state rather than a copy problem: `npm run sync` is
+                * `cp src/tearline.js public/tearline.js`, and src is a further 994 bytes ahead of
+                * what is served. Republishing is an outward action and syncing is a deploy, so
+                * neither belongs in a copy pass \u2014 both reported to the monitor. What belongs
+                * here is that the page stops telling a reader the two paths are interchangeable. */}
+              <p className={"tl-docs-label"}>{"from npm"}</p>
+              <Copyable prompt={"$"} text={"npm i @kynth/tearline"} />
+              <p className={"tl-docs-note"}>
+                {
+                  "Scoped, versioned, MIT, zero dependencies \u2014 latest is 0.1.0, published 13 August 2026. One thing to know before you take this path: 0.1.0 is behind the hosted file by two export fixes. On 0.1.0 the "
+                }
+                <code>{"flat"}</code>
+                {" attribute is ignored in the export even though it works on screen, and an export that outgrows the browser\u2019s canvas limit comes back empty instead of naming the step it stopped at. Both are fixed in the file the script tag serves. Pin 0.1.0 if you want a lockfile entry today and leave "}
+                <code>{"flat"}</code>
+                {" alone; take the script tag if you want the current behaviour."}
+              </p>
+              <p className={"tl-docs-label tl-docs-label-gap"}>{"or drop in a script tag"}</p>
               <Copyable
                 prompt={"<>"}
                 text={
@@ -190,7 +240,7 @@ export default function InstallSection() {
               />
               <p className={"tl-docs-note"}>
                 {
-                  "That is the install. It is an ES module served from this origin, so there is no package to add, no bundler to configure and no build step — the custom element registers itself on load and every "
+                  "Either one is the whole install. The script tag is an ES module served from this origin, so there is no bundler to configure and no build step \u2014 the custom element registers itself on load and every "
                 }
                 <code>{"<tear-line>"}</code>
                 {" on the page upgrades in place. That upgrade order is a WHATWG rule rather than a Tearline one, and it is why the tag can ship in your HTML before the script that defines it — "}

@@ -124,7 +124,7 @@ export default function HeroSection() {
                           "var(--extracted-r6o4lv, var(--color-background, rgb(255, 165, 82)))",
                       }}
                     >
-                      {"MIT · zero dependencies"}
+                      {"MIT \u00b7 zero dependencies \u00b7 renders in your browser"}
                     </p>
                   </div>
                 </a>
@@ -165,7 +165,7 @@ export default function HeroSection() {
                   }}
                 >
                   {
-                    "One custom element renders whatever you wrap in it as a thermal receipt — then hands your users a PNG of it."
+                    "For a developer who needs a receipt a user will actually keep \u2014 an order summary, a workout, a year in review \u2014 and does not want a canvas hack, a template language or an image service. Wrap your own markup in one custom element: it renders as a thermal receipt in real, selectable text, and hands the reader a PNG of exactly what they were looking at. MIT, free, no account, no key, no checkout."
                   }
                 </p>
               </div>
@@ -204,8 +204,13 @@ export default function HeroSection() {
                 </a>
               </div>
               <div className={"hero-secondary-cta"}>
-                {/* See SiteHeader: the npm package is unpublished, so the
-                  * secondary CTA carries the script tag, which is live. */}
+                {/* The script tag, and deliberately this one rather than the npm line: the
+                  * registry's 0.1.0 (published 2026-08-13T01:48:28Z, 14,048 bytes) is two export
+                  * fixes behind the 18,985 bytes this release serves, so the hosted path is the
+                  * current product and the one to put in front of a first-time reader. The npm
+                  * path is real and is offered in the install section, where there is room to say
+                  * what the difference is. An older note here said the package was unpublished;
+                  * it has been since that date. */}
                 <CommandButton
                   text={"tearline.kynth.studio/tearline.js"}
                   prompt={"<>"}

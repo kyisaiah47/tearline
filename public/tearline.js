@@ -116,6 +116,18 @@ const PAPER_CSS = `
   }
   ::slotted(h1) { font-size: 20px; }
   ::slotted(h2) { font-size: 15px; letter-spacing: .12em; }
+  /* ⛔ A RECEIPT EMBEDDED IN A PAGE CANNOT OWN THAT PAGE'S <h1>.
+     Standalone — the receipt IS the document — h1 is the shop name and gets the 20px treatment
+     above. Embedded in a page that already has a heading, the same line has to start one level
+     down or the document ends up with several level-one headings, which is what this site's own
+     landing did: its hero h1 plus the demo receipt in the hero plus the one in the playground,
+     three painted at once (landing-craft-check single-h1, product-seo).
+     data-title says "this is the receipt's title, whatever its level" and takes the h1 treatment
+     verbatim, so an embedded demo renders pixel-identically to a standalone one and the outline
+     is still correct.
+     (No backticks anywhere in this comment: PAPER_CSS is a template literal, so one would close
+     the string and the build fails with a parse error twenty lines away.) */
+  ::slotted(h2[data-title]) { font-size: 20px; letter-spacing: .20em; }
   ::slotted(p)  { margin: 0 0 10px; }
   ::slotted(small) { color: var(--ink-faded); font-size: 9.5px; }
   ::slotted(hr) {

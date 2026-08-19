@@ -59,9 +59,12 @@
     row-gap: 12px !important;
   }
 
-  /* The install label is a URL now, not `npm i tearline` — the package is
-   * unpublished, so the script tag is the install path (FACTS.json →
-   * npm-package-published). That took the line from 14 characters to 33, and
+  /* The install label is a URL, not `npm i tearline` — the script tag is the
+   * install path with no step before it, and it is also the CURRENT file:
+   * @kynth/tearline 0.1.0 is published but two export fixes behind (see
+   * FACTS.json → npm-package-published, re-read 2026-08-19; an older version
+   * of this note said the package was unpublished, which stopped being true on
+   * 2026-08-13). That took the line from 14 characters to 33, and
    * `.tl-cmd-text` is `white-space: nowrap`: at 14px mono the button wants
    * ~366px of the 342px a 390px phone has between its gutters, so the copy
    * mark clipped again. 12px brings it to ~327px and fits.

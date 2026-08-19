@@ -167,8 +167,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // Moves to 2026-08-13: the served-size figure in its sources table went
       // 14,048 -> 17,991 bytes, following commit 4f2b21d's change to the
       // component. A dated figure changed, so the date moves with it.
+      // Moves again to 2026-08-19: 17,991 -> 18,985. The 08-16 commit added
+      // `::slotted(h2[data-title])` to src/tearline.js and did not run
+      // `npm run sync`, so the served copy sat twelve lines behind for three
+      // days. The sync is run and the figure follows it. Same rule as above.
       url: `${SITE}/spotify-receipt-generator`,
-      lastModified: new Date("2026-08-13"),
+      lastModified: new Date("2026-08-19"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -190,8 +194,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // since the repo went public, and the last live surface still saying it.
       // Rewritten against api.github.com and an anonymous raw read. Its three
       // served-size figures also move 14,048 -> 17,991 bytes.
+      // Moves to 2026-08-19: the same three figures move 17,991 -> 18,985 with
+      // the `npm run sync` that closed the 08-16 src/public skew.
       url: `${SITE}/share-image-custom-element`,
-      lastModified: new Date("2026-08-13"),
+      lastModified: new Date("2026-08-19"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
