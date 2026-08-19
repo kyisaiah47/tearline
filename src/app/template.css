@@ -381,6 +381,28 @@ body {
   min-width: 0;
 }
 
+/* ⛔ THE CODE COLUMN STOPS AND THE PROSE KEEPS GOING, SO THE BOTTOM HALF OF THE BAND IS EMPTY.
+ *
+ * `.tl-docs` is two columns and they are not the same length: the left one carries the copy and
+ * the notes, the right one carries one code window. Measured by the estate's dead-column guard on
+ * tearline.kynth.studio/docs at 1280 on 2026-08-19 — 995px of unused width beside 432px of the
+ * last note, and again at 1020px beside the next one. The layout is right; what was wrong is that
+ * the shorter column left the page the moment it ran out.
+ *
+ * It rides instead. `align-self: start` gives the column its content height, which leaves the
+ * grid area — the full height of the row — as the box the sticky element is constrained by, so
+ * the code window stays beside whatever paragraph the reader is on. 96px clears the fixed header.
+ *
+ * Only where there is a second column to have: below the stack breakpoint `.tl-docs` is one
+ * column and a sticky code window would sit on top of the copy. */
+@media (min-width: 900px) {
+  .tl-docs > .tl-docs-col:last-child {
+    position: sticky;
+    top: 96px;
+    align-self: start;
+  }
+}
+
 .tl-docs-label {
   margin: 0 0 12px;
   font-family: "Geist Mono", "Fira Code", monospace;
