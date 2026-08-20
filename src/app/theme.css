@@ -136,7 +136,16 @@ body {
 .site-footer-phone .links-7,
 .site-footer-phone .links-2,
 .site-footer-phone .links {
-  gap: 14px;
+  /* 22px, not 14px. Isaiah looked at 14 and said it was still cramped: each row is an 18px glyph
+   * beside 15px text, so the row BOX is taller than the text the 8px original was drawn for and
+   * the gap has to grow with it, not merely a little. */
+  gap: 22px;
+}
+
+/* And the block needs to end somewhere: the columns ran to the hairline above the copyright with
+ * nothing under the last row. */
+.site-footer-phone .content-4 {
+  padding-bottom: 40px;
 }
 
 /* ⛔ AND THE COLUMNS NEED THE ROOM THE GLYPHS TOOK. Each row is 18px + a 8px gap wider than the
