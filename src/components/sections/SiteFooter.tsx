@@ -1,3 +1,4 @@
+import Icon, { type IconName } from "@/components/Icon";
 /**
  * Site footer.
  *
@@ -25,7 +26,11 @@
  * columns start halfway down the page. The content is still written once.
  */
 
-type Group = { label: string; links: [string, string, boolean?][] };
+/* ⛔ THE GLYPH IS PART OF THE ROW, NOT A LOOKUP BESIDE IT. Isaiah, 2026-08-19: "footer links,
+ * pricing bullet points" — every product, present and future. §7 of
+ * kynth-ops/standards/landing-layout-gate.mjs measures it on the rendered page, and it fails a
+ * mark repeated across destinations, so the name sits in the row where the meaning is. */
+type Group = { label: string; links: [string, string, IconName, boolean?][] };
 
 /* Root-relative, not bare fragments: the footer renders on /docs as well, where
  * `#features` scrolls to nothing. */
@@ -33,19 +38,19 @@ const GROUPS: Group[] = [
   {
     label: "Product",
     links: [
-      ["Overview", "/#hero-section"],
-      ["Features", "/#features"],
-      ["Playground", "/#playground"],
-      ["FAQ", "/#faq"],
+      ["Overview", "/#hero-section", "home"],
+      ["Features", "/#features", "star"],
+      ["Playground", "/#playground", "play"],
+      ["FAQ", "/#faq", "question"],
     ],
   },
   {
     label: "Docs",
     links: [
-      ["Install", "/docs#install"],
-      ["API reference", "/docs#api"],
-      ["Exporting a PNG", "/docs#export"],
-      ["Accessibility", "/docs#accessibility"],
+      ["Install", "/docs#install", "download"],
+      ["API reference", "/docs#api", "code"],
+      ["Exporting a PNG", "/docs#export", "export"],
+      ["Accessibility", "/docs#accessibility", "eye"],
       /* Added 2026-07-31, 2026-08-01, 2026-08-02 and 2026-08-05. None is a
        * Tearline reference page — one explains the browser-side DOM-to-PNG
        * technique generally, one the receipt look and why it is packaged as a
@@ -53,10 +58,10 @@ const GROUPS: Group[] = [
        * Spotify receipt, and one the client-versus-server decision behind any
        * share image. All four sit last in the group rather than among the API
        * rows. */
-      ["DOM to PNG, explained", "/dom-to-png"],
-      ["Receipt-style UI", "/receipt-ui"],
-      ["Spotify receipt generators", "/spotify-receipt-generator"],
-      ["Share images, four ways", "/share-image-custom-element"],
+      ["DOM to PNG, explained", "/dom-to-png", "image"],
+      ["Receipt-style UI", "/receipt-ui", "receipt"],
+      ["Spotify receipt generators", "/spotify-receipt-generator", "music"],
+      ["Share images, four ways", "/share-image-custom-element", "share"],
     ],
   },
   {
@@ -73,18 +78,18 @@ const GROUPS: Group[] = [
        * already had. A claim that decays toward MORE capability breaks nothing and shows
        * nothing; this product's only growth path is being found and trusted, and both of
        * its discovery surfaces were pointing nowhere. */
-      ["Source on GitHub", "https://github.com/kyisaiah47/tearline", true],
-      ["@kynth/tearline on npm", "https://www.npmjs.com/package/@kynth/tearline", true],
-      ["Read the source", "/tearline.js", true],
-      ["llms.txt", "/llms.txt", true],
+      ["Source on GitHub", "https://github.com/kyisaiah47/tearline", "github", true],
+      ["@kynth/tearline on npm", "https://www.npmjs.com/package/@kynth/tearline", "box", true],
+      ["Read the source", "/tearline.js", "doc", true],
+      ["llms.txt", "/llms.txt", "txt", true],
       /* Now that the repo is readable, the licence links to the LICENSE file in it — the
        * primary artefact rather than a description of the licence. */
-      ["MIT licence", "https://github.com/kyisaiah47/tearline/blob/main/LICENSE", true],
+      ["MIT licence", "https://github.com/kyisaiah47/tearline/blob/main/LICENSE", "gavel", true],
     ],
   },
   {
     label: "Studio",
-    links: [["Kynth Studios", "https://kynth.studio", true]],
+    links: [["Kynth Studios", "https://kynth.studio", "link", true]],
   },
 ];
 
@@ -188,11 +193,11 @@ function FooterBody() {
                     </div>
                   </div>
                   <div className={"links-6"} data-name={"Links"}>
-                    {group.links.map(([label, href, external]) => (
+                    {group.links.map(([label, href, icon, external]) => (
                       <div className={"menu-overview-link"} key={label + href}>
                         <a
                           className={
-                            "small-3 link-16 nav-link small-2 small-3-state small"
+                            "small-3 link-16 nav-link small-2 small-3-state small tl-footer-row"
                           }
                           data-name={"Small"}
                           data-highlight={"true"}
@@ -202,6 +207,7 @@ function FooterBody() {
                             ? { target: "_blank", rel: "noopener" }
                             : {})}
                         >
+                          <Icon name={icon} size={18} className={"tl-footer-mark"} />
                           <div
                             className={"nav-link-label"}
                             data-component={"RichTextContainer"}

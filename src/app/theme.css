@@ -103,3 +103,15 @@ body {
 :where(a, button, input, select, textarea, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
   outline-color: #ffa552;
 }
+
+/* ── EVERY FOOTER ROW CARRIES ITS GLYPH ──────────────────────────────────────────────────────
+ * Isaiah, 2026-08-19: "footer links, pricing bullet points" — every product, present and future.
+ * §7 of kynth-ops/standards/landing-layout-gate.mjs measures it on the rendered page. */
+.tl-footer-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.tl-footer-mark {
+  flex: 0 0 auto;
+}
