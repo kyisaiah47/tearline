@@ -115,3 +115,34 @@ body {
 .tl-footer-mark {
   flex: 0 0 auto;
 }
+
+/* ── THE FOOTER'S BRAND BLOCK SITS AT THE TOP, AND THE ROWS GET ROOM ─────────────────────────
+ *
+ * Isaiah, looking at the built page: "links are very cramped can put more room and space" and
+ * "should be top aligned".
+ *
+ * The capture centres `.content-4` on the cross axis, which was right when the brand block and
+ * the link columns were about the same height. They are not: the Docs column now runs eight rows
+ * and the brand block is two, so the wordmark floated to the middle of a tall row with empty
+ * space above it. `flex-start` puts the signature where the columns start.
+ *
+ * And the column gap was 8px, set for 15px text rows. Each row is a 18px glyph beside that text
+ * now, so 8px between them reads tighter than it measures — 14px restores the rhythm the type
+ * was drawn for. */
+.site-footer-phone .content-4 {
+  align-items: flex-start;
+}
+.site-footer-phone .links-6,
+.site-footer-phone .links-7,
+.site-footer-phone .links-2,
+.site-footer-phone .links {
+  gap: 14px;
+}
+
+/* ⛔ AND THE COLUMNS NEED THE ROOM THE GLYPHS TOOK. Each row is 18px + a 8px gap wider than the
+ * text it replaced, so the Docs column's longest row ("Spotify receipt generators") now runs to
+ * within a few pixels of the Code column beside it — "DOM to PNG, explained" and "MIT licence"
+ * read as one line at a glance. The columns' own gap is what absorbs that. */
+.site-footer-phone .content-stack {
+  gap: 40px;
+}
