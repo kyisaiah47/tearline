@@ -18,6 +18,13 @@ import Icon, { type IconName } from "@/components/Icon";
  * it. Per the house rule, the social column becomes a single Kynth Studios link
  * rather than borrowing the parent's handles.
  *
+ * ⛔ AND THAT LINK IS NO LONGER A COLUMN OF ITS OWN. It was one row under a "Studio" heading
+ * beside columns of four and five, which is the shape Isaiah called a mess on 2026-08-19, and
+ * it was the THIRD anchor to kynth.studio in this same footer: the "Built by" seal lockup in
+ * the bar below is one, the "A Kynth Studios project" badge beside it is another. The
+ * destination did not go anywhere — it is still reached twice, from the signature that is
+ * built for it. What went is a column heading standing over a single row.
+ *
  * The shell keeps all three of the donor's breakpoint variants, and it has to.
  * `site-footer-row` is not a phone class despite the name — it is where the
  * footer's `display: flex` and column direction live, exactly like
@@ -51,13 +58,24 @@ const GROUPS: Group[] = [
       ["API reference", "/docs#api", "code"],
       ["Exporting a PNG", "/docs#export", "export"],
       ["Accessibility", "/docs#accessibility", "eye"],
-      /* Added 2026-07-31, 2026-08-01, 2026-08-02 and 2026-08-05. None is a
-       * Tearline reference page — one explains the browser-side DOM-to-PNG
-       * technique generally, one the receipt look and why it is packaged as a
-       * custom element, one what it actually takes to build a Receiptify-style
-       * Spotify receipt, and one the client-versus-server decision behind any
-       * share image. All four sit last in the group rather than among the API
-       * rows. */
+    ],
+  },
+  {
+    /* ⛔ THESE FOUR WERE THE BOTTOM HALF OF "Docs" AND THEY ARE NOT DOCS. The comment that used
+     * to sit above them said so outright — "None is a Tearline reference page" — and then filed
+     * them under the reference heading anyway, "last in the group rather than among the API
+     * rows". One explains the browser-side DOM-to-PNG technique generally, one the receipt look
+     * and why it is packaged as a custom element, one what it takes to build a Receiptify-style
+     * Spotify receipt, and one the client-versus-server decision behind any share image. They
+     * are articles about the problem, not pages about this API.
+     *
+     * Naming them is also what balances the footer. It ran `Product 4 · Docs 8 · Code 5 ·
+     * Studio 1` — Isaiah, 2026-08-19, looking at it: "extremely unbalanced and disorganized …
+     * items per col and shit is like a mess". Docs was carrying two groups at once, which is
+     * why it was twice the height of everything beside it. §7b of
+     * kynth-ops/standards/landing-layout-gate.mjs fails a spread over two rows. */
+    label: "Guides",
+    links: [
       ["DOM to PNG, explained", "/dom-to-png", "image"],
       ["Receipt-style UI", "/receipt-ui", "receipt"],
       ["Spotify receipt generators", "/spotify-receipt-generator", "music"],
@@ -86,10 +104,6 @@ const GROUPS: Group[] = [
        * primary artefact rather than a description of the licence. */
       ["MIT licence", "https://github.com/kyisaiah47/tearline/blob/main/LICENSE", "gavel", true],
     ],
-  },
-  {
-    label: "Studio",
-    links: [["Kynth Studios", "https://kynth.studio", "link", true]],
   },
 ];
 

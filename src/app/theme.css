@@ -155,3 +155,40 @@ body {
 .site-footer-phone .content-stack {
   gap: 40px;
 }
+
+/* ── SPACE ABOVE THE DIVIDER ─────────────────────────────────────────────────────────────────
+ *
+ * Isaiah, 2026-08-19, pointing at the hairline over the copyright block: "put space above the
+ * divider line".
+ *
+ * The bar already had `padding: 24px 0 0` — but that is inside its own top border, so all 24px
+ * sat BELOW the rule, between the hairline and the © text. Above it there was nothing: the last
+ * row of the tallest column ended and the rule started 11px later, measured on the live page at
+ * 1440. `.content-4 { padding-bottom: 40px }` further up does not help either — it is on the
+ * flex parent of the whole footer, so it pads under the bar rather than over it. The gap he is
+ * asking for is between the columns and the rule, and the only box that spans it is the bar's
+ * own margin. */
+.site-footer-phone .footer-bottom-bar {
+  margin-top: 40px;
+}
+
+/* ── THE COLUMNS SIZE TO THEIR ROWS ──────────────────────────────────────────────────────────
+ *
+ * The capture gives every group `flex: 1 0 0%`, so the four columns split the stack into equal
+ * 135px slices regardless of what is in them. That was survivable while the rows were bare text.
+ * They are not: measured on the built page at 1440, the longest row in Guides is 178px and in
+ * Code 167px, against a 135px column — so "Spotify receipt generators" ran straight through
+ * "Read the source" and the two columns read as one smear of words.
+ *
+ * An equal split is the wrong model for a list of names. Each column is exactly as wide as its
+ * longest row, and the space left over is shared between them — which also means a row renamed
+ * later moves its own column rather than silently overlapping its neighbour. Content is 557px of
+ * the stack's 660px, so the three gaps land at ~34px, above the 24px floor. */
+.site-footer-phone .footer-product-group {
+  flex: 0 0 auto;
+  min-width: max-content;
+}
+.site-footer-phone .content-stack {
+  gap: 24px;
+  justify-content: space-between;
+}
