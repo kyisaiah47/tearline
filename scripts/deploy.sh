@@ -38,7 +38,7 @@ esac
 TEAM="team_2hYY71qdn1MSFXL9CfX1uDp3"
 PROJECT="tearline"
 HOST="tearline.kynth.studio"
-WORKBENCH="$HOME/Projects/workbench"
+WORKBENCH="$HOME/Projects/dev-shell"
 
 # A repo.json (git-link format) forces the interactive project picker even with --yes.
 rm -f .vercel/repo.json
