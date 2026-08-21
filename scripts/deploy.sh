@@ -176,10 +176,24 @@ echo "OK"
 # Both are CONDITIONAL: a page with no action-labelled control, and a product with no
 # checkout, pass untouched. See each gate's header for the defects that produced it.
 CONTROL_GATES_FAILED=0
+CONTROL_GATES_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+
+# A field a product declares has to be read by something that renders. Source-only, so it
+# runs whatever the deploy did — `cta.login` was declared on six products and rendered on
+# none, and the one mention of it under frame/ was a comment.
+if [ -f "$HOME/Projects/kynth-ops/tools/gates/config-read.mjs" ]; then
+  echo "==> config-read gate (source)"
+  if ! node "$HOME/Projects/kynth-ops/tools/gates/config-read.mjs" "$CONTROL_GATES_DIR"; then CONTROL_GATES_FAILED=1; fi
+else
+  echo "✗ config-read gate NOT CHECKED — the gate is missing from kynth-ops" >&2
+  CONTROL_GATES_FAILED=1
+fi
+
+CONTROL_GATES_URL="https://$HOST/"
 for _g in live-wire checkout-path; do
   if [ -f "$HOME/Projects/kynth-ops/tools/gates/$_g.mjs" ]; then
     echo "==> $_g gate (live)"
-    if ! node "$HOME/Projects/kynth-ops/tools/gates/$_g.mjs" "https://$HOST/"; then CONTROL_GATES_FAILED=1; fi
+    if ! node "$HOME/Projects/kynth-ops/tools/gates/$_g.mjs" "$CONTROL_GATES_URL"; then CONTROL_GATES_FAILED=1; fi
   else
     echo "✗ $_g gate NOT CHECKED — the gate is missing from kynth-ops" >&2
     CONTROL_GATES_FAILED=1
