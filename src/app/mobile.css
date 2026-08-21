@@ -161,15 +161,15 @@
     min-width: 0 !important;
     max-width: 100% !important;
   }
-  footer [class*="framer-"]:has(> [class*="framer-"] .framer-text),
-  footer [class*="framer-"]:has(> .framer-text),
+  footer [class*="site-"]:has(> [class*="site-"] .site-text),
+  footer [class*="site-"]:has(> .site-text),
   footer .footer-copyright:has(> *),
   .footer-copyright:has(> *) {
     grid-template-columns: minmax(0, 1fr) !important;
   }
   /* The credit sentence has to wrap wherever it lives, and `white-space` INHERITS — so the
    * wrapping container is what has to say so, not the paragraph inside it. */
-  footer .framer-text,
+  footer .site-text,
   footer .text-node,
   footer .text-block,
   /* ⛔ `[class*="rights"]`, NOT `[class*="right"]`. This block exists to wrap the credit
