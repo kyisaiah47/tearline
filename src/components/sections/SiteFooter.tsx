@@ -1,3 +1,4 @@
+import SocialRail from "@/components/SocialRail";
 import Icon, { type IconName } from "@/components/Icon";
 /**
  * Site footer.
@@ -183,7 +184,19 @@ function FooterBody() {
                     {"Wrap any HTML in one tag and it prints as a receipt."}
                   </p>
                 </div>
-              </div>
+              
+        {/* ⛔ UNDER THE BRAND BLOCK, NOT A ROW OF ITS OWN AFTER THE LEGAL LINE. Isaiah rejected
+            the bolted-on band twice: a new full-width strip below the copyright, with a dead gap
+            above it, reads as an addition to the footer rather than as part of it. Placement
+            picked 2026-08-21 off a rendered sheet of three candidates shot on all forty-two live
+            footers — this container is the one option A measured into on THIS page.
+
+            ⛔ AND IT IS §7b-SAFE: §7 exempts an icon-only social link ("already a mark"), so
+            these marks are not a footer column however they are laid out. */}
+        <div className={"kynth-social-slot"} style={{ width: "100%", marginTop: "18px" }}>
+          <SocialRail />
+        </div>
+      </div>
             </div>
           </div>
 
@@ -360,6 +373,7 @@ export default function SiteFooter() {
           style={{ width: "100%" }}
         >
           <FooterBody />
+      
         </footer>
       ))}
     </div>
