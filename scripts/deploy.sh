@@ -170,3 +170,23 @@ if [ "$GATE_FAILED" != "0" ]; then
 fi
 
 echo "OK"
+
+# ⛔ DEAD-CONTROL GATES — a control that claims to do something has to DO something when pressed.
+# Wired by kynth-ops/tools/wire-control-gates.mjs — do not remove, do not make it optional.
+# Both are CONDITIONAL: a page with no action-labelled control, and a product with no
+# checkout, pass untouched. See each gate's header for the defects that produced it.
+CONTROL_GATES_FAILED=0
+for _g in live-wire checkout-path; do
+  if [ -f "$HOME/Projects/kynth-ops/tools/gates/$_g.mjs" ]; then
+    echo "==> $_g gate (live)"
+    if ! node "$HOME/Projects/kynth-ops/tools/gates/$_g.mjs" "https://$HOST/"; then CONTROL_GATES_FAILED=1; fi
+  else
+    echo "✗ $_g gate NOT CHECKED — the gate is missing from kynth-ops" >&2
+    CONTROL_GATES_FAILED=1
+  fi
+done
+
+if [ "$CONTROL_GATES_FAILED" != "0" ]; then
+  echo "GATE FAILURE — the deploy landed, but a control on the live page does nothing when pressed." >&2
+  exit 1
+fi
