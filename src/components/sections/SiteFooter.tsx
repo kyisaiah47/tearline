@@ -1,5 +1,5 @@
-import SocialRail from "@/components/SocialRail";
 import Icon, { type IconName } from "@/components/Icon";
+import SocialColumn from "@/components/SocialColumn";
 /**
  * Site footer.
  *
@@ -56,7 +56,7 @@ const GROUPS: Group[] = [
     label: "Docs",
     links: [
       ["Install", "/docs#install", "download"],
-      ["API reference", "/docs#api", "code"],
+      ["API reference", "/docs#api", "api"],
       ["Exporting a PNG", "/docs#export", "export"],
       ["Accessibility", "/docs#accessibility", "eye"],
     ],
@@ -184,19 +184,7 @@ function FooterBody() {
                     {"Wrap any HTML in one tag and it prints as a receipt."}
                   </p>
                 </div>
-              
-        {/* ⛔ UNDER THE BRAND BLOCK, NOT A ROW OF ITS OWN AFTER THE LEGAL LINE. Isaiah rejected
-            the bolted-on band twice: a new full-width strip below the copyright, with a dead gap
-            above it, reads as an addition to the footer rather than as part of it. Placement
-            picked 2026-08-21 off a rendered sheet of three candidates shot on all forty-two live
-            footers — this container is the one option A measured into on THIS page.
-
-            ⛔ AND IT IS §7b-SAFE: §7 exempts an icon-only social link ("already a mark"), so
-            these marks are not a footer column however they are laid out. */}
-        <div className={"kynth-social-slot"} style={{ width: "100%", marginTop: "18px" }}>
-          <SocialRail />
-        </div>
-      </div>
+              </div>
             </div>
           </div>
 
@@ -204,7 +192,13 @@ function FooterBody() {
             className={"right"}
             data-border={"true"}
             data-name={"Right"}
-            style={{ "--border-left-width": "0px", "--border-top-width": "1px" }}
+            /* ⛔ THE TOP RULE IS OFF, AND IT HAD TO BE TURNED OFF HERE RATHER THAN IN A SHEET.
+             * It was the seam between the brand column and the link columns while they sat side
+             * by side. Stacked, it draws a second hairline directly above the column row, and the
+             * approved shape has exactly one — the band's. `--border-top-width` is written INLINE
+             * on this element, so no stylesheet can outbid it: footer.css set it to 0 and the
+             * line stayed, measured on the running page. */
+            style={{ "--border-left-width": "0px", "--border-top-width": "0px" }}
           >
             <div className={"content-stack"}>
               {GROUPS.map((group) => (
@@ -253,6 +247,10 @@ function FooterBody() {
                   </div>
                 </div>
               ))}
+              {/* ⛔ THE FIFTH COLUMN. The rail this replaces sat under the brand block as ten
+                  coloured trademarks; it is a headed column in the same shell as the four beside
+                  it now, so the marks are part of the footer rather than an addition to it. */}
+              <SocialColumn />
             </div>
 
             <div className={"footer-bottom-bar"} data-border={"true"}>
@@ -269,7 +267,7 @@ function FooterBody() {
                     * mark painted on it by a `::before` in globals.css — a lockup re-assembled
                     * out of a glyph and a word whose size, gap and lift were decided in a
                     * stylesheet in this repo, so it drifted from the real one the day either
-                    * side moved. The link is the signature below this paragraph. */}
+                    * side moved. The link is the signature at the far end of this band. */}
                   {"Kynth Studios"}
                   {" project."}
                   {" The studio behind "}
@@ -280,6 +278,40 @@ function FooterBody() {
                   <a className={"kynth-sibling"} href={"https://citerank.kynth.studio"} rel={"noopener"}>{"CiteRank"}</a>
                   {"."}
                 </p>
+              </div>
+              <div className={"status-badge-container"}>
+                <a
+                  className={
+                    "herosection-dot-4 nav-dropdown-trigger herosection-dot herosection-dot-4-state herosection-dot-2"
+                  }
+                  data-name={"Dot"}
+                  href={"https://kynth.studio/?utm_source=tearline&utm_medium=studio_credit"}
+                  target={"_blank"}
+                  rel={"noopener"}
+                >
+                  <div
+                    className={"herosection-dot-3"}
+                    data-border={"true"}
+                    data-name={"Dot"}
+                    style={{ borderRadius: "2px" }}
+                  />
+                  <div
+                    className={"hiring-badge"}
+                    data-component={"RichTextContainer"}
+                  >
+                    <p
+                      className={"heading-4 menu-label"}
+                      dir={"auto"}
+                      style={{
+                        "--rt-text-color":
+                          "var(--extracted-r6o4lv, var(--color-background, rgb(255, 165, 82)))",
+                      }}
+                    >
+                      {"A Kynth Studios project"}
+                    </p>
+                  </div>
+                </a>
+              </div>
                 {/* THE STUDIO SIGNATURE — "Built by" + the seal lockup, approved by Isaiah
                   * 2026-08-19 off a rendered four-way comparison of this footer bar. Spec:
                   * kynth-ops/standards/STUDIO-CREDIT-SEAL.md. Reference implementation:
@@ -322,40 +354,6 @@ function FooterBody() {
                     />
                   </a>
                 </p>
-              </div>
-              <div className={"status-badge-container"}>
-                <a
-                  className={
-                    "herosection-dot-4 nav-dropdown-trigger herosection-dot herosection-dot-4-state herosection-dot-2"
-                  }
-                  data-name={"Dot"}
-                  href={"https://kynth.studio/?utm_source=tearline&utm_medium=studio_credit"}
-                  target={"_blank"}
-                  rel={"noopener"}
-                >
-                  <div
-                    className={"herosection-dot-3"}
-                    data-border={"true"}
-                    data-name={"Dot"}
-                    style={{ borderRadius: "2px" }}
-                  />
-                  <div
-                    className={"hiring-badge"}
-                    data-component={"RichTextContainer"}
-                  >
-                    <p
-                      className={"heading-4 menu-label"}
-                      dir={"auto"}
-                      style={{
-                        "--rt-text-color":
-                          "var(--extracted-r6o4lv, var(--color-background, rgb(255, 165, 82)))",
-                      }}
-                    >
-                      {"A Kynth Studios project"}
-                    </p>
-                  </div>
-                </a>
-              </div>
             </div>
           </div>
     </div>

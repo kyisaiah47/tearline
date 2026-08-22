@@ -4,6 +4,7 @@ import "./globals.css";
 import "./template.css";
 import "./theme.css";
 import "./mobile.css";
+import "./footer.css";
 import Analytics from '@/components/Analytics';
 import BrandMark from '@/components/BrandMark';
 import JsonLd, { siteGraph } from '@/components/JsonLd';

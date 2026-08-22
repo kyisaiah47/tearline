@@ -1,0 +1,222 @@
+/* ═══════════════════════════════════════════════════════════════════════════════════════════
+ * THE FOOTER, IN THE ESTATE'S APPROVED SHAPE — Isaiah, 2026-08-21.
+ *
+ * Four things, top to bottom: the brand line (mark + one sentence), the equal-track column row
+ * with FOLLOW as its last column, one hairline with three groups on it, and whatever is unique to
+ * this footer left where it is — here the "A Kynth Studios project" badge, which keeps its dot,
+ * its type and its amber and moves into the band's middle group.
+ *
+ * The reference implementations are kynth-agent-shell/frame/sections/SiteFooter.tsx (+
+ * frame/fixes/footer.css) and dev-shell/src/components/sections/FooterSlot.tsx (+
+ * src/app/register.css). Every measured rule below is carried over from one of those two.
+ *
+ * ⛔ IMPORTED LAST FROM layout.tsx, AFTER theme.css, AND THAT ORDER IS LOAD-BEARING. theme.css
+ * already answers this footer with the OPPOSITE model — `.footer-product-group { flex: 0 0 auto;
+ * min-width: max-content }` with `justify-content: space-between`, columns sized to their own
+ * longest row. That was right while a column never had to line up with its neighbour and it is
+ * what the equal-track rule below replaces, so this sheet has to land after it. There is no
+ * per-route stylesheet in this repo to get in the way — every sheet is imported by the layout,
+ * checked before writing this rather than assumed (the same assumption cost an hour on agentwire,
+ * where every route carries its own copy of the donor footer).
+ * ═══════════════════════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1 · THE BRAND LINE ───────────────────────────────────────────────────────────────────────
+ *
+ * The capture's `.content-4` is a ROW: the brand block on the left at `flex: 1`, the columns on
+ * the right at `flex: 1.6`. The approved shape is a STACK — the brand line owns its own row and
+ * the columns run the full width under it, so the tracks can be equal across the whole band
+ * rather than across the 60% the brand block leaves over. */
+.site-footer-phone .content-4 {
+  flex-flow: column;
+  align-items: stretch;
+  place-content: flex-start;
+  gap: 40px;
+}
+/* Both halves stop being flex fractions of a row and become full-width blocks. `width: 1px` is
+   the capture's own basis trick for `flex: 1 0 0px`; in a column it is one pixel of footer. */
+.site-footer-phone .content-4 > .left,
+.site-footer-phone .content-4 > .right {
+  flex: 0 0 auto;
+  width: 100%;
+  align-items: flex-start;
+  align-self: auto;
+}
+/* ⛔ THE RIGHT BLOCK'S TOP RULE COMES OFF. It was the seam between the brand column and the link
+ * columns when they sat side by side. Stacked, it draws a second hairline directly above the
+ * column row — and the approved shape has exactly one, the band's. */
+.site-footer-phone .content-4 > .right {
+  --border-top-width: 0px;
+  padding: 0;
+}
+.site-footer-phone .content-4 > .left .top,
+.site-footer-phone .content-4 > .left .logo-description {
+  align-items: flex-start;
+  width: 100%;
+}
+/* The tagline is the product's own published sentence and it is the only prose in the brand line.
+   A measure keeps it inside the 45–75 character line the rest of the page sets body copy on. */
+.site-footer-phone .footer-tagline {
+  max-width: 46ch;
+}
+
+/* ── 2 · THE COLUMN ROW ───────────────────────────────────────────────────────────────────────
+ *
+ * ⛔ EQUAL TRACKS, WHICH MEANS A GRID — `flex` COULD NOT DO IT. theme.css gives every column
+ * `min-width: max-content`, so a column never shrinks below its longest row and the five come out
+ * at five different widths. `1fr` tracks in a grid are equal by construction and `minmax(0, 1fr)`
+ * is what stops max-content re-inflating them: a bare `1fr` is `minmax(auto, 1fr)` and lands back
+ * on the same five numbers.
+ *
+ * ⛔ THE TRACK COUNT COMES FROM THE CHILDREN, NOT FROM A LITERAL FIVE. `grid-auto-flow: column`
+ * with equal `grid-auto-columns` sizes to however many groups actually render, so a column added
+ * to or dropped from `GROUPS` cannot leave an empty track and hundreds of px of dead space after
+ * FOLLOW — measured at 246px on triagedesk, where the agent frame's version of this rule was
+ * written as a literal.
+ *
+ * ⛔ AND IT IS A DESKTOP RULE ONLY. Applied at every width the tracks crush to ~43px at 390 and
+ * put the document into sideways scroll. */
+.site-footer-phone .content-stack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  justify-content: stretch;
+  gap: 28px 24px;
+  width: 100%;
+}
+@media (min-width: 810px) {
+  .site-footer-phone .content-stack {
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    grid-auto-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+}
+/* theme.css pins each group to its own longest row. In an equal-track grid a column is whatever
+   the track is, and a pinned width is what makes one column paint into the next one's gutter. */
+.site-footer-phone .content-stack > .footer-product-group {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+}
+/* ⛔ A LABEL WRAPS INSIDE ITS TRACK RATHER THAN SPILLING OUT OF IT. The rows are `inline-flex`
+ * (theme.css §tl-footer-row), which is right while a column is sized by its widest child and
+ * wrong once the tracks are equal fractions: "Spotify receipt generators" is 178px of label
+ * against a track that is not guaranteed to be, so it would sit on top of the next column's
+ * gutter. Nothing clips and nothing errors — which is why this needed measuring rather than
+ * looking. `align-items: flex-start` so a two-line label keeps its glyph on the first line. */
+.site-footer-phone .content-stack > *:not(.tl-social-col) .tl-footer-row {
+  align-items: flex-start;
+  max-width: 100%;
+}
+.site-footer-phone .content-stack > *:not(.tl-social-col) .tl-footer-row .nav-link-label {
+  min-width: 0;
+}
+.site-footer-phone .content-stack > *:not(.tl-social-col) .tl-footer-row .nav-link-label p {
+  overflow-wrap: break-word;
+}
+
+/* ── 3 · THE FOLLOW COLUMN ────────────────────────────────────────────────────────────────────
+ *
+ * ⛔ 2-UP, BECAUSE TEN ROWS BESIDE COLUMNS OF FOUR AND FIVE IS THE SPREAD THE ICON-ONLY RAIL WAS
+ * INVENTED TO AVOID. Five rows deep against a five-row neighbour is a spread of zero.
+ *
+ * ⛔ THE TRACKS ARE FRACTIONS OF THE COLUMN, NOT max-content. `repeat(2, max-content)` sizes the
+ * pair to the widest label in each half regardless of the track it sits in, so the column ran past
+ * the band's right edge — measured at 3px on cardchase and 5px on citerank at 1440. Nothing
+ * clipped it; it simply sat outside the rule the other columns end on.
+ *
+ * ⛔ AND `width: 100%`, OR THE FRACTIONS ARE FRACTIONS OF NOTHING. The column is a flex box with
+ * `align-items: flex-start`, so a grid child shrinks to fit and `1fr` resolves against the shrunk
+ * box — measured on agentwire in this same pass: two 97px cells inside a 311px track.
+ *
+ * The row gap is theme.css's own 22px, inherited from `.links-6`, so a social row sits on exactly
+ * the rhythm a Docs row does. */
+.site-footer-phone .tl-social-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 12px;
+  align-items: start;
+  width: 100%;
+}
+/* ⛔ AND A PLATFORM NAME NEVER WRAPS. In a fractional cell a long single word breaks mid-word —
+ * "Instagra/m", "Hashnod/e" — which is the one thing a one-word label must not do. This is why
+ * the wrap rule above excludes this column. */
+.site-footer-phone .tl-social-col .tl-footer-row .nav-link-label p {
+  white-space: nowrap;
+}
+/* ⛔ ONE GRID FOR ALL TEN ROWS. The founder's two had a grid of their own on the agent frame and
+ * `repeat(2, max-content)` sizes tracks to the content of THAT grid — its first track came out the
+ * width of "X" while the studio grid's was the width of "Instagram", so the two blocks did not
+ * line up. The head and its hairline span both tracks instead. */
+.site-footer-phone .tl-social-subhead {
+  grid-column: 1 / -1;
+  margin: 4px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-gray-dark, rgb(42, 42, 42));
+  /* ⛔ A HANDLE IS NOT A TITLE. `.menu-label` — the class the four column heads wear, borrowed here
+     so this subhead sits in the same type — carries `text-transform: capitalize`, which is right
+     for "Product" and "Docs" and rendered the founder's account as "@Kyisaiah47". Measured on the
+     running page; the handle is @kyisaiah47 and it is the same string every other footer on the
+     estate prints. */
+  text-transform: none;
+}
+@media (max-width: 809.98px) {
+  /* A 2-up grid inside a phone track is two ~68px cells and "Instagram" does not fit one. Every
+     column is already stacked at this width, so ten rows deep has no neighbour to be a spread
+     against. */
+  .site-footer-phone .tl-social-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ── 4 · THE BAND ─────────────────────────────────────────────────────────────────────────────
+ *
+ * One hairline across the full width, then three groups on it: the copyright and its credit
+ * sentence at the left, the studio badge in the middle, the seal signature at the far end.
+ *
+ * ⛔ TOP-ALIGNED, NOT CENTRED. The capture centres the bar's children, and the left group is two
+ * lines against two one-line groups — so the badge and the seal floated against the MIDDLE of the
+ * copyright block rather than starting on its first line. */
+.site-footer-phone .footer-bottom-bar {
+  flex-flow: row wrap;
+  place-content: flex-start space-between;
+  align-items: flex-start;
+  gap: 16px 32px;
+}
+.site-footer-phone .footer-bottom-bar > .footer-copyright-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 62ch;
+}
+.site-footer-phone .footer-bottom-bar > .status-badge-container,
+.site-footer-phone .footer-bottom-bar > .kynth-signature-line {
+  flex: 0 0 auto;
+  margin: 0;
+}
+/* ⛔ AND THE SEAL STAYS AT THE END OF THE BAND EVEN WHEN THE ROW WRAPS. `space-between` puts a
+ * wrapped item at the START of its new line, which lands the studio's signature under the
+ * copyright at the far left; the auto margin keeps it at the right edge on whichever line it gets.
+ * It has to outrank `html body a.kynth-signature[href] { margin: 10px 0 0 !important }` in
+ * globals.css — a shorthand, so it resets margin-left too. */
+.site-footer-phone .footer-bottom-bar > .kynth-signature-line {
+  margin-left: auto;
+}
+html body .footer-bottom-bar a.kynth-signature[href] {
+  margin: 0 0 0 auto !important;
+}
+
+@media (max-width: 809.98px) {
+  /* Three groups on one line in a phone column is three groups nobody can read. */
+  .site-footer-phone .footer-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .site-footer-phone .footer-bottom-bar > .kynth-signature-line {
+    margin-left: 0;
+  }
+  html body .footer-bottom-bar a.kynth-signature[href] {
+    margin: 0 !important;
+  }
+}
