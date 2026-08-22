@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { IconDefs } from "@/components/Icon";
 import Script from "next/script";
 import "./globals.css";
 import "./template.css";
@@ -77,6 +78,10 @@ export default function RootLayout({
         <JsonLd data={siteGraph} />
       </head>
       <body>
+        {/* ⛔ THE ICON SPRITE — every <Icon> on every route is a <use href="#i-name"> and paints
+          * NOTHING without these <symbol>s in the same document. No error, no warning, no failed
+          * build: just a missing glyph. gates/icon-defs.mjs proves the refs resolve in a browser. */}
+        <IconDefs />
         <Analytics />
         {/* The <use href="#brand-mark"> sprite the header and footer logos
          * point at. It used to live at the bottom of the home page, which meant
