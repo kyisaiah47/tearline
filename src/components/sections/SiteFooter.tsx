@@ -114,11 +114,32 @@ const LINK_COLOR =
 const SHELL =
   "site-footer-phone link-16 nav-link nav-dropdown-trigger site-footer-row";
 
-const VARIANTS: [string, string][] = [
-  ["footer-2-state", "hide-phone hide-tablet"],
-  ["footer-2-state-3", "hide-phone hide-desktop"],
-  ["footer-2-state-2", "hide-desktop hide-tablet"],
-];
+/* ⛔ ONE FOOTER, NOT THREE (2026-08-22).
+ *
+ * The capture ships this band three times — one <footer> per breakpoint, distinguished by a
+ * single state class each, with two of the three hidden by `hide-phone` / `hide-tablet` /
+ * `hide-desktop`. Those carry `display:none` inside a width query and nothing else, and the body
+ * inside was already written once, so the two hidden copies were byte-identical markup no reader
+ * could see at any width.
+ *
+ * They were not free. Measured on the rendered page that day this footer was 98,279 of 217,613
+ * DOM bytes — 45 percent of it — serialised AGAIN into the RSC flight payload. SocialColumn's
+ * marks alone appeared 6x a page (three copies x two LinkedIn rows): 13,265 bytes of duplicate
+ * path data that the icon sprite cannot reach, because that file inlines its own bodies on
+ * purpose (see its header — Icon.tsx is generated from a per-product name list and returns null
+ * for a name that list missed).
+ *
+ * ⛔ ALL THREE STATE CLASSES STAY ON THE ONE ELEMENT, AND THAT IS LOAD-BEARING. `-3` and `-2`
+ * each set a different fixed canvas width on `.site-footer-row` (810px and 390px), so one
+ * element holding all three takes whichever `width` comes last in the file. globals.css now
+ * gates each state's rules to the width at which that copy used to be the only visible one —
+ * same breakpoints as `.hide-*`, same declarations byte for byte. Drop a class here and that
+ * breakpoint loses its band width silently.
+ *
+ * SHELL is unchanged and still every donor class: `site-footer-row` is not a phone class despite
+ * the name, it is where the footer's `display: flex` lives, and without it the footer has no
+ * layout at all. */
+const STATE_CLASSES = "footer-2-state footer-2-state-3 footer-2-state-2";
 
 function FooterBody() {
   return (
@@ -363,17 +384,13 @@ function FooterBody() {
 export default function SiteFooter() {
   return (
     <div className={"page-content-container"}>
-      {VARIANTS.map(([state, hide]) => (
-        <footer
-          key={state}
-          className={`${SHELL} ${state} ${hide}`}
-          data-border={"true"}
-          style={{ width: "100%" }}
-        >
-          <FooterBody />
-      
-        </footer>
-      ))}
+      <footer
+        className={`${SHELL} ${STATE_CLASSES}`}
+        data-border={"true"}
+        style={{ width: "100%" }}
+      >
+        <FooterBody />
+      </footer>
     </div>
   );
 }

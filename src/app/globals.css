@@ -3416,50 +3416,86 @@ code.heading-4 span.heading-4:not([data-text-fill]) {
   position: relative;
   overflow: visible;
 }
-.site-footer-phone.footer-2-state-3.site-footer-row {
-  width: 810px;
+/* ⛔ THE FOOTER IS WRITTEN ONCE NOW, SO ITS BREAKPOINT STATES ARE MEDIA QUERIES (2026-08-22).
+ *
+ * The donor ships this footer three times over — one <footer> per breakpoint, distinguished by
+ * ONE class each and with two of the three hidden by `hide-phone` / `hide-tablet` /
+ * `hide-desktop`, which carry `display:none` inside a width query and nothing else:
+ *
+ *   footer-2-state-2  + hide-desktop hide-tablet  ->  visible <=809.98px   (390px canvas)
+ *   footer-2-state-3  + hide-phone   hide-desktop ->  visible 810-1439.98  (810px canvas)
+ *   footer-2-state    + hide-phone   hide-tablet  ->  visible >=1440       (no rules of its own)
+ *
+ * Measured on the rendered page that day, this footer was 98,279 of 217,613 DOM bytes — 45
+ * percent of the page — and two thirds of it was markup no reader could see at any width, paid
+ * for again in the RSC flight payload. SocialColumn's marks alone appeared 6x a page (three
+ * copies x two LinkedIn rows), 13,265 bytes of duplicate path data the icon sprite cannot reach
+ * because that file inlines its own bodies deliberately.
+ *
+ * So SiteFooter renders ONE <footer> carrying all three state classes, and the rules below are
+ * gated to the exact width at which each state used to be the only visible copy — the same
+ * breakpoints `.hide-*` already uses. Declarations are unchanged, byte for byte.
+ *
+ * ⛔ ALL THREE CLASSES STAY ON THE ONE ELEMENT. `-3` and `-2` each set a different fixed canvas
+ * width on `.site-footer-row`, so one element holding all three would take whichever `width`
+ * came last in the file. Gating is what keeps them from colliding; dropping a class instead
+ * silently costs that breakpoint its band width.
+ *
+ * The bare `.footer-2-state` / `-2` / `-3` token rules further down are byte-identical to each
+ * other and stay ungated, as does footer.css's one `.content-stack` rule, which already names
+ * all three states with the same declarations. */
+
+/* phone — was the `hide-desktop hide-tablet` copy */
+@media (max-width: 809.98px) {
+  .site-footer-phone.footer-2-state-2.site-footer-row {
+    width: 390px;
+  }
+  .site-footer-phone.footer-2-state-2 .content-4 {
+    flex-direction: column;
+    max-width: 94%;
+  }
+  .site-footer-phone.footer-2-state-2 .left {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .site-footer-phone.footer-2-state-2 .right {
+    align-self: unset;
+    flex: 0 0 auto;
+    justify-content: center;
+    gap: 0px;
+    width: 100%;
+    height: min-content;
+  }
+  .site-footer-phone.footer-2-state-2 .content-stack {
+    align-content: unset;
+    align-items: unset;
+    grid-template-rows: repeat(2, minmax(0px, 1fr));
+    grid-template-columns: repeat(2, minmax(50px, 1fr));
+    grid-auto-rows: minmax(0px, 1fr);
+    gap: 24px;
+    display: grid;
+  }
+  .site-footer-phone.footer-2-state-2 .footer-product-group,
+  .site-footer-phone.footer-2-state-2 .resources-menu-group,
+  .site-footer-phone.footer-2-state-2 .footer-company-column,
+  .site-footer-phone.footer-2-state-2 .footer-legal-column {
+    flex: 0 0 auto;
+    place-self: start;
+    width: 100%;
+  }
 }
-.site-footer-phone.footer-2-state-3 .content-4 {
-  max-width: 94%;
-}
-.site-footer-phone.footer-2-state-3 .right {
-  flex: 1 0 0px;
-}
-.site-footer-phone.footer-2-state-2.site-footer-row {
-  width: 390px;
-}
-.site-footer-phone.footer-2-state-2 .content-4 {
-  flex-direction: column;
-  max-width: 94%;
-}
-.site-footer-phone.footer-2-state-2 .left {
-  flex: 0 0 auto;
-  width: 100%;
-}
-.site-footer-phone.footer-2-state-2 .right {
-  align-self: unset;
-  flex: 0 0 auto;
-  justify-content: center;
-  gap: 0px;
-  width: 100%;
-  height: min-content;
-}
-.site-footer-phone.footer-2-state-2 .content-stack {
-  align-content: unset;
-  align-items: unset;
-  grid-template-rows: repeat(2, minmax(0px, 1fr));
-  grid-template-columns: repeat(2, minmax(50px, 1fr));
-  grid-auto-rows: minmax(0px, 1fr);
-  gap: 24px;
-  display: grid;
-}
-.site-footer-phone.footer-2-state-2 .footer-product-group,
-.site-footer-phone.footer-2-state-2 .resources-menu-group,
-.site-footer-phone.footer-2-state-2 .footer-company-column,
-.site-footer-phone.footer-2-state-2 .footer-legal-column {
-  flex: 0 0 auto;
-  place-self: start;
-  width: 100%;
+
+/* tablet — was the `hide-phone hide-desktop` copy */
+@media (min-width: 810px) and (max-width: 1439.98px) {
+  .site-footer-phone.footer-2-state-3.site-footer-row {
+    width: 810px;
+  }
+  .site-footer-phone.footer-2-state-3 .content-4 {
+    max-width: 94%;
+  }
+  .site-footer-phone.footer-2-state-3 .right {
+    flex: 1 0 0px;
+  }
 }
 .site-footer-phone[data-border="true"]::after,
 .site-footer-phone [data-border="true"]::after {
