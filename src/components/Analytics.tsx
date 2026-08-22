@@ -5,13 +5,18 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import posthog from 'posthog-js';
 
 // House Kynth PostHog project (shared across apps; each app self-labels via the `app`
-// property/group). Reverse-proxied to same-origin /ingest (see next.config rewrites) so ad
-// blockers can't drop first-party analytics. Mirrors packages/analytics in kynth-os, trimmed
 // for a marketing + checkout site (no auth / demo / dashboard).
 //
 // GENERATED from demos/roster/templates/Analytics.tsx.tmpl by the analytics-coverage step of
 // the 05:20 roster sync. Safe to hand-edit afterwards — the step only ever writes this file
 // when it is missing, never over an existing one.
+// ⛔ IT TALKS TO us.i.posthog.com DIRECTLY, AND THE /ingest REVERSE PROXY IS NOT COMING BACK.
+// This comment described one until 2026-08-22 and the mechanism had been removed that morning:
+// rewriting /ingest/* to PostHog made every analytics beacon a Vercel function invocation, a
+// Vercel edge request and Vercel origin transfer in both directions — 458 GB of Fast Origin
+// Transfer ($13.04) and 11.1M function invocations ($2.75) on one invoice. The proxy exists to
+// stop ad blockers dropping first-party analytics; that is worth something, but it was never
+// priced against what it costs on this platform. Do not reinstate it without pricing it first.
 const POSTHOG_KEY = 'phc_uHpxqQHE6veLG48Tv45K3myHfUG7ZGx28dRyFKCVtQox';
 const POSTHOG_HOST = 'https://us.i.posthog.com';
 const POSTHOG_UI_HOST = 'https://us.posthog.com';
