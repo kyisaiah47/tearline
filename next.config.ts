@@ -16,6 +16,12 @@ const nextConfig: NextConfig = {
   // than .next. Building into .next while `next dev` is running overwrites the
   // manifests the dev server holds open, and every request then 500s with
   // "Cannot find module './NNN.js'" until it is restarted.
-  distDir: process.env.NEXT_DIST_DIR || ".next",};
+  distDir: process.env.NEXT_DIST_DIR || ".next",
+  // The dev badge sits bottom-left on top of the footer and reads as a clipped
+  // footer in every screenshot. Measured 2026-08-22: it painted over the left end
+  // of this footer's band in the 1440 capture that goes on the review sheet, which
+  // is the same reason agentwire and standup already carry this line.
+  devIndicators: false,
+};
 
 export default nextConfig;

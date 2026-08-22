@@ -246,15 +246,41 @@
  *
  * ⛔ TOP-ALIGNED, NOT CENTRED. The capture centres the bar's children, and the left group is two
  * lines against two one-line groups — so the badge and the seal floated against the MIDDLE of the
- * copyright block rather than starting on its first line. */
-.site-footer-phone .footer-bottom-bar {
-  flex-flow: row wrap;
-  place-content: flex-start space-between;
-  align-items: flex-start;
+ * copyright block rather than starting on its first line.
+ *
+ * ⛔ A GRID, NOT `space-between`, AND THE MIDDLE GROUP IS WHY. `space-between` distributes the
+ * leftover width evenly BETWEEN the three groups, so the badge's position is a function of how
+ * long the copyright sentence happens to be — it is not centred, it only looks it while the
+ * sentence is this length. Measured here at 1440 on 2026-08-22: the badge's centre was 710 in a
+ * band whose centre is 720, near enough that footer-shape's 3% threshold let it through and one
+ * word of new copy would have moved it. Isaiah on the same defect on standup: "WHY ISNT TERMS AND
+ * PRIVACY POLICY CENTERD". `1fr auto 1fr` makes the centre track the BAND's centre whatever the
+ * left group says — the shape both shared shells were fixed to today (dev-shell
+ * `.rs-footer-band`, kynth-agent-shell `.frame-footer-bottom`).
+ *
+ * ⛔ AND THE SELECTOR CARRIES THE ATTRIBUTE, BECAUSE SHEET ORDER IS NOT THE SAME ON EVERY ROUTE.
+ * `.site-footer-phone .footer-bottom-bar` in globals.css declares `display: flex` at (0,2,0), the
+ * same specificity this rule had, so which one wins is decided by which chunk Next emitted last.
+ * Measured on standup the same morning with the identical shape: `/` computed `display: grid` and
+ * centred while `/coverage` computed `display: flex` from the same source and stayed 133px out.
+ * `[data-border]` takes this to (0,3,0), which wins on every route whatever the order. */
+.site-footer-phone .footer-bottom-bar[data-border] {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
   gap: 16px 32px;
 }
+.site-footer-phone .footer-bottom-bar[data-border] > *:nth-child(1) { justify-self: start; }
+.site-footer-phone .footer-bottom-bar[data-border] > *:nth-child(2) { justify-self: center; }
+.site-footer-phone .footer-bottom-bar[data-border] > *:nth-child(3) { justify-self: end; }
+/* ⛔ `width: auto` IS LOAD-BEARING NOW THE BAND IS A GRID. The donor sizes this box as
+ * `flex: 1 0 0px; width: 1px` — a flex-fill whose declared width only ever meant "start from
+ * nothing and grow". `flex` says nothing to a grid item, so the 1px became the real width:
+ * measured at 1440 right after the grid landed, the copyright box was 1px inside a 424px track
+ * and its two sentences painted straight out of it. */
 .site-footer-phone .footer-bottom-bar > .footer-copyright-text {
   flex: 1 1 auto;
+  width: auto;
   min-width: 0;
   max-width: 62ch;
 }
@@ -276,12 +302,21 @@ html body .footer-bottom-bar a.kynth-signature[href] {
 }
 
 @media (max-width: 809.98px) {
-  /* Three groups on one line in a phone column is three groups nobody can read. */
-  .site-footer-phone .footer-bottom-bar {
-    flex-direction: column;
-    align-items: flex-start;
+  /* Three groups on one line in a phone column is three groups nobody can read: the three tracks
+     collapse to one and every group starts on the band's left edge. */
+  .site-footer-phone .footer-bottom-bar[data-border] {
+    grid-template-columns: minmax(0, 1fr);
     gap: 12px;
   }
+  /* ⛔ AND THESE HAVE TO CARRY `:nth-child` TOO, OR THE DESKTOP RULES OUTRANK THEM. A media
+     query does not add specificity — `> *` is one selector weaker than `> *:nth-child(2)`, so
+     the desktop `justify-self: center` kept winning inside the query. Measured at 390 on
+     2026-08-22: the band stacked correctly but the studio badge painted centred and the seal
+     right-aligned while the copyright sat on the left edge, and every gate passed — the two
+     spread checks are desktop-only and BAND OFF-CENTRE skips a band that has wrapped. */
+  .site-footer-phone .footer-bottom-bar[data-border] > *:nth-child(1),
+  .site-footer-phone .footer-bottom-bar[data-border] > *:nth-child(2),
+  .site-footer-phone .footer-bottom-bar[data-border] > *:nth-child(3) { justify-self: start; }
   .site-footer-phone .footer-bottom-bar > .kynth-signature-line {
     margin-left: 0;
   }
