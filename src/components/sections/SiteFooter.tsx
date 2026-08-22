@@ -22,9 +22,11 @@ import SocialColumn from "@/components/SocialColumn";
  * ⛔ AND THAT LINK IS NO LONGER A COLUMN OF ITS OWN. It was one row under a "Studio" heading
  * beside columns of four and five, which is the shape Isaiah called a mess on 2026-08-19, and
  * it was the THIRD anchor to kynth.studio in this same footer: the "Built by" seal lockup in
- * the bar below is one, the "A Kynth Studios project" badge beside it is another. The
- * destination did not go anywhere — it is still reached twice, from the signature that is
- * built for it. What went is a column heading standing over a single row.
+ * the bar below is one, the "A Kynth Studios project" badge beside it was another. The
+ * destination did not go anywhere — the signature that is built for it is the one anchor now.
+ * What went is a column heading standing over a single row, and then, on 2026-08-22, the badge:
+ * the copyright sentence in that same bar already reads "a Kynth Studios project.", and the
+ * studio's name twice in one band is the TWO CREDITS defect. See the band below.
  *
  * The shell keeps all three of the donor's breakpoint variants, and it has to.
  * `site-footer-row` is not a phone class despite the name — it is where the
@@ -300,39 +302,31 @@ function FooterBody() {
                   {"."}
                 </p>
               </div>
-              <div className={"status-badge-container"}>
-                <a
-                  className={
-                    "herosection-dot-4 nav-dropdown-trigger herosection-dot herosection-dot-4-state herosection-dot-2"
-                  }
-                  data-name={"Dot"}
-                  href={"https://kynth.studio/?utm_source=tearline&utm_medium=studio_credit"}
-                  target={"_blank"}
-                  rel={"noopener"}
-                >
-                  <div
-                    className={"herosection-dot-3"}
-                    data-border={"true"}
-                    data-name={"Dot"}
-                    style={{ borderRadius: "2px" }}
-                  />
-                  <div
-                    className={"hiring-badge"}
-                    data-component={"RichTextContainer"}
-                  >
-                    <p
-                      className={"heading-4 menu-label"}
-                      dir={"auto"}
-                      style={{
-                        "--rt-text-color":
-                          "var(--extracted-r6o4lv, var(--color-background, rgb(255, 165, 82)))",
-                      }}
-                    >
-                      {"A Kynth Studios project"}
-                    </p>
-                  </div>
-                </a>
-              </div>
+              {/* ⛔ THE BAND'S MIDDLE GROUP IS EMPTY, AND THE BOX STAYS SO THE SEAL KEEPS THE
+                * THIRD TRACK. What was here was an accent-coloured badge reading "A Kynth Studios
+                * project", beside a copyright sentence that already says "a Kynth Studios
+                * project." in the same band. Isaiah, off that render: "we dont need a kynth
+                * studios project what?" One credit is a signature; two read as a template filled
+                * in twice. `footer-shape.mjs`'s TWO CREDITS check is the standing measurement —
+                * it counted the phrase twice in this footer at both 1440 and 390.
+                *
+                * ⛔ THE COPYRIGHT SENTENCE IS THE CREDIT AND IT STAYS, AND SO DOES THE SEAL. The
+                * "Built by" lockup below is the signature, not a second credit — the spec names
+                * it as the band's third group. The badge's destination went nowhere either: it
+                * pointed at kynth.studio with the same utm pair the signature carries, and the
+                * signature is the anchor built for that.
+                *
+                * ⛔ AND WHAT IS LEFT IS AN EMPTY CONTAINER RATHER THAN NOTHING. The band is
+                * `1fr auto 1fr` with the three groups placed by `:nth-child`; drop this box and
+                * the signature becomes child 2, lands in the centre track and paints in the
+                * middle of the band. Tearline publishes no policy pages — its surfaces are
+                * pricing, about, status and security, and there is no privacy/terms/cookie route
+                * to link — so the centre is honestly empty, which the spec names as a fact about
+                * a product rather than a defect to paper over. An empty box is 0x0
+                * (`width: auto; height: auto`, globals.css:3257), so the auto track collapses to
+                * it and the band reads as two groups. Same shape as dev-shell's `LegalLinks()`,
+                * which returns an empty `.rs-footer-links-group` for exactly this reason. */}
+              <div className={"status-badge-container"} />
                 {/* THE STUDIO SIGNATURE — "Built by" + the seal lockup, approved by Isaiah
                   * 2026-08-19 off a rendered four-way comparison of this footer bar. Spec:
                   * kynth-ops/standards/STUDIO-CREDIT-SEAL.md. Reference implementation:
