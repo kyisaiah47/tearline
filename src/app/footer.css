@@ -128,6 +128,30 @@
   gap: 28px 24px;
   width: 100%;
 }
+/* ⛔ AND THE ROWS SIZE TO THEIR OWN COLUMNS, NOT TO THE TALLEST ONE IN THE FOOTER.
+ *
+ * The capture writes the phone stack with every row track an equal fraction — an explicit
+ * `repeat(2, minmax(0, 1fr))` plus a matching implicit track — which is survivable while the
+ * groups it was drawn for hold four rows each. This footer holds five groups of 4, 4, 4, 5 and
+ * 11 rows, and FOLLOW is the eleven. Every row track then equalises to FOLLOW's height and the
+ * two rows above it are padded out to match.
+ *
+ * Measured at 360px on the deployed site 2026-08-22, before this rule: three row tracks of
+ * 728.594px each, with PRODUCT/DOCS occupying 270.8px of the first and GUIDES/CODE 336.8px of
+ * the second — about 916px of empty footer between the link groups, on a page 11,642px tall.
+ * It reads as two unrelated footers separated by a blank screen, and no check here sees it:
+ * nothing overflows, nothing collapses, nothing overlaps. Only the picture shows it.
+ *
+ * It has to name the state class to outrank the capture, which writes both declarations on
+ * `.site-footer-phone.footer-2-state-2 .content-stack` — a class more than the selector above.
+ * `min-content` rather than `auto`, because `align-items: start` already stops a group
+ * stretching and `auto` would still grow a track to the row's tallest item. */
+.site-footer-phone.footer-2-state-2 .content-stack,
+.site-footer-phone.footer-2-state .content-stack,
+.site-footer-phone.footer-2-state-3 .content-stack {
+  grid-template-rows: none;
+  grid-auto-rows: min-content;
+}
 @media (min-width: 810px) {
   .site-footer-phone .content-stack {
     grid-auto-flow: column;

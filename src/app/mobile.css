@@ -35,6 +35,49 @@
     min-width: 44px !important;
   }
 
+  /* ⛔ BUT NOT IN THE FOOTER COLUMNS, WHERE CENTRING BREAKS THE LEFT EDGE.
+   *
+   * The centring above is written for the NAV ROW and is right there: the controls sit side by
+   * side, so growing a short one to the 44px floor and centring inside it leaves its glyph where
+   * it was. The footer's link groups are COLUMNS — every row's mark on one shared left edge — and
+   * the same pair of declarations does the opposite thing to them. A row whose content is
+   * narrower than 44px is padded out to 44 and its content then centred, so its mark steps in
+   * from the edge every other mark in the column sits on.
+   *
+   * Only the short rows move, which is what makes it read as a mistake rather than a style:
+   * measured at 432px on a local build 2026-08-22, the "X" rows in the Follow column had their
+   * anchor forced to 44px for 30px of content and their mark drawn at x=36 against x=29 for
+   * Threads, Instagram, LinkedIn, Bluesky, Dev.to, Hashnode and YouTube directly above and below
+   * them. At 1440 the same rows measure 29.9px wide, `justify-content: flex-start`, mark flush —
+   * so this is a phone-only ragged edge and nothing at desktop width can show it.
+   *
+   * The floor is not given up. `min-width: 44px` stands and the hit area is still 44 in both
+   * axes; only the content's alignment inside it goes back to the leading edge. */
+  footer .nav-link.small {
+    justify-content: flex-start !important;
+  }
+
+  /* ⛔ AND THE LABEL HAS TO BE ALLOWED TO WRAP, OR STARTING IT AT THE EDGE JUST MOVES THE SPILL.
+   *
+   * The register sets these labels `white-space: pre` with `overflow: visible`, and the footer's
+   * link groups are a two-track grid whose tracks are the viewport's, not the copy's. A label
+   * longer than its track paints straight through the track edge and lands on the column beside
+   * it — the anchor is clipped to the track but the paragraph inside it is not.
+   *
+   * Centring hid that. With the content centred in an over-narrow box the spill was split across
+   * both sides and never reached far enough into the neighbour to be scored; flush-left it all
+   * goes one way. Measured at 360px on a local build 2026-08-22: "Spotify receipt generators" and
+   * "Share images, four ways" both painted to x=192, which is exactly where the CODE column's
+   * rows begin, and the overlap check reported Guides over Code by 12x256. The rows were always
+   * too long for a 141px track — 390 and 430 have the room and were clean at both alignments.
+   *
+   * `pre-wrap` rather than `normal`, the same choice the shared base sheet makes for a headline
+   * in a clamped track: it only adds the ability to wrap, and an authored line break in a label
+   * still renders. */
+  footer a.tl-footer-row p {
+    white-space: pre-wrap !important;
+  }
+
   .tl-btn {
     min-height: 44px !important;
   }
@@ -199,6 +242,36 @@
   .footer-copyright p,
   .footer-copyright div {
     white-space: pre-wrap !important;
+  }
+
+  /* ⛔ AND THE SAME BOXES NEED `width` RESET, NOT JUST `min-width` AND `max-width`.
+   *
+   * The block above hands every footer descendant `min-width: 0` and `max-width: 100%`, which is
+   * the whole repair as long as the bar the credit sits in stays a ROW. The register writes the
+   * credit box with Framer's fill idiom — a `flex` that grows plus a declared `width: 1px` for it
+   * to grow from — and in a row the grow factor eats the 1px on the first layout pass, so nothing
+   * shows.
+   *
+   * Turn that bar into a COLUMN for the phone, which is what a footer band has to do, and the
+   * grow factor moves to the height. The declared width is now the CROSS size and nothing is
+   * left to grow it: the box measures 1px wide and paints one character per line. Neither
+   * `min-width: 0` nor `max-width: 100%` touches a declared `width`, so both go on passing while
+   * the sentence is a vertical stripe.
+   *
+   * Measured on tearline at 432px against a local build of this commit: the visible footer
+   * variant computed `width: 1px`, `flex: 1 1 auto`, in a `flex-direction: column` bar 374px
+   * wide, and the mobile gate reported it as two collapsed boxes. `width: auto` is the reset —
+   * a shrink-to-fit text box under a `flex-start` cross alignment, still capped by the
+   * `max-width: 100%` above it.
+   *
+   * Scoped to the credit boxes rather than added to the `footer *` rule, because that rule
+   * covers the mark, the logo link and every icon in the band, all of which are sized by a
+   * declared width on purpose. */
+  footer [class*="rights"],
+  footer [class*="copyright"],
+  footer [class*="credit"],
+  footer [class*="reserved"] {
+    width: auto !important;
   }
 }
 

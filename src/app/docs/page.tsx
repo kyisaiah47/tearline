@@ -550,9 +550,23 @@ export default function Docs() {
                         The element already rejected with an explicit error; what was missing is
                         anywhere an author could read what to DO with it, and what the four steps
                         even are. `data-tl-explains` marks this block for intent.json's
-                        `export-failure-says-what-to-do`. */}
+                        `export-failure-says-what-to-do`.
+
+                        ⛔ THE LABEL IS A PHRASE, NOT A SENTENCE, AND IT WAS THE ONLY ONE HERE THAT
+                        WAS NOT. Twelve of the thirteen `tl-docs-label` runs on this page are short
+                        lowercase phrases — "the whole install", "the one caveat, stated plainly" —
+                        and the register sizes them for that: 11px monospace, floored to 12px at
+                        phone width by mobile.css. This one carried two clauses across 47
+                        characters, so at 360/390/430 the mobile gate scored it as PROSE under the
+                        13px floor, at all three widths, on every measurement of /docs.
+                        Accommodating it by lifting the label register to 13px would resize
+                        twenty-three labels to suit the one that broke the pattern.
+                        Nothing is lost by trimming: the remedy half of the old string is the
+                        STAGE_FAILURES table directly below, which is what an author reads when an
+                        export stops — "use a narrower width, or scale 1" — rather than a heading
+                        promising it. */}
                     <p className={"tl-docs-label tl-docs-label-gap"} data-tl-explains={"stages"}>
-                      {"watching it happen, and what to do when it stops"}
+                      {"watching it happen, and what stops it"}
                     </p>
                     <p className={"tl-docs-note"}>
                       {"An export fires "}
