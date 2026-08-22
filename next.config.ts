@@ -1,12 +1,14 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  // PostHog reverse proxy: analytics posts to a same-origin /ingest path and is rewritten
-  // here, so ad blockers that drop us.i.posthog.com can't drop first-party analytics.
   async rewrites() {
     return [
-      { source: '/ingest/static/:path*', destination: 'https://us-assets.i.posthog.com/static/:path*' },
-      { source: '/ingest/:path*', destination: 'https://us.i.posthog.com/:path*' },
+      // ⛔ THE POSTHOG REVERSE PROXY WAS REMOVED 2026-08-22. It rewrote /ingest/* to
+      // us.i.posthog.com, which made every analytics beacon a Vercel function invocation, a
+      // Vercel edge request, and Vercel origin transfer in both directions. On one invoice that
+      // was 458 GB of Fast Origin Transfer ($13.04) and 11.1M function invocations ($2.75).
+      // posthog-js now talks to us.i.posthog.com directly; see src/components/Analytics.tsx.
+      // Do not put this rewrite back without pricing it first.
     ];
   },
   skipTrailingSlashRedirect: true,

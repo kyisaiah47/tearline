@@ -13,7 +13,7 @@ import posthog from 'posthog-js';
 // the 05:20 roster sync. Safe to hand-edit afterwards — the step only ever writes this file
 // when it is missing, never over an existing one.
 const POSTHOG_KEY = 'phc_uHpxqQHE6veLG48Tv45K3myHfUG7ZGx28dRyFKCVtQox';
-const POSTHOG_HOST = '/ingest';
+const POSTHOG_HOST = 'https://us.i.posthog.com';
 const POSTHOG_UI_HOST = 'https://us.posthog.com';
 
 // The roster slug this app was built for. Every event carries it as the `app` property, and
@@ -40,10 +40,10 @@ function init() {
     api_host: POSTHOG_HOST,
     ui_host: POSTHOG_UI_HOST,
     capture_pageview: false,
-    capture_pageleave: true,
-    autocapture: true,
+    capture_pageleave: false,
+    autocapture: false,
     person_profiles: 'identified_only',
-    session_recording: { maskAllInputs: true },
+    disable_session_recording: true,
     capture_exceptions: true,
     // Error-tracking noise gate (2026-08-17). PostHog's weekly digest was 363 exceptions of
     // which 333 were two browser artifacts no code here can fix — Outlook's SafeLink wrapper
