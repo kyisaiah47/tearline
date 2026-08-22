@@ -20,6 +20,45 @@
  * where every route carries its own copy of the donor footer).
  * ═══════════════════════════════════════════════════════════════════════════════════════════ */
 
+/* ── 0 · THE FOOTER SITS ON THE PAGE'S OWN RAIL ───────────────────────────────────────────────
+ *
+ * Isaiah, 2026-08-22, walking the rendered footers: "why arent things aligned man why is left
+ * padding diffdernet". On this site it was two separate misses, both measured at the time:
+ *
+ *   AGAINST THE PAGE. Every section above the footer runs on one rail — `.faqsection-content` &
+ *   siblings are `max-width: 1120px` over 1200px, `94%` under it, and their heading wrapper adds
+ *   24px (16px at phone). Measured: the page's copy starts at x=184 at 1440 and x=28 at 390. The
+ *   footer's `.content-4` carried the 1120px cap and NO inline padding at any width, so it ran
+ *   160→1280 at 1440 and 0→390 at 390 — the whole footer sat 24px outside the page's rail on
+ *   desktop and flush against the screen edge on a phone, with the page 28px in beside it.
+ *
+ *   AGAINST ITSELF. `.top` — the brand line — carries its own 24px, so at 1440 the mark started
+ *   at 184 while the column row and the band under it started at 160. Three rows, two left edges,
+ *   in one footer.
+ *
+ * One rail, declared once on the footer's own container, and `.top`'s copy of it comes off so the
+ * brand line is not inset twice. The numbers are the page's, not new ones: 24px over 810 and 16px
+ * under it, with the `94%` cap that the sections switch to below 1200px. */
+.site-footer-phone .content-4 {
+  padding-inline: 24px;
+}
+@media (max-width: 1199.98px) {
+  .site-footer-phone .content-4 {
+    max-width: 94%;
+  }
+}
+/* ⛔ AT PHONE THE RAIL IS ALL PADDING, BECAUSE THE 94% CAP CANNOT LAND. mobile.css declares
+   `footer *, .footer-copyright, .footer-copyright * { max-width: 100% !important }` under 810px,
+   so `.content-4` is pinned to the full width there and the cap above is overruled — checked with
+   CSS.getMatchedStylesForNode rather than guessed, after the first version of this rule measured
+   0→390 with the cap in the sheet. So the sections' 3% side margin is expressed as padding
+   instead of as a cap: 3% + 16px is 27.7px at 390, and the page's own copy starts at 28. */
+@media (max-width: 809.98px) {
+  .site-footer-phone .content-4 {
+    padding-inline: calc(3% + 16px);
+  }
+}
+
 /* ── 1 · THE BRAND LINE ───────────────────────────────────────────────────────────────────────
  *
  * The capture's `.content-4` is a ROW: the brand block on the left at `flex: 1`, the columns on
@@ -52,6 +91,12 @@
 .site-footer-phone .content-4 > .left .logo-description {
   align-items: flex-start;
   width: 100%;
+}
+/* ⛔ AND THE BRAND LINE'S OWN 24px COMES OFF — the rail is on `.content-4` now (§0) and this was
+   the second inset that put the mark at x=184 against a column row at x=160. `padding-inline`
+   only: the box keeps the vertical padding the capture gave it. */
+.site-footer-phone .content-4 > .left .top {
+  padding-inline: 0;
 }
 /* The tagline is the product's own published sentence and it is the only prose in the brand line.
    A measure keeps it inside the 45–75 character line the rest of the page sets body copy on. */
