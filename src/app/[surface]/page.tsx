@@ -29,10 +29,13 @@ import FACTS from "../../../FACTS.json";
  * product does not declare is not rendered at all, it 404s, and the product's own not-found
  * answers it.
  *
- * ⛔ ONE HOUR, NOT A DAY, BECAUSE /status IS IN THIS ROUTE. A status page rendered once and held
- * for twenty-four hours reports yesterday — the precise failure it exists to prevent. The other
- * shims are static text and would be happy at a day; they are cheap enough that one shared,
- * shorter window costs nothing and cannot be got wrong per surface.
+ * ⛔ A DAY, AND /status IS STILL 600 — MEASURED, NOT ASSUMED. This said "one hour, not a day,
+ * because /status is in this route". That was wrong. Next takes the MINIMUM of this route's
+ * `revalidate` and every fetch a path renders through, and `readStatusFeed()` sits behind
+ * `surface.kind === "status"` with `next: { revalidate: 600 }` — so /status is pinned to 600 by
+ * its own fetch no matter what this line says, and no other surface touches that fetch. Verified
+ * 2026-08-22 against `.next/prerender-manifest.json`. Holding the route at an hour bought /status
+ * nothing and re-rendered the static shims 23 extra times a day. Change the FETCH, never this.
  */
 
 const FAQ = faqRaw as FaqData;
@@ -46,7 +49,7 @@ if (FAQ.slug !== PRODUCT.slug) {
   );
 }
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 export const dynamicParams = false;
 
 export function generateStaticParams() {
