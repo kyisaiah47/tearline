@@ -11,11 +11,16 @@ export CLAUDE_JOB_CLASS=critical
 # disk-IO stall and take the whole estate to 522 while every project still reports healthy.
 set -euo pipefail
 
-# ⛔ ESTATE DEPLOY GUARD — do not deploy while other Claude sessions are still working.
-# Isaiah runs several sessions at once. Deploying into that ships a tree the others are
-# still changing, and it is stale before the build finishes — so this defers instead:
-# the repo is registered as pending and deploy-watch runs ONE deploy-all pass for
-# everything pending the moment the estate goes quiet. `DEPLOY_NOW=1` overrides.
+# ⛔ ESTATE DEPLOY GUARD — the estate deploys ONCE A DAY and this is not it.
+# 00:30 nightly sweep, only the repos whose HEAD moved. Everything else commits and pushes
+# and stops. Isaiah, 2026-08-22, after a $200 Vercel period: "we need to put a guard to
+# never deploy manually. we will only do an estate wide deploy 1x a day only of the apps
+# with changes."
+#
+# ⛔ THESE LINES USED TO DESCRIBE A PENDING QUEUE AND A WATCHER THAT FIRED ONE SWEEP WHEN
+# THE ESTATE WENT QUIET. That design was torn out on 2026-08-16 and the text outlived it by
+# six days. A comment describing a dead mechanism is not stale documentation, it is an
+# instruction: on 08-22 two sessions read a copy of it, tried to deploy, and were refused.
 # Wired by kynth-ops/tools/wire-deploy-guard.mjs — do not remove, do not make it
 # conditional. `deploy-all.sh --check` fails closed if it goes missing from any script.
 . "$HOME/Projects/kynth-ops/tools/deploy-lock.sh" || { echo "deploy gate missing — refusing to deploy" >&2; exit 1; }
