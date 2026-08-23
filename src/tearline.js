@@ -397,6 +397,38 @@ class TearLine extends HTMLElement {
       `<foreignObject x="0" y="0" width="${w}" height="${h}">${xhtml}</foreignObject></svg>`;
 
     this.#stage('rasterise', 3);
+
+    /* ⛔ THE REFUSAL IS OURS TO MAKE. IT USED TO BE THE BROWSER'S, AND THE BROWSER STOPPED.
+     *
+     * This step's whole contract is that an `<img src="https://…">` cannot be fetched from the
+     * export sandbox, so the export STOPS and says which picture and what to do about it. That
+     * was enforced entirely by `img.onerror` below: an SVG carrying an unreachable subresource
+     * used to fail to decode, the error fired, and the one authored message reached the reader.
+     *
+     * MEASURED ON THE LIVE PRODUCT, 2026-08-23. It no longer fires — for a same-origin picture,
+     * for a cross-origin one, for one served with `access-control-allow-origin: *`, or for a URL
+     * that 404s. Chrome decodes the SVG regardless and paints the browser's broken-image glyph
+     * where the picture was. Exported `<img src="…/og.jpg">` with a 654px-tall photograph on the
+     * paper and got back a receipt with a 16px torn-page icon in its place, and the whole card
+     * 600px shorter than the one on screen. Nothing threw. Nothing was reported. The reader gets
+     * a PNG that does not match what they saw, which is the ONE thing this element promises.
+     *
+     * A silent wrong file is strictly worse than a refusal, and the refusal is what the docs, the
+     * playground's error panel and this file's own header all still describe. So the condition is
+     * tested here rather than inferred from a decode failure that no longer happens. The message
+     * is unchanged, because `explain()` in ExportStage.tsx keys the reader-facing sentence off it.
+     *
+     * The attribute, not the resolved `.src`: a relative path is just as unreachable inside the
+     * sandbox, and only a `data:` URI is actually carried into it. An `<img>` with no src at all
+     * paints nothing on either side, so it is not a mismatch and is not flagged. `img.onerror`
+     * stays as the second line of defence for whatever fails to decode for some other reason. */
+    const remote = [...host.querySelectorAll('img')]
+      .map((el) => el.getAttribute('src') || '')
+      .filter((src) => src && !/^data:/i.test(src));
+    if (remote.length) {
+      throw new Error('tearline: could not rasterise — an <img> inside the receipt must be a data: URI, remote images cannot be reached from the export sandbox (' + remote[0] + ')');
+    }
+
     const img = new Image();
     await new Promise((res, rej) => {
       img.onload = res;
