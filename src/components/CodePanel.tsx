@@ -20,15 +20,30 @@ import type { CSSProperties, ReactNode } from "react";
 
 export type Tok = "tag" | "attr" | "str" | "text" | "kw" | "fn" | "muted" | "ok";
 
+/* ⛔ NO HUE. The blue and lilac here were the donor editor's theme, and they
+ * were the last two foreign colours on a page that is now two values — on the
+ * light theme they came out as pale sky and lavender on cream, which is the
+ * exact "third palette" the backdrop was removed for.
+ *
+ * Syntax now separates by VALUE and by weight, not by hue: the element's own
+ * tag is the accent at full strength, attributes step down one tier, strings
+ * sit on the quiet tier, and the gutter is quieter still. That survives the
+ * theme flip with no second map, because every entry reads a token that
+ * already inverts.
+ *
+ * `ok` was a green. Nothing else on this page is green and success is not a
+ * brand event here, so it takes the accent. `--color-red` is untouched: an
+ * error is a semantic, not an accent, and the template already spends red on
+ * it. */
 const COLOR: Record<Tok, string> = {
-  tag: "rgb(130, 170, 255)",
-  attr: "rgb(199, 146, 234)",
-  str: "var(--color-background, rgb(255, 165, 82))",
-  text: "var(--color-text, rgb(209, 209, 209))",
-  kw: "rgb(199, 146, 234)",
-  fn: "rgb(130, 170, 255)",
-  muted: "var(--color-gray-dark-2, rgb(64, 64, 64))",
-  ok: "rgb(77, 255, 145)",
+  tag: "var(--color-background, #f2ece1)",
+  attr: "var(--color-gray, #b3ada3)",
+  str: "var(--value-gray-2, #8f8b84)",
+  text: "var(--color-text, #e8e2d8)",
+  kw: "var(--color-background, #f2ece1)",
+  fn: "var(--color-background, #f2ece1)",
+  muted: "var(--color-gray-dark-2, #9a958c)",
+  ok: "var(--color-background, #f2ece1)",
 };
 
 /** One rendered line: a list of [text, token] pairs. */
@@ -99,9 +114,13 @@ export default function CodePanel({
         }}
       >
         <div style={{ display: "flex", gap: "8px" }}>
-          <div style={dot("#FF5F57")} />
-          <div style={dot("#FFBD2E")} />
-          <div style={dot("#28C840")} />
+          {/* Not the macOS red/amber/green. Those are three more foreign
+            * brand colours, and on a two-value page they are the loudest thing
+            * in the hero after the receipt itself. Same neutral, three times:
+            * the shape is what says "window", not the colour. */}
+          <div style={dot("var(--color-brown-2, #4a463f)")} />
+          <div style={dot("var(--color-brown-2, #4a463f)")} />
+          <div style={dot("var(--color-brown-2, #4a463f)")} />
         </div>
         <span
           style={{

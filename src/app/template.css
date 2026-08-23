@@ -206,7 +206,7 @@ body {
   overflow: auto;
   background: none;
   color: transparent;
-  caret-color: var(--color-background, #ffa552);
+  caret-color: var(--color-background, #f2ece1);
   outline: none;
 }
 
@@ -226,16 +226,24 @@ body {
 }
 
 /* Tokens — CodePanel's palette, so the editor and the windows agree. */
+/* ⛔ THE SECOND SYNTAX PALETTE. CodePanel carries its own map in TSX; this one
+ * paints the playground's live editor, and the two drifted apart — the blue and
+ * lilac here survived the accent being removed because nothing greps two files
+ * at once. On the light theme they measured 1.78:1 on the editor's own panel,
+ * which is text you cannot read.
+ *
+ * Same scheme as CodePanel now: separation by VALUE, not hue. The element's own
+ * tag at full accent, attributes one tier down, strings on the quiet tier. */
 .t-tag {
-  color: rgb(130 170 255);
+  color: var(--color-background, #f2ece1);
 }
 
 .t-attr {
-  color: rgb(199 146 234);
+  color: var(--color-gray, #b3ada3);
 }
 
 .t-str {
-  color: var(--color-background, #ffa552);
+  color: var(--value-gray-2, #8f8b84);
 }
 
 .t-punct {
@@ -243,7 +251,7 @@ body {
 }
 
 .t-com {
-  color: var(--color-gray-dark-2, #404040);
+  color: var(--color-gray-dark-2, #9a958c);
 }
 
 .tl-editor-controls {
@@ -278,7 +286,7 @@ body {
   white-space: nowrap;
   border: 1px solid transparent;
   border-radius: 8px;
-  background: var(--color-background, #ffa552);
+  background: var(--color-background, #f2ece1);
   color: var(--color-black, #1a1917);
   cursor: pointer;
   /* Reserved transparent at rest, so activating it moves nothing. `transition` deliberately omits
@@ -310,7 +318,7 @@ body {
 }
 
 .tl-btn:focus-visible {
-  outline-color: var(--color-background, #ffa552);
+  outline-color: var(--color-background, #f2ece1);
 }
 
 .tl-btn-ghost:focus-visible {
@@ -427,7 +435,7 @@ body {
 .tl-td-name code {
   font-family: "Geist Mono", "Fira Code", monospace;
   font-size: 0.92em;
-  color: var(--color-background, #ffa552);
+  color: var(--color-background, #f2ece1);
 }
 
 .tl-docs-note strong {
@@ -441,7 +449,7 @@ body {
  * without colour alone carrying the signal. Colour-only on hover: the house
  * rule is no translate or scale on interactive elements. */
 .tl-docs-note a {
-  color: var(--color-background, #ffa552);
+  color: var(--color-background, #f2ece1);
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
@@ -497,7 +505,7 @@ body {
 }
 
 .tl-copy:hover .tl-copy-action {
-  color: var(--color-background, #ffa552);
+  color: var(--color-background, #f2ece1);
 }
 
 /* --- reference table -------------------------------------------------------
@@ -677,7 +685,7 @@ body {
  * accent — it is the one piece of copy on the page a visitor is meant to take
  * away with them. The filled variant already inverts to near-black ink. */
 .tl-cmd:not(.tl-cmd-primary) .tl-cmd-text {
-  color: var(--color-background, #ffa552);
+  color: var(--color-background, #f2ece1);
 }
 
 .tl-cmd:not(.tl-cmd-primary) {
@@ -687,7 +695,7 @@ body {
 /* The fill comes from the donor's class on an <a>; killing the UA button
  * background takes it with it, so the primary states it explicitly. */
 .tl-cmd-primary {
-  background: var(--color-background, #ffa552);
+  background: var(--color-background, #f2ece1);
 }
 
 .tl-cmd-primary:hover {
@@ -949,4 +957,131 @@ tear-line[data-ready] {
   .tl-result { animation: none; }
   .tl-orb { transition: none; }
   .tl-orb[data-state="active"] { animation: none; }
+}
+
+/* ── THE SEGMENTED CTA ───────────────────────────────────────────────────────
+ *
+ * Replaces the pair of pills whose second member printed the whole install URL
+ * (see InstallCta.tsx for why the URL is gone). One object, two halves: a
+ * primary action and a way to take the source with you.
+ *
+ * The frame is the accent at full strength on both themes, and the primary
+ * half is filled with it — so the control inverts with the page and no hex
+ * appears here. Height 40px matches the donor's `login-link` row so it sits in
+ * the CTA row without nudging anything. */
+.tl-seg {
+  display: inline-flex;
+  height: 40px;
+  border: 1px solid var(--color-background, #f2ece1);
+  border-radius: 8px;
+  overflow: hidden;
+  flex: none;
+}
+
+.tl-seg-a {
+  display: grid;
+  place-items: center;
+  padding: 0 18px;
+  background: var(--color-background, #f2ece1);
+  color: var(--color-black, #111110);
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* These are <button>s where the donor used <a>, so the UA sheet applies and its
+ * default `border: 2px outset` is a literal 3D bevel. Reset it explicitly. */
+.tl-seg-b {
+  appearance: none;
+  width: 40px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: var(--color-background, #f2ece1);
+  border: 0;
+  border-left: 1px solid var(--color-background, #f2ece1);
+  cursor: pointer;
+  padding: 0;
+}
+
+.tl-seg-b svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tl-seg-a:hover {
+    filter: brightness(0.94);
+  }
+  .tl-seg-b:hover {
+    background: var(--color-yellow-5-10, rgb(242 236 225 / 10%));
+  }
+}
+
+/* Confirmation is the icon swap plus a fill, held for 1.4s by the component.
+ * No caption: a control that changes width on success moves the row under the
+ * pointer that just clicked it. */
+.tl-seg[data-state="copied"] .tl-seg-b {
+  background: var(--color-background, #f2ece1);
+  color: var(--color-black, #111110);
+}
+
+/* The header's row is tighter than the hero's. */
+.ctas-2 .tl-seg {
+  height: 34px;
+}
+.ctas-2 .tl-seg-a {
+  padding: 0 14px;
+  font-size: 12.5px;
+}
+.ctas-2 .tl-seg-b {
+  width: 34px;
+}
+
+/* ── INK / PAPER ─────────────────────────────────────────────────────────────
+ * A 34px square in the header's tertiary tier — quiet, since the theme is a
+ * preference and not a call to action. */
+.tl-theme {
+  appearance: none;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-gray-dark, #2a2823);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--value-gray-2, #8f8b84);
+  cursor: pointer;
+  padding: 0;
+  flex: none;
+}
+
+.tl-theme svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tl-theme:hover {
+    color: var(--color-text, #e8e2d8);
+    border-color: var(--color-yellow-3-40, rgb(242 236 225 / 40%));
+  }
+}
+
+/* ── THE HERO BACKDROP IS A FLAT PLATE ───────────────────────────────────────
+ * --brand-backdrop is `none` now (see theme.css). Left alone, this rule would
+ * still paint the donor's darkening gradient over the plate and take the right
+ * half two shades off the page for no reason, and the ::after would add a
+ * 120px inset vignette to a surface with nothing in it to vignette. */
+.page-body .tl-backdrop {
+  background-color: var(--color-black-13, #0d0d0c);
+  background-image: none;
+}
+
+.page-body .tl-backdrop::after {
+  box-shadow: none;
 }

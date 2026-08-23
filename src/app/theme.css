@@ -27,61 +27,171 @@
 /* The port declares its whole palette on `body`, not `:root` — a `:root` block
  * here would lose to it on proximity no matter how late it loads. Matching the
  * selector and relying on source order is what actually overrides it. */
+/* ── STARK. TWO THEMES, NO ACCENT COLOUR ────────────────────────────────────
+ *
+ * Isaiah, 2026-08-23, looking at the live page: the amber had to go. The
+ * argument for it was that receipts sit under a warm till lamp; the argument
+ * against it is the receipt itself, which is black ink on cream paper and is
+ * the only thing on this page the product actually makes. So the page is now
+ * that and its inverse, and nothing else. There is no accent hue anywhere in
+ * this file.
+ *
+ * `--color-background` is positionally the accent at full strength — every
+ * CTA fill, every link, the brand mark, the eyebrows. It is the PAPER on dark
+ * and the INK on light, which is what makes one set of template rules produce
+ * both themes without touching globals.css.
+ *
+ * DARK IS THE DEFAULT and it is declared here with no attribute, so it is what
+ * paints when JS never arrives. Light is an override keyed on the attribute
+ * the pre-hydration script in layout.tsx stamps.
+ *
+ * The port declares its whole palette on `body`, not `:root` — a `:root` block
+ * alone would lose to it on proximity no matter how late it loads. Matching
+ * the selector and relying on source order is what actually overrides it. */
 :root,
 body {
-  /* --- accent, full strength ------------------------------------------- */
-  --color-background: #ffa552;
-  --color-lime: #f2953f;
-  --color-lime-2: #d8792a;
-  --color-lime-3: #ad5f1e;
+  /* --- accent, full strength: the paper ---------------------------------- */
+  --color-background: #f2ece1;
+  --color-lime: #e6dfd2;
+  --color-lime-2: #cfc7b8;
+  --color-lime-3: #a8a094;
 
-  /* --- accent, light end (badges, hover fills, quiet type) -------------- */
-  --color-cream-3: #fff6ee;
-  --color-cream-4: #ffe9d5;
-  --color-sand-3: #ffd0a8;
+  /* --- accent, light end (badges, hover fills, quiet type) --------------- */
+  --color-cream-3: #fbf8f2;
+  --color-cream-4: #f2ece1;
+  --color-sand-3: #ddd5c7;
 
-  /* --- accent, dark end (borders and fills on near-black) --------------- */
-  --color-brown-2: #7d4718;
-  --color-gray-dark-4: #5e3512;
-  --color-gray-dark-5: #48290e;
-  --color-gray-dark-6: #241407;
+  /* --- accent, dark end (borders and fills on near-black) ---------------- */
+  --color-brown-2: #4a463f;
+  --color-gray-dark-4: #3a3730;
+  --color-gray-dark-5: #2b2924;
+  --color-gray-dark-6: #1a1917;
 
-  /* --- accent alphas ---------------------------------------------------- */
-  --color-yellow-6-5: #ffa5520d;
-  --color-yellow-5-10: #ffa5521a;
-  --color-yellow-4-20: #ffa55233;
-  --color-yellow-3-40: #ffa55266;
-  --color-yellow-2-60: #ffa55299;
-  --color-yellow-80: #ffa552cc;
+  /* --- accent alphas ----------------------------------------------------- */
+  --color-yellow-6-5: #f2ece10d;
+  --color-yellow-5-10: #f2ece11a;
+  --color-yellow-4-20: #f2ece133;
+  --color-yellow-3-40: #f2ece166;
+  --color-yellow-2-60: #f2ece199;
+  --color-yellow-80: #f2ece1cc;
 
-  /* --- page ground ------------------------------------------------------
-   * Warmed a couple of points off the template's neutral #1a1a1a so the paper
-   * in the hero doesn't read as a blue-grey cut-out sitting on top of it. */
-  --color-black: #1a1917;
-  --color-black-12: #211f1c;
-  --color-black-13: #141312;
-  --color-black-14: #100f0e;
+  /* --- page ground: near-black, a shade off neutral so the paper in the
+   * hero does not read as a blue-grey cut-out sitting on top of it. ------- */
+  --color-black: #111110;
+  --color-black-12: #1a1918;
+  --color-black-13: #0d0d0c;
+  --color-black-14: #0a0a09;
 
-  --color-black-11-0: #1a191700;
-  --color-black-10-10: #1a19171a;
-  --color-black-9-20: #1a191733;
-  --color-black-8-30: #1a19174d;
-  --color-black-7-40: #1a191766;
-  --color-black-6-50: #1a191780;
-  --color-black-5-60: #1a191799;
-  --color-black-4-70: #1a1917b3;
-  --color-black-3-80: #1a1917cc;
-  --color-black-2-90: #1a1917e6;
+  --color-black-11-0: #11111000;
+  --color-black-10-10: #1111101a;
+  --color-black-9-20: #11111033;
+  --color-black-8-30: #1111104d;
+  --color-black-7-40: #11111066;
+  --color-black-6-50: #11111080;
+  --color-black-5-60: #11111099;
+  --color-black-4-70: #111110b3;
+  --color-black-3-80: #111110cc;
+  --color-black-2-90: #111110e6;
 
-  /* --- the per-product backdrop -----------------------------------------
-   * Generated to the product's palette, dithered by tools/dither.py, dropped
-   * in public/images. Every surface that shows it reads this variable, so
-   * swapping products is a one-line edit and no markup names a file. */
-  --brand-backdrop: url("/images/backdrop.png");
+  /* --- type tiers -------------------------------------------------------- */
+  --color-text: #e8e2d8;
+  --color-cream: #f7f4ee;
+  --color-cream-2: #e6e0d6;
+  --color-sand: #cfc9bf;
+  --color-gray: #b3ada3;
+  --color-gray-2: #9b968d;
+  --color-brown: #5c584f;
+  /* Both quiet tiers are measured, not chosen by eye: 5.7:1 and 6.4:1 on
+   * #111110. The label tier is the LIGHTER of the two because it carries the
+   * smallest type on the page, and small type needs more contrast, not less. */
+  --value-gray-2: #8f8b84;
+  --color-gray-dark-2: #9a958c;
+  --color-gray-dark: #2a2823;
 
-  /* --- ink -------------------------------------------------------------- */
+  /* --- the hero backdrop -------------------------------------------------
+   * ⛔ DELIBERATELY NONE. This was a generated photograph, and a photograph is
+   * the one thing a two-colour page cannot absorb: it drags a third palette in
+   * behind the receipt and turns the right half brown. The hero window and the
+   * receipt now sit on a flat plate, so the only image in the viewport is the
+   * artifact the product renders. */
+  --brand-backdrop: none;
+
+  /* --- ink: the PRINTED ARTIFACT's own colours, not the site's ------------
+   * These are what tearline.js puts on the paper. They do not flip with the
+   * theme, because a receipt does not have a dark mode. */
   --brand-paper: #f2ece1;
   --brand-ink: #17150f;
+}
+
+/* ── LIGHT: the page becomes the receipt ────────────────────────────────────
+ *
+ * Every token above, inverted around the same two colours. The accent is now
+ * the ink, the ground is now the paper, and the two quiet tiers are measured
+ * against #f2ece1 rather than against #111110 (5.9:1 and 7.1:1). */
+:root[data-theme="light"],
+:root[data-theme="light"] body {
+  --color-background: #141310;
+  --color-lime: #2a2621;
+  --color-lime-2: #3a352d;
+  --color-lime-3: #4d4740;
+
+  --color-cream-3: #ffffff;
+  --color-cream-4: #e9e2d5;
+  --color-sand-3: #d6cec0;
+
+  --color-brown-2: #b9b1a2;
+  --color-gray-dark-4: #a89f8f;
+  --color-gray-dark-5: #8d8577;
+  --color-gray-dark-6: #f7f3ea;
+
+  --color-yellow-6-5: #1413100d;
+  --color-yellow-5-10: #1413101a;
+  --color-yellow-4-20: #14131033;
+  --color-yellow-3-40: #14131066;
+  --color-yellow-2-60: #14131099;
+  --color-yellow-80: #141310cc;
+
+  --color-black: #f2ece1;
+  --color-black-12: #e9e2d5;
+  --color-black-13: #f7f3ea;
+  --color-black-14: #fffdf8;
+
+  --color-black-11-0: #f2ece100;
+  --color-black-10-10: #f2ece11a;
+  --color-black-9-20: #f2ece133;
+  --color-black-8-30: #f2ece14d;
+  --color-black-7-40: #f2ece166;
+  --color-black-6-50: #f2ece180;
+  --color-black-5-60: #f2ece199;
+  --color-black-4-70: #f2ece1b3;
+  --color-black-3-80: #f2ece1cc;
+  --color-black-2-90: #f2ece1e6;
+
+  --color-text: #141310;
+  --color-cream: #17150f;
+  --color-cream-2: #2a2721;
+  --color-sand: #3c3830;
+  --color-gray: #4d4941;
+  --color-gray-2: #5f5b53;
+  --color-brown: #8a857c;
+  --value-gray-2: #66625b;
+  --color-gray-dark-2: #55514a;
+  --color-gray-dark: #d5cec0;
+
+  /* The white alpha set is the template's overlay/scrim tier. On a paper
+   * ground a white scrim is invisible, so it inverts to ink alphas. */
+  --color-white-6-5: #1413100d;
+  --color-white-5-10: #1413101a;
+  --color-white-4-20: #14131033;
+  --color-white-3-40: #14131066;
+  --color-white-2-60: #14131099;
+  --color-white-80: #141310cc;
+
+  color-scheme: light;
+}
+
+:root {
+  color-scheme: dark;
 }
 
 /* ── the focus ring ───────────────────────────────────────────────────────────────────────────
@@ -101,7 +211,7 @@ body {
   outline-offset: 2px;
 }
 :where(a, button, input, select, textarea, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
-  outline-color: #ffa552;
+  outline-color: var(--color-background, #f2ece1);
 }
 
 /* ── EVERY FOOTER ROW CARRIES ITS GLYPH ──────────────────────────────────────────────────────

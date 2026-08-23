@@ -106,6 +106,31 @@ const PAPER_CSS = `
      Deliberately opinionated: authors wrap ordinary HTML and it should come
      out looking like a receipt without them restyling anything. All of it is
      overridable from the light DOM because slotted rules lose to author rules. */
+
+  /* ⛔ EVERY SLOTTED NODE GETS THE INK, not just the ones named below.
+     Slotted content inherits through the flat tree, which means an element
+     with no rule here inherited the HOST PAGE's own color and painted it on
+     the paper. h1/h2/small/strong were each given a colour explicitly, so they
+     always looked right; a table, ul, li or bare div was not, and took
+     whatever the embedding page happened to be using.
+
+     On a light page that is invisible, which is why it survived: this page's
+     own body computes to black, so every demo on this origin rendered black
+     rows and looked correct. Found 2026-08-23 while building the share card,
+     whose ground is near-black — the three line items of a wrapped table
+     rendered in #e8e2d8 on cream paper and all but vanished. Every dark-themed
+     site that wraps a table, which is most of the audience for a receipt
+     renderer, was getting that.
+
+     The star selector is specificity (0,0,0), so every named rule below still
+     wins and nothing about the existing look changes. It only supplies a floor.
+
+     ⛔ NO BACKTICKS IN THIS COMMENT. The whole stylesheet is a JS template
+     literal: one backtick closes the string and the module stops parsing. It
+     still serves 200 with the right content type, the element simply never
+     upgrades, and the page renders the bare light DOM with no error. */
+  ::slotted(*) { color: var(--ink); }
+
   ::slotted(h1), ::slotted(h2) {
     margin: 0 0 3px;
     text-align: center;

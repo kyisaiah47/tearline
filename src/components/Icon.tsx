@@ -78,7 +78,7 @@ export function IconDefs() {
 export default function Icon({
   name,
   size = 20,
-  color = "var(--color-background, #ffa552)",
+  color = "var(--color-background, #f2ece1)",
   style,
   className,
 }: {

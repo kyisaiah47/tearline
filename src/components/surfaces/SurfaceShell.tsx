@@ -77,16 +77,18 @@ export default function SurfaceShell({
                     blue. The first version of this page did exactly that — 200, correct canonical,
                     correct title, correct JSON-LD, and unreadable.
 
-                    Every value below is this site's OWN, read off its own rendered pages rather
-                    than chosen here: prose is `.tl-docs-note` at rgb(138, 138, 138), a heading is
-                    rgb(209, 209, 209), and a link in the body is rgb(255, 165, 82) — the same
-                    accent the install line and the nav use. `--value-gray-2` is the token the
-                    stylesheet already names for the first of the three. */}
+                    Every value below is this site's OWN — and as of 2026-08-23 every one of the
+                    three is a TOKEN, not a literal. Two of them used to be hexes read off the
+                    rendered page: rgb(209, 209, 209) for a heading and rgb(255, 165, 82) for a
+                    link. A measured literal is correct exactly until the palette moves, and the
+                    palette has now moved twice — the accent is gone, and the site has a light
+                    theme, on which a hardcoded #d1d1d1 heading would have rendered near-white on
+                    cream across all four surface routes with nothing to catch it. */}
                 <div
                   style={{
-                    "--kx-surface-ink": "var(--value-gray-2, rgb(138, 138, 138))",
-                    "--kx-surface-heading": "rgb(209, 209, 209)",
-                    "--kx-surface-link": "rgb(255, 165, 82)",
+                    "--kx-surface-ink": "var(--value-gray-2, #8f8b84)",
+                    "--kx-surface-heading": "var(--color-text, #e8e2d8)",
+                    "--kx-surface-link": "var(--color-background, #f2ece1)",
                   } as CSSProperties}
                 >
                   {children}

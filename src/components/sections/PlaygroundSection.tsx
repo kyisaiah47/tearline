@@ -229,7 +229,7 @@ export default function PlaygroundSection() {
                   dir={"auto"}
                   style={{
                     "--rt-text-color":
-                      "var(--extracted-r6o4lv, var(--color-background, rgb(255, 165, 82)))",
+                      "var(--extracted-r6o4lv, var(--color-background, #f2ece1))",
                   }}
                 >
                   {"Playground"}

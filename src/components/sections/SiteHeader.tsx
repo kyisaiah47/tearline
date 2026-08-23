@@ -1,4 +1,5 @@
-import CommandButton from "@/components/CommandButton";
+import InstallCta from "@/components/InstallCta";
+import ThemeToggle from "@/components/ThemeToggle";
 
 /**
  * Site header.
@@ -118,69 +119,11 @@ function NavLinks() {
 function Ctas() {
   return (
     <div className={"ctas-2"} data-name={"CTAs"} style={{ opacity: "1" }}>
+      {/* WAS a second "Try it ↪" link. The segmented CTA beside it now
+        * carries that exact action, so the two sat 16px apart pointing at the
+        * same anchor. The header's one tertiary slot goes to Ink / Paper. */}
       <div className={"login-link-container"}>
-        {/* Was a GitHub link, removed 2026-07-29 because the repository was
-         * private and the link 404'd for everyone but the owner.
-         *
-         * THAT REASON IS GONE: the repo is public (FACTS.json →
-         * github-repo-public; api.github.com reports "private": false and MIT,
-         * and an anonymous raw GET returns 200, both re-read 2026-08-13). The
-         * source is linked from the footer's Code column and the hero's MIT
-         * badge, so it is reachable from every page.
-         *
-         * The slot stays on the playground on its own merits, not on the 404:
-         * it mirrors the hero's pair — try it, then take the install line —
-         * and the header has one tertiary slot, which the thing you can do
-         * without leaving the origin earns ahead of the thing you can read. */}
-        <a
-          className={
-            "login-link-mobile login-button login-link-tablet link-12-state-2 login-link"
-          }
-          data-name={"Tertiary"}
-          data-highlight={"true"}
-          href={"/#playground"}
-          tabIndex={0}
-        >
-          <div
-            className={"login-label"}
-            data-component={"RichTextContainer"}
-            style={{
-              "--extracted-r6o4lv": "var(--color-text, rgb(209, 209, 209))",
-            }}
-          >
-            <p
-              className={"heading-4 login-link-text"}
-              dir={"auto"}
-              style={{ "--rt-text-color": NAV_TEXT_COLOR }}
-            >
-              {"Try it"}
-            </p>
-          </div>
-          {/* The donor's arrow glyph, kept. */}
-          <div className={"header-nav-slot"}>
-            <svg
-              viewBox={"0 0 256 256"}
-              focusable={"false"}
-              style={{
-                userSelect: "none",
-                width: "100%",
-                height: "100%",
-                display: "inline-block",
-                fill: "currentcolor",
-                flexShrink: "0",
-                color: "var(--color-text)",
-              }}
-            >
-              <g color={"currentColor"} weight={"regular"}>
-                <path
-                  d={
-                    "M229.66,157.66l-48,48a8,8,0,0,1-11.32-11.32L204.69,160H128A104.11,104.11,0,0,1,24,56a8,8,0,0,1,16,0,88.1,88.1,0,0,0,88,88h76.69l-34.35-34.34a8,8,0,0,1,11.32-11.32l48,48A8,8,0,0,1,229.66,157.66Z"
-                  }
-                />
-              </g>
-            </svg>
-          </div>
-        </a>
+        <ThemeToggle />
       </div>
       <div className={"footer-get-started-cta"}>
         {/* Not `npm i tearline` — but no longer because nothing is published.
@@ -193,11 +136,7 @@ function Ctas() {
           * no step before it — no package manager, no build. The scoped npm
           * line is equally supported and is documented on /docs, under "or
           * from npm" in the install section, added 2026-08-13. */}
-        <CommandButton
-          text={"tearline.kynth.studio/tearline.js"}
-          prompt={"<>"}
-          variant={"primary"}
-        />
+        <InstallCta href={"/#playground"} label={"Try it"} />
       </div>
     </div>
   );

@@ -59,7 +59,7 @@ export default function StatusPanel({
             borderRadius: "50%",
             flexShrink: 0,
             background: live
-              ? "var(--color-background, rgb(255, 165, 82))"
+              ? "var(--color-background, #f2ece1)"
               : "var(--value-gray-2, rgb(128, 128, 128))",
             boxShadow: live
               ? "0 0 8px var(--color-yellow-3-40, rgba(255,165,82,0.4))"
@@ -113,7 +113,7 @@ export default function StatusPanel({
                 justifyContent: "center",
                 fontSize: "9px",
                 color: row.done
-                  ? "var(--color-background, rgb(255, 165, 82))"
+                  ? "var(--color-background, #f2ece1)"
                   : "transparent",
                 flexShrink: 0,
               }}

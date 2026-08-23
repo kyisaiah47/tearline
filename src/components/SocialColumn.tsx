@@ -97,7 +97,7 @@ function SocialRow({ link, who }: { link: SocialLink; who: string }) {
           /* `--color-background` is this product's accent at full strength — theme.css says so in
              as many words — and it is what `Icon` defaults to for every other mark in this
              footer. */
-          style={{ color: "var(--color-background, #ffa552)", display: "block", flex: "0 0 auto" }}
+          style={{ color: "var(--color-background, #f2ece1)", display: "block", flex: "0 0 auto" }}
           dangerouslySetInnerHTML={{ __html: MARKS[link.mark] }}
         />
         <div className={"nav-link-label"} data-component={"RichTextContainer"}>

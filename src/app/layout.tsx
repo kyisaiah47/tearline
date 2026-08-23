@@ -47,7 +47,7 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
-  themeColor: '#1a1917',
+  themeColor: '#111110',
 };
 
 export default function RootLayout({
@@ -69,7 +69,13 @@ export default function RootLayout({
          * runtime never arrives to reveal it. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: "document.documentElement.classList.add('js')",
+            __html:
+              "document.documentElement.classList.add('js');" +
+              /* Ink is the default and theme.css declares it with no attribute, so
+               * only the light override is ever stamped. Before first paint, or
+               * the page flashes dark and repaints. */
+              "try{if(localStorage.getItem('tl.theme')==='light')" +
+              "document.documentElement.dataset.theme='light'}catch(e){}",
           }}
         />
         {/* Sitewide structured data. In <head> so it is the same block on every

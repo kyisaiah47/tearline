@@ -1,3 +1,4 @@
+import StudioSignature from "@/components/StudioSignature";
 import Icon, { type IconName } from "@/components/Icon";
 import SocialColumn from "@/components/SocialColumn";
 /**
@@ -349,26 +350,15 @@ function FooterBody() {
                   * the only machine-readable "Kynth Studios" on the signature, and studio-gate
                   * asserts it reads exactly that alongside the height and the 4:1 ratio. Both
                   * dimensions are declared — the shot is 1128x282, so 80x20; a PNG given only a
-                  * height reserves nothing until it decodes and reflows the bar. `-ondark`
-                  * because the ground behind this bar measures rgb(26, 25, 23). */}
-                <p className={"heading-4 body-text kynth-signature-line"} dir={"auto"}>
-                  <a
-                    className={"kynth-signature"}
-                    href={"https://kynth.studio/?utm_source=tearline&utm_medium=studio_credit"}
-                    target={"_blank"}
-                    rel={"publisher noopener"}
-                  >
-                    <span>{"Built by"}</span>
-                    <img
-                      src={"/brand/kynth-studios-lockup.png"}
-                      alt={"Kynth Studios"}
-                      width={80}
-                      height={20}
-                      loading={"lazy"}
-                      decoding={"async"}
-                    />
-                  </a>
-                </p>
+                  * height reserves nothing until it decodes and reflows the bar.
+                  *
+                  * ⛔ THE ONDARK/ONLIGHT CHOICE IS NO LONGER A CONSTANT. It used to be made here,
+                  * "-ondark because the ground behind this bar measures rgb(26, 25, 23)". The site
+                  * has two themes as of 2026-08-23 and that ground is now cream on one of them,
+                  * where a white wordmark paints as a black slab. StudioSignature measures the
+                  * attribute at runtime and swaps one img's src; see its header for why it is one
+                  * element and one alt rather than two images with one hidden. */}
+                <StudioSignature slug={"tearline"} />
             </div>
           </div>
     </div>

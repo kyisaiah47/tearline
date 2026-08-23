@@ -189,7 +189,7 @@ const PKG: Line[] = [
 /** A short seed sample, shown three times to make determinism visible. */
 const seedCol = (seed: string, edge: string) => (
   <div style={{ fontSize: "12px", lineHeight: "22px" }}>
-    <div style={{ color: "var(--color-background, rgb(255, 165, 82))" }}>
+    <div style={{ color: "var(--color-background, #f2ece1)" }}>
       {`seed="${seed}"`}
     </div>
     <div style={{ color: "var(--color-gray-dark-2, rgb(64, 64, 64))" }}>
@@ -223,7 +223,7 @@ export default function FeaturesSection() {
                   dir={"auto"}
                   style={{
                     "--rt-text-color":
-                      "var(--extracted-r6o4lv, var(--color-background, rgb(255, 165, 82)))",
+                      "var(--extracted-r6o4lv, var(--color-background, #f2ece1))",
                   }}
                 >
                   {"Features"}

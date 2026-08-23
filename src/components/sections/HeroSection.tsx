@@ -1,5 +1,5 @@
 import CodePanel from "@/components/CodePanel";
-import CommandButton from "@/components/CommandButton";
+import InstallCta from "@/components/InstallCta";
 import type { Line } from "@/components/CodePanel";
 
 /**
@@ -121,7 +121,7 @@ export default function HeroSection() {
                       dir={"auto"}
                       style={{
                         "--rt-text-color":
-                          "var(--extracted-r6o4lv, var(--color-background, rgb(255, 165, 82)))",
+                          "var(--extracted-r6o4lv, var(--color-background, #f2ece1))",
                       }}
                     >
                       {"MIT · zero dependencies"}
@@ -173,43 +173,12 @@ export default function HeroSection() {
 
             <div className={"hero-content"} data-reveal={"32"}>
               <div className={"hero-primary-cta"}>
-                <a
-                  className={
-                    "login-link-mobile login-button login-link-tablet link-12-state-3 login-link"
-                  }
-                  data-name={"Primary"}
-                  data-highlight={"true"}
-                  href={"#playground"}
-                  tabIndex={0}
-                >
-                  <div
-                    className={"login-label"}
-                    data-component={"RichTextContainer"}
-                    style={{
-                      "--extracted-r6o4lv":
-                        "var(--color-black, rgb(26, 26, 26))",
-                    }}
-                  >
-                    <p
-                      className={"heading-4 login-link-text"}
-                      dir={"auto"}
-                      style={{
-                        "--rt-text-color":
-                          "var(--extracted-r6o4lv, var(--color-black, rgb(26, 26, 26)))",
-                      }}
-                    >
-                      {"Try it"}
-                    </p>
-                  </div>
-                </a>
-              </div>
-              <div className={"hero-secondary-cta"}>
-                {/* See SiteHeader: the npm package is unpublished, so the
-                  * secondary CTA carries the script tag, which is live. */}
-                <CommandButton
-                  text={"tearline.kynth.studio/tearline.js"}
-                  prompt={"<>"}
-                />
+                {/* Was a filled "Try it" pill beside a second, outlined pill
+                  * whose label was the literal install URL — 31 characters of
+                  * mono, which is what made the row run half the column. One
+                  * segmented control now carries both actions; the URL is on
+                  * the clipboard rather than on the screen. See InstallCta. */}
+                <InstallCta href={"#playground"} label={"Try it"} />
               </div>
             </div>
           </div>

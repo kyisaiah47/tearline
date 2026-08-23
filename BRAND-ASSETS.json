@@ -6,30 +6,26 @@
  "description": "One custom element that renders anything you wrap in it as a thermal receipt, then exports it as a PNG. Zero dependencies, no build step, MIT.",
  "identity": {
   "mark": "src/app/icon.svg",
-  "concept": "Tearline's own three strips, the drawing already in its nav — a sheet coming off the roll, each strip shorter than the last. What changes is that they are no longer three identical bars: the ramp puts them at 0.34, 0.62 and 1.0, so the last strip, the one that has torn free, is the fact the mark reports and the stagger reads as a tear rather than a stack. The live file nests them in an inner group, which the film's parser drops along with their fills; that nesting is folded into the one transform here.",
-  "origin": "The drawing already live in this product's own nav, carried across from Projects/tearline/public/logo.svg without touching its path data. Only the housing changed: the full-bleed accent tile became the estate family plate, the drawing was partitioned at its own subpath boundaries into the family's two-to-four shapes, and those shapes were put on the family opacity ramp.",
-  "shapes": 3,
-  "ramp": [
-   0.34,
-   0.62,
-   1
-  ],
-  "transform": "translate(3.1142 -1.1811) scale(0.7159)",
+  "concept": "Torn: one sheet parted along a jagged diagonal, the halves pulled apart along the perpendicular. The tear is the product's own name and the only event in the mark. It replaces three staggered slabs — the drawing carried over from the nav — which read cold as a text-align glyph and, at the 16px a browser tab serves, as a hamburger menu. Authored at 64 units so the tear is real geometry rather than a stack of rectangles, and rendered at 120/34/16 on both grounds before it was kept; three earlier constructions were binned there for reading as Pac-Man, an ascending scatter plot and a row of download arrows. Square corners, because a receipt has none.",
+  "origin": "Drawn 2026-08-23 under the logo-designer skill, from the product's one claim — any HTML, printed — not from the previous mark or its description. Two shapes, no plate on the served glyph: the authored fills read var(--color-background), so the mark is the paper on the dark theme and the ink on the light one and owns no hex of its own. src/app/icon.svg is the same drawing on an ink plate for the tab.",
+  "shapes": 2,
   "grammar": "Estate family grammar, from src/components/product-mark.mjs on breachprobe: one #0a0a0a plate at rx 7, one colour (this product's accent), the 0.34 / 0.62 / 1.0 ramp, flat fills only, two to four shapes, nothing thinner than 3 units. Parsed by kynth-ops/video/build-film.mjs, which reads the shapes and the group transform straight out of this file.",
   "wordmark": "none — the lockup is this glyph plus the product name as live text, never baked in"
  },
  "colors": {
-  "accent": "#ffa552",
-  "background": "#1a1917",
-  "ink": "#d1d1d1",
-  "inkMuted": "#8a8a8a",
-  "panel": "#211f1c",
-  "panelSunk": "#141312",
-  "rule": "#2a2a2a",
-  "ruleAccent": "rgba(255,165,82,0.4)",
+  "accent": "#f2ece1",
+  "accentLight": "#141310",
+  "background": "#111110",
+  "backgroundLight": "#f2ece1",
+  "ink": "#e8e2d8",
+  "inkMuted": "#8f8b84",
+  "panel": "#1a1918",
+  "panelSunk": "#0d0d0c",
+  "rule": "#2a2823",
+  "ruleAccent": "rgba(242,236,225,0.4)",
   "receiptPaper": "#f2ece1",
   "receiptInk": "#17150f",
-  "note": "Warm near-black ground, orange accent — measured off the live page today with getComputedStyle in headless Chrome (2026-08-15) at tearline.kynth.studio. Orange #ffa552 is the resolved value of this page's own background token, the computed background of the primary CTA (the tearline.js copy button), the computed colour of four links and the \"Features\" eyebrow, and the colour of fourteen accented hairlines. The ground #1a1917 is the resolved value of the page's black token, the computed body background and its theme-color meta. Ink #d1d1d1 is the computed colour of the h1; panels are computed on thirteen and eight sections. The receipt paper and ink are the page's own brand-paper and brand-ink tokens — they are the colours of the PRINTED ARTIFACT the product renders, not of the site, and are recorded here so nothing mistakes them for the ground. Two colours in the code sample, #82aaff and #c792ea, are syntax highlighting and are not brand values. Recorded as-is."
+  "note": "STARK, TWO THEMES, NO HUE (2026-08-23). The amber #ffa552 recorded here on 2026-08-15 is retired at Isaiah's direction: the product's only artifact is black ink on cream paper, so the site is that and its inverse and nothing else. There is no accent hue anywhere in src/app/theme.css. `accent` and `background` are the DARK theme, which is the default and is declared with no attribute; `accentLight`/`backgroundLight` are the light theme, keyed on html[data-theme=\"light\"]. The accent is positionally the same token in both (--color-background): it is the receipt paper on dark and the ink on light, so every CTA fill, link and the brand mark invert with the page. receiptPaper/receiptInk are the colours tearline.js puts on the paper and do NOT flip — a receipt has no dark mode. The hero backdrop photograph was deleted with the hue; --brand-backdrop is `none`. --color-red survives for error states only, which is a semantic and not an accent."
  },
- "generatedAt": "2026-08-15"
+ "generatedAt": "2026-08-23"
 }
