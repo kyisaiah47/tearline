@@ -2,6 +2,11 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/bs",
+      "destination": "/?utm_source=founder-bluesky&utm_medium=social",
+      "permanent": false
+    },
+    {
       "source": "/x",
       "destination": "/?utm_source=founder-x&utm_medium=social",
       "permanent": false
@@ -17,7 +22,7 @@
       "permanent": false
     },
     {
-      "source": "/bs",
+      "source": "/bsky",
       "destination": "/?utm_source=founder-bluesky&utm_medium=social",
       "permanent": false
     },
