@@ -1,0 +1,71 @@
+%% TEARLINE — THE ONE PATH EVERY EXPORT TAKES.
+
+%% Every node below is a file, a function or an event opened on 2026-08-24. The shipped
+%% component is byte-identical to the repo: https://tearline.kynth.studio/tearline.js and
+%% src/tearline.js are both sha256 def7b099feb12ca9f7d34e33fb98aee48ac8989b37e66506f18f6fd3c8825c2f
+
+%%   src/components/sections/PlaygroundSection.tsx:122   runExport() — the Download PNG button;
+%%                                                       calls el.toBlob() at :151 because the
+%%                                                       result card needs the real byte count
+%%   src/tearline.js:449 / :471 / :475                   toBlob() · toDataURL() · download() —
+%%                                                       the three public entry points, and all
+%%                                                       three await the same private method
+%%   src/tearline.js:319                                 #toCanvas({scale = 2, padding = 44})
+%%                                                       — the only path. Nothing exports without
+%%                                                       going through it.
+%%   src/tearline.js:313-317                             #stage(stage, index) dispatches
+%%                                                       `tearline:stage` with { of: 4 }
+%%   src/tearline.js:320 / :392 / :399 / :439            the four call sites, in order:
+%%                                                       flatten 1, serialise 2, rasterise 3,
+%%                                                       encode 4
+%%   src/tearline.js:328-335                             clone .wrap, then inline the slotted
+%%                                                       light DOM — "Slots do not clone their
+%%                                                       assigned nodes"
+%%   src/tearline.js:371-378                             the shadow-DOM selectors rewritten
+%%                                                       against the classes that survive the
+%%                                                       clone (::slotted -> .paper, :host -> .wrap)
+%%   src/tearline.js:393-397                             XMLSerializer -> <foreignObject> inside
+%%                                                       an <svg>; innerHTML is fatal here
+%%   src/tearline.js:425-430                             the refusal: any <img src> that is not a
+%%                                                       data: URI throws before the decode
+%%   src/tearline.js:440-446 / :461-467                  canvas at scale 2, then the PNG blob;
+%%                                                       a null blob is its own authored error
+%%   src/components/ExportStage.tsx:41-46                STAGES — a 4-entry const array, one orb
+%%                                                       per stage
+%%   src/components/ExportStage.tsx:207                  explain(stage, err) — the sentence the
+%%                                                       reader gets, keyed on where it stopped
+
+%% The literals on frame are the literals in the code: STAGES has exactly 4 entries, #stage()
+%% declares `of: 4`, and there are exactly 4 `this.#stage(` call sites in src/tearline.js.
+%% `scale = 2` and `padding = 44` are the defaults in #toCanvas's own signature at :319.
+%% The four stage labels ship on the live site — "Flattening the receipt", "Writing it as SVG",
+%% "Rasterising at 2x", "Encoding the PNG" all appear in page-8aac9306c0ebca18.js, fetched
+%% 2026-08-24.
+
+flowchart LR
+    A[":i-cursor-line-duotone:<b>runExport()</b><br/><span class='sub'>PlaygroundSection.tsx &mdash; the Download PNG button</span>"]
+    B[":i-login-3-line-duotone:<b>toBlob &middot; toDataURL &middot; download</b><br/><span class='sub'>tearline.js &mdash; three public doors, one method</span>"]
+    C[":i-code-square-line-duotone:<b>#toCanvas()</b><br/><span class='sub'>the only path &mdash; scale 2, padding 44</span>"]
+    D[":i-documents-line-duotone:<b>flatten</b><br/><span class='sub'>clone .wrap, inline the slotted light DOM</span>"]
+    E[":i-code-line-duotone:<b>serialise</b><br/><span class='sub'>XMLSerializer &rarr; SVG foreignObject</span>"]
+    F[":i-shield-cross-line-duotone:<b>rasterise</b><br/><span class='sub'>a non-data: img is refused before the decode</span>"]
+    G[":i-gallery-line-duotone:<b>encode</b><br/><span class='sub'>canvas at 2x &rarr; PNG blob, or an authored error</span>"]
+    S[":i-list-check-line-duotone:<b>tearline:stage</b><br/><span class='sub'>ExportStage.tsx &mdash; 4 orbs, then explain()</span>"]
+
+    A -- "el.toBlob()" --> B
+    B --> C
+    C -- "stage 1" --> D
+    D --> E
+    E --> F
+    F -- "stage 4" --> G
+    C -. "one event per stage" .-> S
+    F -. "the one authored throw" .-> S
+
+    classDef entry fill:#16233a,stroke:#4c8dff,color:#e6edf7
+    classDef step fill:#1e222c,stroke:#3a4152,color:#e6edf7
+    classDef gate fill:#241f14,stroke:#e3a339,color:#f2e6d2
+    classDef done fill:#0e2a1c,stroke:#2ea36b,color:#dff0e6
+    class A entry
+    class B,D,E step
+    class C,F gate
+    class G,S done
