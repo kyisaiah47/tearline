@@ -125,14 +125,16 @@ and that fork decides everything else. A custom element belongs to the first
 branch: the tag renders the card in the page and exports it on click. The
 second branch draws the image without a browser, which is the only way an Open
 Graph card can work, because the crawler fetching it will never run your
-JavaScript. Figures fetched from registry.npmjs.org on 2026-08-09: the
-client-side rasterisers are small and MIT (`modern-screenshot` 4.7.0, 0 runtime
-deps, 186 KB unpacked; `html-to-image` 1.11.13, 0 deps, 315 KB), and the
-server-side ones are large and MPL-2.0 (`satori` 0.29.0, 11 deps, 5.43 MB;
-`@vercel/og` 1.0.1, whose only two runtime dependencies are satori and
+JavaScript. The client-side rasterisers are small and MIT (`modern-screenshot`
+4.7.0, 0 runtime deps, 186 KB unpacked; `html-to-image` 1.11.13, 0 deps, 315
+KB), and the server-side ones are large and MPL-2.0 (`satori` 0.33.4, 13 deps,
+5.85 MB; `@vercel/og` 1.0.1, whose only two runtime dependencies are satori and
 `@resvg/resvg-wasm`, 6.89 MB). `@vercel/og` published 1.0.1 on 2026-08-08, its
 first stable major; the licence and the two runtime dependencies did not change
-with it.
+with it. The satori, modern-screenshot and html-to-image figures were fetched
+from registry.npmjs.org on 2026-08-26 — satori had moved from 0.29.0 with 11
+deps at 5.43 MB, the other two held. The `@vercel/og` row is the 2026-08-09
+reading.
 
 The reason a share-image widget belongs in a custom element is a guarantee in
 the HTML Standard called upgrade. Per the WHATWG HTML Standard (fetched
@@ -146,6 +148,30 @@ the document tree" and "an element that is not inserted into a document will
 stay un-upgraded". The full comparison, plus the five requirements for a valid
 custom element name, is at
 https://tearline.kynth.studio/share-image-custom-element.
+
+## html2canvas alternatives
+
+html2canvas is the package most people already have, and its latest release is
+1.4.1, published 22 January 2022 — read from registry.npmjs.org on 2026-08-26.
+It is also the largest browser-side option by an order of magnitude: 3.38 MB
+unpacked across 391 files, against 186 KB across 12 for modern-screenshot. The
+size follows from the approach — html2canvas reimplements layout and repaints
+your CSS itself, while every other current package serialises the node into an
+SVG foreignObject and lets the browser's own engine draw it.
+
+On the same day's registry figures: modern-screenshot 4.7.0 (16 Apr 2026, 0
+deps, MIT, 186 KB); @zumer/snapdom 2.24.10 (25 Aug 2026, 0 deps, MIT, 404 KB),
+whose own description reads "Fast, modern alternative to html2canvas";
+html-to-image 1.11.13 (14 Feb 2025, 0 deps, MIT, 315 KB); dom-to-image 2.6.0 (4
+Oct 2017, 0 deps, MIT, size not reported); satori 0.33.4 (24 Aug 2026, 13 deps,
+MPL-2.0, 5.85 MB), which runs on a server rather than in a browser.
+
+Tearline is not on that list as a replacement and should not be read as one. It
+is a receipt component — 21 KB across 4 files, no dependencies — and if the
+requirement is "turn this existing element into a PNG" then one of the packages
+above is the right answer. The full comparison, including which package fits
+which requirement, is at
+https://tearline.kynth.studio/html2canvas-alternatives.
 
 ## Frameworks
 
@@ -167,5 +193,8 @@ attributes through, so the tag needs no wrapper.
 - [Custom element for share images — four routes compared, and why the tag can
   ship before the script
   does](https://tearline.kynth.studio/share-image-custom-element)
+- [html2canvas alternatives — six DOM-to-image libraries on today's npm figures,
+  and a straight answer on dom-to-image vs
+  html2canvas](https://tearline.kynth.studio/html2canvas-alternatives)
 
 MIT © Kynth Studios.

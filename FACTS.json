@@ -81,14 +81,15 @@
       "kind": "package-metadata",
       "sourceUrl": "https://registry.npmjs.org/modern-screenshot",
       "sourceTitle": "npm registry — modern-screenshot",
-      "asOf": "2026-07-31",
+      "asOf": "2026-08-26",
       "appearsOn": [
         "src/app/dom-to-png/page.tsx",
-        "src/app/share-image-custom-element/page.tsx"
+        "src/app/share-image-custom-element/page.tsx",
+        "src/app/html2canvas-alternatives/page.tsx"
       ],
-      "lastVerified": "2026-08-09",
+      "lastVerified": "2026-08-26",
       "status": "verified",
-      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-06: 4.7.0 · MIT · 0 runtime deps · 2026-04-16 · 186,023 bytes unpacked. Identical to the 2026-07-31 and 2026-08-01 readings. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-09: 4.7.0 · MIT · 0 runtime deps · 2026-04-16 · 186,023 bytes unpacked. Identical to the prior reading. No drift, no page change."
+      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-06: 4.7.0 · MIT · 0 runtime deps · 2026-04-16 · 186,023 bytes unpacked. Identical to the 2026-07-31 and 2026-08-01 readings. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-09: 4.7.0 · MIT · 0 runtime deps · 2026-04-16 · 186,023 bytes unpacked. Identical to the prior reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-26: 4.7.0 · MIT · 0 runtime deps · published 2026-04-16 · 186,023 bytes across 12 files. Identical to the prior reading. No drift; now also cited on /html2canvas-alternatives."
     },
     {
       "id": "npm-html-to-image",
@@ -97,14 +98,15 @@
       "kind": "package-metadata",
       "sourceUrl": "https://registry.npmjs.org/html-to-image",
       "sourceTitle": "npm registry — html-to-image",
-      "asOf": "2026-07-31",
+      "asOf": "2026-08-26",
       "appearsOn": [
         "src/app/dom-to-png/page.tsx",
-        "src/app/share-image-custom-element/page.tsx"
+        "src/app/share-image-custom-element/page.tsx",
+        "src/app/html2canvas-alternatives/page.tsx"
       ],
-      "lastVerified": "2026-08-09",
+      "lastVerified": "2026-08-26",
       "status": "verified",
-      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-06: 1.11.13 · MIT · 0 runtime deps · 2025-02-14 · 315,082 bytes unpacked. Identical to the prior readings. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-09: 1.11.13 · MIT · 0 runtime deps · 2025-02-14 · 315,082 bytes unpacked. Identical to the prior reading. No drift, no page change."
+      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-06: 1.11.13 · MIT · 0 runtime deps · 2025-02-14 · 315,082 bytes unpacked. Identical to the prior readings. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-09: 1.11.13 · MIT · 0 runtime deps · 2025-02-14 · 315,082 bytes unpacked. Identical to the prior reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-26: 1.11.13 · MIT · 0 runtime deps · published 2025-02-14 · 315,082 bytes across 82 files. Identical to the prior reading. No drift; now also cited on /html2canvas-alternatives."
     },
     {
       "id": "npm-html2canvas",
@@ -113,13 +115,14 @@
       "kind": "package-metadata",
       "sourceUrl": "https://registry.npmjs.org/html2canvas",
       "sourceTitle": "npm registry — html2canvas",
-      "asOf": "2026-07-31",
+      "asOf": "2026-08-26",
       "appearsOn": [
-        "src/app/dom-to-png/page.tsx"
+        "src/app/dom-to-png/page.tsx",
+        "src/app/html2canvas-alternatives/page.tsx"
       ],
-      "lastVerified": "2026-08-09",
+      "lastVerified": "2026-08-26",
       "status": "verified",
-      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-06 (first re-read since 2026-08-01): 1.4.1 · MIT · 2 runtime deps · 2022-01-22 · 3,379,055 bytes unpacked. Identical. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-09: 1.4.1 · MIT · 2 runtime deps · 2022-01-22 · 3,379,055 bytes unpacked. Identical to the prior reading. No drift, no page change."
+      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-06 (first re-read since 2026-08-01): 1.4.1 · MIT · 2 runtime deps · 2022-01-22 · 3,379,055 bytes unpacked. Identical. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-09: 1.4.1 · MIT · 2 runtime deps · 2022-01-22 · 3,379,055 bytes unpacked. Identical to the prior reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-26: 1.4.1 · MIT · 2 runtime deps (css-line-break, text-segmentation) · published 2022-01-22 · 3,379,055 bytes across 391 files. Identical to the prior reading. No drift; now also cited on /html2canvas-alternatives."
     },
     {
       "id": "npm-dom-to-image",
@@ -128,13 +131,14 @@
       "kind": "package-metadata",
       "sourceUrl": "https://registry.npmjs.org/dom-to-image",
       "sourceTitle": "npm registry — dom-to-image",
-      "asOf": "2026-07-31",
+      "asOf": "2026-08-26",
       "appearsOn": [
-        "src/app/dom-to-png/page.tsx"
+        "src/app/dom-to-png/page.tsx",
+        "src/app/html2canvas-alternatives/page.tsx"
       ],
-      "lastVerified": "2026-08-09",
+      "lastVerified": "2026-08-26",
       "status": "verified",
-      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-06 (first re-read since 2026-08-01): 2.6.0 · MIT · 0 runtime deps · 2017-10-04. The latest version's dist object still carries no unpackedSize field, which is why the page prints \"not reported\" rather than a number — that is the registry's gap, not ours, and it is still true today. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-09: 2.6.0 · MIT · 0 runtime deps · 2017-10-04 · still no unpackedSize field. Identical to the prior reading. No drift, no page change."
+      "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-06 (first re-read since 2026-08-01): 2.6.0 · MIT · 0 runtime deps · 2017-10-04. The latest version's dist object still carries no unpackedSize field, which is why the page prints \"not reported\" rather than a number — that is the registry's gap, not ours, and it is still true today. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-09: 2.6.0 · MIT · 0 runtime deps · 2017-10-04 · still no unpackedSize field. Identical to the prior reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-26: 2.6.0 · MIT · 0 runtime deps · published 2017-10-04 · unpacked size not reported by the registry. Identical to the prior reading. No drift; now also cited on /html2canvas-alternatives."
     },
     {
       "id": "canvas-tainting-rule",
@@ -143,13 +147,13 @@
       "kind": "spec-behaviour",
       "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/CORS_enabled_image",
       "sourceTitle": "MDN — Allowing cross-origin use of images and canvas",
-      "asOf": "2026-07-31",
+      "asOf": "2026-08-26",
       "appearsOn": [
         "src/app/dom-to-png/page.tsx",
         "public/llms.txt",
         "src/app/share-image-custom-element/page.tsx"
       ],
-      "lastVerified": "2026-07-31",
+      "lastVerified": "2026-08-26",
       "status": "verified",
       "note": "Fetched from MDN on 2026-07-31; the wording on the page is a paraphrase of the 'Security and tainted canvases' section, not a quote. This is browser security behaviour rather than a dated announcement, so it decays far more slowly than the package rows above — but it is the load-bearing technical claim on /dom-to-png, so it is recorded rather than assumed."
     },
@@ -160,11 +164,11 @@
       "kind": "spec-behaviour",
       "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements",
       "sourceTitle": "MDN — Using custom elements",
-      "asOf": "2026-08-01",
+      "asOf": "2026-08-26",
       "appearsOn": [
         "src/app/receipt-ui/page.tsx"
       ],
-      "lastVerified": "2026-08-01",
+      "lastVerified": "2026-08-26",
       "status": "verified",
       "note": "Fetched from MDN on 2026-08-01. The hyphen rule is quoted on the page; the first-parse timing of attributeChangedCallback() is paraphrased. Both are load-bearing for the argument that a share-image widget belongs in a custom element, so they are recorded rather than assumed. Spec behaviour decays slowly, but MDN revises wording and this entry is what catches it."
     },
@@ -175,14 +179,14 @@
       "kind": "spec-behaviour",
       "sourceUrl": "https://www.w3.org/TR/css-cascade-5/",
       "sourceTitle": "W3C — CSS Cascade and Inheritance Level 5",
-      "asOf": "2026-08-01",
+      "asOf": "2026-08-26",
       "appearsOn": [
         "src/app/receipt-ui/page.tsx",
         "public/llms.txt",
         "src/tearline.js",
         "src/app/share-image-custom-element/page.tsx"
       ],
-      "lastVerified": "2026-08-01",
+      "lastVerified": "2026-08-26",
       "status": "verified",
       "note": "Fetched from the W3C TR on 2026-08-01. This is the normative source for a claim the codebase and llms.txt had been making in their own words since launch — that ::slotted() rules 'lose to your own CSS'. MDN's ::slotted and Using-shadow-DOM pages were both checked first and neither states the cascade direction, so the spec is the citation. The claim is now sourced everywhere it appears rather than asserted."
     },
@@ -191,16 +195,17 @@
       "claim": "What font-variant-numeric: tabular-nums does",
       "value": "activates the set of figures where numbers are all of the same size, allowing them to be easily aligned like in tables; maps to the OpenType tnum feature",
       "kind": "spec-behaviour",
-      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/font-variant-numeric",
       "sourceTitle": "MDN — font-variant-numeric",
-      "asOf": "2026-08-01",
+      "asOf": "2026-08-26",
       "appearsOn": [
         "src/app/receipt-ui/page.tsx",
         "public/llms.txt"
       ],
-      "lastVerified": "2026-08-01",
+      "lastVerified": "2026-08-26",
       "status": "verified",
-      "note": "Fetched from MDN on 2026-08-01. Quoted near-verbatim on /receipt-ui. Worth flagging for a future run: this is the one line in the page's CSS panel that is NOT in the shipped component — src/tearline.js does not set font-variant-numeric, and the page says so out loud rather than implying the quote is complete. If the component adds it, this note and that sentence both need removing."
+      "note": "Fetched from MDN on 2026-08-01. Quoted near-verbatim on /receipt-ui. Worth flagging for a future run: this is the one line in the page's CSS panel that is NOT in the shipped component — src/tearline.js does not set font-variant-numeric, and the page says so out loud rather than implying the quote is complete. If the component adds it, this note and that sentence both need removing.",
+      "sourceNote": "MDN moved its CSS property reference on or before 2026-08-26: the old path /en-US/docs/Web/CSS/font-variant-numeric now returns 301 to /en-US/docs/Web/CSS/Reference/Properties/font-variant-numeric. The claim text is unchanged — the new page still carries \"numbers are all of the same size\", \"easily aligned like in tables\" and the tnum OpenType tag. URL updated, value held."
     },
     {
       "id": "studio-github-profile",
@@ -209,11 +214,11 @@
       "kind": "availability",
       "sourceUrl": "https://github.com/kyisaiah47",
       "sourceTitle": "GitHub — kyisaiah47 (publisher profile)",
-      "asOf": "2026-08-01",
+      "asOf": "2026-08-26",
       "appearsOn": [
         "src/components/JsonLd.tsx"
       ],
-      "lastVerified": "2026-08-01",
+      "lastVerified": "2026-08-26",
       "status": "verified",
       "note": "Fetched 2026-08-01: HTTP 200. This is the PUBLISHER's profile page and is unrelated to github-repo-public above — kyisaiah47/tearline is still PRIVATE and no codeRepository is asserted anywhere. The two claims must not be collapsed by a future run. The canonical studio Organization node (kynth-deploy-wt/apps/landing/src/app/layout.tsx) lists two further sameAs entries that were checked the same day and NOT copied here: https://www.youtube.com/@kynth-studios returned HTTP 404, and https://www.linkedin.com/in/kyisaiah47/ returned HTTP 999, which is LinkedIn's answer to any non-browser client and is not evidence either way. The YouTube 404 is a live drifted claim on the STUDIO landing (a different repo, not this loop's product today) and is reported rather than fixed."
     },
@@ -253,19 +258,19 @@
     {
       "id": "npm-satori",
       "claim": "satori latest version, licence, runtime dependency count, publish date and unpacked size",
-      "value": "0.29.0 · MPL-2.0 · 11 runtime deps · published 2026-07-23 · 5.43 MB unpacked",
+      "value": "0.33.4 · MPL-2.0 · 13 runtime deps · published 2026-08-24 · 5.85 MB unpacked (5,851,282 bytes, 37 files)",
       "kind": "package-metadata",
       "sourceUrl": "https://registry.npmjs.org/satori",
       "sourceTitle": "npm registry — satori",
-      "asOf": "2026-08-05",
+      "asOf": "2026-08-26",
       "appearsOn": [
         "src/app/share-image-custom-element/page.tsx",
         "public/llms.txt",
-        "src/app/dom-to-png/page.tsx"
+        "src/app/html2canvas-alternatives/page.tsx"
       ],
-      "lastVerified": "2026-08-09",
+      "lastVerified": "2026-08-26",
       "status": "verified",
-      "note": "Re-fetched from registry.npmjs.org on 2026-08-06: 0.29.0 · MPL-2.0 · 11 runtime deps · 2026-07-23 · 5,428,877 bytes unpacked. Identical to the 2026-08-05 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-07: 0.29.0 · MPL-2.0 · 11 runtime deps · 2026-07-23 · 5,428,877 bytes unpacked. Identical to the 2026-08-06 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-09: 0.29.0 · MPL-2.0 · 11 runtime deps · 2026-07-23 · 5,428,877 bytes unpacked. Identical to the prior reading. No drift, no page change."
+      "note": "Re-fetched from registry.npmjs.org on 2026-08-06: 0.29.0 · MPL-2.0 · 11 runtime deps · 2026-07-23 · 5,428,877 bytes unpacked. Identical to the 2026-08-05 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-07: 0.29.0 · MPL-2.0 · 11 runtime deps · 2026-07-23 · 5,428,877 bytes unpacked. Identical to the 2026-08-06 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-09: 0.29.0 · MPL-2.0 · 11 runtime deps · 2026-07-23 · 5,428,877 bytes unpacked. Identical to the prior reading. No drift, no page change. DRIFT CAUGHT 2026-08-26. The register had said 0.29.0 · 11 deps · 2026-07-23 · 5.43 MB since the 2026-08-09 re-fetch, and nothing had re-read the registry since, so the gate kept reporting verified while two live surfaces carried a version that was five releases old. registry.npmjs.org returned 0.33.4 · MPL-2.0 · 13 runtime deps · published 2026-08-24 · 5,851,282 bytes across 37 files. Both surfaces corrected in the same commit: the routes table on /share-image-custom-element and the server-side paragraph in llms.txt. NOTE the appearsOn list also claimed src/app/dom-to-png/page.tsx, which contains no occurrence of \"satori\" at all — a phantom entry that would have sent a future correction to the wrong file. Removed."
     },
     {
       "id": "npm-vercel-og",
@@ -330,6 +335,22 @@
       "lastVerified": "2026-08-13",
       "status": "verified",
       "note": "MEASURED 2026-08-13 off public/tearline.js — the file Vercel serves at /tearline.js and the file ops/npm/publish.mjs stages — at 17,991 bytes / 426 lines. src/tearline.js is the same sha256 (8ad36d42...), so all three copies agree.\n\nREAD THE DATES BEFORE TRUSTING A COMPARISON. At the time this was written the LIVE ORIGIN still served the previous build: tearline.kynth.studio/tearline.js returned HTTP 200 at 14,048 bytes / 370 lines. The difference is commit 4f2b21d (the `flat` export fix), which is committed and undeployed. That commit grew the component by 56 lines and did NOT move the four page citations of the old figure, so /share-image-custom-element (three places) and /spotify-receipt-generator (one) would have gone false the moment it deployed. They are moved to 17,991 in this commit so the copy and the component land in the SAME deploy batch rather than a day apart. Until that deploy runs, the pages state the size of the component in the release they ship with, not the one currently on the origin.\n\nNext rotation: re-fetch the origin. It should read 17,991 / 426 and this row needs no change. If it still reads 14,048, the deploy did not run and THAT is the finding."
+    },
+    {
+      "id": "npm-snapdom",
+      "claim": "@zumer/snapdom latest version, licence, runtime dependency count, publish date and unpacked size",
+      "value": "2.24.10 · MIT · 0 runtime deps · published 2026-08-25 · 403,706 bytes across 8 files",
+      "kind": "package-metadata",
+      "sourceUrl": "https://registry.npmjs.org/@zumer/snapdom",
+      "sourceTitle": "npm registry — @zumer/snapdom",
+      "asOf": "2026-08-26",
+      "appearsOn": [
+        "src/app/html2canvas-alternatives/page.tsx",
+        "public/llms.txt"
+      ],
+      "lastVerified": "2026-08-26",
+      "status": "verified",
+      "note": "Added 2026-08-26 with /html2canvas-alternatives. This one moves fastest of the six — it published the day before it was first read — so treat a held reading here as the exception rather than the rule. Its own registry description is quoted verbatim on the page: \"Fast, modern alternative to html2canvas.\""
     }
   ]
 }

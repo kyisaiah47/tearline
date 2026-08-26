@@ -84,6 +84,7 @@ const GROUPS: Group[] = [
       ["Receipt-style UI", "/receipt-ui", "receipt"],
       ["Spotify receipt generators", "/spotify-receipt-generator", "music"],
       ["Share images, four ways", "/share-image-custom-element", "share"],
+      ["html2canvas alternatives", "/html2canvas-alternatives", "eye"],
     ],
   },
   {

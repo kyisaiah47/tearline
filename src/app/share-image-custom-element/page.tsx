@@ -134,7 +134,7 @@ const ROUTES: [string, string, string][] = [
   ],
   [
     "satori",
-    "0.29.0 · 11 deps · MPL-2.0 · 5.43 MB · 23 Jul 2026",
+    "0.33.4 · 13 deps · MPL-2.0 · 5.85 MB · 24 Aug 2026",
     "Renders the image on a server, so no browser is involved and no user has to be present. Right for an Open Graph card, which a crawler has to fetch without running your app.",
   ],
   [
@@ -247,7 +247,7 @@ const SKELETON: Line[] = [
 const SOURCES: [string, string][] = [
   [
     "registry.npmjs.org",
-    "Latest version, licence, declared runtime dependency count, publish date and unpacked size for satori, @vercel/og, modern-screenshot and html-to-image. Re-fetched 9 August 2026; @vercel/og had published 1.0.1 the day before, the other three were unchanged.",
+    "Latest version, licence, declared runtime dependency count, publish date and unpacked size for satori, @vercel/og, modern-screenshot and html-to-image. satori re-fetched 26 August 2026 and it had moved: 0.29.0 → 0.33.4, 11 → 13 runtime dependencies, 5.43 → 5.85 MB, published 24 August 2026. modern-screenshot and html-to-image were re-fetched the same day and both held. The @vercel/og row is the 9 August 2026 reading, taken the day after it published 1.0.1.",
   ],
   [
     "html.spec.whatwg.org",
@@ -315,7 +315,7 @@ export default function ShareImageCustomElement() {
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "The client-side packages are two orders of magnitude smaller than the server ones — 186 KB and 315 KB unpacked against 5.43 MB and 6.89 MB. That gap is structural rather than a matter of care. Rendering in a browser means borrowing the layout engine that is already in the room, which is what the "
+                        "The client-side packages are two orders of magnitude smaller than the server ones — 186 KB and 315 KB unpacked against 5.85 MB and 6.89 MB. That gap is structural rather than a matter of care. Rendering in a browser means borrowing the layout engine that is already in the room, which is what the "
                       }
                       <code>{"<foreignObject>"}</code>
                       {" technique "}

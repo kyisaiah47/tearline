@@ -196,8 +196,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // served-size figures also move 14,048 -> 17,991 bytes.
       // Moves to 2026-08-19: the same three figures move 17,991 -> 18,985 with
       // the `npm run sync` that closed the 08-16 src/public skew.
+      // Moves to 2026-08-26, and this is drift rather than a refresh. satori had
+      // moved 0.29.0 -> 0.33.4 (11 -> 13 runtime deps, 5.43 -> 5.85 MB, published
+      // 2026-08-24) and this page's routes table was still quoting the 2026-08-09
+      // reading. FACTS.json#npm-satori had not been re-fetched since that date, so
+      // the register reported "verified" the whole time it was wrong — which is why
+      // the row now carries the drift in its own note. Table and sources line
+      // corrected against registry.npmjs.org today.
       url: `${SITE}/share-image-custom-element`,
-      lastModified: new Date("2026-08-19"),
+      lastModified: new Date("2026-08-26"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      // Added 2026-08-26 with the page itself. WHY IT EXISTS: two of the six
+      // buyer queries this product is measured on are comparison-shaped —
+      // "html2canvas alternatives" and "dom to image vs html2canvas" — and no
+      // page on this host had a title overlapping either of them. The AEO probe
+      // on 08-19/20/21/26 shows npm-compare.com cited for both across all five
+      // engines, with npmtrends.com and betterprogramming.pub on google-ai.
+      // None of those three is a competing library; they are third-party
+      // readings of the registry. So the gap was ours to fill, not a rival's to
+      // lose. Its figures are the same npm fields /dom-to-png carries, fetched
+      // 2026-08-26, so this date follows the registry the same way that one does.
+      url: `${SITE}/html2canvas-alternatives`,
+      lastModified: new Date("2026-08-26"),
       changeFrequency: "monthly",
       priority: 0.8,
     },

@@ -213,6 +213,13 @@ export default function InstallSection() {
                 <a href={"/dom-to-png"}>{"explained in full"}</a>
                 {", alongside today's registry figures for the four packages that do the same job as a dependency."}
               </p>
+              <p className={"tl-docs-note"}>
+                {"If you arrived here from the other direction — already using "}
+                <code>{"html2canvas"}</code>
+                {" and wondering what replaced it — its latest release is 1.4.1 from January 2022, and the six current packages are "}
+                <a href={"/html2canvas-alternatives"}>{"compared side by side on today's npm figures"}</a>
+                {", including where Tearline is the wrong answer."}
+              </p>
             </div>
 
             <div className={"tl-docs-col"}>
