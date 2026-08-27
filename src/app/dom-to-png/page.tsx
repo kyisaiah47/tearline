@@ -39,7 +39,7 @@ const SITE = "https://tearline.kynth.studio";
 
 const TITLE = "Export a DOM element as a PNG in the browser — no dependencies";
 const DESCRIPTION =
-  "How browser-side DOM-to-image actually works: serialise the node into an SVG foreignObject, paint it to a canvas, read the PNG back. Plus the tainted-canvas rule that makes most exports come out blank, and what four zero-dependency packages look like on today's npm numbers.";
+  "Export a DOM element as a PNG in the browser: serialise it into an SVG foreignObject, paint it to a canvas, read it back. Plus the tainted-canvas rule.";
 
 export const metadata: Metadata = {
   title: TITLE,

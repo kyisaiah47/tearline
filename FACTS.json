@@ -295,13 +295,13 @@
       "kind": "spec-behaviour",
       "sourceUrl": "https://html.spec.whatwg.org/multipage/custom-elements.html",
       "sourceTitle": "WHATWG HTML Standard — Custom elements",
-      "asOf": "2026-08-05",
+      "asOf": "2026-08-27",
       "appearsOn": [
         "src/app/share-image-custom-element/page.tsx",
         "public/llms.txt",
         "src/app/receipt-ui/page.tsx"
       ],
-      "lastVerified": "2026-08-05",
+      "lastVerified": "2026-08-27",
       "status": "verified"
     },
     {
@@ -311,11 +311,11 @@
       "kind": "spec-behaviour",
       "sourceUrl": "https://html.spec.whatwg.org/multipage/custom-elements.html",
       "sourceTitle": "WHATWG HTML Standard — Custom elements",
-      "asOf": "2026-08-05",
+      "asOf": "2026-08-27",
       "appearsOn": [
         "src/app/share-image-custom-element/page.tsx"
       ],
-      "lastVerified": "2026-08-05",
+      "lastVerified": "2026-08-27",
       "status": "verified"
     },
     {

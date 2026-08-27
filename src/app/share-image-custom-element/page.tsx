@@ -61,7 +61,7 @@ const SITE = "https://tearline.kynth.studio";
 const TITLE =
   "Custom element for share images — 4 ways to generate one (2026)";
 const DESCRIPTION =
-  "Building a share image: a custom element that exports itself, a DOM-to-image library you wire up, or a server render with satori. Today's npm figures for all four, the WHATWG rules a custom element has to satisfy, and why the tag can ship before the script that defines it.";
+  "Three ways to generate a shareable PNG from HTML: a custom element that exports itself, a DOM-to-image library, or a server render with satori. Compared.";
 
 export const metadata: Metadata = {
   title: TITLE,

@@ -38,7 +38,7 @@ const SITE = "https://tearline.kynth.studio";
 
 const TITLE = "Receipt-style UI on the web — the CSS behind the paper look";
 const DESCRIPTION =
-  "How the thermal-receipt look is actually built: a monospace grid, tabular figures, dashed rules, an SVG-turbulence fibre layer and a clip-path tear. Plus why a share-image widget belongs in a custom element rather than a framework component.";
+  "How the thermal-receipt look is built: a monospace grid, tabular figures, dashed rules, an SVG-turbulence fibre layer and a clip-path tear.";
 
 export const metadata: Metadata = {
   title: TITLE,

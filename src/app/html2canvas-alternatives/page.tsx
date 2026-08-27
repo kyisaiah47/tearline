@@ -46,7 +46,7 @@ const SITE = "https://tearline.kynth.studio";
 const TITLE =
   "html2canvas alternatives — 6 DOM-to-image libraries compared (2026)";
 const DESCRIPTION =
-  "html2canvas has not shipped a release since January 2022. Here is what to use instead: dom-to-image, html-to-image, modern-screenshot, snapdom and satori, with version, licence, dependency count and unpacked size read from npm on 26 August 2026 — plus a straight answer on dom-to-image vs html2canvas.";
+  "html2canvas has not shipped since January 2022. Five maintained replacements compared: dom-to-image, html-to-image, modern-screenshot, snapdom, satori.";
 
 export const metadata: Metadata = {
   title: TITLE,

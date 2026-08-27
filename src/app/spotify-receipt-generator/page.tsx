@@ -39,7 +39,7 @@ const SITE = "https://tearline.kynth.studio";
 const TITLE =
   "Receiptify-style Spotify receipt generators — libraries and limits (2026)";
 const DESCRIPTION =
-  "What you actually assemble to build a Receiptify-style Spotify receipt: the top-tracks endpoint, the five-user cap that stops most of these apps shipping, and the five ways to turn the result into a shareable PNG.";
+  "Build a Receiptify-style Spotify receipt: the top-tracks endpoint, the five-user cap that stops most of these apps shipping, and five ways to export a PNG.";
 
 export const metadata: Metadata = {
   title: TITLE,
