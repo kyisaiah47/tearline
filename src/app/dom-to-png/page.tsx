@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     type: "article",
     images: [
       {
-        url: "/og.jpg",
+        url: "/og-20260827.jpg",
         width: 1200,
         height: 630,
         alt: "Tearline — any HTML, printed as a receipt",

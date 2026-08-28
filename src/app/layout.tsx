@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og.jpg",
+        url: "/og-20260827.jpg",
         width: 1200,
         height: 630,
         alt: "Tearline — any HTML, printed as a receipt",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/og.jpg"],
+    images: ["/og-20260827.jpg"],
   },
 };
 
