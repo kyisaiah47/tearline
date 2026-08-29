@@ -235,6 +235,16 @@
       "source": "/ft/:content",
       "destination": "/?utm_source=frontwire-threads&utm_medium=social&utm_content=:content",
       "permanent": false
+    },
+    {
+      "source": "/fb",
+      "destination": "/?utm_source=kynth-facebook&utm_medium=social",
+      "permanent": false
+    },
+    {
+      "source": "/fb/:content",
+      "destination": "/?utm_source=kynth-facebook&utm_medium=social&utm_content=:content",
+      "permanent": false
     }
   ]
 }
