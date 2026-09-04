@@ -463,16 +463,6 @@ export default function Docs() {
                         " need no observer because they are matched by CSS on the host, so toggling them takes effect on the next frame either way."
                       }
                     </p>
-                    <p className={"tl-docs-label tl-docs-label-gap"}>
-                      {"knowing when it has painted"}
-                    </p>
-                    <p className={"tl-docs-note"}>
-                      {"The element sets "}
-                      <code>{"data-ready"}</code>
-                      {
-                        " on itself one frame after the paper, the tear and the barcode are all in place. Gate your own fade-in on that attribute and nobody ever sees a half-drawn receipt."
-                      }
-                    </p>
                   </div>
 
                   <div className={"tl-api-col"}>
@@ -493,6 +483,21 @@ export default function Docs() {
                         ))}
                       </tbody>
                     </table>
+                    {/* MOVED OUT OF THE LEFT COLUMN 2026-09-04. `.tl-api` is two columns of
+                      * unequal length, and this pair ran past the end of the reference tables
+                      * beside it: no-half-width-block measured the note at 508px inside a 1072px
+                      * frame with 564px of empty band. Under the tables it has the column's own
+                      * width, and the left column now ends level with them. */}
+                    <p className={"tl-docs-label tl-docs-label-gap"}>
+                      {"knowing when it has painted"}
+                    </p>
+                    <p className={"tl-docs-note"}>
+                      {"The element sets "}
+                      <code>{"data-ready"}</code>
+                      {
+                        " on itself one frame after the paper, the tear and the barcode are all in place. Gate your own fade-in on that attribute and nobody ever sees a half-drawn receipt."
+                      }
+                    </p>
                   </div>
                 </div>
               </DocsSection>
