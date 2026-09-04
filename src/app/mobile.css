@@ -401,7 +401,7 @@
 
 /* ── phone width · a scroller has to SAY it scrolls ─────────────────────────────────────────── */
 /*
- * The register's own answer, lifted verbatim from `~/Projects/workbench/src/app/register.css`
+ * The register's own answer, lifted verbatim from `~/Projects/dev-shell/src/app/register.css`
  * (`@keyframes rs-edge-fade`, applied there to `.rs-chiprail`, `.rs-filter-row`, `.rs-code pre`
  * and `.rs-code-scroll`). A scroll-driven mask rather than a static gradient, so the fade is
  * spent exactly when the travel is: a strip already scrolled to its end does not keep hinting at
