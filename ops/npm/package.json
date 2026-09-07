@@ -43,6 +43,10 @@
   "license": "MIT",
   "author": "Kynth Studios (https://kynth.studio)",
   "homepage": "https://tearline.kynth.studio",
+  "funding": {
+    "type": "individual",
+    "url": "https://buymeacoffee.com/kyisaiah47"
+  },
   "engines": {
     "node": ">=18"
   },
