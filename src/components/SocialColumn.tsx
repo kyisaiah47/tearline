@@ -63,7 +63,7 @@ const STUDIO: SocialLink[] = [
 const FOUNDER: SocialLink[] = [
   { href: "https://x.com/kyisaiah47", mark: "markx", label: "X", handle: "@kyisaiah47" },
   { href: "https://www.linkedin.com/in/kyisaiah47", mark: "briefcase", label: "LinkedIn", handle: "@kyisaiah47" },
-  { href: "https://hashnode.com/@kyisaiah47", mark: "notes", label: "Hashnode", handle: "@kyisaiah47" },
+  { href: "https://kynth.hashnode.dev/", mark: "notes", label: "Hashnode", handle: "kynth.hashnode.dev" },
 ];
 
 const LINK_COLOR = "var(--extracted-r6o4lv, var(--color-text, rgb(209, 209, 209)))";
