@@ -57,13 +57,13 @@ const STUDIO: SocialLink[] = [
   { href: "https://www.linkedin.com/company/kynth-studios", mark: "briefcase", label: "LinkedIn", handle: "Kynth Studios" },
   { href: "https://bsky.app/profile/kynth.studio", mark: "cloud", label: "Bluesky", handle: "kynth.studio" },
   { href: "https://dev.to/kynth", mark: "codesquare", label: "Dev.to", handle: "@kynth" },
-  { href: "https://kynth.hashnode.dev/", mark: "notes", label: "Hashnode", handle: "kynth.hashnode.dev" },
   { href: "https://www.youtube.com/@KynthStudios", mark: "clapper", label: "YouTube", handle: "@KynthStudios" },
 ];
 
 const FOUNDER: SocialLink[] = [
   { href: "https://x.com/kyisaiah47", mark: "markx", label: "X", handle: "@kyisaiah47" },
   { href: "https://www.linkedin.com/in/kyisaiah47", mark: "briefcase", label: "LinkedIn", handle: "@kyisaiah47" },
+  { href: "https://hashnode.com/@kyisaiah47", mark: "notes", label: "Hashnode", handle: "@kyisaiah47" },
 ];
 
 const LINK_COLOR = "var(--extracted-r6o4lv, var(--color-text, rgb(209, 209, 209)))";

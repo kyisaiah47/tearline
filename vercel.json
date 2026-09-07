@@ -98,12 +98,12 @@
     },
     {
       "source": "/hn",
-      "destination": "/?utm_source=kynth-hashnode&utm_medium=social",
+      "destination": "/?utm_source=founder-hashnode&utm_medium=social",
       "permanent": false
     },
     {
       "source": "/hn/:content",
-      "destination": "/?utm_source=kynth-hashnode&utm_medium=social&utm_content=:content",
+      "destination": "/?utm_source=founder-hashnode&utm_medium=social&utm_content=:content",
       "permanent": false
     },
     {
