@@ -112,7 +112,7 @@ import { surfaceSitemapRows } from "@/lib/surfaces";
  * every one held, so no page content changed. Bumping lastModified without a
  * content change is the exact thing the first paragraph warns against.
  */
-const SITE = "https://tearline.kynth.studio";
+const SITE = "https://tearline.thecompound.tech";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

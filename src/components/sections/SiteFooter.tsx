@@ -17,16 +17,16 @@ import SocialColumn from "@/components/SocialColumn";
  * systems to be operational.
  *
  * What is left is what is true: the product, where the code is, and who made
- * it. Per the house rule, the social column becomes a single Kynth Studios link
+ * it. Per the house rule, the social column becomes a single Compound Labs link
  * rather than borrowing the parent's handles.
  *
  * ⛔ AND THAT LINK IS NO LONGER A COLUMN OF ITS OWN. It was one row under a "Studio" heading
  * beside columns of four and five, which is the shape Isaiah called a mess on 2026-08-19, and
  * it was the THIRD anchor to kynth.studio in this same footer: the "Built by" seal lockup in
- * the bar below is one, the "A Kynth Studios project" badge beside it was another. The
+ * the bar below is one, the "A Compound Labs project" badge beside it was another. The
  * destination did not go anywhere — the signature that is built for it is the one anchor now.
  * What went is a column heading standing over a single row, and then, on 2026-08-22, the badge:
- * the copyright sentence in that same bar already reads "a Kynth Studios project.", and the
+ * the copyright sentence in that same bar already reads "a Compound Labs project.", and the
  * studio's name twice in one band is the TWO CREDITS defect. See the band below.
  *
  * The shell keeps all three of the donor's breakpoint variants, and it has to.
@@ -293,20 +293,20 @@ function FooterBody() {
                     * out of a glyph and a word whose size, gap and lift were decided in a
                     * stylesheet in this repo, so it drifted from the real one the day either
                     * side moved. The link is the signature at the far end of this band. */}
-                  {"Kynth Studios"}
+                  {"Compound Labs"}
                   {" project."}
                   {" The studio behind "}
-                  <a className={"kynth-sibling"} href={"https://agentwire.kynth.studio"} rel={"noopener"}>{"Agentwire"}</a>
+                  <a className={"kynth-sibling"} href={"https://agentwire.thecompound.tech"} rel={"noopener"}>{"Agentwire"}</a>
                   {", "}
                   <a className={"kynth-sibling"} href={"https://breachprobe.kynth.studio"} rel={"noopener"}>{"BreachProbe"}</a>
                   {" and "}
-                  <a className={"kynth-sibling"} href={"https://citerank.kynth.studio"} rel={"noopener"}>{"CiteRank"}</a>
+                  <a className={"kynth-sibling"} href={"https://citerank.thecompound.tech"} rel={"noopener"}>{"CiteRank"}</a>
                   {"."}
                 </p>
               </div>
               {/* ⛔ THE BAND'S MIDDLE GROUP IS EMPTY, AND THE BOX STAYS SO THE SEAL KEEPS THE
-                * THIRD TRACK. What was here was an accent-coloured badge reading "A Kynth Studios
-                * project", beside a copyright sentence that already says "a Kynth Studios
+                * THIRD TRACK. What was here was an accent-coloured badge reading "A Compound Labs
+                * project", beside a copyright sentence that already says "a Compound Labs
                 * project." in the same band. Isaiah, off that render: "we dont need a kynth
                 * studios project what?" One credit is a signature; two read as a template filled
                 * in twice. `footer-shape.mjs`'s TWO CREDITS check is the standing measurement —
@@ -335,9 +335,9 @@ function FooterBody() {
                   * kynth-agent-shell/frame/sections/SiteFooter.tsx, live on six products.
                   *
                   * ⛔ THIS PAGE WAS PAINTING THE OLD MARK THREE TIMES, and only one of the three
-                  * was the credit. `footer a[href^="https://kynth.studio"]::before` in globals.css
+                  * was the credit. `footer a[href^="https://thecompound.tech"]::before` in globals.css
                   * was keyed on the HREF rather than on a class, so it also drew on the footer nav
-                  * link labelled "Kynth Studios" and on the status badge reading "A Kynth Studios
+                  * link labelled "Compound Labs" and on the status badge reading "A Compound Labs
                   * project" — measured live at 1440 before this change. studio-gate fails a page
                   * that paints the lockup and the old glyph together, so the rule was deleted
                   * rather than overridden; the two other anchors are plain links now, which is
@@ -348,7 +348,7 @@ function FooterBody() {
                   * breakpoint instead of whatever the wrapping div computes.
                   *
                   * ⛔ `alt` IS LOAD-BEARING: the wordmark is inside the picture, so that string is
-                  * the only machine-readable "Kynth Studios" on the signature, and studio-gate
+                  * the only machine-readable "Compound Labs" on the signature, and studio-gate
                   * asserts it reads exactly that alongside the height and the 4:1 ratio. Both
                   * dimensions are declared — the shot is 1128x282, so 80x20; a PNG given only a
                   * height reserves nothing until it decodes and reflows the bar.

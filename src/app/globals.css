@@ -5704,21 +5704,21 @@ html body {
  * THE STUDIO SIGNATURE IN THE FOOTER.
  *
  * Audited live 2026-08-11: across twenty product sites exactly ONE carried the studio's mark.
- * Every other site named Kynth Studios in text only, and six named it nowhere at all. That audit
+ * Every other site named Compound Labs in text only, and six named it nowhere at all. That audit
  * is why there is anything here; what it produced was a CSS-painted glyph beside the studio's
  * name set in live text, and that shape was retired on 2026-08-19 for the seal lockup.
  *
  * ⛔ THE SIGNATURE IS MARKUP NOW, NOT A BACKGROUND, AND THE REASON THE OLD ONE WAS CSS NO LONGER
  * HOLDS. It was attached here because these footers are framer dumps that repeat their whole
  * markup once per breakpoint, so a rule keyed on the link reached all three copies at once — and
- * because a glyph beside a word that already reads "Kynth Studios" is decoration in the strict
+ * because a glyph beside a word that already reads "Compound Labs" is decoration in the strict
  * sense, which a background expresses honestly and an <img> would have made a screen reader say
  * twice. Neither is true of the lockup: the studio's NAME IS INSIDE THE PICTURE, so it is content
  * and it needs an `alt`, and a background cannot carry one. Each breakpoint copy gets the same
  * markup instead, and this file styles it. */
 /* ⛔ THE MARK AND THE NAME ARE ONE PICTURE NOW, AND THE ::before RULE IS GONE RATHER THAN RETUNED.
  *
- * What stood here painted `/brand/kynth-studios.svg` on `a.kynth-credit` and on any footer anchor
+ * What stood here painted `/brand/compound-labs.svg` on `a.kynth-credit` and on any footer anchor
  * pointing at kynth.studio, and it was thirty lines of `!important` fighting framer presets for
  * the right to draw a 14px square beside live text. The credit became the SEAL LOCKUP on
  * 2026-08-19 — Isaiah picked it off a rendered four-way comparison of this exact footer bar; the
@@ -5729,10 +5729,10 @@ html body {
  * There is one lockup and it is a picture. Serve the PNG and set its height.
  *
  * ⛔ DELETING THE RULE IS THE FIX, NOT AN OVERRIDE ON TOP OF IT, and on this site that matters
- * beyond tidiness. `footer a[href^="https://kynth.studio"]::before` was keyed on the HREF, so it
+ * beyond tidiness. `footer a[href^="https://thecompound.tech"]::before` was keyed on the HREF, so it
  * painted on every footer anchor pointing at the studio — not only the credit. Measured live on
  * tearline before this change: three marks on one page, on the credit, on a footer nav link, and
- * on the hero status badge reading "A Kynth Studios Project". studio-gate fails a page that
+ * on the hero status badge reading "A Compound Labs Project". studio-gate fails a page that
  * paints the lockup and the old glyph together, and it is right to: the credit is one signature.
  *
  * The kill below is for the SIGNATURE's own anchor, which still matches that href-keyed rule

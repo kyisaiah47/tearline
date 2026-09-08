@@ -32,7 +32,7 @@ import { fileURLToPath } from 'node:url';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const REPO = join(HERE, '..', '..');
-const LIVE = 'https://tearline.kynth.studio/tearline.js';
+const LIVE = 'https://tearline.thecompound.tech/tearline.js';
 
 const sha = (buf) => createHash('sha256').update(buf).digest('hex');
 const die = (msg) => { console.error(`\n  REFUSED: ${msg}\n`); process.exit(1); };

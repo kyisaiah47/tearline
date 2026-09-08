@@ -26,12 +26,12 @@
  * rather than this repo, and says nothing about whether this product can be read.
  */
 
-const SITE = "https://tearline.kynth.studio";
+const SITE = "https://tearline.thecompound.tech";
 
 // Was `${SITE}/#studio` — the studio's node filed under TEARLINE's domain, which is a
 // different entity to an engine no matter what it is named. The apex defines the studio once;
 // everything else references that id.
-export const ORG_ID = "https://kynth.studio/#organization";
+export const ORG_ID = "https://thecompound.tech/#organization";
 export const SITE_ID = `${SITE}/#website`;
 export const APP_ID = `${SITE}/#tearline`;
 
@@ -58,7 +58,7 @@ export const siteGraph = {
       // so the publisher here resolves to the same entity rather than to a
       // fourth spelling of it. This page had been calling the studio "Kynth
       // Studio", which matches neither the canonical `name` ("Kynth") nor its
-      // `legalName` ("Kynth Studios") — a publisher an engine cannot reconcile
+      // `legalName` ("Compound Labs") — a publisher an engine cannot reconcile
       // is a publisher with no accumulated trust to lend.
       //
       // `sameAs` carries only the profile that was fetched and returned 200 on
@@ -69,9 +69,9 @@ export const siteGraph = {
       // because it points an engine at a dead end under our name.
       "@type": "Organization",
       "@id": ORG_ID,
-      name: "Kynth Studios",
-      alternateName: "Kynth",
-      url: "https://kynth.studio",
+      name: "Compound Labs",
+      alternateName: "Compound Labs",
+      url: "https://thecompound.tech",
       sameAs: ["https://github.com/kyisaiah47"],
     },
     {

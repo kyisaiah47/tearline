@@ -114,4 +114,4 @@ Nothing in `dev/` is served; Next only publishes `public/`. `dev/export-test.htm
 
 ## License
 
-MIT © [Kynth Studios](https://kynth.studio)
+MIT © [Compound Labs](https://thecompound.tech)

@@ -35,7 +35,7 @@ import SmoothScroll from "@/components/SmoothScroll";
  * markup /docs uses. No `data-reveal` anywhere: see the note in DocsShell.
  */
 
-const SITE = "https://tearline.kynth.studio";
+const SITE = "https://tearline.thecompound.tech";
 
 const TITLE = "Export a DOM element as a PNG in the browser — no dependencies";
 const DESCRIPTION =

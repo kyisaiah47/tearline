@@ -36,7 +36,7 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: "https://tearline.kynth.studio/sitemap.xml",
-    host: "https://tearline.kynth.studio",
+    sitemap: "https://tearline.thecompound.tech/sitemap.xml",
+    host: "https://tearline.thecompound.tech",
   };
 }

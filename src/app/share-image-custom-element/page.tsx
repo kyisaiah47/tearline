@@ -56,7 +56,7 @@ import SmoothScroll from "@/components/SmoothScroll";
  * see the note in DocsShell.
  */
 
-const SITE = "https://tearline.kynth.studio";
+const SITE = "https://tearline.thecompound.tech";
 
 const TITLE =
   "Custom element for share images — 4 ways to generate one (2026)";

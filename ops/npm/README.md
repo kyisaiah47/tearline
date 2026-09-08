@@ -122,4 +122,4 @@ The print-out animation is skipped entirely under `prefers-reduced-motion`, and 
 
 ## License
 
-MIT © [Kynth Studios](https://kynth.studio)
+MIT © [Compound Labs](https://thecompound.tech)

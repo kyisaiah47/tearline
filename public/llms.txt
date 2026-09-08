@@ -197,4 +197,4 @@ attributes through, so the tag needs no wrapper.
   and a straight answer on dom-to-image vs
   html2canvas](https://tearline.kynth.studio/html2canvas-alternatives)
 
-MIT © Kynth Studios.
+MIT © Compound Labs.

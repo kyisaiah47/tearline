@@ -35,7 +35,7 @@ export type FaqData = {
   qa: { q: string; a: string; page: string }[];
 };
 
-const STUDIO_ID = "https://kynth.studio/#organization";
+const STUDIO_ID = "https://thecompound.tech/#organization";
 
 const MONTHS = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"];
@@ -133,8 +133,8 @@ function About({
           {surface.subject ? <li>{surface.subject}</li> : null}
           <li>
             {"Published by "}
-            <a href={`https://kynth.studio/?utm_source=${product.slug}&utm_medium=studio_credit`}>
-              {"Kynth Studios"}
+            <a href={`https://thecompound.tech/?utm_source=${product.slug}&utm_medium=studio_credit`}>
+              {"Compound Labs"}
             </a>
           </li>
           <li>
@@ -178,7 +178,7 @@ function Security({ product, surface }: { product: SurfaceProduct; surface: Extr
           * plausible invention that publishes a bounce address on twenty domains under a heading
           * promising a reply. */}
         {"Email "}
-        <a href={"mailto:hello@kynth.studio"}>{"hello@kynth.studio"}</a>
+        <a href={"mailto:hello@thecompound.tech"}>{"hello@thecompound.tech"}</a>
         {". Include the URL, what you did, and what you saw. There is no bounty and no NDA to sign. " +
           "We will confirm receipt, and we will tell you what we changed."}
       </p>
@@ -237,7 +237,7 @@ function Security({ product, surface }: { product: SurfaceProduct; surface: Extr
       ) : null}
 
       <p className={"kx-hint"}>
-        {`${product.name} is built and run by Kynth Studios. The declarations on this page are part of ` +
+        {`${product.name} is built and run by Compound Labs. The declarations on this page are part of ` +
           "this product's own configuration and are re-checked at every deploy against the repository " +
           "they describe: a product that claims to have no accounts and ships an authentication route " +
           "fails the build, and so does one that takes payment without naming its payment processor here."}

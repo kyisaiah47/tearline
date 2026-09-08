@@ -60,7 +60,7 @@ const ICON_STROKE =
 const FAQ_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "@id": "https://tearline.kynth.studio/#faq",
+  "@id": "https://tearline.thecompound.tech/#faq",
   isPartOf: { "@id": SITE_ID },
   about: { "@id": APP_ID },
   mainEntity: FAQS.map(([q, a]) => ({

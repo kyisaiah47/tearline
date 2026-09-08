@@ -34,7 +34,7 @@ import SmoothScroll from "@/components/SmoothScroll";
  * No `data-reveal` anywhere: see the note in DocsShell.
  */
 
-const SITE = "https://tearline.kynth.studio";
+const SITE = "https://tearline.thecompound.tech";
 
 const TITLE =
   "Receiptify-style Spotify receipt generators — libraries and limits (2026)";
@@ -171,7 +171,7 @@ const RECEIPT_HTML: Line[] = [
     [" ", "text"],
     ["src", "attr"],
     ["=", "text"],
-    ['"https://tearline.kynth.studio/tearline.js"', "str"],
+    ['"https://tearline.thecompound.tech/tearline.js"', "str"],
     ["></", "text"],
     ["script", "tag"],
     [">", "text"],

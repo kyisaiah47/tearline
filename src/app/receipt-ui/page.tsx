@@ -34,7 +34,7 @@ import SmoothScroll from "@/components/SmoothScroll";
  * No `data-reveal` anywhere: see the note in DocsShell.
  */
 
-const SITE = "https://tearline.kynth.studio";
+const SITE = "https://tearline.thecompound.tech";
 
 const TITLE = "Receipt-style UI on the web — the CSS behind the paper look";
 const DESCRIPTION =

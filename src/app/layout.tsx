@@ -11,7 +11,7 @@ import BrandMark from '@/components/BrandMark';
 import JsonLd, { siteGraph } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tearline.kynth.studio"),
+  metadataBase: new URL("https://tearline.thecompound.tech"),
   title: "Tearline — any HTML, printed as a receipt",
   description:
     "One custom element that renders anything you wrap in it as a thermal receipt, then exports it as a PNG. Zero dependencies, no build step, MIT.",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "Tearline — any HTML, printed as a receipt",
     description:
       "One custom element that renders anything you wrap in it as a thermal receipt, then exports it as a PNG. Zero dependencies, no build step, MIT.",
-    url: "https://tearline.kynth.studio",
+    url: "https://tearline.thecompound.tech",
     siteName: "Tearline",
     type: "website",
     images: [

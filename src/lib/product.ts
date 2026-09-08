@@ -16,7 +16,7 @@ import type { ProductSurfaces, SurfaceProduct } from "./surfaces";
 export const PRODUCT: SurfaceProduct & { surfaces: ProductSurfaces } = {
   slug: "tearline",
   name: "Tearline",
-  url: "https://tearline.kynth.studio",
+  url: "https://tearline.thecompound.tech",
   /* The description this site's own root layout already publishes, verbatim. */
   blurb:
     "One custom element that renders anything you wrap in it as a thermal receipt, then exports it as a PNG. Zero dependencies, no build step, MIT.",

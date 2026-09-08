@@ -51,13 +51,13 @@ type SocialLink = { href: string; mark: string; label: string; handle: string };
 /* The hrefs come from kynth-ops/social/accounts.json, the account registry — the same set the
  * generated rail carried. */
 const STUDIO: SocialLink[] = [
-  { href: "https://x.com/kynthstudios", mark: "markx", label: "X", handle: "@kynthstudios" },
-  { href: "https://www.threads.com/@kynthstudios", mark: "threads", label: "Threads", handle: "@kynthstudios" },
-  { href: "https://www.instagram.com/kynthstudios/", mark: "camera", label: "Instagram", handle: "@kynthstudios" },
-  { href: "https://www.linkedin.com/company/kynth-studios", mark: "briefcase", label: "LinkedIn", handle: "Kynth Studios" },
-  { href: "https://bsky.app/profile/kynth.studio", mark: "cloud", label: "Bluesky", handle: "kynth.studio" },
+  { href: "https://x.com/compoundlabsinc", mark: "markx", label: "X", handle: "@compoundlabsinc" },
+  { href: "https://www.threads.com/@thecompoundtech", mark: "threads", label: "Threads", handle: "@thecompoundtech" },
+  { href: "https://www.instagram.com/thecompoundtech/", mark: "camera", label: "Instagram", handle: "@thecompoundtech" },
+  { href: "https://www.linkedin.com/company/the-compound-labs", mark: "briefcase", label: "LinkedIn", handle: "Compound Labs" },
+  { href: "https://bsky.app/profile/thecompound.tech", mark: "cloud", label: "Bluesky", handle: "thecompound.tech" },
   { href: "https://dev.to/kynth", mark: "codesquare", label: "Dev.to", handle: "@kynth" },
-  { href: "https://www.youtube.com/@KynthStudios", mark: "clapper", label: "YouTube", handle: "@KynthStudios" },
+  { href: "https://www.youtube.com/@thecompoundlabs", mark: "clapper", label: "YouTube", handle: "@thecompoundlabs" },
 ];
 
 const FOUNDER: SocialLink[] = [
@@ -128,7 +128,7 @@ export default function SocialColumn() {
       </div>
       <div className={"links-6 tl-social-grid"} data-name={"Links"}>
         {STUDIO.map((l) => (
-          <SocialRow key={l.href} link={l} who={"Kynth Studios"} />
+          <SocialRow key={l.href} link={l} who={"Compound Labs"} />
         ))}
         <p className={"heading-4 menu-label tl-social-subhead"} dir={"auto"}>{"@kyisaiah47"}</p>
         {FOUNDER.map((l) => (

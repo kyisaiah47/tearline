@@ -18,7 +18,7 @@ import { useEffect, useState } from "react";
  *
  * ⛔ ONE <img>, ONE alt. The spec's other two hard rules survive the change:
  * the lockup is a picture and is never reassembled from a mark plus type, and
- * `alt="Kynth Studios"` is the only machine-readable copy of the studio's name
+ * `alt="Compound Labs"` is the only machine-readable copy of the studio's name
  * on the credit — the @id edge to the apex Organization rests on it. So this
  * swaps the `src` of a single element rather than rendering both and hiding
  * one, which would either duplicate that string or make the visible one
@@ -51,7 +51,7 @@ export default function StudioSignature({ slug }: { slug: string }) {
     <p className={"heading-4 body-text kynth-signature-line"} dir={"auto"}>
       <a
         className={"kynth-signature"}
-        href={`https://kynth.studio/?utm_source=${slug}&utm_medium=studio_credit`}
+        href={`https://thecompound.tech/?utm_source=${slug}&utm_medium=studio_credit`}
         target={"_blank"}
         rel={"publisher noopener"}
       >
@@ -59,10 +59,10 @@ export default function StudioSignature({ slug }: { slug: string }) {
         <img
           src={
             light
-              ? "/brand/kynth-studios-lockup-onlight.png"
-              : "/brand/kynth-studios-lockup.png"
+              ? "/brand/compound-labs.svg"
+              : "/brand/compound-labs.svg"
           }
-          alt={"Kynth Studios"}
+          alt={"Compound Labs"}
           width={80}
           height={20}
           decoding={"async"}

@@ -1,7 +1,7 @@
 {
  "product": "Tearline",
  "domain": "https://tearline.kynth.studio",
- "parent": "Kynth Studios",
+ "parent": "Compound Labs",
  "tagline": "Any HTML, printed as a receipt — one custom element, zero dependencies",
  "description": "One custom element that renders anything you wrap in it as a thermal receipt, then exports it as a PNG. Zero dependencies, no build step, MIT.",
  "identity": {

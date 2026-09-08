@@ -121,7 +121,7 @@ export type Surface =
        * ⛔ NOTHING ON THE STATUS PAGE IS DECLARED HERE, AND THAT IS THE WHOLE POINT. A status page
        * a product writes about itself says "operational" on the morning it is down, because the
        * sentence and the outage come out of the same build. Every value comes from the estate's
-       * own feed at https://kynth.studio/api/status — built by kynth-ops/roster/build-status.mjs
+       * own feed at https://thecompound.tech/api/status — built by kynth-ops/roster/build-status.mjs
        * from a live probe of this host, this host's own published sitemap freshness and the
        * kynth_jobs ledger, none of which this repo can write to.
        *

@@ -41,7 +41,7 @@ import SmoothScroll from "@/components/SmoothScroll";
  * scoped, and why none of them says `npm i tearline`.
  */
 
-const SITE = "https://tearline.kynth.studio";
+const SITE = "https://tearline.thecompound.tech";
 
 export const metadata: Metadata = {
   title: "Tearline docs — render HTML as a receipt, export it as a PNG",
@@ -105,7 +105,7 @@ const QUICKSTART: Line[] = [
     [" ", "text"],
     ["src", "attr"],
     ["=", "text"],
-    ['"https://tearline.kynth.studio/tearline.js"', "str"],
+    ['"https://tearline.thecompound.tech/tearline.js"', "str"],
     ["></", "text"],
     ["script", "tag"],
     [">", "text"],
@@ -380,7 +380,7 @@ export default function Docs() {
                     <p className={"tl-docs-label"}>{"the whole install"}</p>
                     <Copyable
                       prompt={"<>"}
-                      text={"https://tearline.kynth.studio/tearline.js"}
+                      text={"https://tearline.thecompound.tech/tearline.js"}
                     />
                     <p className={"tl-docs-note"}>
                       {

@@ -185,7 +185,7 @@ export default function InstallSection() {
               <Copyable
                 prompt={"<>"}
                 text={
-                  'https://tearline.kynth.studio/tearline.js'
+                  'https://tearline.thecompound.tech/tearline.js'
                 }
               />
               <p className={"tl-docs-note"}>

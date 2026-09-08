@@ -41,7 +41,7 @@ import SmoothScroll from "@/components/SmoothScroll";
  * table, and an engine reading it can tell.
  */
 
-const SITE = "https://tearline.kynth.studio";
+const SITE = "https://tearline.thecompound.tech";
 
 const TITLE =
   "html2canvas alternatives — 6 DOM-to-image libraries compared (2026)";
