@@ -13,7 +13,7 @@ document order.
 ## Load it
 
 ```html
-<script type="module" src="https://tearline.kynth.studio/tearline.js"></script>
+<script type="module" src="https://tearline.thecompound.tech/tearline.js"></script>
 
 <tear-line barcode="047320260726">
   <h1>Meridian</h1>
@@ -50,7 +50,7 @@ worth knowing: per MDN, drawing cross-origin data onto a canvas without CORS
 approval taints it, after which `toBlob()`, `toDataURL()` and `captureStream()`
 throw a `SecurityError` instead of returning anything. A blank export and a
 thrown export are different bugs with different fixes. Both are written up at
-https://tearline.kynth.studio/dom-to-png, alongside how the zero-dependency
+https://tearline.thecompound.tech/dom-to-png, alongside how the zero-dependency
 DOM-to-image packages on npm compare (figures re-fetched 2026-08-09; all four —
 `html-to-image`, `modern-screenshot`, `html2canvas` and `dom-to-image` — were
 unchanged from the 2026-07-31 reading).
@@ -97,7 +97,7 @@ rules, an SVG `feTurbulence` data URI laid over the paper at
 (mostly straight, roughly one point in six a deeper nick). The full write-up,
 with the shipped values and why a share-image widget belongs in a custom
 element rather than a framework component, is at
-https://tearline.kynth.studio/receipt-ui.
+https://tearline.thecompound.tech/receipt-ui.
 
 ## Building a Spotify listening receipt
 
@@ -116,7 +116,7 @@ a personal-data export) instead of via OAuth, or make a receipt of something
 that has no gatekeeper. The full write-up — including the single endpoint the
 whole genre is built on, GET /me/top/{type} with time_range and a limit capped
 at 50, and five compared ways to turn the rows into a PNG — is at
-https://tearline.kynth.studio/spotify-receipt-generator.
+https://tearline.thecompound.tech/spotify-receipt-generator.
 
 ## Client-side or server-side share images
 
@@ -147,7 +147,7 @@ late or out of order. The stated boundary: "upgrades only apply to elements in
 the document tree" and "an element that is not inserted into a document will
 stay un-upgraded". The full comparison, plus the five requirements for a valid
 custom element name, is at
-https://tearline.kynth.studio/share-image-custom-element.
+https://tearline.thecompound.tech/share-image-custom-element.
 
 ## html2canvas alternatives
 
@@ -171,7 +171,7 @@ is a receipt component — 21 KB across 4 files, no dependencies — and if the
 requirement is "turn this existing element into a PNG" then one of the packages
 above is the right answer. The full comparison, including which package fits
 which requirement, is at
-https://tearline.kynth.studio/html2canvas-alternatives.
+https://tearline.thecompound.tech/html2canvas-alternatives.
 
 ## Frameworks
 
@@ -181,20 +181,20 @@ attributes through, so the tag needs no wrapper.
 
 ## Pages
 
-- [Home and live playground](https://tearline.kynth.studio/)
-- [Documentation and full API reference](https://tearline.kynth.studio/docs)
+- [Home and live playground](https://tearline.thecompound.tech/)
+- [Documentation and full API reference](https://tearline.thecompound.tech/docs)
 - [Export a DOM element as a PNG — the technique, its limits, and the npm
-  alternatives](https://tearline.kynth.studio/dom-to-png)
+  alternatives](https://tearline.thecompound.tech/dom-to-png)
 - [Receipt-style UI on the web — the CSS behind the paper look, and why it is a
-  custom element](https://tearline.kynth.studio/receipt-ui)
+  custom element](https://tearline.thecompound.tech/receipt-ui)
 - [Receiptify-style Spotify receipt generators — the API cap that stops most of
   them, and five ways to make the
-  image](https://tearline.kynth.studio/spotify-receipt-generator)
+  image](https://tearline.thecompound.tech/spotify-receipt-generator)
 - [Custom element for share images — four routes compared, and why the tag can
   ship before the script
-  does](https://tearline.kynth.studio/share-image-custom-element)
+  does](https://tearline.thecompound.tech/share-image-custom-element)
 - [html2canvas alternatives — six DOM-to-image libraries on today's npm figures,
   and a straight answer on dom-to-image vs
-  html2canvas](https://tearline.kynth.studio/html2canvas-alternatives)
+  html2canvas](https://tearline.thecompound.tech/html2canvas-alternatives)
 
 MIT © Compound Labs.
