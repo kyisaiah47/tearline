@@ -144,7 +144,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // page and re-checked against FACTS.json, so when they are refreshed
       // this date moves with them — that is a real content change.
       url: `${SITE}/dom-to-png`,
-      lastModified: new Date("2026-08-07"),
+      lastModified: new Date("2026-09-08"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -154,7 +154,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // /dom-to-png — but the CSS it quotes is read out of the shipped
       // component, so a change to tearline.js is a change here too.
       url: `${SITE}/receipt-ui`,
-      lastModified: new Date("2026-08-07"),
+      lastModified: new Date("2026-09-08"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -172,7 +172,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // `npm run sync`, so the served copy sat twelve lines behind for three
       // days. The sync is run and the figure follows it. Same rule as above.
       url: `${SITE}/spotify-receipt-generator`,
-      lastModified: new Date("2026-08-19"),
+      lastModified: new Date("2026-09-08"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -204,7 +204,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // the row now carries the drift in its own note. Table and sources line
       // corrected against registry.npmjs.org today.
       url: `${SITE}/share-image-custom-element`,
-      lastModified: new Date("2026-08-26"),
+      lastModified: new Date("2026-09-08"),
       changeFrequency: "monthly",
       priority: 0.8,
     },

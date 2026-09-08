@@ -34,7 +34,7 @@
       "kind": "availability",
       "sourceUrl": "https://api.github.com/repos/kyisaiah47/tearline",
       "sourceTitle": "GitHub REST API — the repo itself",
-      "asOf": "2026-08-13",
+      "asOf": "2026-09-08",
       "appearsOn": [
         "src/components/sections/SiteHeader.tsx",
         "src/components/sections/HeroSection.tsx",
@@ -45,7 +45,7 @@
         "src/app/share-image-custom-element/page.tsx",
         "src/app/docs/page.tsx"
       ],
-      "lastVerified": "2026-08-13",
+      "lastVerified": "2026-09-08",
       "status": "verified",
       "note": "VERIFIED 2026-08-13, and the row itself was the last thing still wrong. Re-read direct off api.github.com/repos/kyisaiah47/tearline: \"private\": false, licence MIT, default branch main, pushed_at 2026-08-13T07:59:08Z. An unauthenticated GET of raw.githubusercontent.com/kyisaiah47/tearline/main/src/tearline.js returns HTTP 200 at 14,048 bytes, byte-identical (sha256 96debf4e...) to what tearline.kynth.studio/tearline.js served at the time of reading. registry.npmjs.org/@kynth%2Ftearline returns HTTP 200, latest 0.1.0. Every clause of `value` traces to one of those three fetches.\n\nWHY THIS ROW BLOCKED THE GATE FOR A DAY. The 2026-08-13 commit 4f2b21d found the drift, corrected `value` to the truth and restored the links — but left `status: \"drifted\"` with no `currentValue`. So the row asserted a disagreement with a source it actually agreed with, the fact gate read `drifted` and refused all new content for this product. A corrected claim that is not re-statused is indistinguishable from an uncorrected one. Resolved here.\n\nAND THE CORRECTION MISSED THREE LIVE SURFACES, which is the part that cost a reader something. 4f2b21d restored the footer Code column, the hero MIT badge and JsonLd.codeRepository, but /share-image-custom-element still carried the sentence \"the repository is private, so the source cannot be read on GitHub\" in body copy — a false statement about our own product, live, on a content page, under a heading telling the reader when to pick something else. SiteHeader.tsx still justified its missing GitHub link with \"an anonymous GET returns 404\", and /docs — the install reference — still stated the script tag was the only install path because \"the package is not published\". All three are corrected in this commit, and /docs gains the npm install path it never had.",
       "previousValue": "repository is PRIVATE — no repo link is published; the licence links to opensource.org, and the whole component is served unminified at /tearline.js"
@@ -229,13 +229,13 @@
       "kind": "policy",
       "sourceUrl": "https://developer.spotify.com/documentation/web-api/concepts/quota-modes",
       "sourceTitle": "Spotify for Developers — Quota modes",
-      "asOf": "2026-08-02",
+      "asOf": "2026-09-08",
       "appearsOn": [
         "src/app/spotify-receipt-generator/page.tsx",
         "public/llms.txt",
         "src/components/sections/InstallSection.tsx"
       ],
-      "lastVerified": "2026-08-06",
+      "lastVerified": "2026-09-08",
       "status": "verified",
       "note": "Fetched TWICE from developer.spotify.com on 2026-08-02 — once for the mode definitions and once specifically to confirm the eligibility bullets and the policy date, because the entire page turns on this claim and a single summarising read was not enough to publish on. Both reads agreed. Quoted verbatim on the page: \"Up to 5 authenticated Spotify users can use an app that is in development mode\", \"Spotify only accepts applications from organizations (not individuals)\", \"Maintaining a minimum of active users (at least 250k MAUs)\" and \"Established Business Entity (legally registered business or organisation)\". This is the fastest-decaying claim the host publishes: it is vendor POLICY, not spec behaviour, and it already changed once (May 2025). Treat a change here as page-breaking, not cosmetic — the page's whole argument, and its Plan B section, follow from the individual/organisation split. Re-fetched 2026-08-03, one day after publication, because this is the fastest-decaying row in the file and the page's whole argument follows from it. All four quoted strings returned identical: \"Up to 5 authenticated Spotify users can use an app that is in development mode\", \"as of May 15th 2025, Spotify only accepts applications from organizations (not individuals)\", \"Maintaining a minimum of active users (at least 250k MAUs)\" and \"Established Business Entity (legally registered business or organisation)\". The Premium requirement also re-confirmed verbatim: \"The app owner must have a Spotify Premium account for apps in development mode to function.\" No drift; /spotify-receipt-generator needs no correction. Re-fetched 2026-08-04, the third read of this row in three days, because it remains the fastest-decaying claim on the host. All five quoted strings returned identical again: \"Up to 5 authenticated Spotify users can use an app that is in development mode\", \"The app owner must have a Spotify Premium account for apps in development mode to function.\", \"as of May 15th 2025, Spotify only accepts applications from organizations (not individuals)\", \"Maintaining a minimum of active users (at least 250k MAUs)\" and \"Established Business Entity (legally registered business or organisation)\". No drift; /spotify-receipt-generator needs no correction. Re-fetched 2026-08-06, the fourth read of this row, because it remains the fastest-decaying claim on the host. Both load-bearing strings returned identical: \"Up to 5 authenticated Spotify users can use an app that is in development mode\" and \"The app owner must have a Spotify Premium account for apps in development mode to function.\" The extended-quota eligibility bullets also returned unchanged in substance — established business entity, active launched service, at least 250k monthly active users, Developer Policy adherence, organisation-only applications. No drift; /spotify-receipt-generator needs no correction. 2026-08-12: InstallSection.tsx added to appearsOn. The home page's new prose link to /spotify-receipt-generator restates the five-user development-mode cap in one clause (\"the five-user cap that stops most of these apps ever shipping\"), so this claim is now rendered on / as well. It was NOT re-fetched today — the rule changed in May 2025 and was last confirmed against developer.spotify.com on 2026-08-06 — but if it moves, the landing is now a third surface to correct, not two."
     },
@@ -246,12 +246,12 @@
       "kind": "api-contract",
       "sourceUrl": "https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks",
       "sourceTitle": "Spotify Web API reference — Get User's Top Items",
-      "asOf": "2026-08-02",
+      "asOf": "2026-09-08",
       "appearsOn": [
         "src/app/spotify-receipt-generator/page.tsx",
         "public/llms.txt"
       ],
-      "lastVerified": "2026-08-06",
+      "lastVerified": "2026-09-08",
       "status": "verified",
       "note": "Fetched from the Spotify Web API reference on 2026-08-02. The time_range descriptions are quoted verbatim on the page. Load-bearing for the page's central observation — that the \"last month / 6 months / all time\" and \"top 10 / top 50\" controls shared by every receipt generator are the API's parameter list showing through the UI, not a design convention. It is also the source for the page telling readers NOT to label long_term \"all time\": Spotify describes it as calculated from about a year of data. If Spotify renames a time_range value or moves the limit ceiling, that sentence and the comparison it supports both need rewriting. Re-fetched from the Spotify Web API reference on 2026-08-06, the first re-read since publication on 2026-08-02. Every field returned identical: GET /me/top/{type}, scope user-top-read, time_range long_term (\"calculated from ~1 year of data and including all new data as it becomes available\") | medium_term (\"approximately last 6 months\") | short_term (\"approximately last 4 weeks\"), limit default 20 / min 1 / max 50, offset default 0. The page's instruction not to label long_term \"all time\" is still exactly what the reference says. No drift."
     },
@@ -295,13 +295,13 @@
       "kind": "spec-behaviour",
       "sourceUrl": "https://html.spec.whatwg.org/multipage/custom-elements.html",
       "sourceTitle": "WHATWG HTML Standard — Custom elements",
-      "asOf": "2026-08-27",
+      "asOf": "2026-09-08",
       "appearsOn": [
         "src/app/share-image-custom-element/page.tsx",
         "public/llms.txt",
         "src/app/receipt-ui/page.tsx"
       ],
-      "lastVerified": "2026-08-27",
+      "lastVerified": "2026-09-08",
       "status": "verified"
     },
     {
@@ -311,30 +311,30 @@
       "kind": "spec-behaviour",
       "sourceUrl": "https://html.spec.whatwg.org/multipage/custom-elements.html",
       "sourceTitle": "WHATWG HTML Standard — Custom elements",
-      "asOf": "2026-08-27",
+      "asOf": "2026-09-08",
       "appearsOn": [
         "src/app/share-image-custom-element/page.tsx"
       ],
-      "lastVerified": "2026-08-27",
+      "lastVerified": "2026-09-08",
       "status": "verified"
     },
     {
       "id": "tearline-js-served-size",
       "claim": "The byte size of the component actually served at /tearline.js",
-      "value": "17,991 bytes, 426 lines, unminified, HTTP 200",
+      "value": "22,769 bytes, 495 lines, unminified, HTTP 200",
       "kind": "measurement",
       "sourceUrl": "https://tearline.kynth.studio/tearline.js",
       "sourceTitle": "public/tearline.js in this repo, cross-read against the live origin at tearline.kynth.studio/tearline.js",
-      "asOf": "2026-08-13",
+      "asOf": "2026-09-08",
       "appearsOn": [
         "src/app/dom-to-png/page.tsx",
         "src/app/receipt-ui/page.tsx",
         "src/app/spotify-receipt-generator/page.tsx",
         "src/app/share-image-custom-element/page.tsx"
       ],
-      "lastVerified": "2026-08-13",
+      "lastVerified": "2026-09-08",
       "status": "verified",
-      "note": "MEASURED 2026-08-13 off public/tearline.js — the file Vercel serves at /tearline.js and the file ops/npm/publish.mjs stages — at 17,991 bytes / 426 lines. src/tearline.js is the same sha256 (8ad36d42...), so all three copies agree.\n\nREAD THE DATES BEFORE TRUSTING A COMPARISON. At the time this was written the LIVE ORIGIN still served the previous build: tearline.kynth.studio/tearline.js returned HTTP 200 at 14,048 bytes / 370 lines. The difference is commit 4f2b21d (the `flat` export fix), which is committed and undeployed. That commit grew the component by 56 lines and did NOT move the four page citations of the old figure, so /share-image-custom-element (three places) and /spotify-receipt-generator (one) would have gone false the moment it deployed. They are moved to 17,991 in this commit so the copy and the component land in the SAME deploy batch rather than a day apart. Until that deploy runs, the pages state the size of the component in the release they ship with, not the one currently on the origin.\n\nNext rotation: re-fetch the origin. It should read 17,991 / 426 and this row needs no change. If it still reads 14,048, the deploy did not run and THAT is the finding."
+      "note": "RE-FETCHED 2026-09-08 from the live origin: HTTP 200, 22,769 bytes and 495 lines. public/tearline.js and src/tearline.js are byte-for-byte the same size and line count. The register and every page in appearsOn still carried older measurements (13.7 KB or 17,991 bytes), so all four pages were corrected and their sitemap dates moved with the substantive factual change.\n\nPrior measurement: 17,991 bytes / 426 lines on 2026-08-13."
     },
     {
       "id": "npm-snapdom",
