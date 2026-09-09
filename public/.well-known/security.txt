@@ -3,7 +3,7 @@
 # Do not hand-edit: the surface gate re-runs the derivation at deploy and fails on drift.
 
 Contact: mailto:hello@thecompound.tech
-Expires: 2027-08-01T00:00:00Z
-Policy: https://tearline.kynth.studio/security
-Canonical: https://tearline.kynth.studio/.well-known/security.txt
+Expires: 2027-09-01T00:00:00Z
+Policy: https://tearline.thecompound.tech/security
+Canonical: https://tearline.thecompound.tech/.well-known/security.txt
 Preferred-Languages: en

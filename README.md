@@ -7,7 +7,7 @@ Zero dependencies. No build step. Works from a `<script>` tag. MIT.
 ![Tearline](public/og.jpg)
 
 ```html
-<script type="module" src="https://tearline.kynth.studio/tearline.js"></script>
+<script type="module" src="https://tearline.thecompound.tech/tearline.js"></script>
 
 <tear-line barcode="047320260726">
   <h1>Meridian</h1>
@@ -30,7 +30,7 @@ import '@kynth/tearline';
 
 The package is scoped because the registry refuses the bare name `tearline` — npm's similarity filter reads it as too close to the existing `readline` package. The element is still `<tear-line>`. Published 2026-08-12; `ops/npm/publish.mjs` gates every publish on a byte-for-byte match against the component this site serves.
 
-**[Live playground →](https://tearline.kynth.studio)**
+**[Live playground →](https://tearline.thecompound.tech)**
 
 ## Why
 

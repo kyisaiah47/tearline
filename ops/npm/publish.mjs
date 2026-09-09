@@ -12,11 +12,11 @@
  * pointed at — was found 30 lines behind public/tearline.js. The 2026-08-06
  * commit that added the `tearline:stage` export events edited public/ only, so
  * `main` had been stale for two weeks and a publish would have shipped a
- * component OLDER than the one tearline.kynth.studio serves. Nothing detected it
+ * component OLDER than the one tearline.thecompound.tech serves. Nothing detected it
  * because nothing compared them.
  *
  * So this script does not trust any file on disk. It fetches
- * https://tearline.kynth.studio/tearline.js and refuses to publish unless the
+ * https://tearline.thecompound.tech/tearline.js and refuses to publish unless the
  * staged byte-for-byte sha256 matches what the site is serving right now. The
  * package and the playground can never document different components again.
  *

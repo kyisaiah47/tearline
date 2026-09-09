@@ -4,7 +4,7 @@
 
 Zero dependencies. No build step. One custom element. MIT.
 
-**[Live playground → tearline.kynth.studio](https://tearline.kynth.studio)**
+**[Live playground → tearline.thecompound.tech](https://tearline.thecompound.tech)**
 
 ## Install
 
@@ -23,7 +23,7 @@ Importing the package registers the `<tear-line>` element. There is nothing to c
 Or skip the install entirely — it is an ES module, so a script tag is a complete install:
 
 ```html
-<script type="module" src="https://tearline.kynth.studio/tearline.js"></script>
+<script type="module" src="https://tearline.thecompound.tech/tearline.js"></script>
 ```
 
 ## Use it
@@ -112,7 +112,7 @@ tear-line {
 
 Rendering to an image uses an SVG `<foreignObject>`, which is sandboxed and **cannot fetch anything over the network**. Text and styles are inlined for you automatically. But an `<img>` inside the receipt must be a `data:` URI, or it will be missing from the exported PNG. The export throws with a message saying so rather than silently handing you a receipt with a hole in it.
 
-Separately, drawing cross-origin data onto a canvas without CORS approval taints it, after which `toBlob()`, `toDataURL()` and `captureStream()` throw a `SecurityError`. A blank export and a thrown export are different bugs with different fixes. Both are written up at [tearline.kynth.studio/dom-to-png](https://tearline.kynth.studio/dom-to-png).
+Separately, drawing cross-origin data onto a canvas without CORS approval taints it, after which `toBlob()`, `toDataURL()` and `captureStream()` throw a `SecurityError`. A blank export and a thrown export are different bugs with different fixes. Both are written up at [tearline.thecompound.tech/dom-to-png](https://tearline.thecompound.tech/dom-to-png).
 
 ## Accessibility
 

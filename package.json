@@ -30,7 +30,7 @@
     "type": "git",
     "url": "git+https://github.com/kyisaiah47/tearline.git"
   },
-  "homepage": "https://tearline.kynth.studio",
+  "homepage": "https://tearline.thecompound.tech",
   "scripts": {
     "dev": "next dev -p 3323",
     "build": "next build",

@@ -31,7 +31,7 @@ export default function InstallCta({
 }) {
   const [state, setState] = useState<"idle" | "copied" | "failed">("idle");
 
-  const TEXT = "tearline.kynth.studio/tearline.js";
+  const TEXT = "tearline.thecompound.tech/tearline.js";
 
   // Same fallback as Copyable: navigator.clipboard is absent on a non-secure
   // origin and REJECTS when the permission is denied — which is what a browser

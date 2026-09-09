@@ -2,14 +2,25 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/",
       "has": [
         {
           "type": "host",
           "value": "tearline.kynth.studio"
         }
       ],
-      "destination": "https://tearline.thecompound.tech/:path*",
+      "destination": "https://tearline.thecompound.tech/",
+      "permanent": true
+    },
+    {
+      "source": "/:path((?!api/).*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "tearline.kynth.studio"
+        }
+      ],
+      "destination": "https://tearline.thecompound.tech/:path",
       "permanent": true
     },
     {

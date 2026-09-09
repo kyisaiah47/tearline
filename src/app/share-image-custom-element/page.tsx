@@ -254,7 +254,7 @@ const SOURCES: [string, string][] = [
     "The five requirements for a valid custom element name, and the upgrade behaviour quoted below — both from the HTML Standard's custom-elements section. Fetched 5 August 2026.",
   ],
   [
-    "tearline.kynth.studio/tearline.js",
+    "tearline.thecompound.tech/tearline.js",
     "The served component: 22,769 bytes, unminified, HTTP 200 on 8 September 2026. It is the whole thing; there is nothing else to read.",
   ],
 ];

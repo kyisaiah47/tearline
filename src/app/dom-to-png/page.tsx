@@ -284,7 +284,7 @@ const SOURCES: [string, string][] = [
     "The tainted-canvas rule: drawing cross-origin data without CORS approval makes toBlob(), toDataURL() and captureStream() throw a SecurityError. Fetched 31 July 2026.",
   ],
   [
-    "tearline.kynth.studio/tearline.js",
+    "tearline.thecompound.tech/tearline.js",
     "The Tearline implementation described above — 22,769 bytes, served unminified, HTTP 200 on 8 September 2026. It is the whole component; there is nothing else to read.",
   ],
 ];

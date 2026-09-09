@@ -401,7 +401,7 @@ const SOURCES: [string, string][] = [
     "tabular-nums \"activating the set of figures where numbers are all of the same size, allowing them to be easily aligned like in tables\", mapping to the OpenType tnum feature. Fetched 1 August 2026.",
   ],
   [
-    "tearline.kynth.studio/tearline.js",
+    "tearline.thecompound.tech/tearline.js",
     "The shipped implementation every measurement on this page was read out of — the paper CSS, the seeded tear polygon and the element class. 22,769 bytes, unminified, HTTP 200 on 8 September 2026.",
   ],
 ];

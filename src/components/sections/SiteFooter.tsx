@@ -298,7 +298,7 @@ function FooterBody() {
                   {" The studio behind "}
                   <a className={"kynth-sibling"} href={"https://agentwire.thecompound.tech"} rel={"noopener"}>{"Agentwire"}</a>
                   {", "}
-                  <a className={"kynth-sibling"} href={"https://breachprobe.kynth.studio"} rel={"noopener"}>{"BreachProbe"}</a>
+                  <a className={"kynth-sibling"} href={"https://breachprobe.thecompound.tech"} rel={"noopener"}>{"BreachProbe"}</a>
                   {" and "}
                   <a className={"kynth-sibling"} href={"https://citerank.thecompound.tech"} rel={"noopener"}>{"CiteRank"}</a>
                   {"."}

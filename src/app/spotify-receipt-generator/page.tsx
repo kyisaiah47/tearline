@@ -326,7 +326,7 @@ const SOURCES: [string, string][] = [
     "GET /me/top/{type}, the user-top-read scope, the three time_range values with their stated windows, and limit (default 20, maximum 50) and offset (default 0). Fetched 2 August 2026.",
   ],
   [
-    "tearline.kynth.studio/tearline.js",
+    "tearline.thecompound.tech/tearline.js",
     "The component the render panel loads. 22,769 bytes, unminified, HTTP 200 on 8 September 2026.",
   ],
 ];
