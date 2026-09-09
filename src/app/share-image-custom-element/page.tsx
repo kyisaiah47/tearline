@@ -96,7 +96,7 @@ const ARTICLE_SCHEMA = {
   publisher: { "@id": ORG_ID },
   inLanguage: "en",
   datePublished: "2026-08-05",
-  dateModified: "2026-08-09",
+  dateModified: "2026-09-09",
   proficiencyLevel: "Intermediate",
   articleSection: [
     "Four routes to a share image",
@@ -139,7 +139,7 @@ const ROUTES: [string, string, string][] = [
   ],
   [
     "@vercel/og",
-    "1.0.1 · 2 deps · MPL-2.0 · 6.89 MB · 8 Aug 2026",
+    "1.0.2 · 2 deps · MPL-2.0 · 7.75 MB · 24 Aug 2026",
     "The same server route packaged for a framework route handler. Its two declared runtime dependencies are satori and @resvg/resvg-wasm, so the licence is MPL-2.0 here too, not MIT.",
   ],
 ];
@@ -247,7 +247,7 @@ const SKELETON: Line[] = [
 const SOURCES: [string, string][] = [
   [
     "registry.npmjs.org",
-    "Latest version, licence, declared runtime dependency count, publish date and unpacked size for satori, @vercel/og, modern-screenshot and html-to-image. satori re-fetched 26 August 2026 and it had moved: 0.29.0 → 0.33.4, 11 → 13 runtime dependencies, 5.43 → 5.85 MB, published 24 August 2026. modern-screenshot and html-to-image were re-fetched the same day and both held. The @vercel/og row is the 9 August 2026 reading, taken the day after it published 1.0.1.",
+    "Latest version, licence, declared runtime dependency count, publish date and unpacked size for satori, @vercel/og, modern-screenshot and html-to-image. Re-fetched 9 September 2026: satori and modern-screenshot held; @vercel/og had moved to 1.0.2, 7.75 MB unpacked, published 24 August 2026.",
   ],
   [
     "html.spec.whatwg.org",
@@ -315,7 +315,7 @@ export default function ShareImageCustomElement() {
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "The client-side packages are two orders of magnitude smaller than the server ones — 186 KB and 315 KB unpacked against 5.85 MB and 6.89 MB. That gap is structural rather than a matter of care. Rendering in a browser means borrowing the layout engine that is already in the room, which is what the "
+                        "The client-side packages are much smaller than the server ones — 186 KB and 315 KB unpacked against 5.85 MB and 7.75 MB. That gap is structural rather than a matter of care. Rendering in a browser means borrowing the layout engine that is already in the room, which is what the "
                       }
                       <code>{"<foreignObject>"}</code>
                       {" technique "}
@@ -335,7 +335,7 @@ export default function ShareImageCustomElement() {
                     />
                     <p className={"tl-docs-note"}>
                       {
-                        "Registry facts, not a review: read from registry.npmjs.org on 9 August 2026. @vercel/og left 0.x four days after this page first ran the table — 1.0.1 published 8 August 2026, two runtime dependencies still, and marginally smaller unpacked at 6.89 MB. One licence detail worth catching before it reaches a legal review — the two client-side rasterisers are MIT, and both server-side packages are MPL-2.0. "
+                        "Registry facts, not a review: re-read from registry.npmjs.org on 9 September 2026. @vercel/og is 1.0.2, published 24 August 2026, with the same two runtime dependencies and 7.75 MB unpacked. One licence detail worth catching before it reaches a legal review — the two client-side rasterisers are MIT, and both server-side packages are MPL-2.0. "
                       }
                       <code>{"@vercel/og"}</code>
                       {" declares exactly two runtime dependencies, "}

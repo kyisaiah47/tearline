@@ -57,7 +57,7 @@
       "kind": "availability",
       "sourceUrl": "https://tearline.thecompound.tech/tearline.js",
       "sourceTitle": "Tearline — hosted ES module",
-      "asOf": "2026-07-29",
+      "asOf": "2026-09-09",
       "appearsOn": [
         "src/components/sections/SiteHeader.tsx",
         "src/components/sections/HeroSection.tsx",
@@ -70,7 +70,7 @@
         "src/app/spotify-receipt-generator/page.tsx",
         "src/app/share-image-custom-element/page.tsx"
       ],
-      "lastVerified": "2026-08-12",
+      "lastVerified": "2026-09-09",
       "status": "verified",
       "note": "Re-checked 2026-07-30: HTTP 200, still resolving. This claim is now load-bearing in a way it was not before — with npm and GitHub both removed, this URL is the product's ONLY install path and its only route to the source. If it ever stops resolving the site has no working call to action at all, so it is the highest-priority entry in this register. Re-checked 2026-07-31: HTTP 200, 12,756 bytes, content-type application/javascript. Still the product's only install path and only route to the source. Re-checked 2026-08-01: HTTP 200, 12,756 bytes, content-type application/javascript. Unchanged byte-for-byte in size since 2026-07-31. Still the product's only install path and only route to the source, and now also the cited source for the CSS quoted on /receipt-ui. Re-checked 2026-08-02: HTTP 200, 12,756 bytes, content-type application/javascript. Unchanged byte-for-byte since 2026-07-31. Still the product's only install path and only route to the source. Re-checked 2026-08-03: HTTP 200, 12,756 bytes, content-type application/javascript. Unchanged byte-for-byte since 2026-07-31 — five consecutive readings at the same size. Still the product's only install path and only route to the source. Re-checked 2026-08-04: HTTP 200, 12,756 bytes, content-type application/javascript. Unchanged byte-for-byte since 2026-07-31 — six consecutive readings at the same size. Still the product's only install path and only route to the source. Re-checked 2026-08-06: HTTP 200, 12,756 bytes, content-type application/javascript. Unchanged byte-for-byte since 2026-07-31 — eight consecutive readings at the same size. Still the product's only install path and only route to the source. Re-checked 2026-08-07: HTTP 200, content-type application/javascript; charset=utf-8. The SIZE changed — 14,048 bytes, not the 12,756 held for the eight prior readings — because the 2026-08-06 deploy landed the `tearline:stage` event. See tearline-js-served-size for the full drift record and the seven page corrections it required. Availability itself is unchanged, and this is still the product's only install path and only route to the source. Re-checked 2026-08-12: HTTP 200, 14,048 bytes, content-type application/javascript; charset=utf-8. Unchanged since the 2026-08-06 deploy landed the `tearline:stage` event. Still the product's only install path and only route to the source."
     },
@@ -81,13 +81,13 @@
       "kind": "package-metadata",
       "sourceUrl": "https://registry.npmjs.org/modern-screenshot",
       "sourceTitle": "npm registry — modern-screenshot",
-      "asOf": "2026-08-26",
+      "asOf": "2026-09-09",
       "appearsOn": [
         "src/app/dom-to-png/page.tsx",
         "src/app/share-image-custom-element/page.tsx",
         "src/app/html2canvas-alternatives/page.tsx"
       ],
-      "lastVerified": "2026-08-26",
+      "lastVerified": "2026-09-09",
       "status": "verified",
       "note": "Fetched from registry.npmjs.org on 2026-07-31. `runtime deps` is the length of the `dependencies` object on the latest version — not devDependencies. The page prints the fetch date next to the table, so a stale figure is visibly stale rather than silently wrong. If a new version publishes, the page's numbers drift and this entry is what catches it. Re-fetched from registry.npmjs.org on 2026-08-01: every field — version, licence, runtime dependency count, publish date and unpacked size — returned identical to the 2026-07-31 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-06: 4.7.0 · MIT · 0 runtime deps · 2026-04-16 · 186,023 bytes unpacked. Identical to the 2026-07-31 and 2026-08-01 readings. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-09: 4.7.0 · MIT · 0 runtime deps · 2026-04-16 · 186,023 bytes unpacked. Identical to the prior reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-26: 4.7.0 · MIT · 0 runtime deps · published 2026-04-16 · 186,023 bytes across 12 files. Identical to the prior reading. No drift; now also cited on /html2canvas-alternatives."
     },
@@ -262,29 +262,29 @@
       "kind": "package-metadata",
       "sourceUrl": "https://registry.npmjs.org/satori",
       "sourceTitle": "npm registry — satori",
-      "asOf": "2026-08-26",
+      "asOf": "2026-09-09",
       "appearsOn": [
         "src/app/share-image-custom-element/page.tsx",
         "public/llms.txt",
         "src/app/html2canvas-alternatives/page.tsx"
       ],
-      "lastVerified": "2026-08-26",
+      "lastVerified": "2026-09-09",
       "status": "verified",
       "note": "Re-fetched from registry.npmjs.org on 2026-08-06: 0.29.0 · MPL-2.0 · 11 runtime deps · 2026-07-23 · 5,428,877 bytes unpacked. Identical to the 2026-08-05 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-07: 0.29.0 · MPL-2.0 · 11 runtime deps · 2026-07-23 · 5,428,877 bytes unpacked. Identical to the 2026-08-06 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-09: 0.29.0 · MPL-2.0 · 11 runtime deps · 2026-07-23 · 5,428,877 bytes unpacked. Identical to the prior reading. No drift, no page change. DRIFT CAUGHT 2026-08-26. The register had said 0.29.0 · 11 deps · 2026-07-23 · 5.43 MB since the 2026-08-09 re-fetch, and nothing had re-read the registry since, so the gate kept reporting verified while two live surfaces carried a version that was five releases old. registry.npmjs.org returned 0.33.4 · MPL-2.0 · 13 runtime deps · published 2026-08-24 · 5,851,282 bytes across 37 files. Both surfaces corrected in the same commit: the routes table on /share-image-custom-element and the server-side paragraph in llms.txt. NOTE the appearsOn list also claimed src/app/dom-to-png/page.tsx, which contains no occurrence of \"satori\" at all — a phantom entry that would have sent a future correction to the wrong file. Removed."
     },
     {
       "id": "npm-vercel-og",
       "claim": "@vercel/og latest version, licence, runtime dependencies, publish date and unpacked size",
-      "value": "1.0.1 · MPL-2.0 · 2 runtime deps (satori, @resvg/resvg-wasm) · published 2026-08-08 · 6.89 MB unpacked",
+      "value": "1.0.2 · MPL-2.0 · 2 runtime deps (satori, @resvg/resvg-wasm) · published 2026-08-24 · 7.75 MB unpacked (7,753,279 bytes, 13 files)",
       "kind": "package-metadata",
       "sourceUrl": "https://registry.npmjs.org/@vercel/og",
       "sourceTitle": "npm registry — @vercel/og",
-      "asOf": "2026-08-09",
+      "asOf": "2026-09-09",
       "appearsOn": [
         "src/app/share-image-custom-element/page.tsx",
         "public/llms.txt"
       ],
-      "lastVerified": "2026-08-09",
+      "lastVerified": "2026-09-09",
       "status": "verified",
       "note": "Re-fetched from registry.npmjs.org on 2026-08-06: 0.11.1 · MPL-2.0 · 2 runtime deps · 2026-03-05 · 6,954,153 bytes unpacked. Identical to the 2026-08-05 reading. No drift, no page change. Re-fetched from registry.npmjs.org on 2026-08-07: 0.11.1 · MPL-2.0 · 2 runtime deps (satori, @resvg/resvg-wasm) · 2026-03-05 · 6,954,153 bytes unpacked. Identical to the 2026-08-06 reading. No drift, no page change. DRIFTED and CORRECTED 2026-08-09. Re-fetched from registry.npmjs.org: the package left 0.x — 1.0.1, its first stable major, published 2026-08-08, the day AFTER the 2026-08-07 re-read above, which is why the 2026-08-08 gate did not catch it. New figures: 1.0.1 · MPL-2.0 · 2 runtime deps (satori, @resvg/resvg-wasm) · 2026-08-08 · 6,888,530 bytes unpacked (6.89 MB, down from 6,954,153). Licence and the dependency pair are unchanged, so the \"MPL-2.0 carries through from satori\" point on /share-image-custom-element still holds and needed no rewrite. Corrected in both appearsOn targets the same day: the ROUTES row and the size sentence in src/app/share-image-custom-element/page.tsx, and the server-side paragraph in public/llms.txt."
     },
@@ -325,30 +325,30 @@
       "kind": "measurement",
       "sourceUrl": "https://tearline.thecompound.tech/tearline.js",
       "sourceTitle": "public/tearline.js in this repo, cross-read against the live origin at tearline.thecompound.tech/tearline.js",
-      "asOf": "2026-09-08",
+      "asOf": "2026-09-09",
       "appearsOn": [
         "src/app/dom-to-png/page.tsx",
         "src/app/receipt-ui/page.tsx",
         "src/app/spotify-receipt-generator/page.tsx",
         "src/app/share-image-custom-element/page.tsx"
       ],
-      "lastVerified": "2026-09-08",
+      "lastVerified": "2026-09-09",
       "status": "verified",
       "note": "RE-FETCHED 2026-09-08 from the live origin: HTTP 200, 22,769 bytes and 495 lines. public/tearline.js and src/tearline.js are byte-for-byte the same size and line count. The register and every page in appearsOn still carried older measurements (13.7 KB or 17,991 bytes), so all four pages were corrected and their sitemap dates moved with the substantive factual change.\n\nPrior measurement: 17,991 bytes / 426 lines on 2026-08-13."
     },
     {
       "id": "npm-snapdom",
       "claim": "@zumer/snapdom latest version, licence, runtime dependency count, publish date and unpacked size",
-      "value": "2.24.10 · MIT · 0 runtime deps · published 2026-08-25 · 403,706 bytes across 8 files",
+      "value": "2.24.16 · MIT · 0 runtime deps · published 2026-09-08 · 405,362 bytes across 8 files",
       "kind": "package-metadata",
       "sourceUrl": "https://registry.npmjs.org/@zumer/snapdom",
       "sourceTitle": "npm registry — @zumer/snapdom",
-      "asOf": "2026-08-26",
+      "asOf": "2026-09-09",
       "appearsOn": [
         "src/app/html2canvas-alternatives/page.tsx",
         "public/llms.txt"
       ],
-      "lastVerified": "2026-08-26",
+      "lastVerified": "2026-09-09",
       "status": "verified",
       "note": "Added 2026-08-26 with /html2canvas-alternatives. This one moves fastest of the six — it published the day before it was first read — so treat a held reading here as the exception rather than the rule. Its own registry description is quoted verbatim on the page: \"Fast, modern alternative to html2canvas.\""
     }

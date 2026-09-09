@@ -204,7 +204,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // the row now carries the drift in its own note. Table and sources line
       // corrected against registry.npmjs.org today.
       url: `${SITE}/share-image-custom-element`,
-      lastModified: new Date("2026-09-08"),
+      lastModified: new Date("2026-09-09"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -220,7 +220,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // lose. Its figures are the same npm fields /dom-to-png carries, fetched
       // 2026-08-26, so this date follows the registry the same way that one does.
       url: `${SITE}/html2canvas-alternatives`,
-      lastModified: new Date("2026-08-26"),
+      lastModified: new Date("2026-09-09"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
