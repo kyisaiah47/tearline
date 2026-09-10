@@ -65,7 +65,7 @@ const FOUNDER: SocialLink[] = [
 ];
 
 const WRITING: SocialLink[] = [
-  { href: "https://dev.to/kynth", mark: "codesquare", label: "Dev.to", handle: "@kynth" },
+  { href: "https://dev.to/compoundlabs", mark: "codesquare", label: "Dev.to", handle: "@compoundlabs" },
   { href: "https://kynth.hashnode.dev/", mark: "notes", label: "Hashnode", handle: "kynth.hashnode.dev" },
 ];
 
