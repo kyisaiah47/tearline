@@ -5723,7 +5723,7 @@ html body {
  * the right to draw a 14px square beside live text. The credit became the SEAL LOCKUP on
  * 2026-08-19 — Isaiah picked it off a rendered four-way comparison of this exact footer bar; the
  * spec is kynth-ops/standards/STUDIO-CREDIT-SEAL.md and the reference is
- * kynth-agent-shell/frame/sections/SiteFooter.tsx, live on six products. A mark beside a
+ * compound-component-library/packages/landing/frame/sections/SiteFooter.tsx, live on six products. A mark beside a
  * separately-set word is a SECOND lockup: its size, its gap, its weight and its wordmark case get
  * re-decided per surface — which is what every `!important` in the deleted block was paying for.
  * There is one lockup and it is a picture. Serve the PNG and set its height.

@@ -332,7 +332,7 @@ function FooterBody() {
                 {/* THE STUDIO SIGNATURE — "Built by" + the seal lockup, approved by Isaiah
                   * 2026-08-19 off a rendered four-way comparison of this footer bar. Spec:
                   * kynth-ops/standards/STUDIO-CREDIT-SEAL.md. Reference implementation:
-                  * kynth-agent-shell/frame/sections/SiteFooter.tsx, live on six products.
+                  * compound-component-library/packages/landing/frame/sections/SiteFooter.tsx, live on six products.
                   *
                   * ⛔ THIS PAGE WAS PAINTING THE OLD MARK THREE TIMES, and only one of the three
                   * was the credit. `footer a[href^="https://thecompound.tech"]::before` in globals.css

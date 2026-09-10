@@ -6,7 +6,7 @@
  * this footer left where it is — here the "A Compound Labs project" badge, which keeps its dot,
  * its type and its amber and moves into the band's middle group.
  *
- * The reference implementations are kynth-agent-shell/frame/sections/SiteFooter.tsx (+
+ * The reference implementations are compound-component-library/packages/landing/frame/sections/SiteFooter.tsx (+
  * frame/fixes/footer.css) and dev-shell/src/components/sections/FooterSlot.tsx (+
  * src/app/register.css). Every measured rule below is carried over from one of those two.
  *
@@ -256,7 +256,7 @@
  * word of new copy would have moved it. Isaiah on the same defect on standup: "WHY ISNT TERMS AND
  * PRIVACY POLICY CENTERD". `1fr auto 1fr` makes the centre track the BAND's centre whatever the
  * left group says — the shape both shared shells were fixed to today (dev-shell
- * `.rs-footer-band`, kynth-agent-shell `.frame-footer-bottom`).
+ * `.rs-footer-band`, compound-component-library `.frame-footer-bottom`).
  *
  * ⛔ AND THE SELECTOR CARRIES THE ATTRIBUTE, BECAUSE SHEET ORDER IS NOT THE SAME ON EVERY ROUTE.
  * `.site-footer-phone .footer-bottom-bar` in globals.css declares `display: flex` at (0,2,0), the
