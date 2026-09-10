@@ -100,7 +100,7 @@ const ARTICLE_SCHEMA = {
  * not devDependencies. Sizes are `dist.unpackedSize` in decimal KB/MB, the
  * same convention /dom-to-png uses, from these exact byte counts:
  * html2canvas 3,379,055 · html-to-image 315,082 · modern-screenshot 186,023 ·
- * @zumer/snapdom 405,362 · satori 5,851,282 · @kynth/tearline 21,345.
+ * @zumer/snapdom 405,160 · satori 5,851,282 · @kynth/tearline 21,345.
  * dom-to-image predates npm recording the field and reports no size at all.
  */
 const PACKAGES: [string, string, string][] = [
@@ -111,8 +111,8 @@ const PACKAGES: [string, string, string][] = [
   ],
   [
     "@zumer/snapdom",
-    "2.24.16 · 0 deps · MIT",
-    "8 Sep 2026 · 405 KB · 8 files. The most recently published of the six, and the only one whose own registry description names html2canvas: “Fast, modern alternative to html2canvas.”",
+    "2.24.17 · 0 deps · MIT",
+    "9 Sep 2026 · 405 KB · 8 files. The most recently published of the six, and the only one whose own registry description names html2canvas: “Fast, modern alternative to html2canvas.”",
   ],
   [
     "html-to-image",
@@ -151,7 +151,7 @@ const CHOOSE: [string, string][] = [
   ],
   [
     "You want the most actively published option",
-    "@zumer/snapdom, published 8 September 2026 — one day before these figures were read. Newest release is not the same as most proven; treat it as a reason to look, not a reason to switch.",
+    "@zumer/snapdom, published 9 September 2026 — one day before these figures were read. Newest release is not the same as most proven; treat it as a reason to look, not a reason to switch.",
   ],
   [
     "You need an Open Graph or share card a crawler will see",
@@ -166,7 +166,7 @@ const CHOOSE: [string, string][] = [
 const SOURCES: [string, string][] = [
   [
     "registry.npmjs.org",
-    "Latest version, publish date, licence, runtime dependency count, unpacked size and file count for html2canvas, dom-to-image, html-to-image, modern-screenshot, @zumer/snapdom, satori and @kynth/tearline. @zumer/snapdom, modern-screenshot and satori re-fetched 9 September 2026; the other rows were fetched 26 August 2026.",
+    "Latest version, publish date, licence, runtime dependency count, unpacked size and file count for html2canvas, dom-to-image, html-to-image, modern-screenshot, @zumer/snapdom, satori and @kynth/tearline. @zumer/snapdom was re-fetched 10 September 2026; modern-screenshot and satori were re-fetched 9 September 2026; the other rows were fetched 26 August 2026.",
   ],
   [
     "developer.mozilla.org — CORS enabled image",

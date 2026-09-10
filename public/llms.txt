@@ -158,7 +158,7 @@ your CSS itself, while every other current package serialises the node into an
 SVG foreignObject and lets the browser's own engine draw it.
 
 On the same day's registry figures: modern-screenshot 4.7.0 (16 Apr 2026, 0
-deps, MIT, 186 KB); @zumer/snapdom 2.24.16 (8 Sep 2026, 0 deps, MIT, 405 KB),
+deps, MIT, 186 KB); @zumer/snapdom 2.24.17 (9 Sep 2026, 0 deps, MIT, 405 KB),
 whose own description reads "Fast, modern alternative to html2canvas";
 html-to-image 1.11.13 (14 Feb 2025, 0 deps, MIT, 315 KB); dom-to-image 2.6.0 (4
 Oct 2017, 0 deps, MIT, size not reported); satori 0.33.4 (24 Aug 2026, 13 deps,
