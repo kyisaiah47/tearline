@@ -56,13 +56,16 @@ const STUDIO: SocialLink[] = [
   { href: "https://www.instagram.com/thecompoundtech/", mark: "camera", label: "Instagram", handle: "@thecompoundtech" },
   { href: "https://www.linkedin.com/company/the-compound-labs", mark: "briefcase", label: "LinkedIn", handle: "Compound Labs" },
   { href: "https://bsky.app/profile/thecompound.tech", mark: "cloud", label: "Bluesky", handle: "thecompound.tech" },
-  { href: "https://dev.to/kynth", mark: "codesquare", label: "Dev.to", handle: "@kynth" },
   { href: "https://www.youtube.com/@thecompoundlabs", mark: "clapper", label: "YouTube", handle: "@thecompoundlabs" },
 ];
 
 const FOUNDER: SocialLink[] = [
   { href: "https://x.com/kyisaiah47", mark: "markx", label: "X", handle: "@kyisaiah47" },
   { href: "https://www.linkedin.com/in/kyisaiah47", mark: "briefcase", label: "LinkedIn", handle: "@kyisaiah47" },
+];
+
+const WRITING: SocialLink[] = [
+  { href: "https://dev.to/kynth", mark: "codesquare", label: "Dev.to", handle: "@kynth" },
   { href: "https://kynth.hashnode.dev/", mark: "notes", label: "Hashnode", handle: "kynth.hashnode.dev" },
 ];
 
@@ -120,21 +123,35 @@ function SocialRow({ link, who }: { link: SocialLink; who: string }) {
  *  tracks instead. */
 export default function SocialColumn() {
   return (
-    <div className={"footer-product-group tl-social-col"}>
-      <div className={"label-4"} data-name={"Label"}>
-        <div className={"footer-product-heading"} data-component={"RichTextContainer"}>
-          <p className={"heading-4 menu-label"} dir={"auto"}>{"Follow"}</p>
+    <>
+      <div className={"footer-product-group tl-social-col"}>
+        <div className={"label-4"} data-name={"Label"}>
+          <div className={"footer-product-heading"} data-component={"RichTextContainer"}>
+            <p className={"heading-4 menu-label"} dir={"auto"}>{"Follow"}</p>
+          </div>
+        </div>
+        <div className={"links-6 tl-social-grid"} data-name={"Links"}>
+          {STUDIO.map((l) => (
+            <SocialRow key={l.href} link={l} who={"Compound Labs"} />
+          ))}
+          <p className={"heading-4 menu-label tl-social-subhead"} dir={"auto"}>{"@kyisaiah47"}</p>
+          {FOUNDER.map((l) => (
+            <SocialRow key={l.href} link={l} who={"@kyisaiah47"} />
+          ))}
         </div>
       </div>
-      <div className={"links-6 tl-social-grid"} data-name={"Links"}>
-        {STUDIO.map((l) => (
-          <SocialRow key={l.href} link={l} who={"Compound Labs"} />
-        ))}
-        <p className={"heading-4 menu-label tl-social-subhead"} dir={"auto"}>{"@kyisaiah47"}</p>
-        {FOUNDER.map((l) => (
-          <SocialRow key={l.href} link={l} who={"@kyisaiah47"} />
-        ))}
+      <div className={"footer-product-group tl-social-col"}>
+        <div className={"label-4"} data-name={"Label"}>
+          <div className={"footer-product-heading"} data-component={"RichTextContainer"}>
+            <p className={"heading-4 menu-label"} dir={"auto"}>{"Writing"}</p>
+          </div>
+        </div>
+        <div className={"links-6 tl-social-grid"} data-name={"Links"}>
+          {WRITING.map((l) => (
+            <SocialRow key={l.href} link={l} who={"Compound Labs"} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
