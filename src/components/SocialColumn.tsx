@@ -66,7 +66,7 @@ const FOUNDER: SocialLink[] = [
 
 const WRITING: SocialLink[] = [
   { href: "https://dev.to/compoundlabs", mark: "codesquare", label: "Dev.to", handle: "@compoundlabs" },
-  { href: "https://kynth.hashnode.dev/", mark: "notes", label: "Hashnode", handle: "kynth.hashnode.dev" },
+  { href: "https://hashnode.com/@kyisaiah47", mark: "notes", label: "Hashnode", handle: "@kyisaiah47" },
 ];
 
 const LINK_COLOR = "var(--extracted-r6o4lv, var(--color-text, rgb(209, 209, 209)))";
