@@ -1,104 +1,67 @@
 import type { Metadata, Viewport } from "next";
-import { IconDefs } from "@/components/Icon";
 import Script from "next/script";
-import "./globals.css";
-import "./template.css";
-import "./theme.css";
-import "./mobile.css";
-import "./footer.css";
-import Analytics from '@/components/Analytics';
-import BrandMark from '@/components/BrandMark';
-import JsonLd, { siteGraph } from '@/components/JsonLd';
+import "./tearline-theme.css";
+import "@compound/landing/styles.css";
+import "lenis/dist/lenis.css";
+import Analytics from "@/components/Analytics";
+import JsonLd, { siteGraph } from "@/components/JsonLd";
+import LANDING from "@/landing.config";
+
+/* THE ROOT LAYOUT, on the register. The register's one stylesheet carries the frame and the
+ * document register for the landing, the docs, the guides and the route shims; the product
+ * declares its accent in tearline-theme.css and nothing else, because the frame only reads the
+ * --ui-brand-* contract. The element itself is loaded exactly the way the docs tell a visitor to
+ * load it, so the playground on the landing drives the real thing. */
+
+const DASH = String.fromCharCode(8212);
+const TITLE = `Tearline ${DASH} any HTML, printed as a receipt`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tearline.thecompound.tech"),
-  title: "Tearline — any HTML, printed as a receipt",
-  description:
-    "One custom element that renders anything you wrap in it as a thermal receipt, then exports it as a PNG. Zero dependencies, no build step, MIT.",
-  alternates: {
-    canonical: "/",
-  },
+  metadataBase: new URL(LANDING.domain),
+  title: TITLE,
+  description: LANDING.tagline,
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Tearline — any HTML, printed as a receipt",
-    description:
-      "One custom element that renders anything you wrap in it as a thermal receipt, then exports it as a PNG. Zero dependencies, no build step, MIT.",
-    url: "https://tearline.thecompound.tech",
-    siteName: "Tearline",
+    title: TITLE,
+    description: LANDING.tagline,
+    url: LANDING.domain,
+    siteName: LANDING.name,
     type: "website",
-    images: [
-      {
-        url: "/og-20260827.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Tearline — any HTML, printed as a receipt",
-      },
-    ],
+    images: [{ url: LANDING.ogImage, width: 1200, height: 630, alt: TITLE }],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/og-20260827.jpg"],
+    images: [LANDING.ogImage],
   },
 };
 
-// The clone pipeline never emitted one, so phones fell back to the 980px desktop
-// viewport and scaled the whole page down. No maximumScale/userScalable — pinch
-// zoom has to stay available.
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
-  viewportFit: 'cover',
-  themeColor: '#111110',
+  viewportFit: "cover",
+  themeColor: "#ffffff",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    /* The inline script below stamps `js` on <html> before React hydrates, so
-     * the class is legitimately present on the client and absent on the server.
-     * That is the whole point of it running early, and it is the one case
-     * suppressHydrationWarning exists for. */
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-ui-brand={LANDING.slug} data-ui-theme={LANDING.slug} className="lenis lenis-autoToggle">
       <head>
-        {/* Set BEFORE first paint. Everything a reveal hides is hidden by CSS
-         * from the very first frame, and the class is what turns that on — so
-         * with JS disabled or broken the rule never applies and the content is
-         * simply visible, rather than hidden forever by a stylesheet whose
-         * runtime never arrives to reveal it. */}
+        {/* Set BEFORE first paint. The register scopes every reveal start state to `.js
+         * [data-reveal]`, so this class is what turns the hidden state on; with JS off it never
+         * lands and the page is plainly visible. It is never set under reduced motion, and the 3s
+         * failsafe drops it if the register's runtimes never take ownership. */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "document.documentElement.classList.add('js');" +
-              /* Ink is the default and theme.css declares it with no attribute, so
-               * only the light override is ever stamped. Before first paint, or
-               * the page flashes dark and repaints. */
-              "try{if(localStorage.getItem('tl.theme')==='light')" +
-              "document.documentElement.dataset.theme='light'}catch(e){}",
+              "(function(){try{if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;var d=document.documentElement;d.classList.add('js');setTimeout(function(){if(!d.hasAttribute('data-reveals-ready')||!d.hasAttribute('data-enter-ready'))d.classList.remove('js')},3000)}catch(e){}})()",
           }}
         />
-        {/* Sitewide structured data. In <head> so it is the same block on every
-         * route; per-page schema (the FAQ, the docs article) is emitted by the
-         * section that renders the copy it describes. */}
+        {/* Sitewide structured data, the same block on every route. */}
         <JsonLd data={siteGraph} />
       </head>
       <body>
-        {/* ⛔ THE ICON SPRITE — every <Icon> on every route is a <use href="#i-name"> and paints
-          * NOTHING without these <symbol>s in the same document. No error, no warning, no failed
-          * build: just a missing glyph. gates/icon-defs.mjs proves the refs resolve in a browser. */}
-        <IconDefs />
-        <Analytics />
-        {/* The <use href="#brand-mark"> sprite the header and footer logos
-         * point at. It used to live at the bottom of the home page, which meant
-         * the mark simply was not there on any other route — the logo slot
-         * rendered an empty <svg>. It belongs to the shell, not to one page. */}
-        <BrandMark />
         {children}
-        {/* The product itself, loaded exactly the way the docs tell a visitor
-         * to load it. Everything on this page that looks like a receipt is
-         * rendered by this file — nothing is a screenshot, so a regression
-         * ships as a visibly broken landing page rather than a silent one. */}
+        <Analytics />
         <Script type={"module"} src={"/tearline.js"} strategy={"afterInteractive"} />
       </body>
     </html>

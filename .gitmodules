@@ -1,0 +1,3 @@
+[submodule "vendor/component-library"]
+	path = vendor/component-library
+	url = https://github.com/kyisaiah47/compound-component-library.git

@@ -25,6 +25,24 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "@compound/landing/product": [
+        "./src/landing.config.ts"
+      ],
+      "@compound/landing/adapters/pricing": [
+        "./src/lib/pricing.ts"
+      ],
+      "@compound/landing/adapters/product": [
+        "./src/lib/product.ts"
+      ],
+      "@compound/landing/adapters/surfaces": [
+        "./src/lib/surfaces.ts"
+      ],
+      "@compound/landing/adapters/Icon": [
+        "./src/lib/IconAdapter.tsx"
+      ],
+      "@compound/landing/*": [
+        "./vendor/component-library/packages/landing/frame/*"
       ]
     }
   },
@@ -37,6 +55,7 @@
     ".next-probe/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "vendor/component-library"
   ]
 }

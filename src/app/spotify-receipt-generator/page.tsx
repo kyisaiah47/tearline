@@ -2,10 +2,8 @@ import type { Metadata } from "next";
 import CodePanel from "@/components/CodePanel";
 import type { Line } from "@/components/CodePanel";
 import { DocsSection, RefTable } from "@/components/DocsShell";
+import { SiteShell } from "@compound/landing/_route/SiteShell";
 import JsonLd, { APP_ID, ORG_ID } from "@/components/JsonLd";
-import SiteHeader from "@/components/sections/SiteHeader";
-import SiteFooter from "@/components/sections/SiteFooter";
-import SmoothScroll from "@/components/SmoothScroll";
 
 /**
  * "Receiptify-style Spotify receipt generators."
@@ -19,15 +17,14 @@ import SmoothScroll from "@/components/SmoothScroll";
  * The honest answer is mostly bad news, and that is the reason the page is
  * worth writing. Every listicle on this query walks someone through OAuth and
  * stops before the part where their app is capped at five users forever. The
- * quota-modes page on developer.spotify.com was fetched twice on 2026-08-02 —
- * once for the mode definitions, once to confirm the eligibility bullets and
- * the policy date — because the whole page turns on it and a paraphrase from
+ * quota-modes page on developer.spotify.com was fetched twice on 2026-08-02, * once for the mode definitions, once to confirm the eligibility bullets and
+ * the policy date, because the whole page turns on it and a paraphrase from
  * memory would be worse than no page.
  *
  * Positioning: Tearline is two of the three jobs and none of the hard one. The
  * page says that in the first section rather than burying it, and the
  * comparison table lists Tearline beside four alternatives with the same
- * columns. The npm metrics for those four are NOT restated here — they live on
+ * columns. The npm metrics for those four are NOT restated here, they live on
  * /dom-to-png with their fetch date, and one source of truth beats two copies
  * that drift.
  *
@@ -37,7 +34,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 const SITE = "https://tearline.thecompound.tech";
 
 const TITLE =
-  "Receiptify-style Spotify receipt generators — libraries and limits (2026)";
+  "Receiptify-style Spotify receipt generators, libraries and limits (2026)";
 const DESCRIPTION =
   "Build a Receiptify-style Spotify receipt: the top-tracks endpoint, the five-user cap that stops most of these apps shipping, and five ways to export a PNG.";
 
@@ -56,7 +53,7 @@ export const metadata: Metadata = {
         url: "/og-20260827.jpg",
         width: 1200,
         height: 630,
-        alt: "Tearline — any HTML, printed as a receipt",
+        alt: "Tearline, any HTML, printed as a receipt",
       },
     ],
   },
@@ -94,7 +91,7 @@ const ARTICLE_SCHEMA = {
  * The top-tracks call, written against the reference page fetched 2026-08-02:
  * GET /me/top/{type}, scope user-top-read, limit default 20 / max 50,
  * time_range one of long_term | medium_term | short_term. Nothing here is
- * Tearline-specific — it is the data half, which Tearline has no part in.
+ * Tearline-specific, it is the data half, which Tearline has no part in.
  */
 const TOP_TRACKS_JS: Line[] = [
   [["// scope: user-top-read", "muted"]],
@@ -157,7 +154,7 @@ const TOP_TRACKS_JS: Line[] = [
 
 /**
  * The render half. This is the only panel on the page that is about Tearline,
- * and it is deliberately the shortest one — the point of the page is that this
+ * and it is deliberately the shortest one, the point of the page is that this
  * is the easy job.
  */
 const RECEIPT_HTML: Line[] = [
@@ -284,8 +281,7 @@ const ENDPOINT_ROWS: [string, string, string][] = [
 
 /**
  * Five approaches, compared on the same three columns. The npm packages are
- * named but their version/size/dependency figures are NOT repeated here —
- * those are dated on /dom-to-png and restating them creates a second copy to
+ * named but their version/size/dependency figures are NOT repeated here, * those are dated on /dom-to-png and restating them creates a second copy to
  * keep in sync. Tearline is in the table on the same terms as the rest.
  */
 const APPROACH_ROWS: [string, string, string][] = [
@@ -318,11 +314,11 @@ const APPROACH_ROWS: [string, string, string][] = [
 
 const SOURCES: [string, string][] = [
   [
-    "developer.spotify.com — quota modes",
+    "developer.spotify.com, quota modes",
     "The five-user development-mode cap, the Premium requirement, the 15 May 2025 organisations-only rule and the extended-quota eligibility criteria including 250k MAUs. Fetched twice on 2 August 2026.",
   ],
   [
-    "developer.spotify.com — Get User's Top Items",
+    "developer.spotify.com, Get User's Top Items",
     "GET /me/top/{type}, the user-top-read scope, the three time_range values with their stated windows, and limit (default 20, maximum 50) and offset (default 0). Fetched 2 August 2026.",
   ],
   [
@@ -336,28 +332,9 @@ const SOURCES: [string, string][] = [
 export default function SpotifyReceiptGenerator() {
   return (
     <>
-      <SmoothScroll />
       <JsonLd data={ARTICLE_SCHEMA} />
-      <div id={"main"}>
-        <style
-          dangerouslySetInnerHTML={{
-            __html:
-              ":root body { background: var(--token-2677a7ab-1420-48e4-957c-83a3935eeb1d, rgb(26, 26, 26)); } :root { font-size: 93.75%; }",
-          }}
-        />
-        <div
-          className={"page-root-mobile page-root"}
-          data-layout-template={"true"}
-          style={{ minHeight: "100vh", width: "auto" }}
-        >
-          <SiteHeader />
-          <div
-            className={
-              "page-body section-wrapper faqsection-closed-3 footer-inner page-wrapper"
-            }
-            style={{ width: "auto", display: "contents" }}
-          >
-            <main className={"page"} data-name={"Main"}>
+      <SiteShell eyebrow={"Method"} title={"There is no Receiptify library. There are three jobs."}>
+        <article className={"frame-prose doc-prose"}>
               <DocsSection
                 id={"jobs"}
                 eyebrow={"Method"}
@@ -420,12 +397,12 @@ export default function SpotifyReceiptGenerator() {
                     <p className={"tl-docs-label"}>{"what this means in practice"}</p>
                     <p className={"tl-docs-note"}>
                       {
-                        "A Spotify app built by one person today can serve five authenticated users. Not five hundred in a trial tier, not five thousand pending review — five, and only while the owner holds a Premium subscription. Spotify's own wording is \"Up to 5 authenticated Spotify users can use an app that is in development mode.\""
+                        "A Spotify app built by one person today can serve five authenticated users. Not five hundred in a trial tier, not five thousand pending review, five, and only while the owner holds a Premium subscription. Spotify's own wording is \"Up to 5 authenticated Spotify users can use an app that is in development mode.\""
                       }
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "The escape hatch, extended quota mode, closed to individuals on 15 May 2025: \"Spotify only accepts applications from organizations (not individuals).\" The published criteria go further and ask for a registered business entity, a launched service, and \"a minimum of active users (at least 250k MAUs)\" — a bar that requires already having the audience the quota would let you serve."
+                        "The escape hatch, extended quota mode, closed to individuals on 15 May 2025: \"Spotify only accepts applications from organizations (not individuals).\" The published criteria go further and ask for a registered business entity, a launched service, and \"a minimum of active users (at least 250k MAUs)\", a bar that requires already having the audience the quota would let you serve."
                       }
                     </p>
                     <p className={"tl-docs-note"}>
@@ -456,7 +433,7 @@ export default function SpotifyReceiptGenerator() {
                     <CodePanel title={"top-tracks.js"} lines={TOP_TRACKS_JS} />
                     <p className={"tl-docs-note"}>
                       {
-                        "Every listening-history receipt on the web offers the same three periods and the same two lengths, and it is not a shared design convention. It is the parameter list. Spotify defines exactly three time_range values — roughly four weeks, roughly six months, and about a year of data — and caps limit at 50, so \"last month / last 6 months / all time\" and \"top 10 / top 50\" are the API's shape showing through the UI."
+                        "Every listening-history receipt on the web offers the same three periods and the same two lengths, and it is not a shared design convention. It is the parameter list. Spotify defines exactly three time_range values, roughly four weeks, roughly six months, and about a year of data, and caps limit at 50, so \"last month / last 6 months / all time\" and \"top 10 / top 50\" are the API's shape showing through the UI."
                       }
                     </p>
                     <p className={"tl-docs-note"}>
@@ -490,12 +467,12 @@ export default function SpotifyReceiptGenerator() {
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "The fixes are to proxy the images through your own origin, to inline them as data: URIs before exporting, or to design a receipt that uses type instead of artwork — which is what actual till paper does. The mechanics, the second failure mode that looks identical but is not, and today's npm figures for the packages named above are all at "
+                        "The fixes are to proxy the images through your own origin, to inline them as data: URIs before exporting, or to design a receipt that uses type instead of artwork, which is what actual till paper does. The mechanics, the second failure mode that looks identical but is not, and today's npm figures for the packages named above are all at "
                       }
                       <a href={"/dom-to-png"}>
                         {"export a DOM element as a PNG"}
                       </a>
-                      {". The look itself — the monospace grid, the tabular figures, the torn edge — is given away in copyable CSS at "}
+                      {". The look itself, the monospace grid, the tabular figures, the torn edge, is given away in copyable CSS at "}
                       <a href={"/receipt-ui"}>{"receipt-style UI on the web"}</a>
                       {"."}
                     </p>
@@ -514,7 +491,7 @@ export default function SpotifyReceiptGenerator() {
                     <p className={"tl-docs-label"}>{"three routes that survive the cap"}</p>
                     <p className={"tl-docs-note"}>
                       {
-                        "Build it for five people and stop pretending otherwise. A development-mode app is a perfectly good personal tool, and Spotify says as much — it describes the mode as suited to apps built for accessing data in a single account. Add the five allowed users by hand, ship it as a thing you and your friends use, and skip the landing page."
+                        "Build it for five people and stop pretending otherwise. A development-mode app is a perfectly good personal tool, and Spotify says as much, it describes the mode as suited to apps built for accessing data in a single account. Add the five allowed users by hand, ship it as a thing you and your friends use, and skip the landing page."
                       }
                     </p>
                     <p className={"tl-docs-note"}>
@@ -536,7 +513,7 @@ export default function SpotifyReceiptGenerator() {
                       }
                       <code>{"<tear-line>"}</code>
                       {
-                        ", and it renders as the paper — torn edge, dashed rules, seeded barcode — and exports itself with "
+                        ", and it renders as the paper, torn edge, dashed rules, seeded barcode, and exports itself with "
                       }
                       <code>{"download()"}</code>
                       {
@@ -575,7 +552,7 @@ export default function SpotifyReceiptGenerator() {
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "Quota policy is the fastest-decaying claim on this page — it changed for individuals in May 2025 and can change again. Both figures above carry the date they were read, and the Spotify documentation is the authority, not this page. The cross-origin canvas behaviour in the export section is browser security rather than policy and moves far more slowly; it is sourced to MDN on "
+                        "Quota policy is the fastest-decaying claim on this page, it changed for individuals in May 2025 and can change again. Both figures above carry the date they were read, and the Spotify documentation is the authority, not this page. The cross-origin canvas behaviour in the export section is browser security rather than policy and moves far more slowly; it is sourced to MDN on "
                       }
                       <a href={"/dom-to-png"}>{"the export page"}</a>
                       {"."}
@@ -583,15 +560,8 @@ export default function SpotifyReceiptGenerator() {
                   </div>
                 </div>
               </DocsSection>
-            </main>
-          </div>
-          <div id={"overlay"} />
-          <div className={"spacer-block"} />
-          <div className={"border"} data-border={"true"} data-name={"Border"} />
-          <SiteFooter />
-        </div>
-        <div id={"template-overlay"} />
-      </div>
+            </article>
+      </SiteShell>
     </>
   );
 }

@@ -3,10 +3,8 @@ import CodePanel from "@/components/CodePanel";
 import type { Line } from "@/components/CodePanel";
 import Copyable from "@/components/Copyable";
 import { DocsSection, RefTable } from "@/components/DocsShell";
+import { SiteShell } from "@compound/landing/_route/SiteShell";
 import JsonLd, { APP_ID, ORG_ID } from "@/components/JsonLd";
-import SiteHeader from "@/components/sections/SiteHeader";
-import SiteFooter from "@/components/sections/SiteFooter";
-import SmoothScroll from "@/components/SmoothScroll";
 
 /**
  * Documentation.
@@ -14,8 +12,8 @@ import SmoothScroll from "@/components/SmoothScroll";
  * The site shipped as a single page whose own CTA said "Read the docs" and
  * scrolled 400px to a summary table. This is the page that link was promising,
  * and it is the only surface on the host that answers the questions people
- * actually type — how to turn a DOM element into a PNG without a dependency,
- * what a receipt component's API looks like — rather than restating the pitch.
+ * actually type, how to turn a DOM element into a PNG without a dependency,
+ * what a receipt component's API looks like, rather than restating the pitch.
  *
  * Every section shell is InstallSection's, verbatim: same
  * `featuressection-*` classes, same eyebrow dot, same two-line heading, same
@@ -23,12 +21,12 @@ import SmoothScroll from "@/components/SmoothScroll";
  *
  * The one deliberate omission is `data-reveal`. globals.css sets
  * `.js [data-reveal="N"] { opacity: 0 }` and ScrollReveals only un-hides ids
- * listed under the CURRENT ROUTE in motion-data.json — which has no /docs
+ * listed under the CURRENT ROUTE in motion-data.json, which has no /docs
  * entry. A reveal attribute here would render the whole page invisible to
  * anyone with JavaScript on.
  *
  * INSTALL PATHS. This page documented the script tag as the ONLY one, on the
- * grounds that nothing was published — true when it was written on 2026-07-29,
+ * grounds that nothing was published, true when it was written on 2026-07-29,
  * false since 2026-08-13. @kynth/tearline@0.1.0 is on the registry
  * (registry.npmjs.org returned 200, re-read 2026-08-13; FACTS.json →
  * npm-package-published) and the repo is public and MIT
@@ -36,20 +34,20 @@ import SmoothScroll from "@/components/SmoothScroll";
  * install reference, was the last surface still saying it had not.
  *
  * Both paths are documented now, script tag first: it is the one with no step
- * before it. The bare name `tearline` is still unregisterable — npm rejects it
- * as too similar to `readline` — which is why every npm line on the site is
+ * before it. The bare name `tearline` is still unregisterable, npm rejects it
+ * as too similar to `readline`, which is why every npm line on the site is
  * scoped, and why none of them says `npm i tearline`.
  */
 
 const SITE = "https://tearline.thecompound.tech";
 
 export const metadata: Metadata = {
-  title: "Tearline docs — render HTML as a receipt, export it as a PNG",
+  title: "Tearline docs, render HTML as a receipt, export it as a PNG",
   description:
     "Full reference for the <tear-line> custom element: every attribute, every method, and how the browser-side PNG export works with no dependencies, no canvas API and no server.",
   alternates: { canonical: "/docs" },
   openGraph: {
-    title: "Tearline docs — render HTML as a receipt, export it as a PNG",
+    title: "Tearline docs, render HTML as a receipt, export it as a PNG",
     description:
       "Full reference for the <tear-line> custom element: every attribute, every method, and how the browser-side PNG export works with no dependencies, no canvas API and no server.",
     url: `${SITE}/docs`,
@@ -60,7 +58,7 @@ export const metadata: Metadata = {
         url: "/og-20260827.jpg",
         width: 1200,
         height: 630,
-        alt: "Tearline — any HTML, printed as a receipt",
+        alt: "Tearline, any HTML, printed as a receipt",
       },
     ],
   },
@@ -278,22 +276,22 @@ const ATTRS: [string, string, string][] = [
   [
     "seed",
     "1",
-    "Any integer. The torn edge and the barcode are both drawn from this one number through a deterministic generator, so the same seed always produces the same paper — and the PNG matches what the visitor was looking at. Leave it out and every render tears differently, which is fine for a playground and wrong for an order confirmation.",
+    "Any integer. The torn edge and the barcode are both drawn from this one number through a deterministic generator, so the same seed always produces the same paper, and the PNG matches what the visitor was looking at. Leave it out and every render tears differently, which is fine for a playground and wrong for an order confirmation.",
   ],
   [
     "barcode",
-    "—",
+    ", ",
     "The digits printed under the bars. Omit for no barcode at all. Decorative: it is not a scannable Code 128 and does not pretend to be.",
   ],
   ["tilt", "-1.15", "Rotation in degrees."],
   [
     "flat",
-    "—",
+    ", ",
     "Present: no rotation and no drop shadow. For embedding the receipt inside another layout rather than floating it on a page.",
   ],
   [
     "animate",
-    "—",
+    ", ",
     "Present: the receipt prints out on first paint, like paper feeding from a till. Skipped entirely under prefers-reduced-motion. The duration reads --dur, which defaults to 1.1s.",
   ],
 ];
@@ -301,7 +299,7 @@ const ATTRS: [string, string, string][] = [
 const METHODS: [string, string][] = [
   [
     "toBlob({ scale, padding })",
-    "Resolves to a PNG Blob. scale defaults to 2, so a 330px receipt comes back 660px wide. padding defaults to 44 and exists because the drop shadow spreads past the element's own box — drop it to 0 alongside the flat attribute for a tight crop.",
+    "Resolves to a PNG Blob. scale defaults to 2, so a 330px receipt comes back 660px wide. padding defaults to 44 and exists because the drop shadow spreads past the element's own box, drop it to 0 alongside the flat attribute for a tight crop.",
   ],
   [
     "toDataURL({ scale, padding })",
@@ -313,7 +311,7 @@ const METHODS: [string, string][] = [
   ],
 ];
 
-/* The four real steps of an export, and — for the two that can stop — the cause and the fix.
+/* The four real steps of an export, and, for the two that can stop, the cause and the fix.
  * These are the same four `tearline.js` emits as `tearline:stage`, and the same sentences the
  * playground's failure panel prints, because a docs page and a runtime that disagree about what
  * went wrong is worse than either alone. */
@@ -346,28 +344,9 @@ const PROPS: [string, string, string][] = [
 export default function Docs() {
   return (
     <>
-      <SmoothScroll />
       <JsonLd data={DOC_SCHEMA} />
-      <div id={"main"}>
-        <style
-          dangerouslySetInnerHTML={{
-            __html:
-              ":root body { background: var(--token-2677a7ab-1420-48e4-957c-83a3935eeb1d, rgb(26, 26, 26)); } :root { font-size: 93.75%; }",
-          }}
-        />
-        <div
-          className={"page-root-mobile page-root"}
-          data-layout-template={"true"}
-          style={{ minHeight: "100vh", width: "auto" }}
-        >
-          <SiteHeader />
-          <div
-            className={
-              "page-body section-wrapper faqsection-closed-3 footer-inner page-wrapper"
-            }
-            style={{ width: "auto", display: "contents" }}
-          >
-            <main className={"page"} data-name={"Main"}>
+      <SiteShell eyebrow={"Docs"} title={"Load one file. Wrap anything."}>
+        <article className={"frame-prose doc-prose"}>
               <DocsSection
                 id={"install"}
                 eyebrow={"Docs"}
@@ -392,7 +371,7 @@ export default function Docs() {
                       }
                       <code>{"tear-line"}</code>
                       {
-                        ". Everything after that is markup you already know how to write — headings, rules, tables, lists — and the paper is CSS wrapped around it rather than a picture of it."
+                        ". Everything after that is markup you already know how to write, headings, rules, tables, lists, and the paper is CSS wrapped around it rather than a picture of it."
                       }
                     </p>
                     <p className={"tl-docs-label tl-docs-label-gap"}>
@@ -401,7 +380,7 @@ export default function Docs() {
                     <Copyable prompt={"$"} text={"npm i @kynth/tearline"} />
                     <p className={"tl-docs-note"}>
                       {
-                        "The same file, versioned. Published as @kynth/tearline (0.1.0) — scoped because npm rejects the bare name tearline as too close to readline. Zero dependencies either way, so the only difference is whether you want a lockfile entry. The source is MIT and public at "
+                        "The same file, versioned. Published as @kynth/tearline (0.1.0), scoped because npm rejects the bare name tearline as too close to readline. Zero dependencies either way, so the only difference is whether you want a lockfile entry. The source is MIT and public at "
                       }
                       <a
                         href={"https://github.com/kyisaiah47/tearline"}
@@ -417,7 +396,7 @@ export default function Docs() {
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "Not a template language, not an image service, and not an ESC/POS driver — it does not talk to a physical thermal printer. It renders the "
+                        "Not a template language, not an image service, and not an ESC/POS driver, it does not talk to a physical thermal printer. It renders the "
                       }
                       <strong>{"look"}</strong>
                       {
@@ -454,7 +433,7 @@ export default function Docs() {
                       {" and "}
                       <code>{"tilt"}</code>
                       {
-                        " are observed — set any of them on a live element and the paper redraws. "
+                        " are observed, set any of them on a live element and the paper redraws. "
                       }
                       <code>{"flat"}</code>
                       {" and "}
@@ -537,12 +516,12 @@ export default function Docs() {
                       }
                       <strong>{"rejects with an explicit error"}</strong>
                       {
-                        " naming the cause, rather than quietly handing you a receipt with a hole in it. Fonts are subject to the same rule — a webfont that has not loaded falls back inside the export."
+                        " naming the cause, rather than quietly handing you a receipt with a hole in it. Fonts are subject to the same rule, a webfont that has not loaded falls back inside the export."
                       }
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "None of that is specific to Tearline — it falls out of how browser-side rasterisation works at all. "
+                        "None of that is specific to Tearline, it falls out of how browser-side rasterisation works at all. "
                       }
                       <a href={"/dom-to-png"}>
                         {"Export a DOM element as a PNG"}
@@ -559,8 +538,7 @@ export default function Docs() {
 
                         ⛔ THE LABEL IS A PHRASE, NOT A SENTENCE, AND IT WAS THE ONLY ONE HERE THAT
                         WAS NOT. Twelve of the thirteen `tl-docs-label` runs on this page are short
-                        lowercase phrases — "the whole install", "the one caveat, stated plainly" —
-                        and the register sizes them for that: 11px monospace, floored to 12px at
+                        lowercase phrases, "the whole install", "the one caveat, stated plainly", and the register sizes them for that: 11px monospace, floored to 12px at
                         phone width by mobile.css. This one carried two clauses across 47
                         characters, so at 360/390/430 the mobile gate scored it as PROSE under the
                         13px floor, at all three widths, on every measurement of /docs.
@@ -568,7 +546,7 @@ export default function Docs() {
                         twenty-three labels to suit the one that broke the pattern.
                         Nothing is lost by trimming: the remedy half of the old string is the
                         STAGE_FAILURES table directly below, which is what an author reads when an
-                        export stops — "use a narrower width, or scale 1" — rather than a heading
+                        export stops, "use a narrower width, or scale 1", rather than a heading
                         promising it. */}
                     <p className={"tl-docs-label tl-docs-label-gap"} data-tl-explains={"stages"}>
                       {"watching it happen, and what stops it"}
@@ -577,7 +555,7 @@ export default function Docs() {
                       {"An export fires "}
                       <code>{"tearline:stage"}</code>
                       {
-                        " as it moves through the four things it actually does — flatten, serialise, rasterise, encode. They are not a progress bar's worth of invented percentages: they are the real steps, and the third is where the time and the failures both live. On a long receipt "
+                        " as it moves through the four things it actually does, flatten, serialise, rasterise, encode. They are not a progress bar's worth of invented percentages: they are the real steps, and the third is where the time and the failures both live. On a long receipt "
                       }
                       <code>{"rasterise"}</code>
                       {
@@ -648,7 +626,7 @@ export default function Docs() {
                       {" and "}
                       <code>{"ol"}</code>
                       {
-                        " arrive looking like receipt type — centred uppercase headings, dashed rules, tight monospace rows — without you writing a line of CSS."
+                        " arrive looking like receipt type, centred uppercase headings, dashed rules, tight monospace rows, without you writing a line of CSS."
                       }
                     </p>
                     <p className={"tl-docs-label tl-docs-label-gap"}>
@@ -658,7 +636,7 @@ export default function Docs() {
                       {"Every one of those rules is written with "}
                       <code>{"::slotted()"}</code>
                       {
-                        ", which loses to your own author styles by design. So a plain selector from the outside wins — no "
+                        ", which loses to your own author styles by design. So a plain selector from the outside wins, no "
                       }
                       <code>{"!important"}</code>
                       {
@@ -689,7 +667,7 @@ export default function Docs() {
                       }
                       <code>{"<tear-line seed={7}>"}</code>
                       {
-                        " works with no wrapper and no ref dance. Import the module once, at the top of your app, for its side effect — it registers the element and guards against double registration itself."
+                        " works with no wrapper and no ref dance. Import the module once, at the top of your app, for its side effect, it registers the element and guards against double registration itself."
                       }
                     </p>
                     <p className={"tl-docs-label tl-docs-label-gap"}>
@@ -706,7 +684,7 @@ export default function Docs() {
                     <p className={"tl-docs-label"}>{"server rendering"}</p>
                     <p className={"tl-docs-note"}>
                       {
-                        "The receipt is drawn in the browser, so a server-rendered page ships the markup and paints the paper on hydration. Your content is in the HTML either way — which is the point of it being real elements rather than a canvas. Gate any fade-in on "
+                        "The receipt is drawn in the browser, so a server-rendered page ships the markup and paints the paper on hydration. Your content is in the HTML either way, which is the point of it being real elements rather than a canvas. Gate any fade-in on "
                       }
                       <code>{"data-ready"}</code>
                       {" and the swap is invisible."}
@@ -748,7 +726,7 @@ export default function Docs() {
                       {"The print-out reveal is inside a "}
                       <code>{"prefers-reduced-motion: no-preference"}</code>
                       {
-                        " query, so it is not softened under a reduced-motion preference — it never runs at all."
+                        " query, so it is not softened under a reduced-motion preference, it never runs at all."
                       }
                     </p>
                   </div>
@@ -771,21 +749,14 @@ export default function Docs() {
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "Decorative, and marked as such — it carries no text alternative because there is nothing to announce. The digits under it are real text and are read normally."
+                        "Decorative, and marked as such, it carries no text alternative because there is nothing to announce. The digits under it are real text and are read normally."
                       }
                     </p>
                   </div>
                 </div>
               </DocsSection>
-            </main>
-          </div>
-          <div id={"overlay"} />
-          <div className={"spacer-block"} />
-          <div className={"border"} data-border={"true"} data-name={"Border"} />
-          <SiteFooter />
-        </div>
-        <div id={"template-overlay"} />
-      </div>
+            </article>
+      </SiteShell>
     </>
   );
 }
