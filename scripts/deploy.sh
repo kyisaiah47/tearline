@@ -23,7 +23,7 @@ set -euo pipefail
 # instruction: on 08-22 two sessions read a copy of it, tried to deploy, and were refused.
 # Wired by compound-ops/tools/wire-deploy-guard.mjs — do not remove, do not make it
 # conditional. `deploy-all.sh --check` fails closed if it goes missing from any script.
-. "$HOME/Projects/compound-ops/tools/deploy-lock.sh" || { echo "deploy gate missing — refusing to deploy" >&2; exit 1; }
+. "$HOME/CompoundLabs/compound-ops/tools/deploy-lock.sh" || { echo "deploy gate missing — refusing to deploy" >&2; exit 1; }
 deploy_gate "tearline"
 
 
@@ -43,7 +43,7 @@ esac
 TEAM="team_2hYY71qdn1MSFXL9CfX1uDp3"
 PROJECT="tearline"
 HOST="tearline.thecompound.tech"
-WORKBENCH="$HOME/Projects/dev-shell"
+WORKBENCH="$HOME/CompoundLabs/dev-shell"
 
 # A repo.json (git-link format) forces the interactive project picker even with --yes.
 rm -f .vercel/repo.json
@@ -89,9 +89,9 @@ echo "==> deploy prebuilt (artifacts only, 0 cloud build)"
 # it does not deploy, and there is no --force, no allowlist and no known-issues file to get past
 # it with. Fix the card.
 echo "==> landing layout"
-GATE_APP_DIR="$HOME/Projects/tearline"
+GATE_APP_DIR="$HOME/CompoundLabs/tearline"
 ( cd "$GATE_APP_DIR" && { [ -d .next ] || npm run build; } ) || exit 1
-node "$HOME/Projects/compound-ops/standards/landing-layout-gate.mjs" --dir "$GATE_APP_DIR" --slug tearline || exit 1
+node "$HOME/CompoundLabs/compound-ops/standards/landing-layout-gate.mjs" --dir "$GATE_APP_DIR" --slug tearline || exit 1
 
 
 DEPLOY_OUT=$(npx vercel deploy --prebuilt --prod --archive=tgz --scope="$TEAM" < /dev/null 2>&1)
@@ -139,7 +139,7 @@ fi
 # 200, twice in a row. It is not a retry and not a grace period; it never looks at a finding and
 # cannot make one go away. Images are deliberately NOT warmed: a missing image is a finding the
 # gates should report.
-node "$HOME/Projects/compound-ops/tools/warm-host.mjs" "https://$HOST/"
+node "$HOME/CompoundLabs/compound-ops/tools/warm-host.mjs" "https://$HOST/"
 
 # The phone-width gate. Fails closed on: a table column owning more than 55% of the SCREEN,
 # content painted off the left edge that no scroll reaches, an overflow-x wrapper that grew to its
@@ -186,9 +186,9 @@ CONTROL_GATES_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 # A field a product declares has to be read by something that renders. Source-only, so it
 # runs whatever the deploy did — `cta.login` was declared on six products and rendered on
 # none, and the one mention of it under frame/ was a comment.
-if [ -f "$HOME/Projects/compound-ops/tools/gates/config-read.mjs" ]; then
+if [ -f "$HOME/CompoundLabs/compound-ops/tools/gates/config-read.mjs" ]; then
   echo "==> config-read gate (source)"
-  if ! node "$HOME/Projects/compound-ops/tools/gates/config-read.mjs" "$CONTROL_GATES_DIR"; then CONTROL_GATES_FAILED=1; fi
+  if ! node "$HOME/CompoundLabs/compound-ops/tools/gates/config-read.mjs" "$CONTROL_GATES_DIR"; then CONTROL_GATES_FAILED=1; fi
 else
   echo "✗ config-read gate NOT CHECKED — the gate is missing from compound-ops" >&2
   CONTROL_GATES_FAILED=1
@@ -196,9 +196,9 @@ fi
 
 CONTROL_GATES_URL="https://$HOST/"
 for _g in live-wire checkout-path; do
-  if [ -f "$HOME/Projects/compound-ops/tools/gates/$_g.mjs" ]; then
+  if [ -f "$HOME/CompoundLabs/compound-ops/tools/gates/$_g.mjs" ]; then
     echo "==> $_g gate (live)"
-    if ! node "$HOME/Projects/compound-ops/tools/gates/$_g.mjs" "$CONTROL_GATES_URL"; then CONTROL_GATES_FAILED=1; fi
+    if ! node "$HOME/CompoundLabs/compound-ops/tools/gates/$_g.mjs" "$CONTROL_GATES_URL"; then CONTROL_GATES_FAILED=1; fi
   else
     echo "✗ $_g gate NOT CHECKED — the gate is missing from compound-ops" >&2
     CONTROL_GATES_FAILED=1

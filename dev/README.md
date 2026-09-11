@@ -24,7 +24,7 @@ looks enough like a receipt at a glance to ship by mistake.
                           clip:{x:0,y:0,width:1200,height:630}});
       await b.close();})"
     rm public/_og.html
-    cd ~/Projects/demos/social/tools/og && node render.mjs render tearline
+    cd ~/CompoundLabs/demos/social/tools/og && node render.mjs render tearline
 
 Check the element actually upgraded before trusting the output:
 `customElements.get('tear-line')` and a non-null `shadowRoot`.

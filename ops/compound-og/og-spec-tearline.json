@@ -3,15 +3,15 @@
   "productionUnit": "og:tearline:20260911",
   "publishingAccount": "site-og:tearline",
   "provenance": "tearline.thecompound.tech",
-  "object": "/Users/admin/Projects/tearline/ops/compound-og/tearline-object-f1745b84fdabd71074c3.png",
+  "object": "/Users/admin/CompoundLabs/tearline/ops/compound-og/tearline-object-f1745b84fdabd71074c3.png",
   "objectSubject": "tearline-f1745b84fdabd71074c3",
   "objectGeneration": {
     "subject": "tearline-f1745b84fdabd71074c3",
     "generatedAt": "2026-09-11T16:23:34.353Z",
     "method": "codex-built-in-imagegen",
     "productionUnit": "og:tearline:20260911",
-    "prompt": "/Users/admin/Projects/tearline/ops/compound-og/tearline-object-f1745b84fdabd71074c3.prompt.txt",
-    "file": "/Users/admin/Projects/tearline/ops/compound-og/tearline-object-f1745b84fdabd71074c3.png",
+    "prompt": "/Users/admin/CompoundLabs/tearline/ops/compound-og/tearline-object-f1745b84fdabd71074c3.prompt.txt",
+    "file": "/Users/admin/CompoundLabs/tearline/ops/compound-og/tearline-object-f1745b84fdabd71074c3.png",
     "sha256": "0d4f886b2e6724236ff968eb88ceb14bed4026ba6ef03b4dd807e3866c059c54"
   },
   "headline": "Any HTML, printed as a receipt",
@@ -20,8 +20,8 @@
   ],
   "handle": "tearline.thecompound.tech",
   "productName": "Tearline",
-  "productLogo": "/Users/admin/Projects/tearline/public/logo.svg",
-  "mark": "/Users/admin/Projects/compound-ops/brand/compound-labs/marks/svg/notch-cube-light.svg",
+  "productLogo": "/Users/admin/CompoundLabs/tearline/public/logo.svg",
+  "mark": "/Users/admin/CompoundLabs/compound-ops/brand/compound-labs/marks/svg/notch-cube-light.svg",
   "sig": "headline1",
   "sigSize": "head"
 }

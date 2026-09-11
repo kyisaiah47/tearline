@@ -3,7 +3,7 @@
   "generatedAt": "2026-09-11T16:23:34.353Z",
   "method": "codex-built-in-imagegen",
   "productionUnit": "og:tearline:20260911",
-  "prompt": "/Users/admin/Projects/tearline/ops/compound-og/tearline-object-f1745b84fdabd71074c3.prompt.txt",
-  "file": "/Users/admin/Projects/tearline/ops/compound-og/tearline-object-f1745b84fdabd71074c3.png",
+  "prompt": "/Users/admin/CompoundLabs/tearline/ops/compound-og/tearline-object-f1745b84fdabd71074c3.prompt.txt",
+  "file": "/Users/admin/CompoundLabs/tearline/ops/compound-og/tearline-object-f1745b84fdabd71074c3.png",
   "sha256": "0d4f886b2e6724236ff968eb88ceb14bed4026ba6ef03b4dd807e3866c059c54"
 }
