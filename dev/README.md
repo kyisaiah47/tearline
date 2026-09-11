@@ -20,7 +20,7 @@ looks enough like a receipt at a glance to ship by mistake.
       const p=await b.newPage({viewport:{width:1200,height:630},deviceScaleFactor:2});
       await p.goto('http://localhost:3000/_og.html',{waitUntil:'networkidle'});
       await p.waitForTimeout(2000);
-      await p.screenshot({path:process.env.HOME+'/Projects/demos/social/tools/og/bg/tearline.png',
+      await p.screenshot({path:process.env.HOME+'/CompoundLabs/demos/social/tools/og/bg/tearline.png',
                           clip:{x:0,y:0,width:1200,height:630}});
       await b.close();})"
     rm public/_og.html
