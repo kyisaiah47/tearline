@@ -339,7 +339,7 @@
     {
       "id": "npm-snapdom",
       "claim": "@zumer/snapdom latest version, licence, runtime dependency count, publish date and unpacked size",
-      "value": "2.24.17 · MIT · 0 runtime deps · published 2026-09-09 · 405,160 bytes across 8 files",
+    "value": "2.24.18 · MIT · 0 runtime deps · published 2026-09-11 · 407,591 bytes across 8 files",
       "kind": "package-metadata",
       "sourceUrl": "https://registry.npmjs.org/@zumer/snapdom",
       "sourceTitle": "npm registry — @zumer/snapdom",
@@ -348,9 +348,9 @@
         "src/app/html2canvas-alternatives/page.tsx",
         "public/llms.txt"
       ],
-      "lastVerified": "2026-09-10",
+    "lastVerified": "2026-09-11",
       "status": "verified",
-      "note": "Added 2026-08-26 with /html2canvas-alternatives. This one moves fastest of the six — it published the day before it was first read — so treat a held reading here as the exception rather than the rule. Its own registry description is quoted verbatim on the page: \"Fast, modern alternative to html2canvas.\""
+    "note": "Added 2026-08-26 with /html2canvas-alternatives. Re-fetched from registry.npmjs.org on 2026-09-11: 2.24.18 · MIT · 0 runtime deps · published 2026-09-11 · 407,591 bytes across 8 files. The registry description remains \"Fast, modern alternative to html2canvas.\""
     }
   ]
 }
