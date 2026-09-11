@@ -85,6 +85,7 @@ export default function Playground() {
   const [paper, setPaper] = useState(300);
   const [exp, setExp] = useState<ExportState>({ kind: "idle" });
   const receipt = useRef<TearLineEl | null>(null);
+  const stage = useRef<HTMLDivElement | null>(null);
   const lastUrl = useRef<string | null>(null);
 
   // The receipt's content is light-DOM children of a custom element, so React
@@ -105,11 +106,15 @@ export default function Playground() {
   useEffect(() => releaseLast, []);
 
   useEffect(() => {
-    const mq = window.matchMedia("(max-width: 640px)");
-    const fit = () => setPaper(mq.matches ? 230 : 300);
+    const el = stage.current;
+    if (!el) return;
+    /* The element's box is the paper plus the padding its drop shadow needs, so the paper is
+       sized off the stage's own width and capped at the desktop width. */
+    const fit = () => setPaper(Math.min(300, Math.max(160, Math.floor(el.clientWidth - 96))));
     fit();
-    mq.addEventListener("change", fit);
-    return () => mq.removeEventListener("change", fit);
+    const ro = new ResizeObserver(fit);
+    ro.observe(el);
+    return () => ro.disconnect();
   }, []);
 
   async function runExport() {
@@ -206,7 +211,7 @@ export default function Playground() {
           />
         </div>
 
-        <div className={"tl-play__stage"}>
+        <div ref={stage} className={"tl-play__stage"}>
           <tear-line ref={receipt} seed={String(seed)} barcode={"04732026"} width={String(paper)} />
         </div>
       </div>
