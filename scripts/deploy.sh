@@ -21,9 +21,9 @@ set -euo pipefail
 # THE ESTATE WENT QUIET. That design was torn out on 2026-08-16 and the text outlived it by
 # six days. A comment describing a dead mechanism is not stale documentation, it is an
 # instruction: on 08-22 two sessions read a copy of it, tried to deploy, and were refused.
-# Wired by kynth-ops/tools/wire-deploy-guard.mjs — do not remove, do not make it
+# Wired by compound-ops/tools/wire-deploy-guard.mjs — do not remove, do not make it
 # conditional. `deploy-all.sh --check` fails closed if it goes missing from any script.
-. "$HOME/Projects/kynth-ops/tools/deploy-lock.sh" || { echo "deploy gate missing — refusing to deploy" >&2; exit 1; }
+. "$HOME/Projects/compound-ops/tools/deploy-lock.sh" || { echo "deploy gate missing — refusing to deploy" >&2; exit 1; }
 deploy_gate "tearline"
 
 
@@ -91,7 +91,7 @@ echo "==> deploy prebuilt (artifacts only, 0 cloud build)"
 echo "==> landing layout"
 GATE_APP_DIR="$HOME/Projects/tearline"
 ( cd "$GATE_APP_DIR" && { [ -d .next ] || npm run build; } ) || exit 1
-node "$HOME/Projects/kynth-ops/standards/landing-layout-gate.mjs" --dir "$GATE_APP_DIR" --slug tearline || exit 1
+node "$HOME/Projects/compound-ops/standards/landing-layout-gate.mjs" --dir "$GATE_APP_DIR" --slug tearline || exit 1
 
 
 DEPLOY_OUT=$(npx vercel deploy --prebuilt --prod --archive=tgz --scope="$TEAM" < /dev/null 2>&1)
@@ -139,7 +139,7 @@ fi
 # 200, twice in a row. It is not a retry and not a grace period; it never looks at a finding and
 # cannot make one go away. Images are deliberately NOT warmed: a missing image is a finding the
 # gates should report.
-node "$HOME/Projects/kynth-ops/tools/warm-host.mjs" "https://$HOST/"
+node "$HOME/Projects/compound-ops/tools/warm-host.mjs" "https://$HOST/"
 
 # The phone-width gate. Fails closed on: a table column owning more than 55% of the SCREEN,
 # content painted off the left edge that no scroll reaches, an overflow-x wrapper that grew to its
@@ -157,7 +157,7 @@ node "$HOME/Projects/kynth-ops/tools/warm-host.mjs" "https://$HOST/"
 # Nothing anywhere would say the page had never been opened, and the render gate is the only
 # check in this estate that opens a page at all.
 #
-# The shape is not hypothetical. kynth-ops/portals/mcpdir/tick.mjs printed "everything in
+# The shape is not hypothetical. compound-ops/portals/mcpdir/tick.mjs printed "everything in
 # parity, every listing live" on every --no-browser run for the same reason — the skipped check
 # produced zero findings and fell into the all-clear branch — and said it three times on
 # 2026-08-14 while seven of eleven listings were missing or stale.
@@ -177,7 +177,7 @@ fi
 echo "OK"
 
 # ⛔ DEAD-CONTROL GATES — a control that claims to do something has to DO something when pressed.
-# Wired by kynth-ops/tools/wire-control-gates.mjs — do not remove, do not make it optional.
+# Wired by compound-ops/tools/wire-control-gates.mjs — do not remove, do not make it optional.
 # Both are CONDITIONAL: a page with no action-labelled control, and a product with no
 # checkout, pass untouched. See each gate's header for the defects that produced it.
 CONTROL_GATES_FAILED=0
@@ -186,21 +186,21 @@ CONTROL_GATES_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 # A field a product declares has to be read by something that renders. Source-only, so it
 # runs whatever the deploy did — `cta.login` was declared on six products and rendered on
 # none, and the one mention of it under frame/ was a comment.
-if [ -f "$HOME/Projects/kynth-ops/tools/gates/config-read.mjs" ]; then
+if [ -f "$HOME/Projects/compound-ops/tools/gates/config-read.mjs" ]; then
   echo "==> config-read gate (source)"
-  if ! node "$HOME/Projects/kynth-ops/tools/gates/config-read.mjs" "$CONTROL_GATES_DIR"; then CONTROL_GATES_FAILED=1; fi
+  if ! node "$HOME/Projects/compound-ops/tools/gates/config-read.mjs" "$CONTROL_GATES_DIR"; then CONTROL_GATES_FAILED=1; fi
 else
-  echo "✗ config-read gate NOT CHECKED — the gate is missing from kynth-ops" >&2
+  echo "✗ config-read gate NOT CHECKED — the gate is missing from compound-ops" >&2
   CONTROL_GATES_FAILED=1
 fi
 
 CONTROL_GATES_URL="https://$HOST/"
 for _g in live-wire checkout-path; do
-  if [ -f "$HOME/Projects/kynth-ops/tools/gates/$_g.mjs" ]; then
+  if [ -f "$HOME/Projects/compound-ops/tools/gates/$_g.mjs" ]; then
     echo "==> $_g gate (live)"
-    if ! node "$HOME/Projects/kynth-ops/tools/gates/$_g.mjs" "$CONTROL_GATES_URL"; then CONTROL_GATES_FAILED=1; fi
+    if ! node "$HOME/Projects/compound-ops/tools/gates/$_g.mjs" "$CONTROL_GATES_URL"; then CONTROL_GATES_FAILED=1; fi
   else
-    echo "✗ $_g gate NOT CHECKED — the gate is missing from kynth-ops" >&2
+    echo "✗ $_g gate NOT CHECKED — the gate is missing from compound-ops" >&2
     CONTROL_GATES_FAILED=1
   fi
 done
