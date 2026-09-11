@@ -12,7 +12,7 @@ const LANDING: LandingConfig = {
   name: PRODUCT.name,
   tagline: PRODUCT.blurb,
   domain: PRODUCT.url,
-  ogImage: "/og-20260827.jpg",
+  ogImage: "/og.jpg",
   nav: [
     { label: "Docs", href: "/docs" },
     { label: "Playground", href: "/#playground" },

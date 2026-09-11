@@ -1,0 +1,13 @@
+{
+  "usage": "production",
+  "reviewOnly": false,
+  "centrepiece": null,
+  "shotSha256": null,
+  "productionUnit": "og:tearline:20260911",
+  "publishingAccount": "site-og:tearline",
+  "objectMethod": "codex-built-in-imagegen",
+  "objectSha256": "0d4f886b2e6724236ff968eb88ceb14bed4026ba6ef03b4dd807e3866c059c54",
+  "objectSha256s": null,
+  "objectSubjects": null,
+  "renderSha256": "17203ce8ea1a6c42ff302e84e4286eb873a7684393feb6220f550958ac978a4e"
+}

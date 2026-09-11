@@ -1,0 +1,15 @@
+Use case: stylized-concept
+Asset type: transparent centerpiece for a Compound Labs media card or video
+Primary request: one literal, immediately recognizable miniature scene or coherent assembly representing Tearline renders any HTML as a printed thermal receipt and exports it as a PNG
+Scene/backdrop: genuinely transparent alpha; no floor, environment, frame, separate shadow, lattice, or typography
+Subject context: One custom element that renders anything you wrap in it as a thermal receipt, then exports it as a PNG. The story is explicitly about a thermal receipt.
+Concept selection — mandatory: Before drawing, identify the concrete real-world subject behind the story. Choose in this order: (1) the affected person doing a visible action, (2) the actual product or thing being acted on, (3) the real place where the event occurs, (4) the physical mechanism only when the story is genuinely about that mechanism. Depict that subject literally. A viewer who has not read the post must be able to name the person, product, place, or event at thumbnail size.
+Distinctness — mandatory: Do not translate abstract verbs such as prepares, files, indexes, compares, checks, maps, verifies, processes, searches, drafts, or routes into paper moving through a box. Do not make software look like office equipment. The scene must be specific to this story and must not be reusable for an unrelated administrative product.
+Style/medium: crisp blocky low-poly isometric 3D; hard edges; flat planar faces; restrained ambient occlusion only at joins and undersides
+Composition/framing: centered; true orthographic isometric view; verticals vertical and every other structural edge on equal ±30° projected axes; compact silhouette; full object visible; generous margin
+Lighting/mood: precise, calm, engineered studio lighting
+Color palette: white and pale-grey structural faces, charcoal working faces, exactly one small Compound red #E01E37 functional accent
+Materials/textures: matte solid material; no gloss; no gradients painted across faces; no grain
+Text: none
+Constraints: one compact coherent scene or assembly; people and real-world settings are allowed when they are the literal subject; recognizable at small size; parallel projection; no watermark
+Avoid — hard ban unless the story is explicitly about that physical item: printers, scanners, copiers, fax machines, filing cabinets, file sorters, paper-feed slots, paper-output trays, rollers, conveyor belts, document-processing machines, generic administrative machines, stacks of folders, stacks of paper, documents entering or emerging from boxes. Also avoid perspective convergence, dimetric projection, clay softness, inflated forms, app-icon tiles, glass, chrome, neon, extra symbols, surrounding cubes
