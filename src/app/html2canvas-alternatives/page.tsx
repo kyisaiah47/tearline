@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { DocsSection, RefTable } from "@/components/DocsShell";
-import { SiteShell } from "@compound/landing/_route/SiteShell";
 import JsonLd, { APP_ID, ORG_ID } from "@/components/JsonLd";
+import SiteHeader from "@/components/sections/SiteHeader";
+import SiteFooter from "@/components/sections/SiteFooter";
+import SmoothScroll from "@/components/SmoothScroll";
 
 /**
  * "html2canvas alternatives."
@@ -9,13 +11,13 @@ import JsonLd, { APP_ID, ORG_ID } from "@/components/JsonLd";
  * WHY THIS PAGE EXISTS, from the measurement rather than from a hunch.
  *
  * Two of the six buyer queries this product is watched on are comparison-shaped
- *, "html2canvas alternatives" and "dom to image vs html2canvas", and until
+ * — "html2canvas alternatives" and "dom to image vs html2canvas" — and until
  * today this host owned no page whose title overlapped either of them. The AEO
  * probe on 2026-08-19, 08-20, 08-21 and 08-26 shows what gets cited for them
  * instead: npm-compare.com, on all five engines (chatgpt, claude-web, deepseek,
  * google-ai, perplexity), and npmtrends.com plus betterprogramming.pub on
  * google-ai. Every one of those is a third-party reading of the npm registry or
- * a Medium publication, none of them is a competing library, and none of them
+ * a Medium publication — none of them is a competing library, and none of them
  * says anything the registry does not.
  *
  * So the gap is not that a rival is beating us. It is that the answer to a
@@ -34,7 +36,7 @@ import JsonLd, { APP_ID, ORG_ID } from "@/components/JsonLd";
  * only, same as the four sibling pages.
  *
  * This page is deliberately honest about where Tearline is the WRONG answer,
- * which is most of the time, it is a receipt component, not a rasteriser. A
+ * which is most of the time — it is a receipt component, not a rasteriser. A
  * comparison table that concludes "use ours" for every row is not a comparison
  * table, and an engine reading it can tell.
  */
@@ -42,7 +44,7 @@ import JsonLd, { APP_ID, ORG_ID } from "@/components/JsonLd";
 const SITE = "https://tearline.thecompound.tech";
 
 const TITLE =
-  "html2canvas alternatives, 6 DOM-to-image libraries compared (2026)";
+  "html2canvas alternatives — 6 DOM-to-image libraries compared (2026)";
 const DESCRIPTION =
   "html2canvas has not shipped since January 2022. Five maintained replacements compared: dom-to-image, html-to-image, modern-screenshot, snapdom, satori.";
 
@@ -58,10 +60,10 @@ export const metadata: Metadata = {
     type: "article",
     images: [
       {
-        url: "/og.jpg",
+        url: "/og-20260827.jpg",
         width: 1200,
         height: 630,
-        alt: "Tearline, any HTML, printed as a receipt",
+        alt: "Tearline — any HTML, printed as a receipt",
       },
     ],
   },
@@ -94,10 +96,11 @@ const ARTICLE_SCHEMA = {
 
 /**
  * Every cell is a field returned by registry.npmjs.org on 26 August 2026.
- * "deps" is the length of the `dependencies` object on the latest version, * not devDependencies. Sizes are `dist.unpackedSize` in decimal KB/MB, the
+ * "deps" is the length of the `dependencies` object on the latest version —
+ * not devDependencies. Sizes are `dist.unpackedSize` in decimal KB/MB, the
  * same convention /dom-to-png uses, from these exact byte counts:
  * html2canvas 3,379,055 · html-to-image 315,082 · modern-screenshot 186,023 ·
- * @zumer/snapdom 407,591 · satori 5,851,282 · @kynth/tearline 21,345.
+ * @zumer/snapdom 405,160 · satori 5,851,282 · @kynth/tearline 21,345.
  * dom-to-image predates npm recording the field and reports no size at all.
  */
 const PACKAGES: [string, string, string][] = [
@@ -108,8 +111,8 @@ const PACKAGES: [string, string, string][] = [
   ],
   [
     "@zumer/snapdom",
-    "2.24.18 · 0 deps · MIT",
-    "11 Sep 2026 · 408 KB · 8 files. The most recently published of the six, and the only one whose own registry description names html2canvas: “Fast, modern alternative to html2canvas.”",
+    "2.24.17 · 0 deps · MIT",
+    "9 Sep 2026 · 405 KB · 8 files. The most recently published of the six, and the only one whose own registry description names html2canvas: “Fast, modern alternative to html2canvas.”",
   ],
   [
     "html-to-image",
@@ -129,14 +132,14 @@ const PACKAGES: [string, string, string][] = [
   [
     "satori",
     "0.33.4 · 13 deps · MPL-2.0",
-    "24 Aug 2026 · 5.85 MB · 37 files. Not a browser rasteriser at all, it converts HTML and CSS to SVG on a server. The only one here that is not MIT.",
+    "24 Aug 2026 · 5.85 MB · 37 files. Not a browser rasteriser at all — it converts HTML and CSS to SVG on a server. The only one here that is not MIT.",
   ],
 ];
 
 const CHOOSE: [string, string][] = [
   [
     "You already ship html2canvas and it works",
-    "Leave it. Nothing above says it is broken, it is unmaintained since January 2022 and large, which are reasons not to ADD it, not reasons to rip it out of something that renders correctly today.",
+    "Leave it. Nothing above says it is broken — it is unmaintained since January 2022 and large, which are reasons not to ADD it, not reasons to rip it out of something that renders correctly today.",
   ],
   [
     "You want the smallest general-purpose option",
@@ -148,7 +151,7 @@ const CHOOSE: [string, string][] = [
   ],
   [
     "You want the most actively published option",
-    "@zumer/snapdom, published 11 September 2026, on the day these figures were read. Newest release is not the same as most proven; treat it as a reason to look, not a reason to switch.",
+    "@zumer/snapdom, published 9 September 2026 — one day before these figures were read. Newest release is not the same as most proven; treat it as a reason to look, not a reason to switch.",
   ],
   [
     "You need an Open Graph or share card a crawler will see",
@@ -156,17 +159,17 @@ const CHOOSE: [string, string][] = [
   ],
   [
     "You want the receipt look, and the export with it",
-    "Tearline, and only then. It is a custom element, not a rasteriser you can point at an arbitrary div. If your requirement is “a PNG of this element” rather than “a receipt of this content”, one of the five above is the right answer.",
+    "Tearline — and only then. It is a custom element, not a rasteriser you can point at an arbitrary div. If your requirement is “a PNG of this element” rather than “a receipt of this content”, one of the five above is the right answer.",
   ],
 ];
 
 const SOURCES: [string, string][] = [
   [
     "registry.npmjs.org",
-    "Latest version, publish date, licence, runtime dependency count, unpacked size and file count for html2canvas, dom-to-image, html-to-image, modern-screenshot, @zumer/snapdom, satori and @kynth/tearline. @zumer/snapdom was re-fetched 11 September 2026; modern-screenshot and satori were re-fetched 11 September 2026; the other rows were fetched 11 September 2026.",
+    "Latest version, publish date, licence, runtime dependency count, unpacked size and file count for html2canvas, dom-to-image, html-to-image, modern-screenshot, @zumer/snapdom, satori and @kynth/tearline. @zumer/snapdom was re-fetched 10 September 2026; modern-screenshot and satori were re-fetched 9 September 2026; the other rows were fetched 26 August 2026.",
   ],
   [
-    "developer.mozilla.org, CORS enabled image",
+    "developer.mozilla.org — CORS enabled image",
     "The tainted-canvas rule: drawing cross-origin data without CORS approval taints the canvas, and toBlob(), toDataURL() and captureStream() then throw a SecurityError. Applies to every package in the table that runs in a browser. Fetched 26 August 2026.",
   ],
   [
@@ -180,9 +183,28 @@ const SOURCES: [string, string][] = [
 export default function Html2canvasAlternatives() {
   return (
     <>
+      <SmoothScroll />
       <JsonLd data={ARTICLE_SCHEMA} />
-      <SiteShell eyebrow={"Answer"} title={"html2canvas alternatives. The short version."}>
-        <article className={"frame-prose doc-prose"}>
+      <div id={"main"}>
+        <style
+          dangerouslySetInnerHTML={{
+            __html:
+              ":root body { background: var(--token-2677a7ab-1420-48e4-957c-83a3935eeb1d, rgb(26, 26, 26)); } :root { font-size: 93.75%; }",
+          }}
+        />
+        <div
+          className={"page-root-mobile page-root"}
+          data-layout-template={"true"}
+          style={{ minHeight: "100vh", width: "auto" }}
+        >
+          <SiteHeader />
+          <div
+            className={
+              "page-body section-wrapper faqsection-closed-3 footer-inner page-wrapper"
+            }
+            style={{ width: "auto", display: "contents" }}
+          >
+            <main className={"page"} data-name={"Main"}>
               <DocsSection
                 id={"answer"}
                 eyebrow={"Answer"}
@@ -207,12 +229,12 @@ export default function Html2canvasAlternatives() {
                       {" is "}
                       <strong>{"1.4.1, published 22 January 2022"}</strong>
                       {
-                        ", read from registry.npmjs.org on 26 August 2026, which puts it four and a half years without a release. It is also the largest of the browser-side options by an order of magnitude: 3.38 MB unpacked across 391 files, against 186 KB across 12 for modern-screenshot."
+                        " — read from registry.npmjs.org on 26 August 2026, which puts it four and a half years without a release. It is also the largest of the browser-side options by an order of magnitude: 3.38 MB unpacked across 391 files, against 186 KB across 12 for modern-screenshot."
                       }
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "That size difference is not incidental, and it is the one thing worth understanding before picking. html2canvas reimplements layout, it walks your DOM and repaints it onto a canvas itself, which is why it needs css-line-break and text-segmentation and why it can disagree with what you saw on screen. Every other browser-side package in the table borrows the engine already in the room: serialise the node, wrap it in an SVG "
+                        "That size difference is not incidental, and it is the one thing worth understanding before picking. html2canvas reimplements layout — it walks your DOM and repaints it onto a canvas itself, which is why it needs css-line-break and text-segmentation and why it can disagree with what you saw on screen. Every other browser-side package in the table borrows the engine already in the room: serialise the node, wrap it in an SVG "
                       }
                       <code>{"<foreignObject>"}</code>
                       {", let the browser rasterise it. That technique is "}
@@ -244,7 +266,7 @@ export default function Html2canvasAlternatives() {
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "The blank-export failure is the same story. The SVG is loaded as a data URI, so it is a sandbox with no origin: it cannot fetch a remote image, a webfont or a stylesheet. Whatever the picture needs has to be inside the string before it is serialised, by any of these packages, in any order."
+                        "The blank-export failure is the same story. The SVG is loaded as a data URI, so it is a sandbox with no origin: it cannot fetch a remote image, a webfont or a stylesheet. Whatever the picture needs has to be inside the string before it is serialised — by any of these packages, in any order."
                       }
                     </p>
                     <p className={"tl-docs-note"}>
@@ -276,7 +298,7 @@ export default function Html2canvasAlternatives() {
                     <p className={"tl-docs-label"}>{"how to read this"}</p>
                     <p className={"tl-docs-note"}>
                       {
-                        "Registry facts, not a review. Every cell is a field the npm registry returned on 26 August 2026, latest version, publish date of that version, declared licence, the length of the dependencies object, and dist.unpackedSize. No download counts, no stars, no opinion dressed up as a metric."
+                        "Registry facts, not a review. Every cell is a field the npm registry returned on 26 August 2026 — latest version, publish date of that version, declared licence, the length of the dependencies object, and dist.unpackedSize. No download counts, no stars, no opinion dressed up as a metric."
                       }
                     </p>
                     <p className={"tl-docs-note"}>
@@ -286,7 +308,7 @@ export default function Html2canvasAlternatives() {
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "Publish dates are the field people misread. An old date means the package has not changed, not that it has stopped working, dom-to-image last shipped in 2017 and still does exactly what it did then. It means nobody is going to fix the next browser change for you."
+                        "Publish dates are the field people misread. An old date means the package has not changed, not that it has stopped working — dom-to-image last shipped in 2017 and still does exactly what it did then. It means nobody is going to fix the next browser change for you."
                       }
                     </p>
                     <p className={"tl-docs-note"}>
@@ -309,7 +331,7 @@ export default function Html2canvasAlternatives() {
                     <p className={"tl-docs-label"}>{"the answer first"}</p>
                     <p className={"tl-docs-note"}>
                       {
-                        "Pick neither, and take html-to-image or modern-screenshot instead. They are the maintained descendants of dom-to-image, they use the same technique, and they have the same API shape, so the comparison people actually want is dom-to-image's approach against html2canvas's approach, and on that question dom-to-image's approach won and is what everything current is built on."
+                        "Pick neither, and take html-to-image or modern-screenshot instead. They are the maintained descendants of dom-to-image, they use the same technique, and they have the same API shape — so the comparison people actually want is dom-to-image's approach against html2canvas's approach, and on that question dom-to-image's approach won and is what everything current is built on."
                       }
                     </p>
                     <p className={"tl-docs-label tl-docs-label-gap"}>
@@ -317,7 +339,7 @@ export default function Html2canvasAlternatives() {
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "dom-to-image hands your markup to the browser inside an SVG foreignObject and lets the real layout engine draw it. html2canvas parses your CSS and paints the result itself. The first is fast, small, and matches what the user saw, because it IS what the user saw. The second is slower, larger, and can drift from the page, but it does not depend on foreignObject support, and it can reach some things the sandbox cannot."
+                        "dom-to-image hands your markup to the browser inside an SVG foreignObject and lets the real layout engine draw it. html2canvas parses your CSS and paints the result itself. The first is fast, small, and matches what the user saw, because it IS what the user saw. The second is slower, larger, and can drift from the page — but it does not depend on foreignObject support, and it can reach some things the sandbox cannot."
                       }
                     </p>
                     <p className={"tl-docs-note"}>
@@ -338,7 +360,7 @@ export default function Html2canvasAlternatives() {
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "html2canvas fails visibly instead. Because it is interpreting CSS rather than rendering it, an unsupported property comes out wrong on the canvas while the page looks fine, a gradient flattened, a filter dropped, a transform ignored. You get an image, just not your image."
+                        "html2canvas fails visibly instead. Because it is interpreting CSS rather than rendering it, an unsupported property comes out wrong on the canvas while the page looks fine — a gradient flattened, a filter dropped, a transform ignored. You get an image, just not your image."
                       }
                     </p>
                     <p className={"tl-docs-note"}>
@@ -351,7 +373,7 @@ export default function Html2canvasAlternatives() {
                       <a href={"/dom-to-png"}>
                         {"the DOM-to-PNG write-up"}
                       </a>
-                      {", and the server-side fork, where satori sits, and why a crawler forces it, is "}
+                      {", and the server-side fork — where satori sits, and why a crawler forces it — is "}
                       <a href={"/share-image-custom-element"}>
                         {"compared separately"}
                       </a>
@@ -381,7 +403,7 @@ export default function Html2canvasAlternatives() {
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "Most of the time. Tearline is a custom element that renders whatever you wrap in it as a thermal receipt, paper texture, torn edge, barcode, and exports that. It is 21 KB across 4 files with no dependencies, and it is not a library you can point at an arbitrary div. If the requirement is “turn this existing element into a PNG”, five of the six packages above do that and this one does not."
+                        "Most of the time. Tearline is a custom element that renders whatever you wrap in it as a thermal receipt — paper texture, torn edge, barcode — and exports that. It is 21 KB across 4 files with no dependencies, and it is not a library you can point at an arbitrary div. If the requirement is “turn this existing element into a PNG”, five of the six packages above do that and this one does not."
                       }
                     </p>
                     <p className={"tl-docs-label tl-docs-label-gap"}>
@@ -430,8 +452,15 @@ export default function Html2canvasAlternatives() {
                   </div>
                 </div>
               </DocsSection>
-            </article>
-      </SiteShell>
+            </main>
+          </div>
+          <div id={"overlay"} />
+          <div className={"spacer-block"} />
+          <div className={"border"} data-border={"true"} data-name={"Border"} />
+          <SiteFooter />
+        </div>
+        <div id={"template-overlay"} />
+      </div>
     </>
   );
 }

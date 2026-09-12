@@ -1,5 +1,4 @@
 import type { NextConfig } from 'next';
-import { withComponentLibrary } from "./vendor/component-library/packages/landing/next.mjs";
 
 const nextConfig: NextConfig = {
   async rewrites() {
@@ -25,10 +24,4 @@ const nextConfig: NextConfig = {
   devIndicators: false,
 };
 
-/* The register is vendored at vendor/component-library (a git submodule) and linked in through
- * both bundlers; the landing config and the icon adapter are this repo's. */
-export default withComponentLibrary(nextConfig, {
-  appDir: import.meta.dirname,
-  landing: "src/landing.config.ts",
-  icon: "src/lib/IconAdapter.tsx",
-});
+export default nextConfig;

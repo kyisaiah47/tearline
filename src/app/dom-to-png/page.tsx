@@ -2,15 +2,18 @@ import type { Metadata } from "next";
 import CodePanel from "@/components/CodePanel";
 import type { Line } from "@/components/CodePanel";
 import { DocsSection, RefTable } from "@/components/DocsShell";
-import { SiteShell } from "@compound/landing/_route/SiteShell";
 import JsonLd, { APP_ID, ORG_ID } from "@/components/JsonLd";
+import SiteHeader from "@/components/sections/SiteHeader";
+import SiteFooter from "@/components/sections/SiteFooter";
+import SmoothScroll from "@/components/SmoothScroll";
 
 /**
  * "Export a DOM element as a PNG."
  *
  * The third page on the host, and the first one that is not about Tearline.
- * The measured queries this product is watched on are mostly not brand terms, * they are "export dom element as image no dependencies", "generate shareable
- * png from html in browser", "html to receipt image javascript", and the
+ * The measured queries this product is watched on are mostly not brand terms —
+ * they are "export dom element as image no dependencies", "generate shareable
+ * png from html in browser", "html to receipt image javascript" — and the
  * domains that get cited for them are github.com and stackoverflow.com. Those
  * are not competitors to compare against; they are where the ANSWER currently
  * lives. So this page answers the question directly, and only says where
@@ -19,7 +22,7 @@ import JsonLd, { APP_ID, ORG_ID } from "@/components/JsonLd";
  * Every factual number on this page was fetched on 2026-07-31 and is listed
  * with its source in the final section. The npm figures come from
  * registry.npmjs.org; the tainted-canvas rule comes from MDN. Nothing here is
- * quoted from memory, a remembered version number is a wrong version number,
+ * quoted from memory — a remembered version number is a wrong version number,
  * and this page's whole value is that its numbers are checkable.
  *
  * The technique description is written against src/tearline.js, which is the
@@ -28,13 +31,13 @@ import JsonLd, { APP_ID, ORG_ID } from "@/components/JsonLd";
  * fetched, their source was not, so the table reports only what the registry
  * returned.
  *
- * Section shells come from @/components/DocsShell, the same InstallSection
+ * Section shells come from @/components/DocsShell — the same InstallSection
  * markup /docs uses. No `data-reveal` anywhere: see the note in DocsShell.
  */
 
 const SITE = "https://tearline.thecompound.tech";
 
-const TITLE = "Export a DOM element as a PNG in the browser, no dependencies";
+const TITLE = "Export a DOM element as a PNG in the browser — no dependencies";
 const DESCRIPTION =
   "Export a DOM element as a PNG in the browser: serialise it into an SVG foreignObject, paint it to a canvas, read it back. Plus the tainted-canvas rule.";
 
@@ -53,7 +56,7 @@ export const metadata: Metadata = {
         url: "/og.jpg",
         width: 1200,
         height: 630,
-        alt: "Tearline, any HTML, printed as a receipt",
+        alt: "Tearline — any HTML, printed as a receipt",
       },
     ],
   },
@@ -86,7 +89,7 @@ const ARTICLE_SCHEMA = {
 
 const RASTERISE: Line[] = [
   [
-    ["// 1. serialise, XMLSerializer, never innerHTML", "muted"],
+    ["// 1. serialise — XMLSerializer, never innerHTML", "muted"],
   ],
   [
     ["const", "kw"],
@@ -235,7 +238,7 @@ const TEARLINE_API: Line[] = [
 /**
  * Every cell here is a field returned by registry.npmjs.org on 2026-07-31.
  * "runtime deps" is the length of the `dependencies` object on the latest
- * version, not devDependencies, and not a bundle-size measurement.
+ * version — not devDependencies, and not a bundle-size measurement.
  */
 const PACKAGES: [string, string, string][] = [
   [
@@ -263,7 +266,7 @@ const FAILURES: [string, string][] = [
   ],
   [
     "innerHTML",
-    "A foreignObject is parsed as strict XML. Void elements written HTML-style, <hr>, <br>, an unquoted attribute, are fatal parse errors, and the image simply fails to decode. XMLSerializer is the only serialiser that self-closes and namespaces correctly.",
+    "A foreignObject is parsed as strict XML. Void elements written HTML-style — <hr>, <br>, an unquoted attribute — are fatal parse errors, and the image simply fails to decode. XMLSerializer is the only serialiser that self-closes and namespaces correctly.",
   ],
   [
     "a live animation",
@@ -282,7 +285,7 @@ const SOURCES: [string, string][] = [
   ],
   [
     "tearline.thecompound.tech/tearline.js",
-    "The Tearline implementation described above, 22,769 bytes, served unminified, HTTP 200 on 8 September 2026. It is the whole component; there is nothing else to read.",
+    "The Tearline implementation described above — 22,769 bytes, served unminified, HTTP 200 on 8 September 2026. It is the whole component; there is nothing else to read.",
   ],
 ];
 
@@ -291,9 +294,28 @@ const SOURCES: [string, string][] = [
 export default function DomToPng() {
   return (
     <>
+      <SmoothScroll />
       <JsonLd data={ARTICLE_SCHEMA} />
-      <SiteShell eyebrow={"Method"} title={"Serialise the node. Paint the SVG."}>
-        <article className={"frame-prose doc-prose"}>
+      <div id={"main"}>
+        <style
+          dangerouslySetInnerHTML={{
+            __html:
+              ":root body { background: var(--token-2677a7ab-1420-48e4-957c-83a3935eeb1d, rgb(26, 26, 26)); } :root { font-size: 93.75%; }",
+          }}
+        />
+        <div
+          className={"page-root-mobile page-root"}
+          data-layout-template={"true"}
+          style={{ minHeight: "100vh", width: "auto" }}
+        >
+          <SiteHeader />
+          <div
+            className={
+              "page-body section-wrapper faqsection-closed-3 footer-inner page-wrapper"
+            }
+            style={{ width: "auto", display: "contents" }}
+          >
+            <main className={"page"} data-name={"Main"}>
               <DocsSection
                 id={"method"}
                 eyebrow={"Method"}
@@ -319,7 +341,7 @@ export default function DomToPng() {
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "The reason this works at all is that a browser will happily rasterise arbitrary HTML if you ask it to as part of rendering an SVG. You are not reimplementing a layout engine, you are borrowing the one already in the room. That is also why it is fast, and why the output matches what the user saw rather than approximating it."
+                        "The reason this works at all is that a browser will happily rasterise arbitrary HTML if you ask it to as part of rendering an SVG. You are not reimplementing a layout engine — you are borrowing the one already in the room. That is also why it is fast, and why the output matches what the user saw rather than approximating it."
                       }
                     </p>
                     <p className={"tl-docs-label tl-docs-label-gap"}>
@@ -376,7 +398,7 @@ export default function DomToPng() {
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "So the two failure modes look different and want different fixes. A blank or half-drawn PNG means something did not load inside the sandbox, inline it. A thrown SecurityError means something cross-origin did load and poisoned the canvas, serve it same-origin, or as a data URI, or with CORS headers and "
+                        "So the two failure modes look different and want different fixes. A blank or half-drawn PNG means something did not load inside the sandbox — inline it. A thrown SecurityError means something cross-origin did load and poisoned the canvas — serve it same-origin, or as a data URI, or with CORS headers and "
                       }
                       <code>{"crossOrigin"}</code>
                       {" set."}
@@ -415,7 +437,7 @@ export default function DomToPng() {
                     <p className={"tl-docs-note"}>
                       <code>{"html2canvas"}</code>
                       {
-                        " is the exception on both counts, it pulls in css-line-break and text-segmentation, and it is roughly ten times the size of the others on disk. It is also the one that has gone longest without a release apart from "
+                        " is the exception on both counts — it pulls in css-line-break and text-segmentation, and it is roughly ten times the size of the others on disk. It is also the one that has gone longest without a release apart from "
                       }
                       <code>{"dom-to-image"}</code>
                       {
@@ -429,7 +451,7 @@ export default function DomToPng() {
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "All four also share one hard limit: they need a browser. An Open Graph card is fetched by a crawler that will never run your JavaScript, so it has to be drawn on a server instead, a different set of packages, and a different licence. That fork, with today's figures for both sides, is "
+                        "All four also share one hard limit: they need a browser. An Open Graph card is fetched by a crawler that will never run your JavaScript, so it has to be drawn on a server instead — a different set of packages, and a different licence. That fork, with today's figures for both sides, is "
                       }
                       <a href={"/share-image-custom-element"}>
                         {"compared separately"}
@@ -442,7 +464,7 @@ export default function DomToPng() {
                     <p className={"tl-docs-label"}>{"where Tearline fits"}</p>
                     <p className={"tl-docs-note"}>
                       {
-                        "Tearline is not a general rasteriser. It is a custom element that renders whatever you wrap in it as a thermal receipt, paper texture, torn edge, barcode, and then exports "
+                        "Tearline is not a general rasteriser. It is a custom element that renders whatever you wrap in it as a thermal receipt — paper texture, torn edge, barcode — and then exports "
                       }
                       <em>{"that"}</em>
                       {
@@ -451,7 +473,7 @@ export default function DomToPng() {
                     </p>
                     <p className={"tl-docs-note"}>
                       {
-                        "Which makes the choice easy. Need a PNG of some existing part of your page? Use one of the four. Need the receipt look, a wrapped-up listening history, an order summary, a share card built out of rules and monospace, and want the export to come with it? That is the whole of what this is for."
+                        "Which makes the choice easy. Need a PNG of some existing part of your page? Use one of the four. Need the receipt look — a wrapped-up listening history, an order summary, a share card built out of rules and monospace — and want the export to come with it? That is the whole of what this is for."
                       }
                     </p>
                     <p className={"tl-docs-label tl-docs-label-gap"}>
@@ -467,7 +489,7 @@ export default function DomToPng() {
                       <a href={"/tearline.js"}>
                         {"/tearline.js"}
                       </a>
-                      {". How the receipt look itself is built, the paper, the type and the torn edge, in copyable CSS, is a "}
+                      {". How the receipt look itself is built — the paper, the type and the torn edge, in copyable CSS — is a "}
                       <a href={"/receipt-ui"}>
                         {"separate write-up"}
                       </a>
@@ -491,7 +513,7 @@ export default function DomToPng() {
                     <p className={"tl-docs-label"}>{"why this is here"}</p>
                     <p className={"tl-docs-note"}>
                       {
-                        "Package versions and publish dates go stale, and a page that quotes them from memory is wrong within weeks without ever looking wrong. Every figure above carries the date it was read, so you can tell at a glance how much to trust it, and so can we, because this page is on a register that gets re-checked against these same sources."
+                        "Package versions and publish dates go stale, and a page that quotes them from memory is wrong within weeks without ever looking wrong. Every figure above carries the date it was read, so you can tell at a glance how much to trust it — and so can we, because this page is on a register that gets re-checked against these same sources."
                       }
                     </p>
                     <p className={"tl-docs-note"}>
@@ -502,8 +524,15 @@ export default function DomToPng() {
                   </div>
                 </div>
               </DocsSection>
-            </article>
-      </SiteShell>
+            </main>
+          </div>
+          <div id={"overlay"} />
+          <div className={"spacer-block"} />
+          <div className={"border"} data-border={"true"} data-name={"Border"} />
+          <SiteFooter />
+        </div>
+        <div id={"template-overlay"} />
+      </div>
     </>
   );
 }
