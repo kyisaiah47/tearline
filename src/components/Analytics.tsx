@@ -32,7 +32,7 @@ function appSlugFromHost(host: string): string {
   const bare = host.split(':')[0].toLowerCase();
   if (bare === 'localhost' || bare.endsWith('.localhost') || /^[\d.]+$/.test(bare) || bare.endsWith('.vercel.app')) return 'dev';
   if (bare.endsWith('.thecompound.tech')) return bare.replace(/\.thecompound\.tech$/, '').split('.')[0] || APP_SLUG;
-  if (bare.endsWith('.kynth.studio')) return bare.replace(/\.kynth\.studio$/, '').split('.')[0] || APP_SLUG;
+  if (bare.endsWith('.kynth.studio')) return bare.replace(/\.compound\.studio$/, '').split('.')[0] || APP_SLUG;
   return APP_SLUG;
 }
 

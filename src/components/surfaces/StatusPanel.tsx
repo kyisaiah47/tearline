@@ -7,7 +7,7 @@ import type { SurfaceProduct } from "../../lib/surfaces";
  * the sentence and the outage are produced by the same build. Every value here comes from
  * `https://thecompound.tech/api/status`, which `kynth-ops/roster/build-status.mjs` writes from a LIVE
  * cache-busted probe of this host, this host's own published sitemap freshness, and the
- * `public.kynth_jobs` ledger — three things this repo cannot write to.
+ * `public.compound_jobs` ledger — three things this repo cannot write to.
  *
  * ⛔ AND WHEN THE FEED CANNOT BE READ, IT SAYS SO RATHER THAN FALLING BACK TO GREEN. A page that
  * renders "operational" out of a failed fetch is worse than no status page: it converts an unknown
