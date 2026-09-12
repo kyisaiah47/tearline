@@ -161,7 +161,10 @@
   padding: 0.15em 0.6em;
   border-radius: 999px;
   border: 1px solid currentColor;
-  font-size: 0.7em;
+  /* max(), not a bare 0.7em. 0.7em of this block is 9.58px and mobile-gate.mjs check F fails a
+   * page on the first painted run under 12px: measured on tearline at 390, 360 and 430 in the
+   * 2026-09-12 deploy captures, on WRAP ANYTHING and THANK YOU. */
+  font-size: max(12px, 0.7em);
   font-weight: 500;
   letter-spacing: 0.02em;
   text-transform: uppercase;

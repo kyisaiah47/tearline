@@ -33,7 +33,7 @@
 .tl-play__label,
 .tl-play__seed {
   font-family: var(--doc-mono, monospace);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--doc-muted, #6b6b6b);
@@ -108,7 +108,7 @@
   height: 100%;
   resize: none;
   overflow: auto;
-  background: none;
+  background-color: transparent;
   color: transparent;
   caret-color: #f2ece1;
   outline: none;
@@ -228,7 +228,7 @@
 .tl-result-meta {
   margin: 0 0 8px;
   font-family: var(--doc-mono, monospace);
-  font-size: 11.5px;
+  font-size: 12px;
   line-height: 1.5;
   color: var(--doc-muted, #6b6b6b);
 }
@@ -290,7 +290,7 @@
 .doc-prose .tl-docs-label {
   margin: 0 0 12px;
   font-family: var(--doc-mono, monospace);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--doc-muted, #6b6b6b);
@@ -339,4 +339,44 @@
     grid-template-columns: minmax(0, 1fr);
     gap: 24px;
   }
+}
+
+/* iOS Safari zooms the viewport when a control under 16px takes focus. mobile-gate.mjs reported
+   INPUT-ZOOM on the markup textarea at 13px at all three phone frames on 2026-09-12. The
+   highlight layer is painted underneath the textarea and the two are read as one pane, so they
+   move together or the highlight stops lining up with the characters. */
+@media (max-width: 809.98px) {
+  .tl-code-hl,
+  .tl-code-input {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}
+
+/* Both code panes scroll sideways with nothing marking the edge, so they read as text that was
+   cut off. mobile-gate.mjs measured 132px and 115px of travel with no edge treatment at all
+   three phone frames. background-attachment: local hides each side when that edge is at the end
+   of its travel. Both layers take it, in the editor's own dark ground rather than paper: the
+   textarea on top paints its text transparent and the tokens show through from the layer below,
+   so a treatment on the highlight layer alone is not on the element that scrolls. */
+.tl-code-hl,
+.tl-code-input {
+  background-image:
+    linear-gradient(to right, var(--doc-ink, #1a1a1a), rgba(26, 26, 26, 0)),
+    linear-gradient(to left, var(--doc-ink, #1a1a1a), rgba(26, 26, 26, 0)),
+    linear-gradient(to right, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0)),
+    linear-gradient(to left, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+  background-position: left center, right center, left center, right center;
+  background-repeat: no-repeat;
+  background-size: 24px 100%, 24px 100%, 10px 100%, 10px 100%;
+  background-attachment: local, local, scroll, scroll;
+}
+
+/* The receipt preview is slotted into <tear-line>, and the component's shadow rules reach only
+   the nodes it slots directly: a <small> inside a slotted <p> gets nothing but the UA default
+   `smaller`, which is 9.58px here, and the receipt table's cells land at 11.5px. mobile-gate.mjs
+   reported TYPE-FLOOR on both at all three phone frames on 2026-09-12, with "WRAP ANYTHING" the
+   smallest run on the page. Light DOM is styled by the document, so the floor is declared here. */
+tear-line :is(small, td, th, strong) {
+  font-size: 12px;
 }

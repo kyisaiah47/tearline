@@ -83,7 +83,7 @@ const PAPER_CSS = `
         rgba(255,255,255,.34) 80%,
         rgba(0,0,0,.075) 100%);
     font-family: var(--font);
-    font-size: 11.5px;
+    font-size: 12px;
     line-height: 1.62;
     letter-spacing: .04em;
     text-shadow: 0 0 .55px rgba(43,39,36,.62);
@@ -154,7 +154,7 @@ const PAPER_CSS = `
      the string and the build fails with a parse error twenty lines away.) */
   ::slotted(h2[data-title]) { font-size: 20px; letter-spacing: .20em; }
   ::slotted(p)  { margin: 0 0 10px; }
-  ::slotted(small) { color: var(--ink-faded); font-size: 9.5px; }
+  ::slotted(small) { color: var(--ink-faded); font-size: 12px; }
   ::slotted(hr) {
     border: 0;
     border-top: 1px dashed rgba(40,36,33,.42);
@@ -177,7 +177,7 @@ const PAPER_CSS = `
   .barcode-no {
     margin: 0;
     text-align: center;
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: .34em;
     text-indent: .34em;
   }
