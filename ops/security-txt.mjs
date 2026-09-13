@@ -40,7 +40,7 @@ import { pathToFileURL } from "node:url";
 
 /* ⛔ hello@, NOT security@. The address is taken from the apex's own live /security page, which
  * says "Found a vulnerability? Email hello@thecompound.tech with details and steps to reproduce" —
- * read off kynth.studio/security, which returned 200 on 2026-08-15 when /status, /changelog and
+ * read off thecompound.tech/security, which returned 200 on 2026-08-15 when /status, /changelog and
  * /api/status on the same host did not. `security@` is the address a security.txt is EXPECTED to
  * carry and it is exactly the kind of plausible invention that would publish a bounce address on
  * twenty domains under a heading that promises a reply. */
@@ -48,15 +48,15 @@ const CONTACT = "mailto:hello@thecompound.tech";
 
 /* ⛔ THE POLICY IS THIS PRODUCT'S OWN /security, NOT THE APEX'S, and the first version of this
  * pointed at the apex. PartsProof already published a security.txt whose Policy was
- * `partsproof.kynth.studio/security` — a full coordinated-disclosure policy written for a product
+ * `partsproof.thecompound.tech/security` — a full coordinated-disclosure policy written for a product
  * whose entire subject is the Cyber Resilience Act's Article 14 reporting deadlines — and
  * regenerating it moved the pointer to a generic studio page. That is strictly worse for the one
  * product that had already done the work, which is the definition of a change that should not have
  * shipped. Every product in this family now serves /security, so every one can point at its own.
  *
- * The CONTACT above is the apex's, and that IS right: read off kynth.studio/security live on
+ * The CONTACT above is the apex's, and that IS right: read off thecompound.tech/security live on
  * 2026-08-15, where `hello@thecompound.tech` appears three times and `security@` appears nowhere.
- * PartsProof's file carried `security@kynth.studio`, which is the address a security.txt is
+ * PartsProof's file carried `security@thecompound.tech`, which is the address a security.txt is
  * EXPECTED to have and exactly the kind of plausible invention that publishes a bounce address
  * under a heading promising a reply. */
 const policyFor = (PRODUCT) => `${PRODUCT.url}/security`;

@@ -26,7 +26,7 @@ import { surfaceSitemapRows } from "@/lib/surfaces";
  * day their content actually changed.
  *
  * CRAWL STATE, measured 2026-08-08 via the URL Inspection API. /sitemap.xml is
- * enrolled on sc-domain:kynth.studio and Google is reading it. /dom-to-png moved
+ * enrolled on sc-domain:thecompound.tech and Google is reading it. /dom-to-png moved
  * from "URL is unknown to Google" to "Discovered - currently not indexed" today,
  * which makes it five of five subpages discovered: /docs, /dom-to-png,
  * /receipt-ui, /spotify-receipt-generator and /share-image-custom-element. Every
@@ -52,8 +52,8 @@ import { surfaceSitemapRows } from "@/lib/surfaces";
  *
  * Two things were checked today rather than assumed:
  *
- * 1. The host is NOT orphaned. kynth.studio was fetched (HTTP 200) and it
- *    carries real crawlable `<a href="https://tearline.kynth.studio">` links —
+ * 1. The host is NOT orphaned. thecompound.tech was fetched (HTTP 200) and it
+ *    carries real crawlable `<a href="https://tearline.thecompound.tech">` links —
  *    a Selected Work card and the logo ticker. So an inbound path from the
  *    parent domain exists and the "no inbound links" half of the note below is
  *    weaker than it reads; what the subdomain lacks is inbound links from
@@ -88,10 +88,10 @@ import { surfaceSitemapRows } from "@/lib/surfaces";
  * reading, do not narrate it.
  *
  * The external lever is now less external than it was. The repo went public
- * (FACTS.json → github-repo-public) and @kynth/tearline is on the registry, so
+ * (FACTS.json → github-repo-public) and @compound/tearline is on the registry, so
  * two pages Google crawls constantly — github.com/kyisaiah47/tearline and
- * npmjs.com/package/@kynth/tearline — now exist for this component. Both carry
- * homepage → tearline.kynth.studio; the GitHub one also carries the twelve
+ * npmjs.com/package/@compound/tearline — now exist for this component. Both carry
+ * homepage → tearline.thecompound.tech; the GitHub one also carries the twelve
  * topics and the description. Those links are nofollow, so they pass no
  * equity, but nofollow is a ranking hint and not a discovery block, and a
  * high-crawl-rate page pointing here is the first inbound signal this host has
@@ -99,7 +99,7 @@ import { surfaceSitemapRows } from "@/lib/surfaces";
  * consequence of the repo being public, and it wants time, not markup.
  *
  * The home page was inspected in BOTH URL forms on 2026-08-06 —
- * `https://tearline.kynth.studio` and `https://tearline.kynth.studio/` — and
+ * `https://tearline.thecompound.tech` and `https://tearline.thecompound.tech/` — and
  * both returned "URL is unknown to Google". So the pathless <loc> below is NOT
  * the reason the root is undiscovered, and adding a trailing slash here would be
  * cargo cult: it would also put the sitemap at odds with the rel=canonical,
@@ -130,7 +130,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       // Moves to 2026-08-13: the install section gained a second install path
-      // — `npm i @kynth/tearline`, with a link to the now-public MIT source.
+      // — `npm i @compound/tearline`, with a link to the now-public MIT source.
       // This page had documented the script tag as the ONLY path on the
       // grounds that nothing was published, which stopped being true when the
       // package shipped. New copy and a new Copyable, so a real change.

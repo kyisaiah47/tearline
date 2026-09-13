@@ -145,7 +145,7 @@ node "$HOME/CompoundLabs/compound-ops/tools/warm-host.mjs" "https://$HOST/"
 # content painted off the left edge that no scroll reaches, an overflow-x wrapper that grew to its
 # content instead of scrolling it, text under 12px, a control under 16px (which makes iOS zoom the
 # viewport on focus), and a tap target whose measured HIT AREA is under 24px.
-# ⛔ It never asks the document for its overflow. Measured 2026-08-13, trustdesk.kynth.studio
+# ⛔ It never asks the document for its overflow. Measured 2026-08-13, trustdesk.thecompound.tech
 # reported scrollWidth === clientWidth while its body copy was cut off at both edges — a clipping
 # ancestor absorbs the difference, so a clean overflow number is not evidence of a reachable page.
 # ⛔ A GATE THAT DID NOT RUN IS NOT A GATE THAT PASSED.

@@ -21,11 +21,11 @@ That script tag is a complete install — it is an ES module, so there is no bun
 Or install it from npm:
 
 ```bash
-npm i @kynth/tearline
+npm i @compound/tearline
 ```
 
 ```js
-import '@kynth/tearline';
+import '@compound/tearline';
 ```
 
 The package is scoped because the registry refuses the bare name `tearline` — npm's similarity filter reads it as too close to the existing `readline` package. The element is still `<tear-line>`. Published 2026-08-12; `ops/npm/publish.mjs` gates every publish on a byte-for-byte match against the component this site serves.

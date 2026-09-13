@@ -32,7 +32,7 @@ export const PRODUCT: SurfaceProduct & { surfaces: ProductSurfaces } = {
       lede: "Tearline is free and MIT-licensed. There is nothing to buy, and this page exists to say so plainly.",
       free: true,
       note:
-        "The package is published as @kynth/tearline on npm and the repository is public under the MIT licence. The " +
+        "The package is published as @compound/tearline on npm and the repository is public under the MIT licence. The " +
         "bare name `tearline` is unregisterable — npm rejects it as too similar to `readline` — which is why every " +
         "npm line on this site is scoped.",
       cta: { label: "The full reference", href: "/docs" },

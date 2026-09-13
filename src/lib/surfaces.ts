@@ -121,9 +121,9 @@ export type Surface =
        * ⛔ NOTHING ON THE STATUS PAGE IS DECLARED HERE, AND THAT IS THE WHOLE POINT. A status page
        * a product writes about itself says "operational" on the morning it is down, because the
        * sentence and the outage come out of the same build. Every value comes from the estate's
-       * own feed at https://thecompound.tech/api/status — built by kynth-ops/roster/build-status.mjs
+       * own feed at https://thecompound.tech/api/status — built by compound-ops/roster/build-status.mjs
        * from a live probe of this host, this host's own published sitemap freshness and the
-       * kynth_jobs ledger, none of which this repo can write to.
+       * compound_jobs ledger, none of which this repo can write to.
        *
        * When the feed cannot be read, the panel SAYS SO. It never falls back to green.
        */
@@ -214,7 +214,7 @@ export function surfaceSitemapRows(surfaces: ProductSurfaces | undefined, site: 
  *
  * ⛔ `permanent: false` — a 307, not a 308. These aliases point at a section of a page or at a
  * sibling host, both of which are things this estate has already moved once: BenchFile's whole
- * host changed name in July, and ParseRail's /login moved to api.kynth.studio when the cookie
+ * host changed name in July, and ParseRail's /login moved to api.thecompound.tech when the cookie
  * scope forced the split. A 308 is cached by browsers forever and cannot be taken back, so the
  * one thing it buys — a marginally stronger crawl signal on a URL that is not the canonical
  * anyway — is not worth being unable to change our minds. The gate requires the URL to RESOLVE,

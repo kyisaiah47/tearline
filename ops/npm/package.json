@@ -1,5 +1,5 @@
 {
-  "name": "@kynth/tearline",
+  "name": "@compound/tearline",
   "version": "0.1.0",
   "description": "Wrap any HTML in one tag and it prints out as a thermal receipt. Save it as a PNG. Zero dependencies, no build step.",
   "repository": {

@@ -5,7 +5,7 @@ import type { SurfaceProduct } from "../../lib/surfaces";
  * ⛔ THE PRODUCT DOES NOT WRITE ITS OWN STATUS, AND THAT IS THE WHOLE DESIGN. A status page a
  * product composes about itself says "All systems operational" on the morning it is down, because
  * the sentence and the outage are produced by the same build. Every value here comes from
- * `https://thecompound.tech/api/status`, which `kynth-ops/roster/build-status.mjs` writes from a LIVE
+ * `https://thecompound.tech/api/status`, which `compound-ops/roster/build-status.mjs` writes from a LIVE
  * cache-busted probe of this host, this host's own published sitemap freshness, and the
  * `public.compound_jobs` ledger — three things this repo cannot write to.
  *
@@ -21,7 +21,7 @@ import type { SurfaceProduct } from "../../lib/surfaces";
  * inherits the host page's own type and colour rather than importing a second visual system.
  *
  * ⛔ MEASURED 2026-08-15, CACHE-BUSTED: https://thecompound.tech/api/status returned 404. The route
- * exists in kynth-portfolio and is committed but not yet deployed, so until the estate's deploy
+ * exists in compound-portfolio and is committed but not yet deployed, so until the estate's deploy
  * watcher fires, every /status page built from this component renders the "could not be read"
  * branch. That is the correct output for that state, and it is why the branch is not a stub.
  */

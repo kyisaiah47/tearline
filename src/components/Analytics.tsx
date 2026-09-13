@@ -4,7 +4,7 @@ import { Suspense, useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import posthog from 'posthog-js';
 
-// House Kynth PostHog project (shared across apps; each app self-labels via the `app`
+// House Compound PostHog project (shared across apps; each app self-labels via the `app`
 // for a marketing + checkout site (no auth / demo / dashboard).
 //
 // GENERATED from demos/roster/templates/Analytics.tsx.tmpl by the analytics-coverage step of
@@ -25,14 +25,14 @@ const POSTHOG_UI_HOST = 'https://us.posthog.com';
 // that property is what the estate digest and analytics dashboard group by.
 const APP_SLUG = 'tearline';
 
-// host -> clean app slug. Only *.kynth.studio and *.thecompound.tech encode the slug in the subdomain; for any other
+// host -> clean app slug. Only *.thecompound.tech and *.thecompound.tech encode the slug in the subdomain; for any other
 // host the subdomain is NOT the slug (health.civicbinder.org would resolve to "health", which
 // is not a product), so the build-time slug is the answer. local/preview -> "dev" (excluded).
 function appSlugFromHost(host: string): string {
   const bare = host.split(':')[0].toLowerCase();
   if (bare === 'localhost' || bare.endsWith('.localhost') || /^[\d.]+$/.test(bare) || bare.endsWith('.vercel.app')) return 'dev';
   if (bare.endsWith('.thecompound.tech')) return bare.replace(/\.thecompound\.tech$/, '').split('.')[0] || APP_SLUG;
-  if (bare.endsWith('.kynth.studio')) return bare.replace(/\.compound\.studio$/, '').split('.')[0] || APP_SLUG;
+  if (bare.endsWith('.thecompound.tech')) return bare.replace(/\.compound\.studio$/, '').split('.')[0] || APP_SLUG;
   return APP_SLUG;
 }
 

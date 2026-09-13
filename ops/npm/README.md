@@ -9,11 +9,11 @@ Zero dependencies. No build step. One custom element. MIT.
 ## Install
 
 ```bash
-npm i @kynth/tearline
+npm i @compound/tearline
 ```
 
 ```js
-import '@kynth/tearline';
+import '@compound/tearline';
 ```
 
 The package is scoped because npm's registry refuses the bare name `tearline` — its similarity filter reads it as too close to the existing `readline` package. The element is still `<tear-line>`.

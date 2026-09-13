@@ -14,7 +14,7 @@
  * Both of those states ended and neither was noticed: measured 2026-08-13,
  * api.github.com reports the repo `"private": false` and an anonymous read of
  * src/tearline.js returns 200 with the same 14,048 bytes the origin serves, and
- * @kynth/tearline is on the npm registry. FACTS.json had gone on asserting PRIVATE,
+ * @compound/tearline is on the npm registry. FACTS.json had gone on asserting PRIVATE,
  * re-verified as such as late as 2026-08-12, so nothing downstream was ever told.
  *
  * The lesson this file should carry: a claim that decays toward MORE capability
@@ -54,10 +54,10 @@ export const siteGraph = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      // Copied field-for-field from the canonical studio node on kynth.studio,
+      // Copied field-for-field from the canonical studio node on thecompound.tech,
       // so the publisher here resolves to the same entity rather than to a
-      // fourth spelling of it. This page had been calling the studio "Kynth
-      // Studio", which matches neither the canonical `name` ("Kynth") nor its
+      // fourth spelling of it. This page had been calling the studio "Compound
+      // Studio", which matches neither the canonical `name` ("Compound") nor its
       // `legalName` ("Compound Labs") — a publisher an engine cannot reconcile
       // is a publisher with no accumulated trust to lend.
       //
