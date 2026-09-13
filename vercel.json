@@ -40,12 +40,12 @@
     },
     {
       "source": "/kx",
-      "destination": "/?utm_source=kynth-x&utm_medium=social",
+      "destination": "/?utm_source=compound-x&utm_medium=social",
       "permanent": false
     },
     {
       "source": "/kx/:content",
-      "destination": "/?utm_source=kynth-x&utm_medium=social&utm_content=:content",
+      "destination": "/?utm_source=compound-x&utm_medium=social&utm_content=:content",
       "permanent": false
     },
     {
@@ -60,12 +60,12 @@
     },
     {
       "source": "/kb",
-      "destination": "/?utm_source=kynth-bluesky&utm_medium=social",
+      "destination": "/?utm_source=compound-bluesky&utm_medium=social",
       "permanent": false
     },
     {
       "source": "/kb/:content",
-      "destination": "/?utm_source=kynth-bluesky&utm_medium=social&utm_content=:content",
+      "destination": "/?utm_source=compound-bluesky&utm_medium=social&utm_content=:content",
       "permanent": false
     },
     {
@@ -80,12 +80,12 @@
     },
     {
       "source": "/kl",
-      "destination": "/?utm_source=kynth-linkedin&utm_medium=social",
+      "destination": "/?utm_source=compound-linkedin&utm_medium=social",
       "permanent": false
     },
     {
       "source": "/kl/:content",
-      "destination": "/?utm_source=kynth-linkedin&utm_medium=social&utm_content=:content",
+      "destination": "/?utm_source=compound-linkedin&utm_medium=social&utm_content=:content",
       "permanent": false
     },
     {
@@ -110,12 +110,12 @@
     },
     {
       "source": "/kd",
-      "destination": "/?utm_source=kynth-devto&utm_medium=social",
+      "destination": "/?utm_source=compound-devto&utm_medium=social",
       "permanent": false
     },
     {
       "source": "/kd/:content",
-      "destination": "/?utm_source=kynth-devto&utm_medium=social&utm_content=:content",
+      "destination": "/?utm_source=compound-devto&utm_medium=social&utm_content=:content",
       "permanent": false
     },
     {
@@ -140,12 +140,12 @@
     },
     {
       "source": "/kt",
-      "destination": "/?utm_source=kynth-threads&utm_medium=social",
+      "destination": "/?utm_source=compound-threads&utm_medium=social",
       "permanent": false
     },
     {
       "source": "/kt/:content",
-      "destination": "/?utm_source=kynth-threads&utm_medium=social&utm_content=:content",
+      "destination": "/?utm_source=compound-threads&utm_medium=social&utm_content=:content",
       "permanent": false
     },
     {
@@ -160,12 +160,12 @@
     },
     {
       "source": "/ki",
-      "destination": "/?utm_source=kynth-ig&utm_medium=social",
+      "destination": "/?utm_source=compound-ig&utm_medium=social",
       "permanent": false
     },
     {
       "source": "/ki/:content",
-      "destination": "/?utm_source=kynth-ig&utm_medium=social&utm_content=:content",
+      "destination": "/?utm_source=compound-ig&utm_medium=social&utm_content=:content",
       "permanent": false
     },
     {
@@ -180,12 +180,12 @@
     },
     {
       "source": "/fb",
-      "destination": "/?utm_source=kynth-facebook&utm_medium=social",
+      "destination": "/?utm_source=compound-facebook&utm_medium=social",
       "permanent": false
     },
     {
       "source": "/fb/:content",
-      "destination": "/?utm_source=kynth-facebook&utm_medium=social&utm_content=:content",
+      "destination": "/?utm_source=compound-facebook&utm_medium=social&utm_content=:content",
       "permanent": false
     }
   ]
